@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		63B61AFC148A58F400CBE54B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFB148A58F400CBE54B /* UIKit.framework */; };
+		63B61AFE148A58F400CBE54B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFD148A58F400CBE54B /* Foundation.framework */; };
+		63B61B00148A58F400CBE54B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFF148A58F400CBE54B /* CoreGraphics.framework */; };
+		63B61B06148A58F400CBE54B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63B61B04148A58F400CBE54B /* InfoPlist.strings */; };
+		63B61B08148A58F400CBE54B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B61B07148A58F400CBE54B /* main.m */; };
+		63B61B0C148A58F400CBE54B /* MissionHubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B61B0B148A58F400CBE54B /* MissionHubAppDelegate.m */; };
+		63B61B10148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B61B0F148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m */; };
+		63B61B13148A58F400CBE54B /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B61B11148A58F400CBE54B /* MainWindow_iPhone.xib */; };
+		63B61B17148A58F400CBE54B /* MissionHubAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B61B16148A58F400CBE54B /* MissionHubAppDelegate_iPad.m */; };
+		63B61B1A148A58F400CBE54B /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B61B18148A58F400CBE54B /* MainWindow_iPad.xib */; };
+		63B61B22148A58F400CBE54B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61B21148A58F400CBE54B /* SenTestingKit.framework */; };
+		63B61B23148A58F400CBE54B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFB148A58F400CBE54B /* UIKit.framework */; };
+		63B61B24148A58F400CBE54B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFD148A58F400CBE54B /* Foundation.framework */; };
+		63B61B25148A58F400CBE54B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFF148A58F400CBE54B /* CoreGraphics.framework */; };
+		63B61B2D148A58F400CBE54B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63B61B2B148A58F400CBE54B /* InfoPlist.strings */; };
+		63B61B2F148A58F500CBE54B /* MissionHubTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 63B61B2E148A58F500CBE54B /* MissionHubTests.h */; };
+		63B61B31148A58F500CBE54B /* MissionHubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B61B30148A58F500CBE54B /* MissionHubTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63B61B26148A58F400CBE54B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63B61AEE148A58F400CBE54B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63B61AF6148A58F400CBE54B;
+			remoteInfo = MissionHub;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		63B61AF7148A58F400CBE54B /* MissionHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MissionHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B61AFB148A58F400CBE54B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		63B61AFD148A58F400CBE54B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		63B61AFF148A58F400CBE54B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		63B61B03148A58F400CBE54B /* MissionHub-Info.plist */ = {isa = PBXFileReference; path = "MissionHub-Info.plist"; sourceTree = "<group>"; };
+		63B61B05148A58F400CBE54B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		63B61B07148A58F400CBE54B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		63B61B09148A58F400CBE54B /* MissionHub-Prefix.pch */ = {isa = PBXFileReference; path = "MissionHub-Prefix.pch"; sourceTree = "<group>"; };
+		63B61B0A148A58F400CBE54B /* MissionHubAppDelegate.h */ = {isa = PBXFileReference; path = MissionHubAppDelegate.h; sourceTree = "<group>"; };
+		63B61B0B148A58F400CBE54B /* MissionHubAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissionHubAppDelegate.m; sourceTree = "<group>"; };
+		63B61B0E148A58F400CBE54B /* MissionHubAppDelegate_iPhone.h */ = {isa = PBXFileReference; name = MissionHubAppDelegate_iPhone.h; path = iPhone/MissionHubAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		63B61B0F148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MissionHubAppDelegate_iPhone.m; path = iPhone/MissionHubAppDelegate_iPhone.m; sourceTree = "<group>"; };
+		63B61B12148A58F400CBE54B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		63B61B15148A58F400CBE54B /* MissionHubAppDelegate_iPad.h */ = {isa = PBXFileReference; name = MissionHubAppDelegate_iPad.h; path = iPad/MissionHubAppDelegate_iPad.h; sourceTree = "<group>"; };
+		63B61B16148A58F400CBE54B /* MissionHubAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MissionHubAppDelegate_iPad.m; path = iPad/MissionHubAppDelegate_iPad.m; sourceTree = "<group>"; };
+		63B61B19148A58F400CBE54B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+		63B61B20148A58F400CBE54B /* MissionHubTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MissionHubTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B61B21148A58F400CBE54B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		63B61B2A148A58F400CBE54B /* MissionHubTests-Info.plist */ = {isa = PBXFileReference; path = "MissionHubTests-Info.plist"; sourceTree = "<group>"; };
+		63B61B2C148A58F400CBE54B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		63B61B2E148A58F500CBE54B /* MissionHubTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MissionHubTests.h; sourceTree = "<group>"; };
+		63B61B30148A58F500CBE54B /* MissionHubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissionHubTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63B61AF4148A58F400CBE54B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B61AFC148A58F400CBE54B /* UIKit.framework in Frameworks */,
+				63B61AFE148A58F400CBE54B /* Foundation.framework in Frameworks */,
+				63B61B00148A58F400CBE54B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63B61B1C148A58F400CBE54B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B61B22148A58F400CBE54B /* SenTestingKit.framework in Frameworks */,
+				63B61B23148A58F400CBE54B /* UIKit.framework in Frameworks */,
+				63B61B24148A58F400CBE54B /* Foundation.framework in Frameworks */,
+				63B61B25148A58F400CBE54B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63B61AEC148A58F400CBE54B = {
+			isa = PBXGroup;
+			children = (
+				63B61B01148A58F400CBE54B /* MissionHub */,
+				63B61B28148A58F400CBE54B /* MissionHubTests */,
+				63B61AFA148A58F400CBE54B /* Frameworks */,
+				63B61AF8148A58F400CBE54B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63B61AF8148A58F400CBE54B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63B61AF7148A58F400CBE54B /* MissionHub.app */,
+				63B61B20148A58F400CBE54B /* MissionHubTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63B61AFA148A58F400CBE54B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63B61AFB148A58F400CBE54B /* UIKit.framework */,
+				63B61AFD148A58F400CBE54B /* Foundation.framework */,
+				63B61AFF148A58F400CBE54B /* CoreGraphics.framework */,
+				63B61B21148A58F400CBE54B /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63B61B01148A58F400CBE54B /* MissionHub */ = {
+			isa = PBXGroup;
+			children = (
+				63B61B0A148A58F400CBE54B /* MissionHubAppDelegate.h */,
+				63B61B0B148A58F400CBE54B /* MissionHubAppDelegate.m */,
+				63B61B0D148A58F400CBE54B /* iPhone */,
+				63B61B14148A58F400CBE54B /* iPad */,
+				63B61B02148A58F400CBE54B /* Supporting Files */,
+			);
+			path = MissionHub;
+			sourceTree = "<group>";
+		};
+		63B61B02148A58F400CBE54B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63B61B03148A58F400CBE54B /* MissionHub-Info.plist */,
+				63B61B04148A58F400CBE54B /* InfoPlist.strings */,
+				63B61B07148A58F400CBE54B /* main.m */,
+				63B61B09148A58F400CBE54B /* MissionHub-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63B61B0D148A58F400CBE54B /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				63B61B0E148A58F400CBE54B /* MissionHubAppDelegate_iPhone.h */,
+				63B61B0F148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m */,
+				63B61B11148A58F400CBE54B /* MainWindow_iPhone.xib */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		63B61B14148A58F400CBE54B /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				63B61B15148A58F400CBE54B /* MissionHubAppDelegate_iPad.h */,
+				63B61B16148A58F400CBE54B /* MissionHubAppDelegate_iPad.m */,
+				63B61B18148A58F400CBE54B /* MainWindow_iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		63B61B28148A58F400CBE54B /* MissionHubTests */ = {
+			isa = PBXGroup;
+			children = (
+				63B61B2E148A58F500CBE54B /* MissionHubTests.h */,
+				63B61B30148A58F500CBE54B /* MissionHubTests.m */,
+				63B61B29148A58F400CBE54B /* Supporting Files */,
+			);
+			path = MissionHubTests;
+			sourceTree = "<group>";
+		};
+		63B61B29148A58F400CBE54B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63B61B2A148A58F400CBE54B /* MissionHubTests-Info.plist */,
+				63B61B2B148A58F400CBE54B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63B61AF6148A58F400CBE54B /* MissionHub */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63B61B34148A58F500CBE54B /* Build configuration list for PBXNativeTarget "MissionHub" */;
+			buildPhases = (
+				63B61AF3148A58F400CBE54B /* Sources */,
+				63B61AF4148A58F400CBE54B /* Frameworks */,
+				63B61AF5148A58F400CBE54B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MissionHub;
+			productName = MissionHub;
+			productReference = 63B61AF7148A58F400CBE54B /* MissionHub.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63B61B1F148A58F400CBE54B /* MissionHubTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63B61B37148A58F500CBE54B /* Build configuration list for PBXNativeTarget "MissionHubTests" */;
+			buildPhases = (
+				63B61B1B148A58F400CBE54B /* Sources */,
+				63B61B1C148A58F400CBE54B /* Frameworks */,
+				63B61B1D148A58F400CBE54B /* Resources */,
+				63B61B1E148A58F400CBE54B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63B61B27148A58F400CBE54B /* PBXTargetDependency */,
+			);
+			name = MissionHubTests;
+			productName = MissionHubTests;
+			productReference = 63B61B20148A58F400CBE54B /* MissionHubTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63B61AEE148A58F400CBE54B /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 63B61AF1148A58F400CBE54B /* Build configuration list for PBXProject "MissionHub" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 63B61AEC148A58F400CBE54B;
+			productRefGroup = 63B61AF8148A58F400CBE54B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63B61AF6148A58F400CBE54B /* MissionHub */,
+				63B61B1F148A58F400CBE54B /* MissionHubTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63B61AF5148A58F400CBE54B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B61B06148A58F400CBE54B /* InfoPlist.strings in Resources */,
+				63B61B13148A58F400CBE54B /* MainWindow_iPhone.xib in Resources */,
+				63B61B1A148A58F400CBE54B /* MainWindow_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63B61B1D148A58F400CBE54B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B61B2D148A58F400CBE54B /* InfoPlist.strings in Resources */,
+				63B61B2F148A58F500CBE54B /* MissionHubTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		63B61B1E148A58F400CBE54B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63B61AF3148A58F400CBE54B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B61B08148A58F400CBE54B /* main.m in Sources */,
+				63B61B0C148A58F400CBE54B /* MissionHubAppDelegate.m in Sources */,
+				63B61B10148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m in Sources */,
+				63B61B17148A58F400CBE54B /* MissionHubAppDelegate_iPad.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63B61B1B148A58F400CBE54B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B61B31148A58F500CBE54B /* MissionHubTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63B61B27148A58F400CBE54B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63B61AF6148A58F400CBE54B /* MissionHub */;
+			targetProxy = 63B61B26148A58F400CBE54B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		63B61B04148A58F400CBE54B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63B61B05148A58F400CBE54B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		63B61B11148A58F400CBE54B /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63B61B12148A58F400CBE54B /* en */,
+			);
+			name = MainWindow_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		63B61B18148A58F400CBE54B /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63B61B19148A58F400CBE54B /* en */,
+			);
+			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+		63B61B2B148A58F400CBE54B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63B61B2C148A58F400CBE54B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63B61B32148A58F500CBE54B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		63B61B33148A58F500CBE54B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		63B61B35148A58F500CBE54B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
+				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		63B61B36148A58F500CBE54B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
+				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		63B61B38148A58F500CBE54B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MissionHub.app/MissionHub";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
+				INFOPLIST_FILE = "MissionHubTests/MissionHubTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		63B61B39148A58F500CBE54B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MissionHub.app/MissionHub";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
+				INFOPLIST_FILE = "MissionHubTests/MissionHubTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63B61AF1148A58F400CBE54B /* Build configuration list for PBXProject "MissionHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63B61B32148A58F500CBE54B /* Debug */,
+				63B61B33148A58F500CBE54B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63B61B34148A58F500CBE54B /* Build configuration list for PBXNativeTarget "MissionHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63B61B35148A58F500CBE54B /* Debug */,
+				63B61B36148A58F500CBE54B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		63B61B37148A58F500CBE54B /* Build configuration list for PBXNativeTarget "MissionHubTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63B61B38148A58F500CBE54B /* Debug */,
+				63B61B39148A58F500CBE54B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63B61AEE148A58F400CBE54B /* Project object */;
+}
