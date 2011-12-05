@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <Three20/Three20.h>
 
-@class LoginViewController;
+//@class LoginViewController;
 
 @interface MissionHubAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet UINavigationController*  navigationController;
 
-@property (nonatomic, retain) IBOutlet LoginViewController *loginViewController;
+//@property (nonatomic, retain) IBOutlet LoginViewController *loginViewController;
 
 @end

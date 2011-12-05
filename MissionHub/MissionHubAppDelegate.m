@@ -13,16 +13,34 @@
 @implementation MissionHubAppDelegate
 
 @synthesize window = _window;
-@synthesize loginViewController = _loginViewController;
+@synthesize navigationController = _navigationController;
+//@synthesize loginViewController = _loginViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     
     //self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-       
     //self.window.rootViewController = self.loginViewController;
     
+    TTNavigator *navigator = [TTNavigator navigator];
+    [navigator setSupportsShakeToReload:YES];
+    [navigator setPersistenceMode:TTNavigatorPersistenceModeAll];
+    [navigator setWindow: self.window];
+
+
+    TTURLMap *map = navigator.URLMap;
+    [map from:@"*" toViewController:[TTWebController class]];
+    [map from:@"mh://login" toSharedViewController:[LoginViewController class]];    
+
+    if (! [navigator restoreViewControllers]) {
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];
+        NSLog(@"opening...");
+        
+    }
+
+    [navigator.topViewController.navigationController setNavigationBarHidden:YES];    
+	//[self.window.rootViewController pushViewController:webController animated:YES];
     //[self.window makeKeyAndVisible];
     return YES;
 }
@@ -54,7 +72,7 @@
 {
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
+     */ 
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -66,9 +84,17 @@
      */
 }
 
+
+- (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
+    NSLog(@"handleOpenUrl");
+    
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
+    return YES;
+}
+
 - (void)dealloc
 {
-    [_loginViewController release];
+    //[_loginViewController release];
     [_window release];
     [super dealloc];
 }

@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Three20/Three20.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController {
+    UIButton *aboutBtn;
+}
 
+- (IBAction)onAboutBtn:(id)sender;
+- (IBAction)onLoginBtn:(id)sender;
+
+@property (nonatomic, retain) IBOutlet UIButton *aboutBtn;
 
 @end

@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 
 @implementation LoginViewController
+@synthesize aboutBtn;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -16,6 +17,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSLog(@"initWithNibName");
     }
     return self;
 }
@@ -34,10 +36,21 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSLog(@"viewDidLoad");
+
+}
+
+- (void)viewWillAppear:(BOOL)animated 
+{
+    NSLog(@"viewWillAppear");
+    TTNavigator *navigator = [TTNavigator navigator];
+    [navigator.topViewController.navigationController setNavigationBarHidden:YES];  
+
 }
 
 - (void)viewDidUnload
 {
+    [self setAboutBtn:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -49,4 +62,20 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)onAboutBtn:(id)sender {    
+    TTOpenURL(@"http://www.missionhub.com?mobile=0"); 
+    
+    TTNavigator *navigator = [TTNavigator navigator];
+    [navigator.topViewController.navigationController setNavigationBarHidden:NO];   
+}
+
+- (IBAction)onLoginBtn:(id)sender {
+     NSLog(@"onLoginBtn");
+}
+
+
+- (void)dealloc {
+    [aboutBtn release];
+    [super dealloc];
+}
 @end
