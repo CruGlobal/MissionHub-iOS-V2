@@ -120,6 +120,8 @@
 		63DF2300148D2E490039A964 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF22A9148D2E490039A964 /* user.png */; };
 		63DF2301148D2E490039A964 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF22AA148D2E490039A964 /* user@2x.png */; };
 		63DF2302148D2E490039A964 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF22AB148D2E490039A964 /* whiteArrow.png */; };
+		63DF2372148D559A0039A964 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DF2370148D559A0039A964 /* LoginViewController.m */; };
+		63DF2376148D5C340039A964 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2374148D5C340039A964 /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -398,6 +400,9 @@
 		63DF22A9148D2E490039A964 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		63DF22AA148D2E490039A964 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		63DF22AB148D2E490039A964 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		63DF236F148D559A0039A964 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		63DF2370148D559A0039A964 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		63DF2375148D5C340039A964 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -537,6 +542,7 @@
 		63B61B01148A58F400CBE54B /* MissionHub */ = {
 			isa = PBXGroup;
 			children = (
+				63DF2318148D471D0039A964 /* Classes */,
 				63B61B0A148A58F400CBE54B /* MissionHubAppDelegate.h */,
 				63B61B0B148A58F400CBE54B /* MissionHubAppDelegate.m */,
 				63B61B0D148A58F400CBE54B /* iPhone */,
@@ -565,6 +571,7 @@
 				63B61B0E148A58F400CBE54B /* MissionHubAppDelegate_iPhone.h */,
 				63B61B0F148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m */,
 				63B61B11148A58F400CBE54B /* MainWindow_iPhone.xib */,
+				63DF2374148D5C340039A964 /* LoginViewController.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -714,6 +721,15 @@
 				63DF2287148D2E490039A964 /* rejoicable_icon@2x.png */,
 			);
 			path = icons;
+			sourceTree = "<group>";
+		};
+		63DF2318148D471D0039A964 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				63DF236F148D559A0039A964 /* LoginViewController.h */,
+				63DF2370148D559A0039A964 /* LoginViewController.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1012,6 +1028,7 @@
 				63DF2300148D2E490039A964 /* user.png in Resources */,
 				63DF2301148D2E490039A964 /* user@2x.png in Resources */,
 				63DF2302148D2E490039A964 /* whiteArrow.png in Resources */,
+				63DF2376148D5C340039A964 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1051,6 +1068,7 @@
 				63B61B0C148A58F400CBE54B /* MissionHubAppDelegate.m in Sources */,
 				63B61B10148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m in Sources */,
 				63B61B17148A58F400CBE54B /* MissionHubAppDelegate_iPad.m in Sources */,
+				63DF2372148D559A0039A964 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,6 +1156,14 @@
 				63B61B2C148A58F400CBE54B /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		63DF2374148D5C340039A964 /* LoginViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63DF2375148D5C340039A964 /* en */,
+			);
+			name = LoginViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

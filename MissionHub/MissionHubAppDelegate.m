@@ -8,14 +8,22 @@
 
 #import "MissionHubAppDelegate.h"
 
+#import "LoginViewController.h"
+
 @implementation MissionHubAppDelegate
 
 @synthesize window = _window;
+@synthesize loginViewController = _loginViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [self.window makeKeyAndVisible];
+    
+    //self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+       
+    //self.window.rootViewController = self.loginViewController;
+    
+    //[self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -60,6 +68,7 @@
 
 - (void)dealloc
 {
+    [_loginViewController release];
     [_window release];
     [super dealloc];
 }
