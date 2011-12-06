@@ -122,6 +122,7 @@
 		63DF2302148D2E490039A964 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF22AB148D2E490039A964 /* whiteArrow.png */; };
 		63DF2372148D559A0039A964 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DF2370148D559A0039A964 /* LoginViewController.m */; };
 		63DF2376148D5C340039A964 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2374148D5C340039A964 /* LoginViewController.xib */; };
+		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -403,6 +404,7 @@
 		63DF236F148D559A0039A964 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		63DF2370148D559A0039A964 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		63DF2375148D5C340039A964 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/LoginViewController.xib; sourceTree = "<group>"; };
+		63EAD050148EB74A00524305 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,6 +563,7 @@
 				63B61B04148A58F400CBE54B /* InfoPlist.strings */,
 				63B61B07148A58F400CBE54B /* main.m */,
 				63B61B09148A58F400CBE54B /* MissionHub-Prefix.pch */,
+				63EAD050148EB74A00524305 /* config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 				63DF2301148D2E490039A964 /* user@2x.png in Resources */,
 				63DF2302148D2E490039A964 /* whiteArrow.png in Resources */,
 				63DF2376148D5C340039A964 /* LoginViewController.xib in Resources */,
+				63EAD051148EB74A00524305 /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

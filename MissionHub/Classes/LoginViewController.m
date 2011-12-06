@@ -45,7 +45,6 @@
     NSLog(@"viewWillAppear");
     TTNavigator *navigator = [TTNavigator navigator];
     [navigator.topViewController.navigationController setNavigationBarHidden:YES];  
-
 }
 
 - (void)viewDidUnload
@@ -70,7 +69,10 @@
 }
 
 - (IBAction)onLoginBtn:(id)sender {
-     NSLog(@"onLoginBtn");
+    TTOpenURL(@"https://www.missionhub.com/oauth/authorize?display=touch&simple=true&response_type=code&redirect_uri=https://www.missionhub.com/oauth/done.json&client_id=5&scope=userinfo,contacts,contact_assignment,followup_comments,roles"); 
+
+    TTNavigator *navigator = [TTNavigator navigator];
+    [navigator.topViewController.navigationController setNavigationBarHidden:NO];   
 }
 
 
