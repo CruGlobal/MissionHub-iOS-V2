@@ -9,16 +9,24 @@
 #import "MissionHubAppDelegate.h"
 
 #import "LoginViewController.h"
+#import "PopupTTWebController.h"
 
 @implementation MissionHubAppDelegate
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
+@synthesize config;
+
 //@synthesize loginViewController = _loginViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Load config into an NSDictionary
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSString *finalPath = [path stringByAppendingPathComponent:@"config.plist"];
+    config = [[NSDictionary dictionaryWithContentsOfFile:finalPath] retain];
     
     //self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     //self.window.rootViewController = self.loginViewController;
@@ -30,7 +38,7 @@
 
 
     TTURLMap *map = navigator.URLMap;
-    [map from:@"*" toViewController:[TTWebController class]];
+    [map from:@"*" toSharedViewController:[PopupTTWebController class]];
     [map from:@"mh://login" toSharedViewController:[LoginViewController class]];    
 
     if (! [navigator restoreViewControllers]) {
@@ -42,6 +50,7 @@
     [navigator.topViewController.navigationController setNavigationBarHidden:YES];    
 	//[self.window.rootViewController pushViewController:webController animated:YES];
     //[self.window makeKeyAndVisible];
+    
     return YES;
 }
 

@@ -123,6 +123,8 @@
 		63DF2372148D559A0039A964 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DF2370148D559A0039A964 /* LoginViewController.m */; };
 		63DF2376148D5C340039A964 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2374148D5C340039A964 /* LoginViewController.xib */; };
 		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
+		63EAD05D148EC78500524305 /* PopupTTWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EAD05B148EC78500524305 /* PopupTTWebController.m */; };
+		63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD05C148EC78500524305 /* PopupTTWebController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -405,6 +407,9 @@
 		63DF2370148D559A0039A964 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		63DF2375148D5C340039A964 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/LoginViewController.xib; sourceTree = "<group>"; };
 		63EAD050148EB74A00524305 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		63EAD05A148EC78500524305 /* PopupTTWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupTTWebController.h; sourceTree = "<group>"; };
+		63EAD05B148EC78500524305 /* PopupTTWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupTTWebController.m; sourceTree = "<group>"; };
+		63EAD05C148EC78500524305 /* PopupTTWebController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupTTWebController.xib; path = Classes/PopupTTWebController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -575,6 +580,7 @@
 				63B61B0F148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m */,
 				63B61B11148A58F400CBE54B /* MainWindow_iPhone.xib */,
 				63DF2374148D5C340039A964 /* LoginViewController.xib */,
+				63EAD05C148EC78500524305 /* PopupTTWebController.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -731,6 +737,8 @@
 			children = (
 				63DF236F148D559A0039A964 /* LoginViewController.h */,
 				63DF2370148D559A0039A964 /* LoginViewController.m */,
+				63EAD05A148EC78500524305 /* PopupTTWebController.h */,
+				63EAD05B148EC78500524305 /* PopupTTWebController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1033,6 +1041,7 @@
 				63DF2302148D2E490039A964 /* whiteArrow.png in Resources */,
 				63DF2376148D5C340039A964 /* LoginViewController.xib in Resources */,
 				63EAD051148EB74A00524305 /* config.plist in Resources */,
+				63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,6 +1082,7 @@
 				63B61B10148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m in Sources */,
 				63B61B17148A58F400CBE54B /* MissionHubAppDelegate_iPad.m in Sources */,
 				63DF2372148D559A0039A964 /* LoginViewController.m in Sources */,
+				63EAD05D148EC78500524305 /* PopupTTWebController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

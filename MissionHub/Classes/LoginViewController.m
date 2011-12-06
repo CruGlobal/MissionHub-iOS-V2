@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "MissionHubAppDelegate.h"
 
 @implementation LoginViewController
 @synthesize aboutBtn;
@@ -69,7 +70,14 @@
 }
 
 - (IBAction)onLoginBtn:(id)sender {
-    TTOpenURL(@"https://www.missionhub.com/oauth/authorize?display=touch&simple=true&response_type=code&redirect_uri=https://www.missionhub.com/oauth/done.json&client_id=5&scope=userinfo,contacts,contact_assignment,followup_comments,roles"); 
+
+    NSString *scope = [[AppDelegate config] objectForKey:@"oauth_scope"];
+    NSString *redirectUrl = @"https://www.missionhub.com/oauth/done.json";
+    
+    NSString *authorizeUrl = [NSString stringWithFormat:@"https://www.missionhub.com/oauth/authorize?display=touch&simple=true&response_type=code&redirect_uri=%@&client_id=5&scope=%@", redirectUrl, scope];
+
+    NSLog(authorizeUrl);
+    TTOpenURL(authorizeUrl); 
 
     TTNavigator *navigator = [TTNavigator navigator];
     [navigator.topViewController.navigationController setNavigationBarHidden:NO];   

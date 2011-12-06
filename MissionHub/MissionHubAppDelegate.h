@@ -11,7 +11,13 @@
 
 //@class LoginViewController;
 
+#define AppDelegate \
+((MissionHubAppDelegate *)[UIApplication sharedApplication].delegate)
+
 @interface MissionHubAppDelegate : NSObject <UIApplicationDelegate>
+
+
+@property (nonatomic, retain) NSDictionary *config;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController*  navigationController;
