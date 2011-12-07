@@ -10,4 +10,6 @@
 
 @interface MainViewController : UIViewController
 
+- (IBAction)onProfileBtn:(id)sender;
+
 @end

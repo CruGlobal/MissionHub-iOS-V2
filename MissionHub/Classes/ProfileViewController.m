@@ -1,15 +1,14 @@
 //
-//  MainViewController.m
+//  ProfileViewController.m
 //  MissionHub
 //
-//  Created by David Ang on 12/7/11.
+//  Created by David Ang on 12/8/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MainViewController.h"
-#import <Three20/Three20.h>
+#import "ProfileViewController.h"
 
-@implementation MainViewController
+@implementation ProfileViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,13 +29,6 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewWillAppear:(BOOL)animated 
-{
-    NSLog(@"viewWillAppear");
-    TTNavigator *navigator = [TTNavigator navigator];
-    [navigator.topViewController.navigationController setNavigationBarHidden:YES];  
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -55,10 +47,5 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-- (IBAction)onProfileBtn:(id)sender {
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://profile"]];
-}
-
 
 @end

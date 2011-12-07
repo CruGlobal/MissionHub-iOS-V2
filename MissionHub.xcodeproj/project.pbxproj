@@ -36,6 +36,8 @@
 		63B61B31148A58F500CBE54B /* MissionHubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B61B30148A58F500CBE54B /* MissionHubTests.m */; };
 		63DD6ADF148EF5C90087313E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6ADD148EF5C90087313E /* MainViewController.m */; };
 		63DD6AE0148EF5C90087313E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6ADE148EF5C90087313E /* MainViewController.xib */; };
+		63DD6AEE148FF8BE0087313E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6AEC148FF8BE0087313E /* ProfileViewController.m */; };
+		63DD6AF2148FF9200087313E /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6AF0148FF9200087313E /* ProfileViewController.xib */; };
 		63DF22AC148D2E490039A964 /* 08-chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2253148D2E490039A964 /* 08-chat.png */; };
 		63DF22AD148D2E490039A964 /* 08-chat2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2254148D2E490039A964 /* 08-chat2.png */; };
 		63DF22AE148D2E490039A964 /* 18-envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2255148D2E490039A964 /* 18-envelope.png */; };
@@ -125,6 +127,7 @@
 		63DF2302148D2E490039A964 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF22AB148D2E490039A964 /* whiteArrow.png */; };
 		63DF2372148D559A0039A964 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DF2370148D559A0039A964 /* LoginViewController.m */; };
 		63DF2376148D5C340039A964 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2374148D5C340039A964 /* LoginViewController.xib */; };
+		63E02CEB149001B500BC2DEF /* MHNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02CEA149001B500BC2DEF /* MHNavigationBar.m */; };
 		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
 		63EAD05D148EC78500524305 /* PopupTTWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EAD05B148EC78500524305 /* PopupTTWebController.m */; };
 		63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD05C148EC78500524305 /* PopupTTWebController.xib */; };
@@ -351,6 +354,9 @@
 		63DD6ADC148EF5C90087313E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		63DD6ADD148EF5C90087313E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		63DD6ADE148EF5C90087313E /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
+		63DD6AEB148FF8BE0087313E /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		63DD6AEC148FF8BE0087313E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		63DD6AF1148FF9200087313E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/ProfileViewController.xib; sourceTree = "<group>"; };
 		63DF2253148D2E490039A964 /* 08-chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat.png"; sourceTree = "<group>"; };
 		63DF2254148D2E490039A964 /* 08-chat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat2.png"; sourceTree = "<group>"; };
 		63DF2255148D2E490039A964 /* 18-envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "18-envelope.png"; sourceTree = "<group>"; };
@@ -441,6 +447,8 @@
 		63DF236F148D559A0039A964 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		63DF2370148D559A0039A964 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		63DF2375148D5C340039A964 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/LoginViewController.xib; sourceTree = "<group>"; };
+		63E02CE9149001B500BC2DEF /* MHNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHNavigationBar.h; sourceTree = "<group>"; };
+		63E02CEA149001B500BC2DEF /* MHNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHNavigationBar.m; sourceTree = "<group>"; };
 		63EAD050148EB74A00524305 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		63EAD05A148EC78500524305 /* PopupTTWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupTTWebController.h; sourceTree = "<group>"; };
 		63EAD05B148EC78500524305 /* PopupTTWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupTTWebController.m; sourceTree = "<group>"; };
@@ -618,6 +626,7 @@
 				63B61B11148A58F400CBE54B /* MainWindow_iPhone.xib */,
 				63DF2374148D5C340039A964 /* LoginViewController.xib */,
 				63DD6ADE148EF5C90087313E /* MainViewController.xib */,
+				63DD6AF0148FF9200087313E /* ProfileViewController.xib */,
 				63EAD05C148EC78500524305 /* PopupTTWebController.xib */,
 			);
 			name = iPhone;
@@ -790,6 +799,10 @@
 				63EAD05B148EC78500524305 /* PopupTTWebController.m */,
 				63DD6ADC148EF5C90087313E /* MainViewController.h */,
 				63DD6ADD148EF5C90087313E /* MainViewController.m */,
+				63DD6AEB148FF8BE0087313E /* ProfileViewController.h */,
+				63DD6AEC148FF8BE0087313E /* ProfileViewController.m */,
+				63E02CE9149001B500BC2DEF /* MHNavigationBar.h */,
+				63E02CEA149001B500BC2DEF /* MHNavigationBar.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1120,6 +1133,7 @@
 				63EAD051148EB74A00524305 /* config.plist in Resources */,
 				63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */,
 				63DD6AE0148EF5C90087313E /* MainViewController.xib in Resources */,
+				63DD6AF2148FF9200087313E /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1162,6 +1176,8 @@
 				63DF2372148D559A0039A964 /* LoginViewController.m in Sources */,
 				63EAD05D148EC78500524305 /* PopupTTWebController.m in Sources */,
 				63DD6ADF148EF5C90087313E /* MainViewController.m in Sources */,
+				63DD6AEE148FF8BE0087313E /* ProfileViewController.m in Sources */,
+				63E02CEB149001B500BC2DEF /* MHNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1256,6 +1272,14 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		63DD6AF0148FF9200087313E /* ProfileViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63DD6AF1148FF9200087313E /* en */,
+			);
+			name = ProfileViewController.xib;
+			sourceTree = "<group>";
+		};
 		63DF2374148D5C340039A964 /* LoginViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1303,7 +1327,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "TTMAXLOGLEVEL=TTLOGLEVEL_INFO";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

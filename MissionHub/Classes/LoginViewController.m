@@ -18,7 +18,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        NSLog(@"initWithNibName");
+        TTDINFO(@"initWithNibName");
     }
     return self;
 }
@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSLog(@"viewDidLoad");
+    TTDINFO(@"viewDidLoad");
 
 }
 
