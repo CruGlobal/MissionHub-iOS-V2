@@ -10,6 +10,7 @@
 
 @interface MainViewController : UIViewController
 
+- (IBAction)onLogoutBtn:(id)sender;
 - (IBAction)onProfileBtn:(id)sender;
 - (IBAction)onContactsBtn:(id)sender;
 - (IBAction)onSurveyBtn:(id)sender;

@@ -61,6 +61,18 @@
     [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://profile"]];
 }
 
+- (IBAction)onLogoutBtn:(id)sender {
+    NSString *baseUrl = [[AppDelegate config] objectForKey:@"base_url"];
+    
+    NSString *logoutUrl = [NSString stringWithFormat:@"%@/auth/facebook/logout", baseUrl];
+    
+    NSLog(logoutUrl);
+    TTOpenURL(logoutUrl); 
+    
+    TTNavigator *navigator = [TTNavigator navigator];
+    [navigator.topViewController.navigationController setNavigationBarHidden:NO];   
+}
+
 - (IBAction)onSurveyBtn:(id)sender {
 
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"base_url"];
