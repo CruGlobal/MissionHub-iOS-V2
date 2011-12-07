@@ -7,6 +7,7 @@
 //
 
 #import "ProfileViewController.h"
+#import <Three20/Three20.h>
 
 @implementation ProfileViewController
 
@@ -47,5 +48,18 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (IBAction)onLogoutBtn:(id)sender {    
+}
+
+
+- (IBAction)onBackBtn:(id)sender {    
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
+}
+
+- (void)dealloc {
+    [super dealloc];
+}
+
 
 @end

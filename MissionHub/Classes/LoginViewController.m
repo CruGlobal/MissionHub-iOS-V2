@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import <Three20/Three20.h>
 #import "MissionHubAppDelegate.h"
 
 @implementation LoginViewController

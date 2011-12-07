@@ -11,5 +11,7 @@
 @interface MainViewController : UIViewController
 
 - (IBAction)onProfileBtn:(id)sender;
+- (IBAction)onContactsBtn:(id)sender;
+- (IBAction)onSurveyBtn:(id)sender;
 
 @end

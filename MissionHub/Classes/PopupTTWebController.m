@@ -61,7 +61,8 @@
     NSLog(@"...%@", self.URL);    
 
     NSRange aRange = [[self.URL absoluteString] rangeOfString:@"facebook"];
-    if (aRange.location ==NSNotFound) {
+    NSRange aRange2 = [[self.URL absoluteString] rangeOfString:@"survey"];    
+    if (aRange.location == NSNotFound && aRange2.location == NSNotFound) {
     
         NSArray *parameters = [[self.URL query] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=&"]];
         NSMutableDictionary *keyValueParm = [NSMutableDictionary dictionary];

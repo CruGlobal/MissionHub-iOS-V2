@@ -10,4 +10,7 @@
 
 @interface ProfileViewController : UIViewController
 
+- (IBAction)onLogoutBtn:(id)sender;
+- (IBAction)onBackBtn:(id)sender;
+
 @end
