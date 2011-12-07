@@ -9,6 +9,7 @@
 #import "MissionHubAppDelegate.h"
 
 #import "LoginViewController.h"
+#import "MainViewController.h"
 #import "PopupTTWebController.h"
 
 @implementation MissionHubAppDelegate
@@ -40,6 +41,7 @@
     TTURLMap *map = navigator.URLMap;
     [map from:@"*" toSharedViewController:[PopupTTWebController class]];
     [map from:@"mh://login" toSharedViewController:[LoginViewController class]];    
+    [map from:@"mh://main" toSharedViewController:[MainViewController class]];        
 
     if (! [navigator restoreViewControllers]) {
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];

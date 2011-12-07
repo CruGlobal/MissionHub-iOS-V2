@@ -60,23 +60,25 @@
     NSLog(@"webViewDidFinishLoad");    
     NSLog(@"...%@", self.URL);    
 
+    NSRange aRange = [[self.URL absoluteString] rangeOfString:@"facebook"];
+    if (aRange.location ==NSNotFound) {
     
-    NSArray *parameters = [[self.URL query] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=&"]];
-    NSMutableDictionary *keyValueParm = [NSMutableDictionary dictionary];
-    
-    for (int i = 0; i < [parameters count]; i=i+2) {
-        [keyValueParm setObject:[parameters objectAtIndex:i+1] forKey:[parameters objectAtIndex:i]];
-    }
-    
-    NSString *baseUrl = [[AppDelegate config] objectForKey:@"oauth_url"];
-    NSString *authorization = [keyValueParm objectForKey:@"authorization"];
+        NSArray *parameters = [[self.URL query] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=&"]];
+        NSMutableDictionary *keyValueParm = [NSMutableDictionary dictionary];
         
-    NSString *grantUrl = [NSString stringWithFormat:@"%@/grant.json?authorization=%@", baseUrl, authorization];
+        for (int i = 0; i < [parameters count]; i=i+2) {
+            [keyValueParm setObject:[parameters objectAtIndex:i+1] forKey:[parameters objectAtIndex:i]];
+        }
+        
+        NSString *baseUrl = [[AppDelegate config] objectForKey:@"oauth_url"];
+        NSString *authorization = [keyValueParm objectForKey:@"authorization"];
+            
+        NSString *grantUrl = [NSString stringWithFormat:@"%@/grant.json?authorization=%@", baseUrl, authorization];
 
-    TTURLRequest *request = [TTURLRequest requestWithURL: grantUrl delegate: self];
-    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
-    [request send];
-
+        TTURLRequest *request = [TTURLRequest requestWithURL: grantUrl delegate: self];
+        request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+        [request send];
+    }
 }
 
 - (void)requestDidStartLoad:(TTURLRequest*)request {
@@ -90,7 +92,8 @@
     NSLog(@"requestDidFinishLoad:%@", response);
     
     if ([response objectForKey:@"access_token"] ) {
-        [[TTNavigator navigator].topViewController.navigationController popViewControllerAnimated:YES];
+        // [[TTNavigator navigator].topViewController.navigationController popViewControllerAnimated:YES];
+        [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
     } else {
     
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"oauth_url"];
@@ -122,7 +125,7 @@
     int status = [error code];
     NSLog(@"Error on BaseScene::serviceResultHandler. HTTP return status code: %d", status);
     
-    NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
+    //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
 }
 
 

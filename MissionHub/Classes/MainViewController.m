@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import <Three20/Three20.h>
 
 @implementation MainViewController
 
@@ -28,6 +29,13 @@
 }
 
 #pragma mark - View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated 
+{
+    NSLog(@"viewWillAppear");
+    TTNavigator *navigator = [TTNavigator navigator];
+    [navigator.topViewController.navigationController setNavigationBarHidden:YES];  
+}
 
 - (void)viewDidLoad
 {
