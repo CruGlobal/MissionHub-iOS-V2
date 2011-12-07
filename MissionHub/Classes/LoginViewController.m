@@ -77,7 +77,7 @@
     
     NSString *authorizeUrl = [NSString stringWithFormat:@"https://www.missionhub.com/oauth/authorize?display=touch&simple=true&response_type=code&redirect_uri=%@&client_id=5&scope=%@", redirectUrl, scope];
 
-    NSLog(authorizeUrl);
+    NSLog(@"%@", authorizeUrl);
     TTOpenURL(authorizeUrl); 
 
     TTNavigator *navigator = [TTNavigator navigator];

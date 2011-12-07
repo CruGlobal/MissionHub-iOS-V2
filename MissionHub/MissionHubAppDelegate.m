@@ -12,6 +12,7 @@
 #import "MainViewController.h"
 #import "PopupTTWebController.h"
 #import "ProfileViewController.h"
+#import "ContactsViewController.h"
 
 @implementation MissionHubAppDelegate
 
@@ -44,6 +45,7 @@
     [map from:@"mh://login" toSharedViewController:[LoginViewController class]];    
     [map from:@"mh://main" toSharedViewController:[MainViewController class]];        
     [map from:@"mh://profile" toSharedViewController:[ProfileViewController class]];            
+    [map from:@"mh://contacts" toSharedViewController:[ContactsViewController class]];                
 
     if (! [navigator restoreViewControllers]) {
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];

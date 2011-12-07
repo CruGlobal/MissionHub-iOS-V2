@@ -66,11 +66,15 @@
     
     NSString *logoutUrl = [NSString stringWithFormat:@"%@/auth/facebook/logout", baseUrl];
     
-    NSLog(logoutUrl);
+    NSLog(@"%@", logoutUrl);
     TTOpenURL(logoutUrl); 
     
     TTNavigator *navigator = [TTNavigator navigator];
     [navigator.topViewController.navigationController setNavigationBarHidden:NO];   
+}
+
+- (IBAction)onContactsBtn:(id)sender {
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://contacts"]];    
 }
 
 - (IBAction)onSurveyBtn:(id)sender {
@@ -81,7 +85,7 @@
     
     NSString *surveysUrl = [NSString stringWithFormat:@"%@/surveys?access_token=%@&org_id", baseUrl, accessToken, orgId];
     
-    NSLog(surveysUrl);
+    NSLog(@"%@", surveysUrl);
     TTOpenURL(surveysUrl); 
     
     TTNavigator *navigator = [TTNavigator navigator];

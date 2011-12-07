@@ -122,7 +122,7 @@
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-    TTURLDataResponse *response =  (TTURLDataResponse *)request.response;  
+    //TTURLDataResponse *response =  (TTURLDataResponse *)request.response;  
     int status = [error code];
     NSLog(@"Error on BaseScene::serviceResultHandler. HTTP return status code: %d", status);
     
