@@ -130,6 +130,8 @@
 		63E02CEB149001B500BC2DEF /* MHNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02CEA149001B500BC2DEF /* MHNavigationBar.m */; };
 		63E02D30149017AC00BC2DEF /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D2E149017AB00BC2DEF /* ContactsViewController.m */; };
 		63E02D34149017D600BC2DEF /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E02D32149017D600BC2DEF /* ContactsViewController.xib */; };
+		63E02D3814902B9400BC2DEF /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D3614902B9300BC2DEF /* ContactViewController.m */; };
+		63E02D3C14902BBA00BC2DEF /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E02D3A14902BBA00BC2DEF /* ContactViewController.xib */; };
 		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
 		63EAD05D148EC78500524305 /* PopupTTWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EAD05B148EC78500524305 /* PopupTTWebController.m */; };
 		63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD05C148EC78500524305 /* PopupTTWebController.xib */; };
@@ -454,6 +456,9 @@
 		63E02D2D149017AB00BC2DEF /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		63E02D2E149017AB00BC2DEF /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		63E02D33149017D600BC2DEF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/ContactsViewController.xib; sourceTree = "<group>"; };
+		63E02D3514902B9300BC2DEF /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		63E02D3614902B9300BC2DEF /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		63E02D3B14902BBA00BC2DEF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/ContactViewController.xib; sourceTree = "<group>"; };
 		63EAD050148EB74A00524305 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		63EAD05A148EC78500524305 /* PopupTTWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupTTWebController.h; sourceTree = "<group>"; };
 		63EAD05B148EC78500524305 /* PopupTTWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupTTWebController.m; sourceTree = "<group>"; };
@@ -634,6 +639,7 @@
 				63DD6AF0148FF9200087313E /* ProfileViewController.xib */,
 				63EAD05C148EC78500524305 /* PopupTTWebController.xib */,
 				63E02D32149017D600BC2DEF /* ContactsViewController.xib */,
+				63E02D3A14902BBA00BC2DEF /* ContactViewController.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -811,6 +817,8 @@
 				63E02CEA149001B500BC2DEF /* MHNavigationBar.m */,
 				63E02D2D149017AB00BC2DEF /* ContactsViewController.h */,
 				63E02D2E149017AB00BC2DEF /* ContactsViewController.m */,
+				63E02D3514902B9300BC2DEF /* ContactViewController.h */,
+				63E02D3614902B9300BC2DEF /* ContactViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1143,6 +1151,7 @@
 				63DD6AE0148EF5C90087313E /* MainViewController.xib in Resources */,
 				63DD6AF2148FF9200087313E /* ProfileViewController.xib in Resources */,
 				63E02D34149017D600BC2DEF /* ContactsViewController.xib in Resources */,
+				63E02D3C14902BBA00BC2DEF /* ContactViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1188,6 +1197,7 @@
 				63DD6AEE148FF8BE0087313E /* ProfileViewController.m in Sources */,
 				63E02CEB149001B500BC2DEF /* MHNavigationBar.m in Sources */,
 				63E02D30149017AC00BC2DEF /* ContactsViewController.m in Sources */,
+				63E02D3814902B9400BC2DEF /* ContactViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,6 +1314,14 @@
 				63E02D33149017D600BC2DEF /* en */,
 			);
 			name = ContactsViewController.xib;
+			sourceTree = "<group>";
+		};
+		63E02D3A14902BBA00BC2DEF /* ContactViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63E02D3B14902BBA00BC2DEF /* en */,
+			);
+			name = ContactViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
