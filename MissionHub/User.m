@@ -15,6 +15,8 @@ static User *sharedUser = nil;
 @synthesize name;
 @synthesize fbId;
 @synthesize data;
+@synthesize accessToken;
+@synthesize organizations;
 
 - (id)init
 {
@@ -41,9 +43,13 @@ static User *sharedUser = nil;
     [data autorelease];
     data = [input retain];
     
+   // pluck some values for short cut 
    self.name = [data objectForKey:@"name"];
+   self.fbId = [data objectForKey:@"fb_id"];
+   self.organizations = [data objectForKey:@"organization_membership"];
     
-    NSLog(@"Current user name is: %@", self.name);
+   NSLog(@"Current user name is: %@", self.name);
+   NSLog(@"Organization: %@", self.organizations); 
 }
 
 //+ (id)allocWithZone:(NSZone *)zone {

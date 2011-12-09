@@ -68,12 +68,12 @@
     
     // Check if we already have an accessToken
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    self.accessToken = [userDefaults stringForKey:@"accessToken"];	
-    if (self.accessToken) {
-        NSLog(@"Found accesstoken: %@", self.accessToken);
+    CurrentUser.accessToken = [userDefaults stringForKey:@"accessToken"];	
+    if (CurrentUser.accessToken) {
+        NSLog(@"Found accesstoken: %@", CurrentUser.accessToken);
         
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-        NSString *requestUrl = [NSString stringWithFormat:@"%@/people/me.json?access_token=%@", baseUrl, self.accessToken];
+        NSString *requestUrl = [NSString stringWithFormat:@"%@/people/me.json?access_token=%@", baseUrl, CurrentUser.accessToken];
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
         request.response = [[[TTURLJSONResponse alloc] init] autorelease];
         [request send];
@@ -85,7 +85,7 @@
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
     
     TTURLJSONResponse* response = request.response;
-    NSLog(@"requestDidStartLoad:%@", response);    
+    NSLog(@"requestDidStartLoad:%@", response.rootObject);    
     //TTDASSERT([response.rootObject isKindOfClass:[NSArray class]]);
 
     NSArray *temp = response.rootObject;
