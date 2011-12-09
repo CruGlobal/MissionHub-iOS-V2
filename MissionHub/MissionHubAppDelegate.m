@@ -21,12 +21,15 @@
 
 #import "User.h"
 
+#import "HJObjManager.h"
+
 @implementation MissionHubAppDelegate
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
 @synthesize accessToken;
 @synthesize config;
+@synthesize imageManager;
 
 //@synthesize loginViewController = _loginViewController;
 
@@ -61,6 +64,18 @@
         NSLog(@"opening...");
         
     }
+    
+    // init HJObjManager, if you are using for full screen images, you'll need a smaller memory cache:
+	imageManager = [[HJObjManager alloc] initWithLoadingBufferSize:6 memCacheSize:20];
+	
+	NSString* cacheDirectory = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/imgcache/MissionHub/"] ;
+	HJMOFileCache* fileCache = [[[HJMOFileCache alloc] initWithRootPath:cacheDirectory] autorelease];
+	imageManager.fileCache = fileCache;
+	
+	fileCache.fileCountLimit = 100;
+	fileCache.fileAgeLimit = 60*60*24*7; // 1 week
+	[fileCache trimCacheUsingBackgroundThread];
+
 
     [navigator.topViewController.navigationController setNavigationBarHidden:YES];    
 	//[self.window.rootViewController pushViewController:webController animated:YES];

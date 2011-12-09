@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HJManagedImageV.h"
+
+@class HJManagedImageV;
 
 @interface ProfileViewController : UIViewController
+
+@property (nonatomic, retain) IBOutlet HJManagedImageV *profileImageView;
 
 - (IBAction)onLogoutBtn:(id)sender;
 - (IBAction)onBackBtn:(id)sender;

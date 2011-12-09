@@ -16,9 +16,12 @@
 
 #define EXTJSON_SBJSON 
 
+@class HJObjManager;
+
 @interface MissionHubAppDelegate : NSObject <UIApplicationDelegate>
 
 
+@property (nonatomic, retain) HJObjManager * imageManager;
 @property (nonatomic, retain) NSDictionary *config;
 @property (nonatomic, retain) NSString *accessToken;
 

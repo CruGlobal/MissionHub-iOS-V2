@@ -62,7 +62,7 @@
 					<object class="IBUIImageView" id="624897041">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 79}, {142, 91}}</string>
+						<string key="NSFrame">{{20, 66}, {124, 91}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="705351786"/>
@@ -211,6 +211,14 @@
 					</object>
 					<int key="connectionID">40</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">profileImageView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="624897041"/>
+					</object>
+					<int key="connectionID">41</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -227,12 +235,12 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="886696108"/>
-							<reference ref="624897041"/>
 							<reference ref="709176857"/>
 							<reference ref="170208573"/>
-							<reference ref="18387736"/>
 							<reference ref="265102201"/>
 							<reference ref="705351786"/>
+							<reference ref="624897041"/>
+							<reference ref="18387736"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -299,6 +307,7 @@
 					<string>38.IBPluginDependency</string>
 					<string>39.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
+					<string>6.CustomClassName</string>
 					<string>6.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -314,6 +323,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>HJ</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
@@ -329,11 +339,19 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">40</int>
+			<int key="maxID">41</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">HJManagedImageV</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/HJManagedImageV.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">ProfileViewController</string>
 					<string key="superclassName">UIViewController</string>
@@ -367,6 +385,17 @@
 								<string key="name">onLogoutBtn:</string>
 								<string key="candidateClassName">id</string>
 							</object>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">profileImageView</string>
+						<string key="NS.object.0">HJManagedImageV</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">profileImageView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">profileImageView</string>
+							<string key="candidateClassName">HJManagedImageV</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

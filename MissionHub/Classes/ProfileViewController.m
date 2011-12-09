@@ -8,8 +8,12 @@
 
 #import "ProfileViewController.h"
 #import <Three20/Three20.h>
+#import "User.h"
+#import "MissionHubAppDelegate.h"
 
 @implementation ProfileViewController
+
+@synthesize profileImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +38,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", [CurrentUser.data objectForKey:@"picture"]]; 
+    NSURL * imageURL = [NSURL URLWithString: fbUrl];
+    profileImageView.url = imageURL;		
+    [AppDelegate.imageManager manage:profileImageView];
+
+    //profileImageView.image = image;
 }
 
 - (void)viewDidUnload

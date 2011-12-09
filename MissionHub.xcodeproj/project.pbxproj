@@ -133,6 +133,15 @@
 		63E02D3814902B9400BC2DEF /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D3614902B9300BC2DEF /* ContactViewController.m */; };
 		63E02D3C14902BBA00BC2DEF /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E02D3A14902BBA00BC2DEF /* ContactViewController.xib */; };
 		63E02D411492604A00BC2DEF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D401492604A00BC2DEF /* User.m */; };
+		63E02D69149278DF00BC2DEF /* HJCircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D56149278DF00BC2DEF /* HJCircularBuffer.m */; };
+		63E02D6A149278DF00BC2DEF /* HJManagedImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D58149278DF00BC2DEF /* HJManagedImageV.m */; };
+		63E02D6B149278DF00BC2DEF /* HJMOBigFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D5B149278DF00BC2DEF /* HJMOBigFileCache.m */; };
+		63E02D6C149278DF00BC2DEF /* HJMOFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D5D149278DF00BC2DEF /* HJMOFileCache.m */; };
+		63E02D6D149278DF00BC2DEF /* HJMOHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D5F149278DF00BC2DEF /* HJMOHandler.m */; };
+		63E02D6E149278DF00BC2DEF /* HJMOPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D61149278DF00BC2DEF /* HJMOPolicy.m */; };
+		63E02D6F149278DF00BC2DEF /* HJMOUserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D64149278DF00BC2DEF /* HJMOUserBase.m */; };
+		63E02D70149278DF00BC2DEF /* HJObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D66149278DF00BC2DEF /* HJObjManager.m */; };
+		63E02D71149278DF00BC2DEF /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D68149278DF00BC2DEF /* HJWeakMutableArray.m */; };
 		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
 		63EAD05D148EC78500524305 /* PopupTTWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EAD05B148EC78500524305 /* PopupTTWebController.m */; };
 		63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD05C148EC78500524305 /* PopupTTWebController.xib */; };
@@ -462,6 +471,26 @@
 		63E02D3B14902BBA00BC2DEF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/ContactViewController.xib; sourceTree = "<group>"; };
 		63E02D3F1492604A00BC2DEF /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		63E02D401492604A00BC2DEF /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		63E02D55149278DF00BC2DEF /* HJCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCircularBuffer.h; sourceTree = "<group>"; };
+		63E02D56149278DF00BC2DEF /* HJCircularBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCircularBuffer.m; sourceTree = "<group>"; };
+		63E02D57149278DF00BC2DEF /* HJManagedImageV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJManagedImageV.h; sourceTree = "<group>"; };
+		63E02D58149278DF00BC2DEF /* HJManagedImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJManagedImageV.m; sourceTree = "<group>"; };
+		63E02D59149278DF00BC2DEF /* HJManagedImageVDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJManagedImageVDelegate.h; sourceTree = "<group>"; };
+		63E02D5A149278DF00BC2DEF /* HJMOBigFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOBigFileCache.h; sourceTree = "<group>"; };
+		63E02D5B149278DF00BC2DEF /* HJMOBigFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOBigFileCache.m; sourceTree = "<group>"; };
+		63E02D5C149278DF00BC2DEF /* HJMOFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOFileCache.h; sourceTree = "<group>"; };
+		63E02D5D149278DF00BC2DEF /* HJMOFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOFileCache.m; sourceTree = "<group>"; };
+		63E02D5E149278DF00BC2DEF /* HJMOHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOHandler.h; sourceTree = "<group>"; };
+		63E02D5F149278DF00BC2DEF /* HJMOHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOHandler.m; sourceTree = "<group>"; };
+		63E02D60149278DF00BC2DEF /* HJMOPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOPolicy.h; sourceTree = "<group>"; };
+		63E02D61149278DF00BC2DEF /* HJMOPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOPolicy.m; sourceTree = "<group>"; };
+		63E02D62149278DF00BC2DEF /* HJMOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOUser.h; sourceTree = "<group>"; };
+		63E02D63149278DF00BC2DEF /* HJMOUserBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMOUserBase.h; sourceTree = "<group>"; };
+		63E02D64149278DF00BC2DEF /* HJMOUserBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMOUserBase.m; sourceTree = "<group>"; };
+		63E02D65149278DF00BC2DEF /* HJObjManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJObjManager.h; sourceTree = "<group>"; };
+		63E02D66149278DF00BC2DEF /* HJObjManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJObjManager.m; sourceTree = "<group>"; };
+		63E02D67149278DF00BC2DEF /* HJWeakMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJWeakMutableArray.h; sourceTree = "<group>"; };
+		63E02D68149278DF00BC2DEF /* HJWeakMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJWeakMutableArray.m; sourceTree = "<group>"; };
 		63EAD050148EB74A00524305 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		63EAD05A148EC78500524305 /* PopupTTWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupTTWebController.h; sourceTree = "<group>"; };
 		63EAD05B148EC78500524305 /* PopupTTWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupTTWebController.m; sourceTree = "<group>"; };
@@ -607,10 +636,11 @@
 		63B61B01148A58F400CBE54B /* MissionHub */ = {
 			isa = PBXGroup;
 			children = (
-				63E02D3E1492603300BC2DEF /* Models */,
 				63DF2318148D471D0039A964 /* Classes */,
 				63B61B0A148A58F400CBE54B /* MissionHubAppDelegate.h */,
 				63B61B0B148A58F400CBE54B /* MissionHubAppDelegate.m */,
+				63E02D3E1492603300BC2DEF /* Models */,
+				63E02D53149278D500BC2DEF /* Libs */,
 				63B61B0D148A58F400CBE54B /* iPhone */,
 				63B61B14148A58F400CBE54B /* iPad */,
 				63B61B02148A58F400CBE54B /* Supporting Files */,
@@ -834,6 +864,42 @@
 				63E02D401492604A00BC2DEF /* User.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		63E02D53149278D500BC2DEF /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				63E02D54149278DF00BC2DEF /* HJCacheClasses */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		63E02D54149278DF00BC2DEF /* HJCacheClasses */ = {
+			isa = PBXGroup;
+			children = (
+				63E02D55149278DF00BC2DEF /* HJCircularBuffer.h */,
+				63E02D56149278DF00BC2DEF /* HJCircularBuffer.m */,
+				63E02D57149278DF00BC2DEF /* HJManagedImageV.h */,
+				63E02D58149278DF00BC2DEF /* HJManagedImageV.m */,
+				63E02D59149278DF00BC2DEF /* HJManagedImageVDelegate.h */,
+				63E02D5A149278DF00BC2DEF /* HJMOBigFileCache.h */,
+				63E02D5B149278DF00BC2DEF /* HJMOBigFileCache.m */,
+				63E02D5C149278DF00BC2DEF /* HJMOFileCache.h */,
+				63E02D5D149278DF00BC2DEF /* HJMOFileCache.m */,
+				63E02D5E149278DF00BC2DEF /* HJMOHandler.h */,
+				63E02D5F149278DF00BC2DEF /* HJMOHandler.m */,
+				63E02D60149278DF00BC2DEF /* HJMOPolicy.h */,
+				63E02D61149278DF00BC2DEF /* HJMOPolicy.m */,
+				63E02D62149278DF00BC2DEF /* HJMOUser.h */,
+				63E02D63149278DF00BC2DEF /* HJMOUserBase.h */,
+				63E02D64149278DF00BC2DEF /* HJMOUserBase.m */,
+				63E02D65149278DF00BC2DEF /* HJObjManager.h */,
+				63E02D66149278DF00BC2DEF /* HJObjManager.m */,
+				63E02D67149278DF00BC2DEF /* HJWeakMutableArray.h */,
+				63E02D68149278DF00BC2DEF /* HJWeakMutableArray.m */,
+			);
+			name = HJCacheClasses;
+			path = Libs/HJCacheClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1212,6 +1278,15 @@
 				63E02D30149017AC00BC2DEF /* ContactsViewController.m in Sources */,
 				63E02D3814902B9400BC2DEF /* ContactViewController.m in Sources */,
 				63E02D411492604A00BC2DEF /* User.m in Sources */,
+				63E02D69149278DF00BC2DEF /* HJCircularBuffer.m in Sources */,
+				63E02D6A149278DF00BC2DEF /* HJManagedImageV.m in Sources */,
+				63E02D6B149278DF00BC2DEF /* HJMOBigFileCache.m in Sources */,
+				63E02D6C149278DF00BC2DEF /* HJMOFileCache.m in Sources */,
+				63E02D6D149278DF00BC2DEF /* HJMOHandler.m in Sources */,
+				63E02D6E149278DF00BC2DEF /* HJMOPolicy.m in Sources */,
+				63E02D6F149278DF00BC2DEF /* HJMOUserBase.m in Sources */,
+				63E02D70149278DF00BC2DEF /* HJObjManager.m in Sources */,
+				63E02D71149278DF00BC2DEF /* HJWeakMutableArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
