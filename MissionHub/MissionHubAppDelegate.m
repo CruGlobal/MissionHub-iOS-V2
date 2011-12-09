@@ -16,6 +16,10 @@
 #import "ContactViewController.h"
 
 #import <extThree20JSON/extThree20JSON.h>
+#import <extThree20JSON/SBJson.h>
+#import <extThree20JSON/NSString+SBJSON.h>
+
+#import "User.h"
 
 @implementation MissionHubAppDelegate
 
@@ -70,7 +74,6 @@
         
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
         NSString *requestUrl = [NSString stringWithFormat:@"%@/people/me.json?access_token=%@", baseUrl, self.accessToken];
-        
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
         request.response = [[[TTURLJSONResponse alloc] init] autorelease];
         [request send];
@@ -80,9 +83,13 @@
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-    NSDictionary* response = ((TTURLJSONResponse*)request.response).rootObject;
     
-    NSLog(@"requestDidFinishLoad:%@", response);
+    TTURLJSONResponse* response = request.response;
+    NSLog(@"requestDidStartLoad:%@", response);    
+    //TTDASSERT([response.rootObject isKindOfClass:[NSArray class]]);
+
+    NSArray *temp = response.rootObject;
+    [User sharedUser].data = [temp objectAtIndex:0];
     
     [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
 }

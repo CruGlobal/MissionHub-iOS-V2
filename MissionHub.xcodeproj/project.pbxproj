@@ -132,6 +132,7 @@
 		63E02D34149017D600BC2DEF /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E02D32149017D600BC2DEF /* ContactsViewController.xib */; };
 		63E02D3814902B9400BC2DEF /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D3614902B9300BC2DEF /* ContactViewController.m */; };
 		63E02D3C14902BBA00BC2DEF /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E02D3A14902BBA00BC2DEF /* ContactViewController.xib */; };
+		63E02D411492604A00BC2DEF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D401492604A00BC2DEF /* User.m */; };
 		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
 		63EAD05D148EC78500524305 /* PopupTTWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EAD05B148EC78500524305 /* PopupTTWebController.m */; };
 		63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD05C148EC78500524305 /* PopupTTWebController.xib */; };
@@ -459,6 +460,8 @@
 		63E02D3514902B9300BC2DEF /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		63E02D3614902B9300BC2DEF /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		63E02D3B14902BBA00BC2DEF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/ContactViewController.xib; sourceTree = "<group>"; };
+		63E02D3F1492604A00BC2DEF /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		63E02D401492604A00BC2DEF /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		63EAD050148EB74A00524305 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		63EAD05A148EC78500524305 /* PopupTTWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupTTWebController.h; sourceTree = "<group>"; };
 		63EAD05B148EC78500524305 /* PopupTTWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupTTWebController.m; sourceTree = "<group>"; };
@@ -604,6 +607,7 @@
 		63B61B01148A58F400CBE54B /* MissionHub */ = {
 			isa = PBXGroup;
 			children = (
+				63E02D3E1492603300BC2DEF /* Models */,
 				63DF2318148D471D0039A964 /* Classes */,
 				63B61B0A148A58F400CBE54B /* MissionHubAppDelegate.h */,
 				63B61B0B148A58F400CBE54B /* MissionHubAppDelegate.m */,
@@ -821,6 +825,15 @@
 				63E02D3614902B9300BC2DEF /* ContactViewController.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		63E02D3E1492603300BC2DEF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				63E02D3F1492604A00BC2DEF /* User.h */,
+				63E02D401492604A00BC2DEF /* User.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1198,6 +1211,7 @@
 				63E02CEB149001B500BC2DEF /* MHNavigationBar.m in Sources */,
 				63E02D30149017AC00BC2DEF /* ContactsViewController.m in Sources */,
 				63E02D3814902B9400BC2DEF /* ContactViewController.m in Sources */,
+				63E02D411492604A00BC2DEF /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

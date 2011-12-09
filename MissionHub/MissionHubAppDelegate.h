@@ -14,6 +14,8 @@
 #define AppDelegate \
 ((MissionHubAppDelegate *)[UIApplication sharedApplication].delegate)
 
+#define EXTJSON_SBJSON 
+
 @interface MissionHubAppDelegate : NSObject <UIApplicationDelegate>
 
 

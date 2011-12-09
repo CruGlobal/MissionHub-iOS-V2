@@ -11,6 +11,8 @@
 
 #import <extThree20JSON/extThree20JSON.h>
 
+#import "User.h"
+
 @implementation PopupTTWebController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -97,8 +99,12 @@
         [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
         
         NSLog(@"Saving access token to NSUserDefaults");
+        
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:[response objectForKey:@"access_token"] forKey:@"accessToken"];			
+        
+        //[User sharedUser].data = response;
+        
     } else {
     
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"oauth_url"];
