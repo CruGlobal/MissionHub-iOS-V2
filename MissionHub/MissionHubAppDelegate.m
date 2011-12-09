@@ -83,6 +83,8 @@
     NSDictionary* response = ((TTURLJSONResponse*)request.response).rootObject;
     
     NSLog(@"requestDidFinishLoad:%@", response);
+    
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
