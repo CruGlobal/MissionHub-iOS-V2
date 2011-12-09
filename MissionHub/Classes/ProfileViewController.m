@@ -9,11 +9,12 @@
 #import "ProfileViewController.h"
 #import <Three20/Three20.h>
 #import "User.h"
+#import "HJManagedImageV.h"
 #import "MissionHubAppDelegate.h"
 
 @implementation ProfileViewController
 
-@synthesize profileImageView;
+@synthesize placeHolderImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,8 +42,13 @@
 
     NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", [CurrentUser.data objectForKey:@"picture"]]; 
     NSURL * imageURL = [NSURL URLWithString: fbUrl];
-    profileImageView.url = imageURL;		
-    [AppDelegate.imageManager manage:profileImageView];
+    
+    
+    HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];;
+    [self.view addSubview: mi];
+    mi.url = imageURL;
+    
+    [AppDelegate.imageManager manage:mi];
 
     //profileImageView.image = image;
 }

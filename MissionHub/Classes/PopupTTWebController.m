@@ -98,12 +98,12 @@
         // [[TTNavigator navigator].topViewController.navigationController popViewControllerAnimated:YES];
         [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
         
-        NSLog(@"Saving access token to NSUserDefaults");
+        NSLog(@"Saving access token to NSUserDefaults.");
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:[response objectForKey:@"access_token"] forKey:@"accessToken"];			
         
-        //[User sharedUser].data = response;
+        [User sharedUser].data = [response objectForKey:@"person"];
         
     } else {
     
