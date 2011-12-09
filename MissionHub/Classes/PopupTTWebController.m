@@ -95,6 +95,10 @@
     if ([response objectForKey:@"access_token"] ) {
         // [[TTNavigator navigator].topViewController.navigationController popViewControllerAnimated:YES];
         [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
+        
+        NSLog(@"Saving access token to NSUserDefaults");
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:[response objectForKey:@"access_token"] forKey:@"accessToken"];			
     } else {
     
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"oauth_url"];

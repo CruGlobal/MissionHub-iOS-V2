@@ -15,10 +15,13 @@
 #import "ContactsViewController.h"
 #import "ContactViewController.h"
 
+#import <extThree20JSON/extThree20JSON.h>
+
 @implementation MissionHubAppDelegate
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
+@synthesize accessToken;
 @synthesize config;
 
 //@synthesize loginViewController = _loginViewController;
@@ -59,7 +62,27 @@
 	//[self.window.rootViewController pushViewController:webController animated:YES];
     //[self.window makeKeyAndVisible];
     
+    // Check if we already have an accessToken
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.accessToken = [userDefaults stringForKey:@"accessToken"];	
+    if (self.accessToken) {
+        NSLog(@"Found accesstoken: %@", self.accessToken);
+        
+        NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
+        NSString *requestUrl = [NSString stringWithFormat:@"%@/people/me.json?access_token=%@", baseUrl, self.accessToken];
+        
+        TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+        request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+        [request send];
+    }
+    
     return YES;
+}
+
+- (void)requestDidFinishLoad:(TTURLRequest*)request {
+    NSDictionary* response = ((TTURLJSONResponse*)request.response).rootObject;
+    
+    NSLog(@"requestDidFinishLoad:%@", response);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

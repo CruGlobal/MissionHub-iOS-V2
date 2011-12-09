@@ -18,9 +18,11 @@
 
 
 @property (nonatomic, retain) NSDictionary *config;
+@property (nonatomic, retain) NSString *accessToken;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController*  navigationController;
+
 
 //@property (nonatomic, retain) IBOutlet LoginViewController *loginViewController;
 
