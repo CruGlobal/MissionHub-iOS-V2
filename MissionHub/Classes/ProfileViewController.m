@@ -14,6 +14,8 @@
 
 @implementation ProfileViewController
 
+@synthesize nameLabel;
+@synthesize orgLabel;
 @synthesize placeHolderImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,15 +42,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+    // Set user's image
     NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", [CurrentUser.data objectForKey:@"picture"]]; 
     NSURL * imageURL = [NSURL URLWithString: fbUrl];
-    
     
     HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];;
     [self.view addSubview: mi];
     mi.url = imageURL;
     
     [AppDelegate.imageManager manage:mi];
+    
+    // set name & org
+    [nameLabel setText: CurrentUser.name];
+    [orgLabel setText: [[CurrentUser.organizations objectAtIndex:0] objectForKey:@"name"]];
 
     //profileImageView.image = image;
 }

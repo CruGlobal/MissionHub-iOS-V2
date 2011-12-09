@@ -10,6 +10,8 @@
 
 @interface ProfileViewController : UIViewController
 
+@property (nonatomic, retain) IBOutlet UILabel *nameLabel;
+@property (nonatomic, retain) IBOutlet UILabel *orgLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *placeHolderImageView;
 
 - (IBAction)onLogoutBtn:(id)sender;
