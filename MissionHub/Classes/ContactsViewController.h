@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactsViewController : UIViewController
+@interface ContactsViewController : UIViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, retain) NSMutableArray *dataArray;
 
 - (IBAction)onBackBtn:(id)sender;
+
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 @end

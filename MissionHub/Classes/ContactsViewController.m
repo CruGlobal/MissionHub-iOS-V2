@@ -7,9 +7,12 @@
 //
 
 #import "ContactsViewController.h"
-#import <Three20/Three20.h>
+#import "MissionHubAppDelegate.h"
 
 @implementation ContactsViewController
+
+@synthesize tableView;
+@synthesize dataArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +37,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+   	dataArray = [[NSMutableArray alloc] initWithCapacity:50];
+    
+    NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/contacts.json?access_token=%@", baseUrl, CurrentUser.accessToken];
+    NSLog(@"request:%@", requestUrl);    
+    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    [request send];
+}
+
+- (void)requestDidFinishLoad:(TTURLRequest*)request {
+    TTURLJSONResponse* response = request.response;
+    //NSLog(@"requestDidStartLoad:%@", response.rootObject);   
+    
+    NSArray *tempArray = response.rootObject;
+	
+	for (NSDictionary *tempDict in tempArray) {
+        NSDictionary *person = [tempDict objectForKey:@"person"];
+        [dataArray addObject: person];
+    }
 }
 
 - (void)viewDidUnload
@@ -51,6 +75,35 @@
 
 - (IBAction)onBackBtn:(id)sender {    
     [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
+}
+
+#pragma mark - UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return [dataArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"CellIdentifier";
+    
+    // Dequeue or create a cell of the appropriate type.
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    NSDictionary *person = [dataArray objectAtIndex: indexPath.row];
+    // Configure the cell.
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [person objectForKey:@"name"]];
+    return cell;
 }
 
 

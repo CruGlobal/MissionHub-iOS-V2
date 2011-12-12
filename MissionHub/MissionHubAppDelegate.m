@@ -15,12 +15,6 @@
 #import "ContactsViewController.h"
 #import "ContactViewController.h"
 
-#import <extThree20JSON/extThree20JSON.h>
-#import <extThree20JSON/SBJson.h>
-#import <extThree20JSON/NSString+SBJSON.h>
-
-#import "User.h"
-
 #import "HJObjManager.h"
 
 @implementation MissionHubAppDelegate
