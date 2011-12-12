@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactViewController : UIViewController
+@interface ContactViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) NSDictionary *personData;
+@property (nonatomic, retain) NSMutableArray *commentsArray;
+@property (nonatomic, retain) NSMutableArray *infoArray;
+@property (nonatomic, retain) NSMutableArray *surveyArray;
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 //@property (nonatomic, retain) IBOutlet UIButton *callBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *smsBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *emailBtn;

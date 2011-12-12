@@ -13,6 +13,10 @@
 
 @synthesize personData;
 @synthesize nameLbl;
+@synthesize tableView;
+@synthesize commentsArray;
+@synthesize infoArray;
+@synthesize surveyArray;
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super init]){ 
@@ -20,7 +24,6 @@
     } 
     return self; 
 } 
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,8 +47,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    commentsArray = [[NSMutableArray alloc] initWithCapacity:10];
+    
     // Do any additional setup after loading the view from its nib.
     [nameLbl setText:[self.personData objectForKey:@"name"]];
+    
+    NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/followup_comments/%@.json?access_token=%@", baseUrl, [self.personData objectForKey:@"id"], CurrentUser.accessToken];
+    NSLog(@"request:%@", requestUrl);    
+    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    [request send];
+}
+
+- (void)requestDidFinishLoad:(TTURLRequest*)request {
+    TTURLJSONResponse* response = request.response;
+    NSLog(@"requestDidStartLoad:%@", response.rootObject);   
+    
+    NSArray *tempArray = response.rootObject;
+    
+	for (NSDictionary *tempDict in tempArray) {
+        NSDictionary *comment = [tempDict objectForKey:@"followup_comment"];
+        [commentsArray addObject: comment];
+    }
+    [tableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -63,6 +89,40 @@
 
 - (IBAction)onBackBtn:(id)sender {    
     [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://contacts"]];    
+}
+
+#pragma mark - UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return [commentsArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"CellIdentifier";
+    
+    // Dequeue or create a cell of the appropriate type.
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];      
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    NSDictionary *tempDict = [commentsArray objectAtIndex: indexPath.row];
+    NSDictionary *comment = [tempDict objectForKey:@"comment"];
+    // Configure the cell.
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
+    return cell;
+}
+
+// Detect when player selects a section/row
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 #pragma mark - button events
