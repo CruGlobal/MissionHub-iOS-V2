@@ -8,6 +8,36 @@
 
 #import "ContactViewController.h"
 #import "MissionHubAppDelegate.h"
+#import "CommentCell.h"
+#import "SimpleCell.h"
+
+@implementation ContactRequestDelegate
+
+- (id) initWithArray:(NSMutableArray*)data tableView:(UITableView*)aTableView {
+      if (self = [super init]) {
+          
+    tempData = data;
+    tempTableView = aTableView;
+      }
+    return self;
+}
+
+- (void) requestDidFinishLoad:(TTURLRequest*)request {
+    TTURLJSONResponse* response = request.response;
+    NSLog(@"requestDidStartLoad:%@", response.rootObject);   
+    NSLog(@"delegate subclass");
+    
+    NSDictionary *tempDict = response.rootObject;
+    NSArray *people = [tempDict objectForKey:@"people"];
+    NSDictionary *personAndFormDict = [people objectAtIndex:0];
+    NSDictionary *person = [personAndFormDict objectForKey:@"person"];
+
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"First Contact Date", @"label", [person objectForKey:@"first_contact_date"], @"value", nil]];
+            
+    [tempTableView reloadData];
+}
+
+@end
 
 @implementation ContactViewController
 
@@ -19,6 +49,8 @@
 @synthesize surveyArray;
 @synthesize simpleCell;
 @synthesize commentCell;
+@synthesize segmentedControl;
+
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super init]){ 
@@ -51,6 +83,15 @@
     [super viewDidLoad];
     
     commentsArray = [[NSMutableArray alloc] initWithCapacity:10];
+    infoArray = [[NSMutableArray alloc] initWithCapacity:10];
+
+//    [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Assigned to", CurrentUser.
+//    dict = 
+//            @"/opt/picture.png", @"Luca", 
+//            @"/home/nico/birthday.png", @"Birthday Photo", 
+//            @"/home/nico/birthday.png", @"Birthday Image", 
+//            @"/home/marghe/pic.jpg", @"My Sister", nil];
+    
     
     // Do any additional setup after loading the view from its nib.
     [nameLbl setText:[self.personData objectForKey:@"name"]];
@@ -61,6 +102,14 @@
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     [request send];
+     
+     
+     
+     requestUrl = [NSString stringWithFormat:@"%@/contacts/%@.json?access_token=%@", baseUrl, [self.personData objectForKey:@"id"], CurrentUser.accessToken];
+     NSLog(@"request:%@", requestUrl);    
+     request = [TTURLRequest requestWithURL: requestUrl delegate: [[ContactRequestDelegate alloc] initWithArray:infoArray tableView:self.tableView]];
+     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+     [request send];     
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
@@ -102,48 +151,51 @@
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [commentsArray count];
+    if (segmentedControl.selectedSegmentIndex == 1) {
+        return [infoArray count];        
+    } else if (segmentedControl.selectedSegmentIndex == 2) {
+        return [surveyArray count];                
+    }
+    
+    return [commentsArray count];    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"CommentCell";
+    static NSString *CellIdentifier2 = @"SimpleCell";    
+    
+    UITableViewCell *cell = nil;
     
     // Dequeue or create a cell of the appropriate type.
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];      
-  //      cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            [[NSBundle mainBundle] loadNibNamed:@"CommentCell" owner:self options:nil];
+            cell = commentCell;
+            self.commentCell = nil;
+        }
         
-        [[NSBundle mainBundle] loadNibNamed:@"CommentCell" owner:self options:nil];
-        cell = commentCell;
-        self.commentCell = nil;
+        NSDictionary *tempDict = [commentsArray objectAtIndex: indexPath.row];
+        NSDictionary *comment = [tempDict objectForKey:@"comment"];
+        
+        [(CommentCell*)cell setData: comment];
     }
-    NSDictionary *tempDict = [commentsArray objectAtIndex: indexPath.row];
-    NSDictionary *comment = [tempDict objectForKey:@"comment"];
-    NSDictionary *commenter = [comment objectForKey:@"commenter"];    
+        
+    if (segmentedControl.selectedSegmentIndex == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        if (cell == nil) {
+            [[NSBundle mainBundle] loadNibNamed:@"SimpleCell" owner:self options:nil];
+            cell = simpleCell;
+            self.simpleCell = nil;
+        }
 
-    UILabel *label;
-
-    label = (UILabel *)[cell viewWithTag:2];
-    label.text = [NSString stringWithFormat:@"%@", [commenter objectForKey:@"name"]];    
-    
-    label = (UILabel *)[cell viewWithTag:3];
-    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
-
-    label = (UILabel *)[cell viewWithTag:4];
-    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"created_at_words"]];
-
-    label = (UILabel *)[cell viewWithTag:5];
-    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"status"]];
-
+        NSDictionary *tempDict = [infoArray objectAtIndex: indexPath.row];        
+        [(SimpleCell*)cell setData: tempDict];
+    }
     // Configure the cell.
     //cell.textLabel.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
     return cell;
-}
-
-// Detect when player selects a section/row
-- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -179,6 +231,11 @@
 
 - (IBAction)onSaveBtn:(id)sender {
     
+}
+
+- (IBAction)onSegmentChange:(id)sender {    
+        
+    [tableView reloadData];
 }
 
 

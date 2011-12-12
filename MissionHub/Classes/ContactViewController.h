@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class CommentCell;
+@class SimpleCell;
+@protocol TTURLRequestDelegate;
+
 @interface ContactViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+
+
 
 @property (nonatomic, retain) NSDictionary *personData;
 @property (nonatomic, retain) NSMutableArray *commentsArray;
@@ -17,8 +24,9 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, assign) IBOutlet UITableViewCell *simpleCell;
-@property (nonatomic, assign) IBOutlet UITableViewCell *commentCell;
+@property (nonatomic, assign) IBOutlet SimpleCell *simpleCell;
+@property (nonatomic, assign) IBOutlet CommentCell *commentCell;
+@property (nonatomic, assign) IBOutlet UISegmentedControl *segmentedControl;
 
 //@property (nonatomic, retain) IBOutlet UIButton *callBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *smsBtn;
@@ -38,5 +46,12 @@
 - (IBAction)onRejoicableBtn:(id)sender;
 - (IBAction)onStatusBtn:(id)sender;
 - (IBAction)onSaveBtn:(id)sender;
+- (IBAction)onSegmentChange:(id)sender;
 
+@end
+
+@interface ContactRequestDelegate : NSObject<TTURLRequestDelegate> {
+    NSMutableArray *tempData;
+    UITableView *tempTableView;
+}
 @end

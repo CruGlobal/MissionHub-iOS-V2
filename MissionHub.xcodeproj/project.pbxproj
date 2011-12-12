@@ -19,6 +19,8 @@
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
 		636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793BF149698FB00B52C74 /* SimpleCell.xib */; };
 		636793C214969B8600B52C74 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793C114969B8600B52C74 /* CommentCell.xib */; };
+		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; };
+		636793C91496A60D00B52C74 /* SimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C81496A60D00B52C74 /* SimpleCell.m */; };
 		63B61AFC148A58F400CBE54B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFB148A58F400CBE54B /* UIKit.framework */; };
 		63B61AFE148A58F400CBE54B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFD148A58F400CBE54B /* Foundation.framework */; };
 		63B61B00148A58F400CBE54B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFF148A58F400CBE54B /* CoreGraphics.framework */; };
@@ -346,6 +348,10 @@
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		636793BF149698FB00B52C74 /* SimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCell.xib; sourceTree = "<group>"; };
 		636793C114969B8600B52C74 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		636793C41496A60100B52C74 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		636793C51496A60100B52C74 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		636793C71496A60D00B52C74 /* SimpleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCell.h; sourceTree = "<group>"; };
+		636793C81496A60D00B52C74 /* SimpleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleCell.m; sourceTree = "<group>"; };
 		63B61AF7148A58F400CBE54B /* MissionHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MissionHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B61AFB148A58F400CBE54B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		63B61AFD148A58F400CBE54B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -598,6 +604,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		636793C31496A5EB00B52C74 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				636793C41496A60100B52C74 /* CommentCell.h */,
+				636793C51496A60100B52C74 /* CommentCell.m */,
+				636793C71496A60D00B52C74 /* SimpleCell.h */,
+				636793C81496A60D00B52C74 /* SimpleCell.m */,
+			);
+			name = CustomCells;
+			path = Classes/CustomCells;
+			sourceTree = "<group>";
+		};
 		63B61AEC148A58F400CBE54B = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +658,7 @@
 		63B61B01148A58F400CBE54B /* MissionHub */ = {
 			isa = PBXGroup;
 			children = (
+				636793C31496A5EB00B52C74 /* CustomCells */,
 				63DF2318148D471D0039A964 /* Classes */,
 				63B61B0A148A58F400CBE54B /* MissionHubAppDelegate.h */,
 				63B61B0B148A58F400CBE54B /* MissionHubAppDelegate.m */,
@@ -1295,6 +1314,8 @@
 				63E02D6F149278DF00BC2DEF /* HJMOUserBase.m in Sources */,
 				63E02D70149278DF00BC2DEF /* HJObjManager.m in Sources */,
 				63E02D71149278DF00BC2DEF /* HJWeakMutableArray.m in Sources */,
+				636793C61496A60100B52C74 /* CommentCell.m in Sources */,
+				636793C91496A60D00B52C74 /* SimpleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
