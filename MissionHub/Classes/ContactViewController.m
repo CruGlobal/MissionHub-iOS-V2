@@ -7,8 +7,20 @@
 //
 
 #import "ContactViewController.h"
+#import "MissionHubAppDelegate.h"
 
 @implementation ContactViewController
+
+@synthesize personData;
+@synthesize nameLbl;
+
+- (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
+    if (self = [super init]){ 
+        self.personData =[query objectForKey:@"personData"]; 
+    } 
+    return self; 
+} 
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +45,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [nameLbl setText:[self.personData objectForKey:@"name"]];
 }
 
 - (void)viewDidUnload
@@ -47,5 +60,40 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (IBAction)onBackBtn:(id)sender {    
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://contacts"]];    
+}
+
+#pragma mark - button events
+
+- (IBAction)onCallBtn:(id)sender {
+    
+}
+
+- (IBAction)onSmsBtn:(id)sender {
+    
+}
+
+- (IBAction)onEmailBtn:(id)sender {
+    
+}
+
+- (IBAction)onAssignBtn:(id)sender {
+    
+}
+
+- (IBAction)onRejoicableBtn:(id)sender {
+    
+}
+
+- (IBAction)onStatusBtn:(id)sender {
+    
+}
+
+- (IBAction)onSaveBtn:(id)sender {
+    
+}
+
 
 @end

@@ -51,7 +51,7 @@
     [map from:@"mh://main" toSharedViewController:[MainViewController class]];        
     [map from:@"mh://profile" toSharedViewController:[ProfileViewController class]];            
     [map from:@"mh://contacts" toSharedViewController:[ContactsViewController class]];                
-    [map from:@"mh://contacts" toSharedViewController:[ContactViewController class]];       
+    [map from:@"mh://contact" toViewController:[ContactViewController class]];       
 
     if (! [navigator restoreViewControllers]) {
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];

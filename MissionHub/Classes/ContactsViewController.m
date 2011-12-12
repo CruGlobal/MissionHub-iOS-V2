@@ -96,8 +96,8 @@
     // Dequeue or create a cell of the appropriate type.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];      
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     NSDictionary *person = [dataArray objectAtIndex: indexPath.row];
@@ -106,5 +106,14 @@
     return cell;
 }
 
+// Detect when player selects a section/row
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSDictionary *person = [dataArray objectAtIndex: indexPath.row];
+    
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contact"]
+                                            applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]];
+    
+}
 
 @end
