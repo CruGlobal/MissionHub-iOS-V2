@@ -25,15 +25,51 @@
 - (void) requestDidFinishLoad:(TTURLRequest*)request {
     TTURLJSONResponse* response = request.response;
     NSLog(@"requestDidStartLoad:%@", response.rootObject);   
-    NSLog(@"delegate subclass");
     
     NSDictionary *tempDict = response.rootObject;
     NSArray *people = [tempDict objectForKey:@"people"];
     NSDictionary *personAndFormDict = [people objectAtIndex:0];
     NSDictionary *person = [personAndFormDict objectForKey:@"person"];
+    NSDictionary *assignment = [person objectForKey:@"assignment"];
+    
+    NSArray *personAssignedToArray = [assignment objectForKey:@"person_assigned_to"];
+    NSMutableString* personAssignedTo = [NSMutableString string];
+    for (NSDictionary *dict in personAssignedToArray) {
+        [personAssignedTo appendString:[NSString stringWithFormat:@"%@,", [dict objectForKey:@"name"]]];      
+    }
+    
+    NSDictionary *location = [person objectForKey:@"location"];    
+    
+    NSArray *interestsArray = [person objectForKey:@"interests"];    
+    NSMutableString* interests = [NSMutableString string];
+	for (NSDictionary *dict in interestsArray) {
+        [interests appendString:[NSString stringWithFormat:@"%@,", [dict objectForKey:@"name"]]];      
+    }
+    
+    NSArray *educationsArray = [person objectForKey:@"education"];    
+    NSString *highSchool = nil;
+    NSString *college = nil;    
+	for (NSDictionary *dict in educationsArray) {
+        NSDictionary *school = [dict objectForKey:@"school"];
+        if ([[dict objectForKey:@"type"] isEqualToString:@"High School"]) {
+            highSchool = [school objectForKey:@"name"];
+        }
+        if ([[dict objectForKey:@"type"] isEqualToString:@"College"]) {
+            college = [school objectForKey:@"name"];            
+        }
+        
+    }
 
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"First Contact Date", @"label", [person objectForKey:@"first_contact_date"], @"value", nil]];
-            
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Assigned To", @"label", personAssignedTo, @"value", nil]];
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"First Contact Date", @"label", [person objectForKey:@"first_contact_date"], @"value", nil]];    
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Phone Number", @"label", [person objectForKey:@"phone_number"], @"value", nil]];
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Email Address", @"label", [person objectForKey:@"email_address"], @"value", nil]];
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Birthday", @"label", [person objectForKey:@"birthday"], @"value", nil]];
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Interests", @"label", interests, @"value", nil]];    
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"High School", @"label", highSchool, @"value", nil]];
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"College", @"label",  college, @"value", nil]];
+    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Location", @"label", [location objectForKey:@"name"], @"value", nil]];
+    
     [tempTableView reloadData];
 }
 
