@@ -17,6 +17,9 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, assign) IBOutlet UITableViewCell *simpleCell;
+@property (nonatomic, assign) IBOutlet UITableViewCell *commentCell;
+
 //@property (nonatomic, retain) IBOutlet UIButton *callBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *smsBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *emailBtn;

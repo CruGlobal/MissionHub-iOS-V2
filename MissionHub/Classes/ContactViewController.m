@@ -17,6 +17,8 @@
 @synthesize commentsArray;
 @synthesize infoArray;
 @synthesize surveyArray;
+@synthesize simpleCell;
+@synthesize commentCell;
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super init]){ 
@@ -105,25 +107,49 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"CellIdentifier";
+    static NSString *CellIdentifier = @"CommentCell";
     
     // Dequeue or create a cell of the appropriate type.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];      
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];      
+  //      cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        [[NSBundle mainBundle] loadNibNamed:@"CommentCell" owner:self options:nil];
+        cell = commentCell;
+        self.commentCell = nil;
     }
-    
     NSDictionary *tempDict = [commentsArray objectAtIndex: indexPath.row];
     NSDictionary *comment = [tempDict objectForKey:@"comment"];
+    NSDictionary *commenter = [comment objectForKey:@"commenter"];    
+
+    UILabel *label;
+
+    label = (UILabel *)[cell viewWithTag:2];
+    label.text = [NSString stringWithFormat:@"%@", [commenter objectForKey:@"name"]];    
+    
+    label = (UILabel *)[cell viewWithTag:3];
+    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
+
+    label = (UILabel *)[cell viewWithTag:4];
+    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"created_at_words"]];
+
+    label = (UILabel *)[cell viewWithTag:5];
+    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"status"]];
+
     // Configure the cell.
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
+    //cell.textLabel.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
     return cell;
 }
 
 // Detect when player selects a section/row
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
+
+- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return 60.0f;
+}
+
 
 #pragma mark - button events
 
