@@ -145,14 +145,6 @@
     infoArray = [[NSMutableArray alloc] initWithCapacity:10];
     surveyArray = [[NSMutableArray alloc] initWithCapacity:10];    
 
-//    [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Assigned to", CurrentUser.
-//    dict = 
-//            @"/opt/picture.png", @"Luca", 
-//            @"/home/nico/birthday.png", @"Birthday Photo", 
-//            @"/home/nico/birthday.png", @"Birthday Image", 
-//            @"/home/marghe/pic.jpg", @"My Sister", nil];
-    
-    
     // Do any additional setup after loading the view from its nib.
     [nameLbl setText:[self.personData objectForKey:@"name"]];
 
@@ -160,8 +152,8 @@
     NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", [self.personData objectForKey:@"picture"]]; 
     NSURL * imageURL = [NSURL URLWithString: fbUrl];
     
-    HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];;
-    [self.view addSubview: mi];
+    HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];
+    [tableView addSubview: mi];
     mi.url = imageURL;
     
     [AppDelegate.imageManager manage:mi];
