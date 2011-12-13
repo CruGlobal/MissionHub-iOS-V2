@@ -8,7 +8,6 @@
 
 #import "MainViewController.h"
 #import "MissionHubAppDelegate.h"
-#import <Three20/Three20.h>
 
 @implementation MainViewController
 
@@ -71,6 +70,9 @@
     
     TTNavigator *navigator = [TTNavigator navigator];
     [navigator.topViewController.navigationController setNavigationBarHidden:NO];   
+    
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
 }
 
 - (IBAction)onContactsBtn:(id)sender {
@@ -81,9 +83,8 @@
 
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"base_url"];
     NSString *orgId = @"604";
-    NSString *accessToken = @"658ff25127cecc27fee7430437ac7b48e2a0ddc7076f32b0422ce76137bba980";
     
-    NSString *surveysUrl = [NSString stringWithFormat:@"%@/surveys?access_token=%@&org_id", baseUrl, accessToken, orgId];
+    NSString *surveysUrl = [NSString stringWithFormat:@"%@/surveys?access_token=%@&org_id", baseUrl, CurrentUser.accessToken, orgId];
     
     NSLog(@"%@", surveysUrl);
     TTOpenURL(surveysUrl); 
