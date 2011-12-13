@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "MissionHubAppDelegate.h"
 
 static User *sharedUser = nil;
 
@@ -50,6 +51,26 @@ static User *sharedUser = nil;
     
    NSLog(@"Current user name is: %@", self.name);
    NSLog(@"Organization: %@", self.organizations); 
+}
+
+- (void) logout {
+    NSString *baseUrl = [[AppDelegate config] objectForKey:@"base_url"];    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/auth/facebook/logout", baseUrl];
+
+    NSLog(@"request:%@", requestUrl);    
+    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+    request.response = [[[TTURLDataResponse alloc] init] autorelease];
+    [request send];
+}
+
+- (void)requestDidFinishLoad:(TTURLRequest*)request {
+    TTURLDataResponse *response =  (TTURLDataResponse *)request.response; 
+    //NSLog(@"requestDidFinishLoad:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
+    
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];    
 }
 
 //+ (id)allocWithZone:(NSZone *)zone {

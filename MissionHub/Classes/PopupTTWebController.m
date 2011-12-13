@@ -59,8 +59,7 @@
 
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"webViewDidFinishLoad");    
-    NSLog(@"...%@", self.URL);    
+    NSLog(@"webViewDidFinishLoad. request url was: %@", self.URL);    
 
     NSRange aRange = [[self.URL absoluteString] rangeOfString:@"facebook"];
     NSRange aRange2 = [[self.URL absoluteString] rangeOfString:@"survey"];    
@@ -93,17 +92,20 @@
     NSDictionary* response = ((TTURLJSONResponse*)request.response).rootObject;
 
     NSLog(@"requestDidFinishLoad:%@", response);
+    NSString *accessToken = [response objectForKey:@"access_token"];
     
-    if ([response objectForKey:@"access_token"] ) {
+    // After user logs in through FB.
+    if (accessToken) {
         // [[TTNavigator navigator].topViewController.navigationController popViewControllerAnimated:YES];
         [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
         
         NSLog(@"Saving access token to NSUserDefaults.");
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:[response objectForKey:@"access_token"] forKey:@"accessToken"];			
+        [userDefaults setObject:accessToken forKey:@"accessToken"];			
         
-        [User sharedUser].data = [response objectForKey:@"person"];
+        CurrentUser.data = [response objectForKey:@"person"];
+        CurrentUser.accessToken = accessToken;
         
     } else {
     

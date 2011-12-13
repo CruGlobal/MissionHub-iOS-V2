@@ -73,6 +73,7 @@
 }
 
 - (IBAction)onLogoutBtn:(id)sender {    
+    [CurrentUser logout];
 }
 
 

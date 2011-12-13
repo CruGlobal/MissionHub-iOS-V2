@@ -31,6 +31,7 @@
 @property (nonatomic, retain) NSArray *organizations;
 
 - (void) setData:(NSDictionary*)input;
+- (void) logout;
 
 + (User *)sharedUser;
 
