@@ -52,6 +52,7 @@
 
 @interface ContactRequestDelegate : NSObject<TTURLRequestDelegate> {
     NSMutableArray *tempData;
+    NSMutableArray *tempData2;    
     UITableView *tempTableView;
 }
 @end

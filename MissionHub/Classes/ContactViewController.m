@@ -13,12 +13,13 @@
 
 @implementation ContactRequestDelegate
 
-- (id) initWithArray:(NSMutableArray*)data tableView:(UITableView*)aTableView {
-      if (self = [super init]) {
+- (id) initWithArray:(NSMutableArray*)data data2:(NSMutableArray*)aData2 tableView:(UITableView*)aTableView {
+    if (self = [super init]) {
           
-    tempData = data;
-    tempTableView = aTableView;
-      }
+        tempData = data;
+        tempData2 = aData2;
+        tempTableView = aTableView;
+    }
     return self;
 }
 
@@ -70,6 +71,26 @@
     [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"College", @"label",  college, @"value", nil]];
     [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Location", @"label", [location objectForKey:@"name"], @"value", nil]];
     
+    NSArray *questions = [tempDict objectForKey:@"questions"];    
+    NSArray *answers = [personAndFormDict objectForKey:@"form"];        
+
+    for (NSDictionary *question in questions) {        
+        for (NSDictionary *answer in answers) {
+            
+            NSString *answerId = [answer objectForKey:@"q"];
+            NSString *questionId = [question objectForKey:@"id"];
+            
+            if ([answerId integerValue] == [questionId integerValue]) {
+                if ([[answer objectForKey:@"a"] length] == 0) {
+                    [tempData2 addObject: [NSDictionary dictionaryWithObjectsAndKeys: [question objectForKey:@"label"], @"label", @"not answered", @"value", nil]];                
+                } else {
+                    [tempData2 addObject: [NSDictionary dictionaryWithObjectsAndKeys: [question objectForKey:@"label"], @"label", [answer objectForKey:@"a"], @"value", nil]];                
+                }
+            }
+        }
+    }
+
+    
     [tempTableView reloadData];
 }
 
@@ -120,6 +141,7 @@
     
     commentsArray = [[NSMutableArray alloc] initWithCapacity:10];
     infoArray = [[NSMutableArray alloc] initWithCapacity:10];
+    surveyArray = [[NSMutableArray alloc] initWithCapacity:10];    
 
 //    [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Assigned to", CurrentUser.
 //    dict = 
@@ -143,7 +165,7 @@
      
      requestUrl = [NSString stringWithFormat:@"%@/contacts/%@.json?access_token=%@", baseUrl, [self.personData objectForKey:@"id"], CurrentUser.accessToken];
      NSLog(@"request:%@", requestUrl);    
-     request = [TTURLRequest requestWithURL: requestUrl delegate: [[ContactRequestDelegate alloc] initWithArray:infoArray tableView:self.tableView]];
+    request = [TTURLRequest requestWithURL: requestUrl delegate: [[ContactRequestDelegate alloc] initWithArray:infoArray data2:surveyArray tableView:self.tableView]];
      request.response = [[[TTURLJSONResponse alloc] init] autorelease];
      [request send];     
 }
@@ -218,15 +240,19 @@
         [(CommentCell*)cell setData: comment];
     }
         
-    if (segmentedControl.selectedSegmentIndex == 1) {
+    if (segmentedControl.selectedSegmentIndex == 1 || segmentedControl.selectedSegmentIndex == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
         if (cell == nil) {
             [[NSBundle mainBundle] loadNibNamed:@"SimpleCell" owner:self options:nil];
             cell = simpleCell;
             self.simpleCell = nil;
         }
-
-        NSDictionary *tempDict = [infoArray objectAtIndex: indexPath.row];        
+        NSDictionary *tempDict = nil;
+        if (segmentedControl.selectedSegmentIndex == 1) {
+            tempDict = [infoArray objectAtIndex: indexPath.row];        
+        } else {
+            tempDict = [surveyArray objectAtIndex: indexPath.row];        
+        }
         [(SimpleCell*)cell setData: tempDict];
     }
     // Configure the cell.
