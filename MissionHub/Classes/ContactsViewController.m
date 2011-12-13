@@ -54,9 +54,10 @@
     TTURLJSONResponse* response = request.response;
     NSLog(@"requestDidFinishLoad:%@", response.rootObject);   
     
-    NSArray *tempArray = response.rootObject;
+   NSDictionary *result = response.rootObject;
+   NSArray *contacts = [result objectForKey:@"contacts"];
 	
-	for (NSDictionary *tempDict in tempArray) {
+	for (NSDictionary *tempDict in contacts) {
         NSDictionary *person = [tempDict objectForKey:@"person"];
         [dataArray addObject: person];
     }

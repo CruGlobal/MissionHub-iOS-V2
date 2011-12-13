@@ -97,8 +97,8 @@
     NSLog(@"requestDidStartLoad:%@", response.rootObject);    
     //TTDASSERT([response.rootObject isKindOfClass:[NSArray class]]);
 
-    NSArray *temp = response.rootObject;
-    [User sharedUser].data = [temp objectAtIndex:0];
+    NSDictionary *result = response.rootObject;
+    [User sharedUser].data = [[result objectForKey:@"people"] objectAtIndex:0];
     
     [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
 }

@@ -28,8 +28,8 @@
     TTURLJSONResponse* response = request.response;
     NSLog(@"requestDidStartLoad:%@", response.rootObject);   
     
-    NSDictionary *tempDict = response.rootObject;
-    NSArray *people = [tempDict objectForKey:@"people"];
+    NSDictionary *result = response.rootObject;
+    NSArray *people = [result objectForKey:@"contacts"];
     NSDictionary *personAndFormDict = [people objectAtIndex:0];
     NSDictionary *person = [personAndFormDict objectForKey:@"person"];
     NSDictionary *assignment = [person objectForKey:@"assignment"];
@@ -72,7 +72,7 @@
     [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"College", @"label",  college, @"value", nil]];
     [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Location", @"label", [location objectForKey:@"name"], @"value", nil]];
     
-    NSArray *questions = [tempDict objectForKey:@"questions"];    
+    NSArray *questions = [result objectForKey:@"questions"];    
     NSArray *answers = [personAndFormDict objectForKey:@"form"];        
 
     for (NSDictionary *question in questions) {        
@@ -176,9 +176,10 @@
     TTURLJSONResponse* response = request.response;
     NSLog(@"requestDidStartLoad:%@", response.rootObject);   
     
-    NSArray *tempArray = response.rootObject;
+    NSDictionary *result = response.rootObject;
+    NSArray *comments = [result objectForKey:@"followup_comments"];
     
-	for (NSDictionary *tempDict in tempArray) {
+	for (NSDictionary *tempDict in comments) {
         NSDictionary *comment = [tempDict objectForKey:@"followup_comment"];
         [commentsArray addObject: comment];
     }
