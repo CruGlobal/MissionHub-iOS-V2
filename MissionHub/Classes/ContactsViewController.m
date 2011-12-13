@@ -8,11 +8,13 @@
 
 #import "ContactsViewController.h"
 #import "MissionHubAppDelegate.h"
+#import "ContactCell.h"
 
 @implementation ContactsViewController
 
 @synthesize tableView;
 @synthesize dataArray;
+@synthesize contactCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -91,18 +93,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"CellIdentifier";
+    static NSString *CellIdentifier = @"ContactCell";
     
     // Dequeue or create a cell of the appropriate type.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];      
+        [[NSBundle mainBundle] loadNibNamed:@"ContactCell" owner:self options:nil];
+        cell = contactCell;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        self.contactCell = nil;
     }
     
     NSDictionary *person = [dataArray objectAtIndex: indexPath.row];
     // Configure the cell.
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [person objectForKey:@"name"]];
+    [(ContactCell*)cell setData: person];
+
     return cell;
 }
 
@@ -114,6 +119,10 @@
     [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contact"]
                                             applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]];
     
+}
+
+- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return 60.0f;
 }
 
 @end

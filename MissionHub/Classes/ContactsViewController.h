@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class ContactCell;
+
 @interface ContactsViewController : UIViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) NSMutableArray *dataArray;
@@ -15,5 +17,6 @@
 - (IBAction)onBackBtn:(id)sender;
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, assign) IBOutlet ContactCell *contactCell;
 
 @end

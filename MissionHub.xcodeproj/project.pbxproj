@@ -21,6 +21,8 @@
 		636793C214969B8600B52C74 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793C114969B8600B52C74 /* CommentCell.xib */; };
 		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; };
 		636793C91496A60D00B52C74 /* SimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C81496A60D00B52C74 /* SimpleCell.m */; };
+		639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639A15101497E3EE00FFAC44 /* ContactCell.xib */; };
+		639A15141497E40600FFAC44 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A15131497E40600FFAC44 /* ContactCell.m */; };
 		63B61AFC148A58F400CBE54B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFB148A58F400CBE54B /* UIKit.framework */; };
 		63B61AFE148A58F400CBE54B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFD148A58F400CBE54B /* Foundation.framework */; };
 		63B61B00148A58F400CBE54B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFF148A58F400CBE54B /* CoreGraphics.framework */; };
@@ -352,6 +354,9 @@
 		636793C51496A60100B52C74 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		636793C71496A60D00B52C74 /* SimpleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCell.h; sourceTree = "<group>"; };
 		636793C81496A60D00B52C74 /* SimpleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleCell.m; sourceTree = "<group>"; };
+		639A15101497E3EE00FFAC44 /* ContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
+		639A15121497E40600FFAC44 /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
+		639A15131497E40600FFAC44 /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
 		63B61AF7148A58F400CBE54B /* MissionHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MissionHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B61AFB148A58F400CBE54B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		63B61AFD148A58F400CBE54B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -611,6 +616,8 @@
 				636793C51496A60100B52C74 /* CommentCell.m */,
 				636793C71496A60D00B52C74 /* SimpleCell.h */,
 				636793C81496A60D00B52C74 /* SimpleCell.m */,
+				639A15121497E40600FFAC44 /* ContactCell.h */,
+				639A15131497E40600FFAC44 /* ContactCell.m */,
 			);
 			name = CustomCells;
 			path = Classes/CustomCells;
@@ -699,6 +706,7 @@
 				63E02D3A14902BBA00BC2DEF /* ContactViewController.xib */,
 				636793BF149698FB00B52C74 /* SimpleCell.xib */,
 				636793C114969B8600B52C74 /* CommentCell.xib */,
+				639A15101497E3EE00FFAC44 /* ContactCell.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -1258,6 +1266,7 @@
 				63E02D3C14902BBA00BC2DEF /* ContactViewController.xib in Resources */,
 				636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */,
 				636793C214969B8600B52C74 /* CommentCell.xib in Resources */,
+				639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1316,6 +1325,7 @@
 				63E02D71149278DF00BC2DEF /* HJWeakMutableArray.m in Sources */,
 				636793C61496A60100B52C74 /* CommentCell.m in Sources */,
 				636793C91496A60D00B52C74 /* SimpleCell.m in Sources */,
+				639A15141497E40600FFAC44 /* ContactCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
