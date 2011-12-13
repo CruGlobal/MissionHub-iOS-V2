@@ -8,6 +8,7 @@
 
 #import "ContactViewController.h"
 #import "MissionHubAppDelegate.h"
+#import "HJManagedImageV.h"
 #import "CommentCell.h"
 #import "SimpleCell.h"
 
@@ -107,6 +108,7 @@
 @synthesize simpleCell;
 @synthesize commentCell;
 @synthesize segmentedControl;
+@synthesize placeHolderImageView;
 
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
@@ -153,6 +155,16 @@
     
     // Do any additional setup after loading the view from its nib.
     [nameLbl setText:[self.personData objectForKey:@"name"]];
+
+    // Set user's image
+    NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", [self.personData objectForKey:@"picture"]]; 
+    NSURL * imageURL = [NSURL URLWithString: fbUrl];
+    
+    HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];;
+    [self.view addSubview: mi];
+    mi.url = imageURL;
+    
+    [AppDelegate.imageManager manage:mi];
     
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/followup_comments/%@.json?access_token=%@", baseUrl, [self.personData objectForKey:@"id"], CurrentUser.accessToken];
@@ -161,11 +173,9 @@
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     [request send];
      
-     
-     
      requestUrl = [NSString stringWithFormat:@"%@/contacts/%@.json?access_token=%@", baseUrl, [self.personData objectForKey:@"id"], CurrentUser.accessToken];
      NSLog(@"request:%@", requestUrl);    
-    request = [TTURLRequest requestWithURL: requestUrl delegate: [[ContactRequestDelegate alloc] initWithArray:infoArray data2:surveyArray tableView:self.tableView]];
+     request = [TTURLRequest requestWithURL: requestUrl delegate: [[ContactRequestDelegate alloc] initWithArray:infoArray data2:surveyArray tableView:self.tableView]];
      request.response = [[[TTURLJSONResponse alloc] init] autorelease];
      [request send];     
 }

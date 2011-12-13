@@ -52,7 +52,7 @@
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
     TTURLJSONResponse* response = request.response;
-    //NSLog(@"requestDidStartLoad:%@", response.rootObject);   
+    NSLog(@"requestDidFinishLoad:%@", response.rootObject);   
     
     NSArray *tempArray = response.rootObject;
 	

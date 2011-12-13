@@ -16,13 +16,13 @@
 @interface ContactViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 
-
 @property (nonatomic, retain) NSDictionary *personData;
 @property (nonatomic, retain) NSMutableArray *commentsArray;
 @property (nonatomic, retain) NSMutableArray *infoArray;
 @property (nonatomic, retain) NSMutableArray *surveyArray;
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl;
+@property (nonatomic, retain) IBOutlet UIImageView *placeHolderImageView;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet SimpleCell *simpleCell;
 @property (nonatomic, assign) IBOutlet CommentCell *commentCell;
