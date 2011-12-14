@@ -235,6 +235,18 @@
 	return 60.0f;
 }
 
+#pragma mark - UITextView delegate, should hide the keyboard on done
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
 
 #pragma mark - button events
 
