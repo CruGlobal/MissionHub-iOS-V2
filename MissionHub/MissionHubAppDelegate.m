@@ -14,6 +14,7 @@
 #import "ProfileViewController.h"
 #import "ContactsViewController.h"
 #import "ContactViewController.h"
+#import "MessageController.h"
 #import "CatalogController.h"
 
 #import "HJObjManager.h"
@@ -55,6 +56,8 @@
     [map from:@"mh://profile" toSharedViewController:[ProfileViewController class]];            
     [map from:@"mh://contacts" toSharedViewController:[ContactsViewController class]];                
     [map from:@"mh://contact" toSharedViewController:[ContactViewController class]];  
+    [map from:@"mh://composeEmail?to=(composeEmailTo:)" toModalViewController:[MessageController alloc] selector:@selector(composeEmailTo:)];
+    [map from:@"mh://composeSms?to=(composeSmsTo:)" toModalViewController:[MessageController alloc] selector:@selector(composeSmsTo:)];    
     
 //    [map            from: @"mh://contacts"
 //                  parent: @"mh://main"

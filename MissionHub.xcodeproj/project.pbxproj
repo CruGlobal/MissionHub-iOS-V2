@@ -42,6 +42,9 @@
 		63B61B2F148A58F500CBE54B /* MissionHubTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 63B61B2E148A58F500CBE54B /* MissionHubTests.h */; };
 		63B61B31148A58F500CBE54B /* MissionHubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B61B30148A58F500CBE54B /* MissionHubTests.m */; };
 		63DBAF82149946BF002A8D86 /* CatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF81149946BF002A8D86 /* CatalogController.m */; };
+		63DBAF8514994F16002A8D86 /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8414994F15002A8D86 /* MessageController.m */; };
+		63DBAF88149953EC002A8D86 /* MockDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF87149953EC002A8D86 /* MockDataSource.m */; };
+		63DBAF8B14995463002A8D86 /* SearchTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8A14995463002A8D86 /* SearchTestController.m */; };
 		63DD6ADF148EF5C90087313E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6ADD148EF5C90087313E /* MainViewController.m */; };
 		63DD6AE0148EF5C90087313E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6ADE148EF5C90087313E /* MainViewController.xib */; };
 		63DD6AEE148FF8BE0087313E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6AEC148FF8BE0087313E /* ProfileViewController.m */; };
@@ -385,6 +388,12 @@
 		63B61B30148A58F500CBE54B /* MissionHubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissionHubTests.m; sourceTree = "<group>"; };
 		63DBAF80149946BE002A8D86 /* CatalogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogController.h; sourceTree = "<group>"; };
 		63DBAF81149946BF002A8D86 /* CatalogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogController.m; sourceTree = "<group>"; };
+		63DBAF8314994F15002A8D86 /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
+		63DBAF8414994F15002A8D86 /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageController.m; sourceTree = "<group>"; };
+		63DBAF86149953EC002A8D86 /* MockDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDataSource.h; sourceTree = "<group>"; };
+		63DBAF87149953EC002A8D86 /* MockDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockDataSource.m; sourceTree = "<group>"; };
+		63DBAF8914995462002A8D86 /* SearchTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTestController.h; sourceTree = "<group>"; };
+		63DBAF8A14995463002A8D86 /* SearchTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTestController.m; sourceTree = "<group>"; };
 		63DD6AB2148EF0BE0087313E /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = "<group>"; };
 		63DD6ADC148EF5C90087313E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		63DD6ADD148EF5C90087313E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -894,8 +903,12 @@
 				63E02D2E149017AB00BC2DEF /* ContactsViewController.m */,
 				63E02D3514902B9300BC2DEF /* ContactViewController.h */,
 				63E02D3614902B9300BC2DEF /* ContactViewController.m */,
+				63DBAF8314994F15002A8D86 /* MessageController.h */,
+				63DBAF8414994F15002A8D86 /* MessageController.m */,
 				63DBAF80149946BE002A8D86 /* CatalogController.h */,
 				63DBAF81149946BF002A8D86 /* CatalogController.m */,
+				63DBAF8914995462002A8D86 /* SearchTestController.h */,
+				63DBAF8A14995463002A8D86 /* SearchTestController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -905,6 +918,8 @@
 			children = (
 				63E02D3F1492604A00BC2DEF /* User.h */,
 				63E02D401492604A00BC2DEF /* User.m */,
+				63DBAF86149953EC002A8D86 /* MockDataSource.h */,
+				63DBAF87149953EC002A8D86 /* MockDataSource.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1338,6 +1353,9 @@
 				639A15141497E40600FFAC44 /* ContactCell.m in Sources */,
 				639A1517149817CE00FFAC44 /* BaseViewController.m in Sources */,
 				63DBAF82149946BF002A8D86 /* CatalogController.m in Sources */,
+				63DBAF8514994F16002A8D86 /* MessageController.m in Sources */,
+				63DBAF88149953EC002A8D86 /* MockDataSource.m in Sources */,
+				63DBAF8B14995463002A8D86 /* SearchTestController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

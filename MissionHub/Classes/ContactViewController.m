@@ -243,11 +243,13 @@
 }
 
 - (IBAction)onSmsBtn:(id)sender {
-    
+    NSString *path = [NSString stringWithFormat:@"mh://composeSms?to=%@", [[self.personData objectForKey:@"name"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];    
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:path] applyAnimated:YES]];           
 }
 
 - (IBAction)onEmailBtn:(id)sender {
-    
+    NSString *path = [NSString stringWithFormat:@"mh://composeEmail?to=%@", [[self.personData objectForKey:@"name"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:path] applyAnimated:YES]];       
 }
 
 - (IBAction)onAssignBtn:(id)sender {
