@@ -16,7 +16,6 @@
     [[[TTMessageController alloc] initWithRecipients:[NSArray arrayWithObject:item]] autorelease];
     controller.dataSource = [[[MockSearchDataSource alloc] init] autorelease];
     controller.delegate = self;
-    [[controller viewForFieldAtIndex:1] setHidden:NO];
     
     return controller;
 }
@@ -28,8 +27,8 @@
     [[[TTMessageController alloc] initWithRecipients:[NSArray arrayWithObject:item]] autorelease];
     controller.dataSource = [[[MockSearchDataSource alloc] init] autorelease];
     controller.delegate = self;
-    [[controller viewForFieldAtIndex:1] setHidden:YES];
-    
+    [[controller viewForFieldAtIndex:1] removeFromSuperview];
+    [controller setFieldIndexOfFirstResponder: 99];
     return controller;
 }
 

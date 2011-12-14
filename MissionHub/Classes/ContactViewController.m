@@ -168,7 +168,7 @@
 }
 
 - (IBAction)onBackBtn:(id)sender {    
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://contacts"]];    
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts"] applyAnimated:YES]];    
 }
 
 #pragma mark - UITableViewDelegate
