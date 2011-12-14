@@ -117,8 +117,14 @@
     
     NSDictionary *person = [dataArray objectAtIndex: indexPath.row];
     
-    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contact"]
-                                            applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]];
+    TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"] 
+                             applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]] 
+                            applyAnimated:YES];
+    [[TTNavigator navigator] openURLAction:action];
+    
+//    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contact"]
+//                                            applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]
+//                             applyAnimated: YES];
     
 }
 

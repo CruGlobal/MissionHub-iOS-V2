@@ -239,7 +239,7 @@
 #pragma mark - button events
 
 - (IBAction)onCallBtn:(id)sender {
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:99022002"]]; 
 }
 
 - (IBAction)onSmsBtn:(id)sender {

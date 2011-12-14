@@ -14,6 +14,7 @@
 #import "ProfileViewController.h"
 #import "ContactsViewController.h"
 #import "ContactViewController.h"
+#import "CatalogController.h"
 
 #import "HJObjManager.h"
 
@@ -44,20 +45,30 @@
     [navigator setPersistenceMode:TTNavigatorPersistenceModeAll];
     [navigator setWindow: self.window];
 
-
     TTURLMap *map = navigator.URLMap;
+ 
+    [map from: @"tt://catalog" toSharedViewController: [CatalogController class]];
+
     [map from:@"*" toSharedViewController:[PopupTTWebController class]];
     [map from:@"mh://login" toSharedViewController:[LoginViewController class]];    
     [map from:@"mh://main" toSharedViewController:[MainViewController class]];        
     [map from:@"mh://profile" toSharedViewController:[ProfileViewController class]];            
     [map from:@"mh://contacts" toSharedViewController:[ContactsViewController class]];                
-    [map from:@"mh://contact" toViewController:[ContactViewController class]];       
+    [map from:@"mh://contact" toSharedViewController:[ContactViewController class]];  
+    
+//    [map            from: @"mh://contacts"
+//                  parent: @"mh://main"
+//        toViewController: [ContactsViewController class]
+//                selector: nil
+//              transition:UIViewAnimationTransitionCurlUp];
 
     if (! [navigator restoreViewControllers]) {
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];
         NSLog(@"opening...");
         
-    }
+    }    
+
+    //[navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://catalog"]];
     
     // init HJObjManager, if you are using for full screen images, you'll need a smaller memory cache:
 	imageManager = [[HJObjManager alloc] initWithLoadingBufferSize:6 memCacheSize:20];

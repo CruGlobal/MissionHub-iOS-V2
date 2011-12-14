@@ -57,7 +57,7 @@
 }
 
 - (IBAction)onProfileBtn:(id)sender {
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://profile"]];
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://profile"] applyAnimated:YES]];
 }
 
 - (IBAction)onLogoutBtn:(id)sender {
@@ -65,7 +65,7 @@
 }
 
 - (IBAction)onContactsBtn:(id)sender {
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://contacts"]];    
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts" ] applyAnimated:YES]];    
 }
 
 - (IBAction)onSurveyBtn:(id)sender {
