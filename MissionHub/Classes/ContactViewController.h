@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BaseViewController.h"
 
 @class CommentCell;
 @class SimpleCell;
-@protocol TTURLRequestDelegate;
 
-@interface ContactViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
 
 
 @property (nonatomic, retain) NSDictionary *personData;
@@ -48,11 +47,4 @@
 - (IBAction)onSaveBtn:(id)sender;
 - (IBAction)onSegmentChange:(id)sender;
 
-@end
-
-@interface ContactRequestDelegate : NSObject<TTURLRequestDelegate> {
-    NSMutableArray *tempData;
-    NSMutableArray *tempData2;    
-    UITableView *tempTableView;
-}
 @end

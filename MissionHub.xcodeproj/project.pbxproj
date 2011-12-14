@@ -23,6 +23,7 @@
 		636793C91496A60D00B52C74 /* SimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C81496A60D00B52C74 /* SimpleCell.m */; };
 		639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639A15101497E3EE00FFAC44 /* ContactCell.xib */; };
 		639A15141497E40600FFAC44 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A15131497E40600FFAC44 /* ContactCell.m */; };
+		639A1517149817CE00FFAC44 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A1516149817CE00FFAC44 /* BaseViewController.m */; };
 		63B61AFC148A58F400CBE54B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFB148A58F400CBE54B /* UIKit.framework */; };
 		63B61AFE148A58F400CBE54B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFD148A58F400CBE54B /* Foundation.framework */; };
 		63B61B00148A58F400CBE54B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFF148A58F400CBE54B /* CoreGraphics.framework */; };
@@ -357,6 +358,8 @@
 		639A15101497E3EE00FFAC44 /* ContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
 		639A15121497E40600FFAC44 /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
 		639A15131497E40600FFAC44 /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
+		639A1515149817CD00FFAC44 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		639A1516149817CE00FFAC44 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		63B61AF7148A58F400CBE54B /* MissionHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MissionHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B61AFB148A58F400CBE54B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		63B61AFD148A58F400CBE54B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -872,6 +875,8 @@
 		63DF2318148D471D0039A964 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				639A1515149817CD00FFAC44 /* BaseViewController.h */,
+				639A1516149817CE00FFAC44 /* BaseViewController.m */,
 				63DF236F148D559A0039A964 /* LoginViewController.h */,
 				63DF2370148D559A0039A964 /* LoginViewController.m */,
 				63EAD05A148EC78500524305 /* PopupTTWebController.h */,
@@ -1326,6 +1331,7 @@
 				636793C61496A60100B52C74 /* CommentCell.m in Sources */,
 				636793C91496A60D00B52C74 /* SimpleCell.m in Sources */,
 				639A15141497E40600FFAC44 /* ContactCell.m in Sources */,
+				639A1517149817CE00FFAC44 /* BaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

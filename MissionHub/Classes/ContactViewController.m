@@ -7,95 +7,9 @@
 //
 
 #import "ContactViewController.h"
-#import "MissionHubAppDelegate.h"
 #import "HJManagedImageV.h"
 #import "CommentCell.h"
 #import "SimpleCell.h"
-
-@implementation ContactRequestDelegate
-
-- (id) initWithArray:(NSMutableArray*)data data2:(NSMutableArray*)aData2 tableView:(UITableView*)aTableView {
-    if (self = [super init]) {
-          
-        tempData = data;
-        tempData2 = aData2;
-        tempTableView = aTableView;
-    }
-    return self;
-}
-
-- (void) requestDidFinishLoad:(TTURLRequest*)request {
-    TTURLJSONResponse* response = request.response;
-    NSLog(@"requestDidStartLoad:%@", response.rootObject);   
-    
-    NSDictionary *result = response.rootObject;
-    NSArray *people = [result objectForKey:@"contacts"];
-    NSDictionary *personAndFormDict = [people objectAtIndex:0];
-    NSDictionary *person = [personAndFormDict objectForKey:@"person"];
-    NSDictionary *assignment = [person objectForKey:@"assignment"];
-    
-    NSArray *personAssignedToArray = [assignment objectForKey:@"person_assigned_to"];
-    NSMutableString* personAssignedTo = [NSMutableString string];
-    for (NSDictionary *dict in personAssignedToArray) {
-        [personAssignedTo appendString:[NSString stringWithFormat:@"%@,", [dict objectForKey:@"name"]]];      
-    }
-    
-    NSDictionary *location = [person objectForKey:@"location"];    
-    
-    NSArray *interestsArray = [person objectForKey:@"interests"];    
-    NSMutableString* interests = [NSMutableString string];
-	for (NSDictionary *dict in interestsArray) {
-        [interests appendString:[NSString stringWithFormat:@"%@,", [dict objectForKey:@"name"]]];      
-    }
-    
-    NSArray *educationsArray = [person objectForKey:@"education"];    
-    NSString *highSchool = nil;
-    NSString *college = nil;    
-	for (NSDictionary *dict in educationsArray) {
-        NSDictionary *school = [dict objectForKey:@"school"];
-        if ([[dict objectForKey:@"type"] isEqualToString:@"High School"]) {
-            highSchool = [school objectForKey:@"name"];
-        }
-        if ([[dict objectForKey:@"type"] isEqualToString:@"College"]) {
-            college = [school objectForKey:@"name"];            
-        }
-        
-    }
-
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Assigned To", @"label", personAssignedTo, @"value", nil]];
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"First Contact Date", @"label", [person objectForKey:@"first_contact_date"], @"value", nil]];    
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Phone Number", @"label", [person objectForKey:@"phone_number"], @"value", nil]];
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Email Address", @"label", [person objectForKey:@"email_address"], @"value", nil]];
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Birthday", @"label", [person objectForKey:@"birthday"], @"value", nil]];
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Interests", @"label", interests, @"value", nil]];    
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"High School", @"label", highSchool, @"value", nil]];
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"College", @"label",  college, @"value", nil]];
-    [tempData addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Location", @"label", [location objectForKey:@"name"], @"value", nil]];
-    
-    NSArray *questions = [result objectForKey:@"questions"];    
-    NSArray *answers = [personAndFormDict objectForKey:@"form"];        
-
-    for (NSDictionary *question in questions) {        
-        for (NSDictionary *answer in answers) {
-            
-            NSString *answerId = [answer objectForKey:@"q"];
-            NSString *questionId = [question objectForKey:@"id"];
-            
-            if ([answerId integerValue] == [questionId integerValue]) {
-                if ([[answer objectForKey:@"a"] length] == 0) {
-                    [tempData2 addObject: [NSDictionary dictionaryWithObjectsAndKeys: [question objectForKey:@"label"], @"label", @"not answered", @"value", nil]];                
-                } else {
-                    [tempData2 addObject: [NSDictionary dictionaryWithObjectsAndKeys: [question objectForKey:@"label"], @"label", [answer objectForKey:@"a"], @"value", nil]];                
-                }
-            }
-        }
-    }
-
-    
-    [tempTableView reloadData];
-}
-
-@end
 
 @implementation ContactViewController
 
@@ -135,6 +49,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -157,31 +72,83 @@
     mi.url = imageURL;
     
     [AppDelegate.imageManager manage:mi];
-    
-    NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-    NSString *requestUrl = [NSString stringWithFormat:@"%@/followup_comments/%@.json?access_token=%@", baseUrl, [self.personData objectForKey:@"id"], CurrentUser.accessToken];
-    NSLog(@"request:%@", requestUrl);    
-    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
-    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
-    [request send];
-     
-     requestUrl = [NSString stringWithFormat:@"%@/contacts/%@.json?access_token=%@", baseUrl, [self.personData objectForKey:@"id"], CurrentUser.accessToken];
-     NSLog(@"request:%@", requestUrl);    
-     request = [TTURLRequest requestWithURL: requestUrl delegate: [[ContactRequestDelegate alloc] initWithArray:infoArray data2:surveyArray tableView:self.tableView]];
-     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
-     [request send];     
+   
+    [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];
+    [self makeHttpRequest:[NSString stringWithFormat:@"contacts/%@.json", [self.personData objectForKey:@"id"]] identifier:@"contacts"];     
 }
 
-- (void)requestDidFinishLoad:(TTURLRequest*)request {
-    TTURLJSONResponse* response = request.response;
-    NSLog(@"requestDidStartLoad:%@", response.rootObject);   
-    
-    NSDictionary *result = response.rootObject;
-    NSArray *comments = [result objectForKey:@"followup_comments"];
-    
-	for (NSDictionary *tempDict in comments) {
-        NSDictionary *comment = [tempDict objectForKey:@"followup_comment"];
-        [commentsArray addObject: comment];
+- (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
+    NSDictionary *result = aResult;    
+    if ([aIdentifier isEqualToString:@"followup_comments"]) {
+        NSArray *comments = [result objectForKey:@"followup_comments"];
+        
+        for (NSDictionary *tempDict in comments) {
+            NSDictionary *comment = [tempDict objectForKey:@"followup_comment"];
+            [commentsArray addObject: comment];
+        }
+    } else {
+        NSArray *people = [result objectForKey:@"contacts"];
+        NSDictionary *personAndFormDict = [people objectAtIndex:0];
+        NSDictionary *person = [personAndFormDict objectForKey:@"person"];
+        NSDictionary *assignment = [person objectForKey:@"assignment"];
+        
+        NSArray *personAssignedToArray = [assignment objectForKey:@"person_assigned_to"];
+        NSMutableString* personAssignedTo = [NSMutableString string];
+        for (NSDictionary *dict in personAssignedToArray) {
+            [personAssignedTo appendString:[NSString stringWithFormat:@"%@,", [dict objectForKey:@"name"]]];      
+        }
+        
+        NSDictionary *location = [person objectForKey:@"location"];    
+        
+        NSArray *interestsArray = [person objectForKey:@"interests"];    
+        NSMutableString* interests = [NSMutableString string];
+        for (NSDictionary *dict in interestsArray) {
+            [interests appendString:[NSString stringWithFormat:@"%@,", [dict objectForKey:@"name"]]];      
+        }
+        
+        NSArray *educationsArray = [person objectForKey:@"education"];    
+        NSString *highSchool = nil;
+        NSString *college = nil;    
+        for (NSDictionary *dict in educationsArray) {
+            NSDictionary *school = [dict objectForKey:@"school"];
+            if ([[dict objectForKey:@"type"] isEqualToString:@"High School"]) {
+                highSchool = [school objectForKey:@"name"];
+            }
+            if ([[dict objectForKey:@"type"] isEqualToString:@"College"]) {
+                college = [school objectForKey:@"name"];            
+            }
+            
+        }
+        
+        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Assigned To", @"label", personAssignedTo, @"value", nil]];
+        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"First Contact Date", @"label", [person objectForKey:@"first_contact_date"], @"value", nil]];    
+        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Phone Number", @"label", [person objectForKey:@"phone_number"], @"value", nil]];
+        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Email Address", @"label", [person objectForKey:@"email_address"], @"value", nil]];
+        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Birthday", @"label", [person objectForKey:@"birthday"], @"value", nil]];
+        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Interests", @"label", interests, @"value", nil]];    
+        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"High School", @"label", highSchool, @"value", nil]];
+        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"College", @"label",  college, @"value", nil]];
+        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Location", @"label", [location objectForKey:@"name"], @"value", nil]];
+        
+        NSArray *questions = [result objectForKey:@"questions"];    
+        NSArray *answers = [personAndFormDict objectForKey:@"form"];        
+        
+        for (NSDictionary *question in questions) {        
+            for (NSDictionary *answer in answers) {
+                
+                NSString *answerId = [answer objectForKey:@"q"];
+                NSString *questionId = [question objectForKey:@"id"];
+                
+                if ([answerId integerValue] == [questionId integerValue]) {
+                    if ([[answer objectForKey:@"a"] length] == 0) {
+                        [surveyArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: [question objectForKey:@"label"], @"label", @"not answered", @"value", nil]];                
+                    } else {
+                        [surveyArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: [question objectForKey:@"label"], @"label", [answer objectForKey:@"a"], @"value", nil]];                
+                    }
+                }
+            }
+        }
+
     }
     [tableView reloadData];
 }

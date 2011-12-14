@@ -59,12 +59,12 @@ static User *sharedUser = nil;
 
     NSLog(@"request:%@", requestUrl);    
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
-    request.response = [[[TTURLDataResponse alloc] init] autorelease];
+    //request.response = [[[TTURLDataResponse alloc] init] autorelease];
     [request send];
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-    TTURLDataResponse *response =  (TTURLDataResponse *)request.response; 
+    //TTURLDataResponse *response =  (TTURLDataResponse *)request.response; 
     //NSLog(@"requestDidFinishLoad:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
     
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
