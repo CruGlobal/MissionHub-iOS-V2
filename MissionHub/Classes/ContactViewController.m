@@ -23,6 +23,7 @@
 @synthesize commentCell;
 @synthesize segmentedControl;
 @synthesize placeHolderImageView;
+//@synthesize assignBtn;
 
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
@@ -86,7 +87,7 @@
             NSDictionary *comment = [tempDict objectForKey:@"followup_comment"];
             [commentsArray addObject: comment];
         }
-    } else {
+    } else if ([aIdentifier isEqualToString:@"contacts"]) {
         NSArray *people = [result objectForKey:@"contacts"];
         NSDictionary *personAndFormDict = [people objectAtIndex:0];
         NSDictionary *person = [personAndFormDict objectForKey:@"person"];
@@ -250,10 +251,18 @@
 }
 
 - (IBAction)onAssignBtn:(id)sender {
-    [self makeHttpRequest:@"contact_assignments.json" identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys: 
-      CurrentUser.userId, @"assign_to_id",
-      @"leader", @"type",                                                             
-      [self.personData objectForKey:@"id"], @"id", nil]];
+    UIButton *btn = (UIButton *)sender;
+    if ([btn.currentTitle isEqualToString:@"Assign"]) {
+        [self makeHttpRequest:@"contact_assignments.json" identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys: 
+                                                                                          CurrentUser.userId, @"assign_to_id",
+                                                                                          @"leader", @"type",                                                             
+                                                                                          [self.personData objectForKey:@"id"], @"id", nil]];
+        [btn setTitle:@"Unassign" forState:UIControlStateNormal];
+    } else {
+        [self makeHttpRequest:[NSString stringWithFormat:@"contact_assignments/%@.json", [self.personData objectForKey:@"id"]]
+                   identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys: @"delete", @"_method", [self.personData objectForKey:@"id"], @"ids", nil]];
+        [btn setTitle:@"Assign" forState:UIControlStateNormal];        
+    }
 }
 
 - (IBAction)onRejoicableBtn:(id)sender {
