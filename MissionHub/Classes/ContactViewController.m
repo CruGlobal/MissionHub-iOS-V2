@@ -250,7 +250,10 @@
 }
 
 - (IBAction)onAssignBtn:(id)sender {
-    
+    [self makeHttpRequest:@"contact_assignments.json" identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys: 
+      CurrentUser.userId, @"assign_to_id",
+      @"leader", @"type",                                                             
+      [self.personData objectForKey:@"id"], @"id", nil]];
 }
 
 - (IBAction)onRejoicableBtn:(id)sender {

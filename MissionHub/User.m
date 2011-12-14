@@ -14,6 +14,8 @@ static User *sharedUser = nil;
 @implementation User
 
 @synthesize name;
+@synthesize userId;
+@synthesize orgId;
 @synthesize fbId;
 @synthesize data;
 @synthesize accessToken;
@@ -48,6 +50,7 @@ static User *sharedUser = nil;
    self.name = [data objectForKey:@"name"];
    self.fbId = [data objectForKey:@"fb_id"];
    self.organizations = [data objectForKey:@"organization_membership"];
+   self.userId = [[data objectForKey:@"id"] stringValue];
     
    NSLog(@"Current user name is: %@", self.name);
    NSLog(@"Organization: %@", self.organizations); 

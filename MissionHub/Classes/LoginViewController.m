@@ -72,10 +72,11 @@
 
 - (IBAction)onLoginBtn:(id)sender {
 
+    NSString *baseUrl = [[AppDelegate config] objectForKey:@"base_url"];
     NSString *scope = [[AppDelegate config] objectForKey:@"oauth_scope"];
-    NSString *redirectUrl = @"https://www.missionhub.com/oauth/done.json";
+    NSString *redirectUrl = [NSString stringWithFormat:@"%@/oauth/done.json", baseUrl];
     
-    NSString *authorizeUrl = [NSString stringWithFormat:@"https://www.missionhub.com/oauth/authorize?display=touch&simple=true&response_type=code&redirect_uri=%@&client_id=5&scope=%@", redirectUrl, scope];
+    NSString *authorizeUrl = [NSString stringWithFormat:@"%@/oauth/authorize?display=touch&simple=true&response_type=code&redirect_uri=%@&client_id=5&scope=%@", baseUrl, redirectUrl, scope];
 
     NSLog(@"%@", authorizeUrl);
     TTOpenURL(authorizeUrl); 

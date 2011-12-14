@@ -16,6 +16,8 @@
     NSString *accessToken;
     
     NSString *name;
+    NSString *userId;
+    NSString *orgId;
     NSString *fbId;
     
     NSDictionary *data;
@@ -26,7 +28,9 @@
 @property (nonatomic, retain) NSDictionary *data;
 
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *userId;
 @property (nonatomic, retain) NSString *fbId;
+@property (nonatomic, retain) NSString *orgId;
 @property (nonatomic, retain) NSString *accessToken;
 @property (nonatomic, retain) NSArray *organizations;
 

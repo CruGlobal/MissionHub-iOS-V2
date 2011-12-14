@@ -109,12 +109,13 @@
         
     } else {
     
-        NSString *baseUrl = [[AppDelegate config] objectForKey:@"oauth_url"];
+        NSString *baseUrl = [[AppDelegate config] objectForKey:@"base_url"];
+        NSString *oauthUrl = [[AppDelegate config] objectForKey:@"oauth_url"];        
         NSString *scope = [[AppDelegate config] objectForKey:@"oauth_scope"];
         NSString *clientSecret = [[AppDelegate config] objectForKey:@"oauth_client_secret"];    
-        NSString *redirectUrl = @"https://www.missionhub.com/oauth/done.json";
+        NSString *redirectUrl = [NSString stringWithFormat:@"%@/oauth/done.json", baseUrl];
         NSString *code = [response objectForKey: @"code"];
-        NSString *accessTokenUrl = [NSString stringWithFormat:@"%@/access_token?", baseUrl];
+        NSString *accessTokenUrl = [NSString stringWithFormat:@"%@/access_token?", oauthUrl];
         NSString *myRequestString = [NSString stringWithFormat:@"grant_type=authorization_code&redirect_uri=%@&client_id=5&scope=%@&client_secret=%@&code=%@", redirectUrl, scope, clientSecret, code];
         
         NSData *myRequestData = [ NSData dataWithBytes: [ myRequestString UTF8String ] length: [ myRequestString length ] ];

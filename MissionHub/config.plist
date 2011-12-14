@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>base_url</key>
-	<string>https://www.missionhub.com</string>
+	<string>http://local.missionhub.com</string>
 	<key>oauth_url</key>
-	<string>https://www.missionhub.com/oauth</string>
+	<string>http://local.missionhub.com/oauth</string>
 	<key>oauth_client_id</key>
 	<string>5</string>
 	<key>oauth_client_secret</key>
@@ -13,7 +13,7 @@
 	<key>oauth_scope</key>
 	<string>userinfo,contacts,contact_assignment,followup_comments,roles</string>
 	<key>api_url</key>
-	<string>https://www.missionhub.com/api/v2</string>
+	<string>http://local.missionhub.com/api/v2</string>
 	<key>cache</key>
 	<dict>
 		<key>disable</key>
