@@ -25,6 +25,7 @@
 @synthesize segmentedControl;
 @synthesize placeHolderImageView;
 @synthesize commentTextView;
+@synthesize statusBtn;
 //@synthesize assignBtn;
 
 
@@ -286,8 +287,16 @@
 }
 
 - (IBAction)onStatusBtn:(id)sender {
-    
+    UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil 
+                                                   otherButtonTitles:@"Uncontacted", @"Attempted Contact", @"Contacted", @"Completed", @"Do Not Contact", nil];
+    [statusSheet showInView:self.view];
+    [statusSheet release];
 }
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [statusBtn setTitle: [actionSheet buttonTitleAtIndex:buttonIndex] forState:UIControlStateNormal];
+}
+
 
 - (IBAction)onSaveBtn:(id)sender {
     

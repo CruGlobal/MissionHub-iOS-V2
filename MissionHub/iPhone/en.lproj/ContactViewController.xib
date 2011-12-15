@@ -193,7 +193,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{113, 83}, {177, 30}}</string>
 										<reference key="NSSuperview" ref="676192107"/>
-										<reference key="NSNextKeyView"/>
+										<reference key="NSNextKeyView" ref="726398428"/>
 										<string key="NSReuseIdentifierKey">_NS:222</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -282,11 +282,12 @@
 											<string key="NSResourceName">rejoicable_icon.png</string>
 										</object>
 									</object>
-									<object class="IBUITextView" id="706417022">
+									<object class="IBUITextView" id="726398428">
 										<reference key="NSNextResponder" ref="676192107"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{15, 121}, {296, 37}}</string>
 										<reference key="NSSuperview" ref="676192107"/>
+										<reference key="NSNextKeyView" ref="398786740"/>
 										<string key="NSReuseIdentifierKey">_NS:613</string>
 										<object class="NSColor" key="IBUIBackgroundColor">
 											<int key="NSColorSpace">1</int>
@@ -587,7 +588,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="706417022"/>
+						<reference key="source" ref="726398428"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">49</int>
@@ -596,9 +597,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">commentTextView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="706417022"/>
+						<reference key="destination" ref="726398428"/>
 					</object>
 					<int key="connectionID">50</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">statusBtn</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="517867415"/>
+					</object>
+					<int key="connectionID">51</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -657,7 +666,7 @@
 							<reference ref="335173049"/>
 							<reference ref="519637269"/>
 							<reference ref="870506119"/>
-							<reference ref="706417022"/>
+							<reference ref="726398428"/>
 						</object>
 						<reference key="parent" ref="171890046"/>
 					</object>
@@ -736,7 +745,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">48</int>
-						<reference key="object" ref="706417022"/>
+						<reference key="object" ref="726398428"/>
 						<reference key="parent" ref="676192107"/>
 					</object>
 				</object>
@@ -808,7 +817,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">50</int>
+			<int key="maxID">51</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

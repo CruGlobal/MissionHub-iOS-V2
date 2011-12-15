@@ -12,7 +12,7 @@
 @class CommentCell;
 @class SimpleCell;
 
-@interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
+@interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 
 @property (nonatomic, retain) NSDictionary *personData;
@@ -33,7 +33,7 @@
 //@property (nonatomic, retain) IBOutlet UIButton *emailBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *assignBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *rejoicableBtn;
-//@property (nonatomic, retain) IBOutlet UIButton *statusBtn;
+@property (nonatomic, retain) IBOutlet UIButton *statusBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *saveBtn;
 //@property (nonatomic, retain) IBOutlet UITextField *commentTxt;
 
