@@ -26,6 +26,7 @@
 @property (nonatomic, assign) IBOutlet SimpleCell *simpleCell;
 @property (nonatomic, assign) IBOutlet CommentCell *commentCell;
 @property (nonatomic, assign) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, assign) IBOutlet UITextView *commentTextView;
 
 //@property (nonatomic, retain) IBOutlet UIButton *callBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *smsBtn;

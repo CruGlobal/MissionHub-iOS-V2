@@ -65,6 +65,7 @@
     
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
+    request.cachePolicy = TTURLRequestCachePolicyNone;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     [request send];
 }

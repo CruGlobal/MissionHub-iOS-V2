@@ -10,6 +10,7 @@
 #import "HJManagedImageV.h"
 #import "CommentCell.h"
 #import "SimpleCell.h"
+#import <extThree20JSON/SBJsonWriter.h>
 
 @implementation ContactViewController
 
@@ -23,6 +24,7 @@
 @synthesize commentCell;
 @synthesize segmentedControl;
 @synthesize placeHolderImageView;
+@synthesize commentTextView;
 //@synthesize assignBtn;
 
 
@@ -288,6 +290,23 @@
 }
 
 - (IBAction)onSaveBtn:(id)sender {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: 
+                        [NSDictionary dictionaryWithObjectsAndKeys: 
+                            CurrentUser.orgId, @"organization_id",
+                            CurrentUser.userId, @"commenter_id",
+                            [self.personData objectForKey:@"id"], @"contact_id", 
+                            commentTextView.text, @"comment", nil] , @"followup_comment", 
+                         [NSArray arrayWithObjects:@"spiritual_conversation", nil], @"rejoicables", nil];
+    
+    SBJsonWriter *jsonWriter = [SBJsonWriter new];
+    NSString *jsonString = [jsonWriter stringWithObject:params];
+    [self makeHttpRequest:@"followup_comments.json" identifier:@"post_followup_comments" postData: [NSDictionary dictionaryWithObjectsAndKeys: 
+                                                                                      jsonString, @"json",                                                                                               
+                                                                                      CurrentUser.userId, @"commenter_id",
+                                                                                      commentTextView.text, @"comment",                                                                                      
+                                                                                      [self.personData objectForKey:@"id"], @"contact_id", nil]];
+
     
 }
 

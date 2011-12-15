@@ -282,7 +282,7 @@
 											<string key="NSResourceName">rejoicable_icon.png</string>
 										</object>
 									</object>
-									<object class="IBUITextView" id="803241548">
+									<object class="IBUITextView" id="706417022">
 										<reference key="NSNextResponder" ref="676192107"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{15, 121}, {296, 37}}</string>
@@ -587,10 +587,18 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="803241548"/>
+						<reference key="source" ref="706417022"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">49</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">commentTextView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="706417022"/>
+					</object>
+					<int key="connectionID">50</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -649,7 +657,7 @@
 							<reference ref="335173049"/>
 							<reference ref="519637269"/>
 							<reference ref="870506119"/>
-							<reference ref="803241548"/>
+							<reference ref="706417022"/>
 						</object>
 						<reference key="parent" ref="171890046"/>
 					</object>
@@ -728,7 +736,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">48</int>
-						<reference key="object" ref="803241548"/>
+						<reference key="object" ref="706417022"/>
 						<reference key="parent" ref="676192107"/>
 					</object>
 				</object>
@@ -800,7 +808,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">49</int>
+			<int key="maxID">50</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
