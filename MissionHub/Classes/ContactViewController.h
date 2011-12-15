@@ -19,6 +19,8 @@
 @property (nonatomic, retain) NSMutableArray *commentsArray;
 @property (nonatomic, retain) NSMutableArray *infoArray;
 @property (nonatomic, retain) NSMutableArray *surveyArray;
+@property (nonatomic, retain) NSMutableArray *rejoicablesArray;
+@property (nonatomic, retain) NSString *statusSelected;
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl;
 @property (nonatomic, retain) IBOutlet UIImageView *placeHolderImageView;
@@ -44,9 +46,10 @@
 - (IBAction)onSmsBtn:(id)sender;
 - (IBAction)onEmailBtn:(id)sender;
 - (IBAction)onAssignBtn:(id)sender;
-- (IBAction)onRejoicableBtn:(id)sender;
+- (IBAction)onShowRejoicablesBtn:(id)sender;
 - (IBAction)onStatusBtn:(id)sender;
 - (IBAction)onSaveBtn:(id)sender;
 - (IBAction)onSegmentChange:(id)sender;
+- (IBAction)onRejoicableBtn:(id)sender;
 
 @end

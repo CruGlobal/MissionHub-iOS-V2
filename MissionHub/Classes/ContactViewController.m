@@ -27,6 +27,8 @@
 @synthesize commentTextView;
 @synthesize statusBtn;
 @synthesize rejoicablesView;
+@synthesize rejoicablesArray;
+@synthesize statusSelected;
 //@synthesize assignBtn;
 
 
@@ -64,6 +66,7 @@
     commentsArray = [[NSMutableArray alloc] initWithCapacity:10];
     infoArray = [[NSMutableArray alloc] initWithCapacity:10];
     surveyArray = [[NSMutableArray alloc] initWithCapacity:10];    
+    rejoicablesArray = [[NSMutableArray alloc] initWithCapacity:3];    
 
     // Do any additional setup after loading the view from its nib.
     [nameLbl setText:[self.personData objectForKey:@"name"]];
@@ -287,7 +290,7 @@
     }
 }
 
-- (IBAction)onRejoicableBtn:(id)sender {
+- (IBAction)onShowRejoicablesBtn:(id)sender {
      CGRect frame = self.rejoicablesView.frame;
     
     [UIView beginAnimations:nil context:NULL];
@@ -308,6 +311,32 @@
     [UIView commitAnimations];
 }
 
+- (IBAction)onRejoicableBtn:(id)sender {
+    UIButton *btn = (UIButton*)sender;
+    btn.selected = !btn.selected;
+    
+    if (btn.tag == 1) {
+        if (btn.selected) {
+            [rejoicablesArray addObject:@"spiritual_conversation"];   
+        } else {
+            [rejoicablesArray removeObject:@"spiritual_conversation"];
+        }
+    } else if (btn.tag == 2) {
+        if (btn.selected) {
+            [rejoicablesArray addObject:@"prayed_to_receive"];        
+        } else {
+            [rejoicablesArray removeObject:@"prayed_to_receive"];        
+        }
+    } else if (btn.tag == 3) {
+        if (btn.selected) {
+            [rejoicablesArray addObject:@"gospel_presentation"];                
+        } else {
+            [rejoicablesArray removeObject:@"gospel_presentation"];                
+        }
+    }
+
+}
+
 - (IBAction)onStatusBtn:(id)sender {
     UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil 
                                                    otherButtonTitles:@"Uncontacted", @"Attempted Contact", @"Contacted", @"Completed", @"Do Not Contact", nil];
@@ -316,7 +345,20 @@
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [statusBtn setTitle: [actionSheet buttonTitleAtIndex:buttonIndex] forState:UIControlStateNormal];
+    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+
+    [statusBtn setTitle: title forState:UIControlStateNormal];
+    if ([title isEqualToString:@"Attempted Contact"]) {
+        statusSelected = @"attmpte_contact";
+    } else if ([title isEqualToString:@"Contacted"]) {
+        statusSelected = @"contacted";        
+    } else if ([title isEqualToString:@"Completed"]) {
+        statusSelected = @"completed";
+    } else if ([title isEqualToString:@"Uncontacted"]) {
+        statusSelected = @"uncontacted";
+    } else if ([title isEqualToString:@"Do Not Contact"]) {
+        statusSelected = @"do_not_contact";        
+    }
 }
 
 
@@ -326,9 +368,10 @@
                         [NSDictionary dictionaryWithObjectsAndKeys: 
                             CurrentUser.orgId, @"organization_id",
                             CurrentUser.userId, @"commenter_id",
+                            self.statusSelected, @"status",                         
                             [self.personData objectForKey:@"id"], @"contact_id", 
                             commentTextView.text, @"comment", nil] , @"followup_comment", 
-                         [NSArray arrayWithObjects:@"spiritual_conversation", nil], @"rejoicables", nil];
+                         [NSArray arrayWithArray:rejoicablesArray], @"rejoicables", nil];
     
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString *jsonString = [jsonWriter stringWithObject:params];
