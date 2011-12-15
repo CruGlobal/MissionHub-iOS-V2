@@ -26,6 +26,7 @@
 @synthesize placeHolderImageView;
 @synthesize commentTextView;
 @synthesize statusBtn;
+@synthesize rejoicablesView;
 //@synthesize assignBtn;
 
 
@@ -79,6 +80,10 @@
    
     [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];
     [self makeHttpRequest:[NSString stringWithFormat:@"contacts/%@.json", [self.personData objectForKey:@"id"]] identifier:@"contacts"];     
+    
+     CGRect frame = self.rejoicablesView.frame;
+    frame.origin.x = -400.0f;
+    self.rejoicablesView.frame = frame;
 }
 
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
@@ -283,7 +288,24 @@
 }
 
 - (IBAction)onRejoicableBtn:(id)sender {
+     CGRect frame = self.rejoicablesView.frame;
     
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.75];
+    
+    if (frame.origin.x == 0) {
+        frame.origin.x = -480.0f;        
+    } else {
+        frame.origin.x = 0;
+    }
+
+    self.rejoicablesView.frame = frame;
+    
+    // To autorelease the Msg, define stop selector
+    //[UIView setAnimationDelegate:self];
+    //[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+    
+    [UIView commitAnimations];
 }
 
 - (IBAction)onStatusBtn:(id)sender {
