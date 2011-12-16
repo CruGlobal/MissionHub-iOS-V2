@@ -48,19 +48,35 @@
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     [request send];
+
+    
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-    TTURLJSONResponse* response = request.response;
-    NSLog(@"requestDidFinishLoad:%@", response.rootObject);   
-    
-   NSDictionary *result = response.rootObject;
-   NSArray *contacts = [result objectForKey:@"contacts"];
+    [super requestDidFinishLoad: request];
+//    TTURLJSONResponse* response = request.response;
+//    NSLog(@"requestDidFinishLoad:%@", response.rootObject);   
+//    
+//   NSDictionary *result = response.rootObject;
+//   NSArray *contacts = [result objectForKey:@"contacts"];
 	
-	for (NSDictionary *tempDict in contacts) {
+//	for (NSDictionary *tempDict in contacts) {
+//        NSDictionary *person = [tempDict objectForKey:@"person"];
+//        [dataArray addObject: person];
+//    }
+}
+
+- (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
+    
+    NSDictionary *result = (NSDictionary *)aResult;
+    NSArray *contacts = [result objectForKey:@"contacts"];
+    
+    for (NSDictionary *tempDict in contacts) {
         NSDictionary *person = [tempDict objectForKey:@"person"];
         [dataArray addObject: person];
     }
+    
+    [tableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -130,6 +146,20 @@
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	return 60.0f;
+}
+
+- (IBAction)onSegmentChange:(id)sender {
+    [dataArray removeAllObjects];
+    
+    UISegmentedControl *segmentedControl = sender;
+    if (segmentedControl.selectedSegmentIndex == 1) {
+        [self makeHttpRequest:@"contacts.json" params: @"assigned_to_id=none" identifier:@"contacts"];
+    } else if (segmentedControl.selectedSegmentIndex == 2) {
+        [self makeHttpRequest:@"contacts.json" params: @"filters[status]=completed" identifier:@"contacts"];
+    } else {
+        [self makeHttpRequest:@"contacts.json" params: [NSString stringWithFormat:@"assigned_to_id=none", CurrentUser.userId] identifier:@"contacts"];
+    }
+    
 }
 
 @end

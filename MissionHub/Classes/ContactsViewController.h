@@ -6,15 +6,16 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
 @class ContactCell;
 
-@interface ContactsViewController : UIViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ContactsViewController : BaseViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) NSMutableArray *dataArray;
 
 - (IBAction)onBackBtn:(id)sender;
+- (IBAction)onSegmentChange:(id)sender;
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet ContactCell *contactCell;
