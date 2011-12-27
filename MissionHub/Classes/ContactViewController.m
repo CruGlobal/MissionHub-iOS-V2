@@ -29,7 +29,7 @@
 @synthesize rejoicablesView;
 @synthesize rejoicablesArray;
 @synthesize statusSelected;
-//@synthesize assignBtn;
+@synthesize assignBtn;
 
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
@@ -84,9 +84,16 @@
     [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];
     [self makeHttpRequest:[NSString stringWithFormat:@"contacts/%@.json", [self.personData objectForKey:@"id"]] identifier:@"contacts"];     
     
-     CGRect frame = self.rejoicablesView.frame;
+    // tuck away the rejoicable selection
+    CGRect frame = self.rejoicablesView.frame;
     frame.origin.x = -400.0f;
     self.rejoicablesView.frame = frame;
+    
+    NSDictionary *assignment = [self.personData objectForKey:@"assignment"];
+    if ([[assignment objectForKey:@"person_assigned_to"] count] == 0) {
+        [assignBtn setTitle: @"Assign" forState:UIControlStateNormal];
+    }
+
 }
 
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
