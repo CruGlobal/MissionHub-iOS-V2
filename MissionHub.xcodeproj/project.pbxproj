@@ -17,6 +17,7 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		632C8E4D14A8F1F9008B1FA1 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 632C8E4C14A8F1F9008B1FA1 /* Entitlements.plist */; };
 		636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793BF149698FB00B52C74 /* SimpleCell.xib */; };
 		636793C214969B8600B52C74 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793C114969B8600B52C74 /* CommentCell.xib */; };
 		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; };
@@ -353,6 +354,7 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		632C8E4C14A8F1F9008B1FA1 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		636793BF149698FB00B52C74 /* SimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCell.xib; sourceTree = "<group>"; };
 		636793C114969B8600B52C74 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		636793C41496A60100B52C74 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
@@ -697,6 +699,7 @@
 		63B61B02148A58F400CBE54B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				632C8E4C14A8F1F9008B1FA1 /* Entitlements.plist */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				63B61B03148A58F400CBE54B /* MissionHub-Info.plist */,
 				63B61B04148A58F400CBE54B /* InfoPlist.strings */,
@@ -1292,6 +1295,7 @@
 				636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */,
 				636793C214969B8600B52C74 /* CommentCell.xib in Resources */,
 				639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */,
+				632C8E4D14A8F1F9008B1FA1 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1485,6 +1489,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6328333D14A8ED2100C82449 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
+		6328333E14A8ED2100C82449 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					"TTMAXLOGLEVEL=TTLOGLEVEL_INFO",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
+		6328333F14A8ED2100C82449 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MissionHub.app/MissionHub";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
+				INFOPLIST_FILE = "MissionHubTests/MissionHubTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Ad Hoc";
+		};
 		63B61B32148A58F500CBE54B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1612,6 +1676,7 @@
 			buildConfigurations = (
 				63B61B32148A58F500CBE54B /* Debug */,
 				63B61B33148A58F500CBE54B /* Release */,
+				6328333D14A8ED2100C82449 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1621,6 +1686,7 @@
 			buildConfigurations = (
 				63B61B35148A58F500CBE54B /* Debug */,
 				63B61B36148A58F500CBE54B /* Release */,
+				6328333E14A8ED2100C82449 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1630,6 +1696,7 @@
 			buildConfigurations = (
 				63B61B38148A58F500CBE54B /* Debug */,
 				63B61B39148A58F500CBE54B /* Release */,
+				6328333F14A8ED2100C82449 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
