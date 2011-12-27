@@ -163,7 +163,7 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<object class="IBUIImageView" id="557013414">
+							<object class="IBUIImageView" id="307026292">
 								<reference key="NSNextResponder" ref="654026448"/>
 								<int key="NSvFlags">-2147483356</int>
 								<string key="NSFrame">{{242, 40}, {16, 16}}</string>
@@ -178,7 +178,7 @@
 									<string key="NSResourceName">icon-g-present.png</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="276972963">
+							<object class="IBUIImageView" id="461999676">
 								<reference key="NSNextResponder" ref="654026448"/>
 								<int key="NSvFlags">-2147483356</int>
 								<string key="NSFrame">{{288, 40}, {16, 16}}</string>
@@ -193,7 +193,7 @@
 									<string key="NSResourceName">icon-s-convo.png</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="363784910">
+							<object class="IBUIImageView" id="81319527">
 								<reference key="NSNextResponder" ref="654026448"/>
 								<int key="NSvFlags">-2147483356</int>
 								<string key="NSFrame">{{266, 40}, {16, 16}}</string>
@@ -278,13 +278,13 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="359582446"/>
-							<reference ref="742986296"/>
 							<reference ref="454312484"/>
 							<reference ref="139483413"/>
 							<reference ref="916210807"/>
-							<reference ref="363784910"/>
-							<reference ref="276972963"/>
-							<reference ref="557013414"/>
+							<reference ref="81319527"/>
+							<reference ref="461999676"/>
+							<reference ref="307026292"/>
+							<reference ref="742986296"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -315,17 +315,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
-						<reference key="object" ref="557013414"/>
+						<reference key="object" ref="307026292"/>
 						<reference key="parent" ref="1002411207"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
-						<reference key="object" ref="276972963"/>
+						<reference key="object" ref="461999676"/>
 						<reference key="parent" ref="1002411207"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
-						<reference key="object" ref="363784910"/>
+						<reference key="object" ref="81319527"/>
 						<reference key="parent" ref="1002411207"/>
 					</object>
 				</object>
