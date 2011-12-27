@@ -132,7 +132,6 @@
 								<string key="NSFrame">{{67, 34}, {167, 22}}</string>
 								<reference key="NSSuperview" ref="654026448"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:311</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -163,6 +162,51 @@
 								<int key="IBUITag">1</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+							<object class="IBUIImageView" id="557013414">
+								<reference key="NSNextResponder" ref="654026448"/>
+								<int key="NSvFlags">-2147483356</int>
+								<string key="NSFrame">{{242, 40}, {16, 16}}</string>
+								<reference key="NSSuperview" ref="654026448"/>
+								<reference key="NSWindow"/>
+								<string key="NSReuseIdentifierKey">_NS:541</string>
+								<int key="IBUITag">6</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">icon-g-present.png</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="276972963">
+								<reference key="NSNextResponder" ref="654026448"/>
+								<int key="NSvFlags">-2147483356</int>
+								<string key="NSFrame">{{288, 40}, {16, 16}}</string>
+								<reference key="NSSuperview" ref="654026448"/>
+								<reference key="NSWindow"/>
+								<string key="NSReuseIdentifierKey">_NS:541</string>
+								<int key="IBUITag">8</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">icon-s-convo.png</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="363784910">
+								<reference key="NSNextResponder" ref="654026448"/>
+								<int key="NSvFlags">-2147483356</int>
+								<string key="NSFrame">{{266, 40}, {16, 16}}</string>
+								<reference key="NSSuperview" ref="654026448"/>
+								<reference key="NSWindow"/>
+								<string key="NSReuseIdentifierKey">_NS:541</string>
+								<int key="IBUITag">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">icon-r-christ.png</string>
+								</object>
 							</object>
 						</object>
 						<string key="NSFrameSize">{324, 61}</string>
@@ -238,6 +282,9 @@
 							<reference ref="454312484"/>
 							<reference ref="139483413"/>
 							<reference ref="916210807"/>
+							<reference ref="363784910"/>
+							<reference ref="276972963"/>
+							<reference ref="557013414"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -266,6 +313,21 @@
 						<reference key="object" ref="742986296"/>
 						<reference key="parent" ref="1002411207"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">9</int>
+						<reference key="object" ref="557013414"/>
+						<reference key="parent" ref="1002411207"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">10</int>
+						<reference key="object" ref="276972963"/>
+						<reference key="parent" ref="1002411207"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">11</int>
+						<reference key="object" ref="363784910"/>
+						<reference key="parent" ref="1002411207"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -276,6 +338,8 @@
 					<string>-1.IBPluginDependency</string>
 					<string>-2.CustomClassName</string>
 					<string>-2.IBPluginDependency</string>
+					<string>10.IBPluginDependency</string>
+					<string>11.IBPluginDependency</string>
 					<string>2.CustomClassName</string>
 					<string>2.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
@@ -283,6 +347,7 @@
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
+					<string>9.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -290,7 +355,10 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>CommentCell</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -311,11 +379,19 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">8</int>
+			<int key="maxID">11</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">BaseViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BaseViewController.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">CommentCell</string>
 					<string key="superclassName">UITableViewCell</string>
@@ -326,7 +402,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">ContactViewController</string>
-					<string key="superclassName">UIViewController</string>
+					<string key="superclassName">BaseViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
@@ -337,11 +413,15 @@
 							<string>onEmailBtn:</string>
 							<string>onRejoicableBtn:</string>
 							<string>onSaveBtn:</string>
+							<string>onSegmentChange:</string>
+							<string>onShowRejoicablesBtn:</string>
 							<string>onSmsBtn:</string>
 							<string>onStatusBtn:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -362,6 +442,8 @@
 							<string>onEmailBtn:</string>
 							<string>onRejoicableBtn:</string>
 							<string>onSaveBtn:</string>
+							<string>onSegmentChange:</string>
+							<string>onShowRejoicablesBtn:</string>
 							<string>onSmsBtn:</string>
 							<string>onStatusBtn:</string>
 						</object>
@@ -392,6 +474,14 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">onSegmentChange:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">onShowRejoicablesBtn:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">onSmsBtn:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -405,18 +495,28 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>assignBtn</string>
 							<string>commentCell</string>
+							<string>commentTextView</string>
 							<string>nameLbl</string>
+							<string>placeHolderImageView</string>
+							<string>rejoicablesView</string>
 							<string>segmentedControl</string>
 							<string>simpleCell</string>
+							<string>statusBtn</string>
 							<string>tableView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UITableViewCell</string>
+							<string>UIButton</string>
+							<string>CommentCell</string>
+							<string>UITextView</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
+							<string>UIView</string>
 							<string>UISegmentedControl</string>
-							<string>UITableViewCell</string>
+							<string>SimpleCell</string>
+							<string>UIButton</string>
 							<string>UITableView</string>
 						</object>
 					</object>
@@ -424,21 +524,42 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>assignBtn</string>
 							<string>commentCell</string>
+							<string>commentTextView</string>
 							<string>nameLbl</string>
+							<string>placeHolderImageView</string>
+							<string>rejoicablesView</string>
 							<string>segmentedControl</string>
 							<string>simpleCell</string>
+							<string>statusBtn</string>
 							<string>tableView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
+								<string key="name">assignBtn</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">commentCell</string>
-								<string key="candidateClassName">UITableViewCell</string>
+								<string key="candidateClassName">CommentCell</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">commentTextView</string>
+								<string key="candidateClassName">UITextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">nameLbl</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">placeHolderImageView</string>
+								<string key="candidateClassName">UIImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">rejoicablesView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">segmentedControl</string>
@@ -446,7 +567,11 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">simpleCell</string>
-								<string key="candidateClassName">UITableViewCell</string>
+								<string key="candidateClassName">SimpleCell</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">statusBtn</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">tableView</string>
@@ -459,6 +584,14 @@
 						<string key="minorKey">./Classes/ContactViewController.h</string>
 					</object>
 				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SimpleCell</string>
+					<string key="superclassName">UITableViewCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/SimpleCell.h</string>
+					</object>
+				</object>
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
@@ -469,6 +602,21 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>icon-g-present.png</string>
+				<string>icon-r-christ.png</string>
+				<string>icon-s-convo.png</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{16, 16}</string>
+				<string>{16, 16}</string>
+				<string>{16, 16}</string>
+			</object>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">534</string>
 	</data>
 </archive>

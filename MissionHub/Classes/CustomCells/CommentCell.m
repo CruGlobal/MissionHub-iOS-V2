@@ -27,7 +27,9 @@
 }
 
 - (void)setData:(NSDictionary *)data {
-    NSDictionary *commenter = [data objectForKey:@"commenter"];    
+    NSDictionary *comment = [data objectForKey:@"comment"];
+    NSDictionary *commenter = [comment objectForKey:@"commenter"];    
+    NSDictionary *rejoicables = [data objectForKey:@"rejoicables"];     
 
     UILabel *label;
     
@@ -35,13 +37,26 @@
     label.text = [NSString stringWithFormat:@"%@", [commenter objectForKey:@"name"]];    
     
     label = (UILabel *)[self viewWithTag:3];
-    label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"comment"]];
+    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
     
     label = (UILabel *)[self viewWithTag:4];
-    label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"created_at_words"]];
+    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"created_at_words"]];
     
     label = (UILabel *)[self viewWithTag:5];
-    label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"status"]];
+    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"status"]];
+    
+    for (NSDictionary *rejoicable in rejoicables) {
+        if ([[rejoicable objectForKey:@"what"] isEqualToString:@"gospel_presentation"]) {
+            [(UIImageView *)[self viewWithTag:8] setHidden:NO];             
+        }
+        if ([[rejoicable objectForKey:@"what"] isEqualToString:@"prayed_to_receive"]) {
+            [(UIImageView *)[self viewWithTag:7] setHidden:NO];             
+        }
+        if ([[rejoicable objectForKey:@"what"] isEqualToString:@"spiritual_conversation"]) {
+            [(UIImageView *)[self viewWithTag:6] setHidden:NO]; 
+            
+        }
+    }
 }
 
 @end

@@ -234,9 +234,7 @@
         }
         
         NSDictionary *tempDict = [commentsArray objectAtIndex: indexPath.row];
-        NSDictionary *comment = [tempDict objectForKey:@"comment"];
-        
-        [(CommentCell*)cell setData: comment];
+        [(CommentCell*)cell setData: tempDict];
     }
         
     if (segmentedControl.selectedSegmentIndex == 1 || segmentedControl.selectedSegmentIndex == 2) {
