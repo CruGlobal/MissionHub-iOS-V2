@@ -43,14 +43,20 @@
     // Do any additional setup after loading the view from its nib.
 
     // Set user's image
-    NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", [CurrentUser.data objectForKey:@"picture"]]; 
-    NSURL * imageURL = [NSURL URLWithString: fbUrl];
+    NSString *picture = [CurrentUser.data objectForKey:@"picture"];
     
-    HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];;
-    [self.view addSubview: mi];
-    mi.url = imageURL;
-    
-    [AppDelegate.imageManager manage:mi];
+    if ([picture length] != 0) {
+        NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", picture]; 
+        NSURL * imageURL = [NSURL URLWithString: fbUrl];
+
+        HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];;
+        [self.view addSubview: mi];
+        mi.url = imageURL;
+        
+        [AppDelegate.imageManager manage:mi];
+        
+        [placeHolderImageView setHidden: YES];
+    }
     
     // set name & org
     [nameLabel setText: CurrentUser.name];
