@@ -105,6 +105,8 @@
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
     NSDictionary *result = aResult;    
     if ([aIdentifier isEqualToString:@"followup_comments"]) {
+        [commentsArray removeAllObjects];
+        
         NSArray *comments = [result objectForKey:@"followup_comments"];
         
         for (NSDictionary *tempDict in comments) {
@@ -174,6 +176,8 @@
             }
         }
 
+    } else if ([aIdentifier isEqualToString:@"onSaveBtn"]) {
+        [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];   
     }
     [tableView reloadData];
 }
@@ -388,13 +392,23 @@
     
     SBJsonWriter *jsonWriter = [SBJsonWriter new];
     NSString *jsonString = [jsonWriter stringWithObject:params];
-    [self makeHttpRequest:@"followup_comments.json" identifier:@"post_followup_comments" postData: [NSDictionary dictionaryWithObjectsAndKeys: 
+    [self makeHttpRequest:@"followup_comments.json" identifier:@"onSaveBtn" postData: [NSDictionary dictionaryWithObjectsAndKeys: 
                                                                                       jsonString, @"json",                                                                                               
                                                                                       CurrentUser.userId, @"commenter_id",
                                                                                       commentTextView.text, @"comment",                                                                                      
                                                                                       [self.personData objectForKey:@"id"], @"contact_id", nil]];
 
+    [commentTextView resignFirstResponder];
+    [commentTextView setText:@""];
     
+    // unselect all rejoicable buttons
+    for(UIView *subview in [rejoicablesView subviews]) {
+       if([subview isKindOfClass:[UIButton class]]) {
+           UIButton *btn = (UIButton*)subview;
+           btn.selected = NO;    
+       }
+    }
+    [rejoicablesArray removeAllObjects];
 }
 
 - (IBAction)onSegmentChange:(id)sender {    
