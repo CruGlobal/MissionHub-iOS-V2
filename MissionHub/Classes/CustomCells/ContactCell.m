@@ -35,14 +35,26 @@
     label = (UILabel *)[self viewWithTag:2];
     label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"name"]];    
 
-    NSString *fbUrl = [NSString stringWithFormat:@"%@", [data objectForKey:@"picture"]]; 
+    NSString *fbUrl = [data objectForKey:@"picture"]; 
     NSURL * imageURL = [NSURL URLWithString: fbUrl];
     
-    HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];;
-    [self addSubview: mi];
-    mi.url = imageURL;
+
+    HJManagedImageV* mi = nil;
+    if ([self viewWithTag:999] == nil) {
+       NSLog(@"loading image for %@ with url: %@", label.text, [imageURL absoluteString]);
+       mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];;
+       mi.tag = 999;
+       [self addSubview: mi];
+    } else {
+       mi = (HJManagedImageV*) [self viewWithTag:999]; 
+       [mi clear];
+    }
     
-    [AppDelegate.imageManager manage:mi];
+    if ([fbUrl length] != 0) {
+        mi.url = imageURL;    
+        [AppDelegate.imageManager manage:mi];    
+    }
+
 }
 
 

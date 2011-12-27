@@ -72,14 +72,20 @@
     [nameLbl setText:[self.personData objectForKey:@"name"]];
 
     // Set user's image
-    NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", [self.personData objectForKey:@"picture"]]; 
-    NSURL * imageURL = [NSURL URLWithString: fbUrl];
-    
-    HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];
-    [tableView addSubview: mi];
-    mi.url = imageURL;
-    
-    [AppDelegate.imageManager manage:mi];
+    NSString *picture = [self.personData objectForKey:@"picture"];
+    if ([picture length] != 0) {
+        NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", picture]; 
+        NSURL * imageURL = [NSURL URLWithString: fbUrl];
+        
+        // Do we need to check if this has been allocated before?
+        HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];
+        [tableView addSubview: mi];
+        mi.url = imageURL;
+        
+        [AppDelegate.imageManager manage:mi];
+        
+        [placeHolderImageView setHidden: YES];
+    }
    
     [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];
     [self makeHttpRequest:[NSString stringWithFormat:@"contacts/%@.json", [self.personData objectForKey:@"id"]] identifier:@"contacts"];     
@@ -356,7 +362,7 @@
 
     [statusBtn setTitle: title forState:UIControlStateNormal];
     if ([title isEqualToString:@"Attempted Contact"]) {
-        statusSelected = @"attmpte_contact";
+        statusSelected = @"attempted_contact";
     } else if ([title isEqualToString:@"Contacted"]) {
         statusSelected = @"contacted";        
     } else if ([title isEqualToString:@"Completed"]) {

@@ -45,20 +45,6 @@
     [self makeHttpRequest:@"contacts.json" params: [NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId] identifier:@"contacts"];    
 }
 
-- (void)requestDidFinishLoad:(TTURLRequest*)request {
-    [super requestDidFinishLoad: request];
-//    TTURLJSONResponse* response = request.response;
-//    NSLog(@"requestDidFinishLoad:%@", response.rootObject);   
-//    
-//   NSDictionary *result = response.rootObject;
-//   NSArray *contacts = [result objectForKey:@"contacts"];
-	
-//	for (NSDictionary *tempDict in contacts) {
-//        NSDictionary *person = [tempDict objectForKey:@"person"];
-//        [dataArray addObject: person];
-//    }
-}
-
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
     
     NSDictionary *result = (NSDictionary *)aResult;
