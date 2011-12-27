@@ -97,7 +97,9 @@
         
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
         NSString *requestUrl = [NSString stringWithFormat:@"%@/people/me.json?access_token=%@", baseUrl, CurrentUser.accessToken];
+
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+        request.cachePolicy = TTURLRequestCachePolicyNone;        
         request.response = [[[TTURLJSONResponse alloc] init] autorelease];
         [request send];
     }

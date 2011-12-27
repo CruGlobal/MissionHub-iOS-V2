@@ -41,15 +41,8 @@
     // Do any additional setup after loading the view from its nib.
     
    	dataArray = [[NSMutableArray alloc] initWithCapacity:50];
-    
-    NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-    NSString *requestUrl = [NSString stringWithFormat:@"%@/contacts.json?access_token=%@", baseUrl, CurrentUser.accessToken];
-    NSLog(@"request:%@", requestUrl);    
-    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
-    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
-    [request send];
 
-    
+    [self makeHttpRequest:@"contacts.json" params: [NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId] identifier:@"contacts"];    
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
@@ -153,11 +146,11 @@
     
     UISegmentedControl *segmentedControl = sender;
     if (segmentedControl.selectedSegmentIndex == 1) {
-        [self makeHttpRequest:@"contacts.json" params: @"assigned_to_id=none" identifier:@"contacts"];
+        [self makeHttpRequest:@"contacts.json" params: @"filters[status]=completed" identifier:@"contacts"];        
     } else if (segmentedControl.selectedSegmentIndex == 2) {
-        [self makeHttpRequest:@"contacts.json" params: @"filters[status]=completed" identifier:@"contacts"];
+        [self makeHttpRequest:@"contacts.json" params: @"filters[assigned_to]=none" identifier:@"contacts"];
     } else {
-        [self makeHttpRequest:@"contacts.json" params: [NSString stringWithFormat:@"assigned_to_id=none", CurrentUser.userId] identifier:@"contacts"];
+        [self makeHttpRequest:@"contacts.json" params: [NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId] identifier:@"contacts"];
     }
     
 }
