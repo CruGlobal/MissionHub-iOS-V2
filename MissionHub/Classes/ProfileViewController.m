@@ -17,6 +17,8 @@
 @synthesize nameLabel;
 @synthesize orgLabel;
 @synthesize placeHolderImageView;
+@synthesize pickerView;
+@synthesize orgsArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,8 +63,11 @@
     // set name & org
     [nameLabel setText: CurrentUser.name];
     [orgLabel setText: [[CurrentUser.organizations objectAtIndex:0] objectForKey:@"name"]];
-
-    //profileImageView.image = image;
+    
+    orgsArray = [[NSMutableArray alloc] init];
+    for (NSDictionary *organization in CurrentUser.organizations) {
+        [orgsArray addObject: [organization objectForKey:@"name"]]; 
+    }
 }
 
 - (void)viewDidUnload
@@ -78,8 +83,43 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+//PickerViewController.m
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+    
+    return 1;
+}
+
+//PickerViewController.m
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+    
+    return [orgsArray count];
+}
+
+//PickerViewController.m
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    NSLog(@"Selected Color: %@. Index of selected color: %i", [orgsArray objectAtIndex:row], row);
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [orgsArray objectAtIndex:row];
+}
+
+- (IBAction)onChangeOrgBtn:(id)sender {
+    
+    UIButton *btn = (UIButton *)sender;
+    if ([btn.currentTitle isEqualToString:@"Change Current Organization"]) {
+        [pickerView setHidden: NO];        
+        [btn setTitle:@"Click to Close" forState:UIControlStateNormal];
+    } else {
+        [pickerView setHidden: YES];        
+        [btn setTitle:@"Change Current Organization" forState:UIControlStateNormal];
+    }
+}
+
 - (IBAction)onLogoutBtn:(id)sender {    
     [CurrentUser logout];
+    
 }
 
 
