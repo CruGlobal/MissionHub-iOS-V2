@@ -1,0 +1,25 @@
+{
+	"grouped": true,
+	"title": "Create Contact",
+    "controllerName": "CreateContactQuickDialogDelegate",
+	"root": [
+             { "title":"Contact Information", "elements":[
+                                                     
+                                                     {  "type":"QEntryElement", "key":"firstName", "title":"First Name", "placeholder":"", "autocapitalizationType":"Words", "autocorrectionType":"No" },
+                                                     {  "type":"QEntryElement", "key":"lastName", "title":"Last Name", "placeholder":"", "autocapitalizationType":"Words", "autocorrectionType":"No" },
+                                                     {  "type":"QBooleanElement", "title":"Gender", "placeholder":"Words",  "autocapitalizationType":"Words" },
+                                                     {  "type":"QEntryElement", "title":"Email", "placeholder":"",  "keyboardType":"EmailAddress", "autocorrectionType":"No" },
+                                                     {  "type":"QEntryElement", "title":"Phone", "placeholder":"",  "keyboardType":"PhonePad" },
+                                                     {  "type":"QEntryElement", "title":"Address 1", "placeholder":"", "autocorrectionType":"No" },
+                                                     {  "type":"QEntryElement", "title":"Address 2", "placeholder":"", "autocorrectionType":"No"  },
+                                                     {  "type":"QEntryElement", "title":"City" , "placeholder":"", "autocorrectionType":"No"  },
+                                                     {  "type":"QEntryElement", "title":"Zip", "placeholder":"", "autocorrectionType":"No"  }
+                                                     ]
+             } ,
+          
+
+             { "elements":[{ "type":"QButtonElement", "id":"button", "title":"Create Contact", "controllerAction":"onCreateContactBtn:"}]
+             }
+             
+             ]
+}

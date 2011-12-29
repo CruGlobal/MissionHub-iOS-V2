@@ -7,6 +7,7 @@
 //
 
 #import "CreateContactViewController.h"
+#import "Contact.h"
 
 @implementation CreateContactViewController
 
@@ -44,28 +45,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.tableHeaderView = self.headerView;
-    self.tableView.tableFooterView = self.footerView;
-}
+    QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
+//    QSection *section = [[QSection alloc] init];
+//    QLabelElement *label = [[QLabelElement alloc] initWithTitle:@"Hello" Value:@"world!"];
+//    
+//    [root addSection:section];
+//    [section addElement:label];
+    
+    UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
+    [self presentModalViewController:navigation animated:YES];
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    // Return the number of sections.
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:
-//(NSInteger)section {
-//    // Return the number of rows in the section.
-//    return 10;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView
-//         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UITableViewCell *cell = (UITableViewCell *)[self.view viewWithTag: indexPath.row + 1];
-//    return cell;
-//}
-	
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,18 +81,25 @@
     UITextField* textField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 185, 30)];
     textField.placeholder = @"UITextField";
 
-    [firstNameCell addSubview: textField];
-    
+    [firstNameCell addSubview: textField];    
     
     firstNameCell.textLabel.backgroundColor = [UIColor whiteColor];
-                                         
-    self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-                       @"TTTableViewController",
-                       firstNameCell,
-                       [TTTableTextItem itemWithText:@"This demonstates a table"],
-                       [TTTableTextItem itemWithText:nibString],
-                       
-                       nil];
+
 }
 
+@end
+
+
+@implementation CreateContactQuickDialogDelegate 
+
+- (void)onCreateContactBtn:(QButtonElement *)buttonElement {
+    //[self loading:YES];
+    Contact *info = [[Contact alloc] init];
+    [self.root fetchValueIntoObject:info];
+    
+    [info create];
+    
+    NSLog(@"%@", info.firstName);
+    
+}
 @end

@@ -117,7 +117,7 @@
     [section addElement:label];
     
     //UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
-    [map from:@"mh://createContact" toViewController:[QuickDialogController controllerWithNavigationForRoot:root]];  
+    [map from:@"mh://createContact" toViewController:[CreateContactViewController class]];  
     
     return YES;
 }

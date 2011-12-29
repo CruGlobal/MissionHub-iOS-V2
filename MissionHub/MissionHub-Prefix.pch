@@ -13,4 +13,5 @@
     #import <Foundation/Foundation.h>
 #endif
 
+#import <Three20/Three20.h>
 #import <QuickDialog/QuickDialog.h>

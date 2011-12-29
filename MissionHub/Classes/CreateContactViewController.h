@@ -6,14 +6,18 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <Three20/Three20.h>
+#import "BaseViewController.h"
 
-@interface CreateContactViewController : TTTableViewController {
+@interface CreateContactViewController : BaseViewController {
     UIView* _headerView;
     UIView* _footerView;
 }
 
 @property (nonatomic, retain) IBOutlet UIView* headerView;
 @property (nonatomic, retain) IBOutlet UIView* footerView;
+
+@end
+
+@interface CreateContactQuickDialogDelegate : QuickDialogController 
 
 @end

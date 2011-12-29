@@ -52,6 +52,8 @@
 		63DD6AE0148EF5C90087313E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6ADE148EF5C90087313E /* MainViewController.xib */; };
 		63DD6AEE148FF8BE0087313E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6AEC148FF8BE0087313E /* ProfileViewController.m */; };
 		63DD6AF2148FF9200087313E /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6AF0148FF9200087313E /* ProfileViewController.xib */; };
+		63DE0A5614ACE0B500F50B8D /* createContact.json in Resources */ = {isa = PBXBuildFile; fileRef = 63DE0A5514ACE0B500F50B8D /* createContact.json */; };
+		63DE0A5914ACFE3100F50B8D /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE0A5814ACFE3100F50B8D /* Contact.m */; };
 		63DF22AC148D2E490039A964 /* 08-chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2253148D2E490039A964 /* 08-chat.png */; };
 		63DF22AD148D2E490039A964 /* 08-chat2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2254148D2E490039A964 /* 08-chat2.png */; };
 		63DF22AE148D2E490039A964 /* 18-envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2255148D2E490039A964 /* 18-envelope.png */; };
@@ -433,6 +435,9 @@
 		63DD6AEB148FF8BE0087313E /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		63DD6AEC148FF8BE0087313E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		63DD6AF1148FF9200087313E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/ProfileViewController.xib; sourceTree = "<group>"; };
+		63DE0A5514ACE0B500F50B8D /* createContact.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = createContact.json; sourceTree = "<group>"; };
+		63DE0A5714ACFE3000F50B8D /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contact.h; path = Classes/Models/Contact.h; sourceTree = "<group>"; };
+		63DE0A5814ACFE3100F50B8D /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contact.m; path = Classes/Models/Contact.m; sourceTree = "<group>"; };
 		63DF2253148D2E490039A964 /* 08-chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat.png"; sourceTree = "<group>"; };
 		63DF2254148D2E490039A964 /* 08-chat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat2.png"; sourceTree = "<group>"; };
 		63DF2255148D2E490039A964 /* 18-envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "18-envelope.png"; sourceTree = "<group>"; };
@@ -753,6 +758,7 @@
 				63B61B07148A58F400CBE54B /* main.m */,
 				63B61B09148A58F400CBE54B /* MissionHub-Prefix.pch */,
 				63EAD050148EB74A00524305 /* config.plist */,
+				63DE0A5514ACE0B500F50B8D /* createContact.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -973,6 +979,8 @@
 				63E02D401492604A00BC2DEF /* User.m */,
 				63DBAF86149953EC002A8D86 /* MockDataSource.h */,
 				63DBAF87149953EC002A8D86 /* MockDataSource.m */,
+				63DE0A5714ACFE3000F50B8D /* Contact.h */,
+				63DE0A5814ACFE3100F50B8D /* Contact.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1366,6 +1374,7 @@
 				639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */,
 				632C8E4D14A8F1F9008B1FA1 /* Entitlements.plist in Resources */,
 				63957E2314AA822900ABA6F9 /* CreateContactViewController.xib in Resources */,
+				63DE0A5614ACE0B500F50B8D /* createContact.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1431,6 +1440,7 @@
 				63DBAF88149953EC002A8D86 /* MockDataSource.m in Sources */,
 				63DBAF8B14995463002A8D86 /* SearchTestController.m in Sources */,
 				63957E1E14AA813700ABA6F9 /* CreateContactViewController.m in Sources */,
+				63DE0A5914ACFE3100F50B8D /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

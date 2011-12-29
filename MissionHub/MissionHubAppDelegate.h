@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Three20/Three20.h>
 
 #import <extThree20JSON/extThree20JSON.h>
 #import "User.h"
