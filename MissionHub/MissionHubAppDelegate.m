@@ -16,6 +16,7 @@
 #import "ContactViewController.h"
 #import "MessageController.h"
 #import "CatalogController.h"
+#import "CreateContactViewController.h"
 
 #import "HJObjManager.h"
 
@@ -58,6 +59,8 @@
     [map from:@"mh://contact" toViewController:[ContactViewController class]];  
     [map from:@"mh://composeEmail?to=(composeEmailTo:)" toModalViewController:[MessageController alloc] selector:@selector(composeEmailTo:)];
     [map from:@"mh://composeSms?to=(composeSmsTo:)" toModalViewController:[MessageController alloc] selector:@selector(composeSmsTo:)];    
+    
+    [map from:@"mh://nib/(loadFromNib:)" toSharedViewController:self];
     
 //    [map            from: @"mh://contacts"
 //                  parent: @"mh://main"
@@ -104,7 +107,41 @@
         [request send];
     }
     
+    QRootElement *root = [[QRootElement alloc] init];
+    root.title = @"Hello World";
+    root.grouped = YES;
+    QSection *section = [[QSection alloc] init];
+    QLabelElement *label = [[QLabelElement alloc] initWithTitle:@"Hello" Value:@"world!"];
+    
+    [root addSection:section];
+    [section addElement:label];
+    
+    //UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
+    [map from:@"mh://createContact" toViewController:[QuickDialogController controllerWithNavigationForRoot:root]];  
+    
     return YES;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Loads the given viewcontroller from the nib
+ */
+- (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
+    UIViewController* newController = [[NSClassFromString(className) alloc]
+                                       initWithNibName:nibName bundle:nil];
+    [newController autorelease];
+    
+    return newController;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Loads the given viewcontroller from the the nib with the same name as the
+ * class
+ */
+- (UIViewController*)loadFromNib:(NSString*)className {
+    return [self loadFromNib:className withClass:className];
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {

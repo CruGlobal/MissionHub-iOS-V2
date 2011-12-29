@@ -16,6 +16,7 @@
 
 - (IBAction)onBackBtn:(id)sender;
 - (IBAction)onSegmentChange:(id)sender;
+- (IBAction)onAddContactBtn:(id)sender;
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet ContactCell *contactCell;

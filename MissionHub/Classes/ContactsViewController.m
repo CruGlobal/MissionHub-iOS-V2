@@ -75,6 +75,27 @@
     [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
 }
 
+
+- (IBAction)onAddContactBtn:(id)sender {
+    //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://nib/CreateContactViewController"]];       
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://createContact"]];       
+}
+
+- (IBAction)onSegmentChange:(id)sender {
+    [dataArray removeAllObjects];
+    
+    UISegmentedControl *segmentedControl = sender;
+    if (segmentedControl.selectedSegmentIndex == 1) {
+        [self makeHttpRequest:@"contacts.json" params: @"filters[status]=completed" identifier:@"contacts"];        
+    } else if (segmentedControl.selectedSegmentIndex == 2) {
+        [self makeHttpRequest:@"contacts.json" params: @"filters[assigned_to]=none" identifier:@"contacts"];
+    } else {
+        [self makeHttpRequest:@"contacts.json" params: [NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId] identifier:@"contacts"];
+    }
+    
+}
+
+
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
@@ -127,18 +148,5 @@
 	return 60.0f;
 }
 
-- (IBAction)onSegmentChange:(id)sender {
-    [dataArray removeAllObjects];
-    
-    UISegmentedControl *segmentedControl = sender;
-    if (segmentedControl.selectedSegmentIndex == 1) {
-        [self makeHttpRequest:@"contacts.json" params: @"filters[status]=completed" identifier:@"contacts"];        
-    } else if (segmentedControl.selectedSegmentIndex == 2) {
-        [self makeHttpRequest:@"contacts.json" params: @"filters[assigned_to]=none" identifier:@"contacts"];
-    } else {
-        [self makeHttpRequest:@"contacts.json" params: [NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId] identifier:@"contacts"];
-    }
-    
-}
 
 @end
