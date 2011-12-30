@@ -12,6 +12,13 @@
 
 @property(strong) NSString *firstName;
 @property(strong) NSString *lastName;
+@property(strong) NSString *email;
+@property(strong) NSString *phone;
+@property(strong) NSString *gender;
+@property(strong) NSString *address1;
+@property(strong) NSString *address2;
+@property(strong) NSString *city;
+@property(strong) NSString *zip;
 
 -(void) create;
 

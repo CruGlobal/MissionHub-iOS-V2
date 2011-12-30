@@ -7,13 +7,13 @@
                                                      
                                                      {  "type":"QEntryElement", "key":"firstName", "title":"First Name", "placeholder":"", "autocapitalizationType":"Words", "autocorrectionType":"No" },
                                                      {  "type":"QEntryElement", "key":"lastName", "title":"Last Name", "placeholder":"", "autocapitalizationType":"Words", "autocorrectionType":"No" },
-                                                     {  "type":"QBooleanElement", "title":"Gender", "placeholder":"Words",  "autocapitalizationType":"Words" },
-                                                     {  "type":"QEntryElement", "title":"Email", "placeholder":"",  "keyboardType":"EmailAddress", "autocorrectionType":"No" },
-                                                     {  "type":"QEntryElement", "title":"Phone", "placeholder":"",  "keyboardType":"PhonePad" },
-                                                     {  "type":"QEntryElement", "title":"Address 1", "placeholder":"", "autocorrectionType":"No" },
-                                                     {  "type":"QEntryElement", "title":"Address 2", "placeholder":"", "autocorrectionType":"No"  },
-                                                     {  "type":"QEntryElement", "title":"City" , "placeholder":"", "autocorrectionType":"No"  },
-                                                     {  "type":"QEntryElement", "title":"Zip", "placeholder":"", "autocorrectionType":"No"  }
+                                                     {  "type":"QBooleanElement", "key":"gender", "title":"Gender", "placeholder":"Words",  "autocapitalizationType":"Words" },
+                                                     {  "type":"QEntryElement", "key":"email", "title":"Email", "placeholder":"",  "keyboardType":"EmailAddress", "autocorrectionType":"No" },
+                                                     {  "type":"QEntryElement", "key":"phone", "title":"Phone", "placeholder":"",  "keyboardType":"PhonePad" },
+                                                     {  "type":"QEntryElement", "key": "address1", "title":"Address 1", "placeholder":"", "autocorrectionType":"No" },
+                                                     {  "type":"QEntryElement", "key": "address2", "title":"Address 2", "placeholder":"", "autocorrectionType":"No"  },
+                                                     {  "type":"QEntryElement", "key": "city", "title":"City" , "placeholder":"", "autocorrectionType":"No"  },
+                                                     {  "type":"QEntryElement", "key": "zip", "title":"Zip", "placeholder":"", "autocorrectionType":"No"  }
                                                      ]
              } ,
           
