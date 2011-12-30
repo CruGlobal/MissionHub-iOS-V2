@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Contact : NSObject<TTURLRequestDelegate>
+@interface Contact : NSObject<TTURLRequestDelegate> {
+    void (^_completionHandler)(int someParameter);    
+}
 
 @property(strong) NSString *firstName;
 @property(strong) NSString *lastName;
@@ -20,7 +22,9 @@
 @property(strong) NSString *city;
 @property(strong) NSString *zip;
 
--(void) create;
+
+
+-(void) create:(void(^)(int))handler;
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostDat;
 

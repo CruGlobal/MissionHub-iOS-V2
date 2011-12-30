@@ -78,8 +78,22 @@
 
 - (IBAction)onAddContactBtn:(id)sender {
     //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://nib/CreateContactViewController"]];       
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://createContact"]];       
+    //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://createContact"]];       
+    
+    
+    QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
+    UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
+
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(onCreateContactBackBtn:)];          
+    navigation.navigationBar.topItem.leftBarButtonItem = anotherButton;
+
+    [self presentModalViewController:navigation animated:YES];
 }
+
+- (IBAction)onCreateContactBackBtn:(id)sender {    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 
 - (IBAction)onSegmentChange:(id)sender {
     [dataArray removeAllObjects];

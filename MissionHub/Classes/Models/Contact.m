@@ -18,7 +18,7 @@
 @synthesize gender;
 @synthesize address1, address2, city, zip;
 
-- (void) create {
+-(void) create:(void(^)(int))handler {
     [self makeHttpRequest:@"contacts"
                identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys:
                 [NSDictionary dictionaryWithObjectsAndKeys: 
@@ -29,6 +29,11 @@
                  [NSDictionary dictionaryWithObjectsAndKeys: self.phone, @"number", @"1", @"primary", nil], @"phone_number",
                  [NSDictionary dictionaryWithObjectsAndKeys: self.address1, @"address1", self.address2, @"address2", self.city, @"city", self.zip, @"zip", nil], @"current_address_attributes",                 
                  nil], @"person", nil]];
+    
+    // NOTE: copying is very important if you'll call the callback asynchronously,
+    // even with garbage collection!
+    _completionHandler = [handler copy];
+    
 
 }
 
@@ -42,10 +47,6 @@
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     request.httpMethod = @"POST";
     request.cachePolicy = TTURLRequestCachePolicyNone;
-    //request.contentType = @"application/x-www-form-urlencoded";
-    //[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-
-   
     
     NSString* json = (NSString*)[aPostData JSONRepresentation];
     NSData *jsonData = [NSData dataWithBytes:[json UTF8String] length:[json length]];
@@ -54,20 +55,6 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-Length"];
-    
-
-    
-//    NSMutableString* postStr = [NSMutableString string];
-//    for (NSString *key in aPostData) {
-//        NSString *value = [aPostData objectForKey: key];
-//        [postStr appendString:[NSString stringWithFormat:@"%@=%@&", key, value]];      
-//        
-//        [request.parameters setObject:value forKey:key];
-//    }
-//    NSLog(@"   post params: %@", postStr);
-//    NSData *postData = [ NSData dataWithBytes: [ postStr UTF8String ] length: [ postStr length ] ];
-//    request.httpBody = postData;
-    
     
     [request send];
 }
@@ -85,6 +72,13 @@
     }
     
     //[self handleRequestResult:(id*)response.rootObject identifier:request.userInfo];
+    
+    // Call completion handler.
+    _completionHandler(1);
+    
+    // Clean up.
+    [_completionHandler release];
+    _completionHandler = nil;
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {

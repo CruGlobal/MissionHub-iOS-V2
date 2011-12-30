@@ -8,13 +8,8 @@
 
 #import "BaseViewController.h"
 
-@interface CreateContactViewController : BaseViewController {
-    UIView* _headerView;
-    UIView* _footerView;
-}
+@interface CreateContactViewController : QuickDialogController
 
-@property (nonatomic, retain) IBOutlet UIView* headerView;
-@property (nonatomic, retain) IBOutlet UIView* footerView;
 
 @end
 

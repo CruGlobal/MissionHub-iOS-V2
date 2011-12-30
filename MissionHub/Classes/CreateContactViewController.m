@@ -11,32 +11,8 @@
 
 @implementation CreateContactViewController
 
-@synthesize headerView = _headerView;
-@synthesize footerView = _footerView;
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Called both for NIB inits and manual inits
- */
--(id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)bundle {
-    if (self = [super initWithNibName:nibName bundle:bundle]) {
-        self.title = @"DemoTableViewController";
-        self.navigationItem.backBarButtonItem =
-        [[[UIBarButtonItem alloc] initWithTitle: @"Root"
-                                          style: UIBarButtonItemStyleBordered
-                                         target: nil
-                                         action: nil] autorelease];
-    }
-    
-    return self;
-}
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 -(void)dealloc {
-    TT_RELEASE_SAFELY(_footerView);
-    TT_RELEASE_SAFELY(_headerView);
     [super dealloc];
 }
 
@@ -45,46 +21,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
-//    QSection *section = [[QSection alloc] init];
-//    QLabelElement *label = [[QLabelElement alloc] initWithTitle:@"Hello" Value:@"world!"];
-//    
-//    [root addSection:section];
-//    [section addElement:label];
-    
-    UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
-    [self presentModalViewController:navigation animated:YES];
-
+    NSLog(@"CreateContactViewController viewDidLoad");
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark TTModelViewController
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)createModel {
-    NSString * nibString = nil;
+- (void) viewWillAppear:(BOOL)animated {
     
-    if (self.nibName) {
-        nibString = [@"NIB: " stringByAppendingString:self.nibName];
-        
-    } else {
-        nibString = @"Called without a NIB";
-    }
+    QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
+    UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
     
-    UITableViewCell *firstNameCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    firstNameCell.textLabel.text = @"First Name:";
-
-    UITextField* textField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 185, 30)];
-    textField.placeholder = @"UITextField";
-
-    [firstNameCell addSubview: textField];    
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];          
+    navigation.navigationBar.topItem.leftBarButtonItem = anotherButton;
     
-    firstNameCell.textLabel.backgroundColor = [UIColor whiteColor];
+    [self presentModalViewController:navigation animated:YES];
+}
 
+- (IBAction)onBackBtn:(id)sender {    
+    TTNavigator *navigator = [TTNavigator navigator];
+    //[navigator.topViewController.navigationController setNavigationBarHidden:YES];       
+    [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://contacts"]];    
+    //[self.navigationController popToViewController:navigator.topViewController animated:YES];        
+
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
@@ -93,13 +50,16 @@
 @implementation CreateContactQuickDialogDelegate 
 
 - (void)onCreateContactBtn:(QButtonElement *)buttonElement {
-    //[self loading:YES];
-    Contact *info = [[Contact alloc] init];
-    [self.root fetchValueIntoObject:info];
+    [self loading:YES];
+    Contact *contact = [[Contact alloc] init];
+    [self.root fetchValueIntoObject:contact];
     
-    [info create];
-    
-    NSLog(@"%@", info.firstName);
+    [contact create:^(int result){
+        // Prints 10
+        NSLog(@"using blocks");
+        [self loading:NO];
+        [self dismissModalViewControllerAnimated:YES];  
+    }];
     
 }
 @end
