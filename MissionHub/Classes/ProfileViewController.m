@@ -48,14 +48,9 @@
     NSString *picture = [CurrentUser.data objectForKey:@"picture"];
     
     if ([picture length] != 0) {
-        NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", picture]; 
-        NSURL * imageURL = [NSURL URLWithString: fbUrl];
-
-        HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];;
-        [self.view addSubview: mi];
-        mi.url = imageURL;
-        
-        [AppDelegate.imageManager manage:mi];
+        TTImageView* profileImageView = [[[TTImageView alloc] initWithFrame:placeHolderImageView.frame] autorelease];
+        profileImageView.urlPath = [NSString stringWithFormat:@"%@?type=large", picture];
+        [self.view addSubview:profileImageView];        
         
         [placeHolderImageView setHidden: YES];
     }

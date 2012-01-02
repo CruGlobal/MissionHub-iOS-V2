@@ -59,14 +59,18 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void) viewDidLoad {
     [super viewDidLoad];
     
     commentsArray = [[NSMutableArray alloc] initWithCapacity:10];
     infoArray = [[NSMutableArray alloc] initWithCapacity:10];
     surveyArray = [[NSMutableArray alloc] initWithCapacity:10];    
     rejoicablesArray = [[NSMutableArray alloc] initWithCapacity:3];    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
 
     // Do any additional setup after loading the view from its nib.
     [nameLbl setText:[self.personData objectForKey:@"name"]];

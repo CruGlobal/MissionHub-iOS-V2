@@ -10,11 +10,14 @@
 
 @implementation BaseViewController
 
+@synthesize activityView;
+@synthesize activityLabel;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Custom initialization               
     }
     return self;
 }
@@ -36,13 +39,15 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self initActivityLabel];
 }
-*/
+
 
 - (void)viewDidUnload
 {
@@ -71,6 +76,8 @@
     request.cachePolicy = TTURLRequestCachePolicyNone;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     [request send];    
+
+    [self showActivityLabel];
 }
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData {
@@ -96,8 +103,9 @@
     NSData *postData = [ NSData dataWithBytes: [ postStr UTF8String ] length: [ postStr length ] ];
     request.httpBody = postData;
 
-    
     [request send];
+    
+    [self showActivityLabel];
 }
 
 - (void)requestDidStartLoad:(TTURLRequest*)request {    
@@ -105,6 +113,8 @@
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
+    [self hideActivityLabel];
+    
     TTURLJSONResponse* response = request.response;
     if (request.respondedFromCache) {
         NSLog(@"requestDidFinishLoad from cache:%@", response.rootObject);   
@@ -116,6 +126,8 @@
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
+    [self hideActivityLabel];
+    
     int status = [error code];
     NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
     //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
@@ -123,6 +135,31 @@
 
 // Empty implementation, child class can override behavior to handle result from the HTTP request
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
+}
+
+- (void) initActivityLabel {
+    activityView = [[UIView alloc] initWithFrame:self.view.frame];
+    [activityView setBackgroundColor:[UIColor blackColor]];                                           
+    activityView.alpha = 0.5f;
+    activityLabel = [[[TTActivityLabel alloc] initWithStyle:TTActivityLabelStyleBlackBezel] autorelease];
+    activityLabel.alpha = 1.f;
+    [activityLabel setText: @" Loading..."];
+    [activityLabel setFrame: CGRectMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2, activityLabel.bounds.size.width, activityLabel.bounds.size.height)];
+    [self.view addSubview:activityView];
+    [self.view addSubview:activityLabel];        
+    
+    [self hideActivityLabel];
+}
+
+- (void) showActivityLabel {
+    [activityView setHidden:NO];
+    [activityLabel setHidden:NO];    
+}
+
+- (void) hideActivityLabel {
+    [activityView setHidden:YES];
+    [activityLabel setHidden:YES];    
+    
 }
 
 @end

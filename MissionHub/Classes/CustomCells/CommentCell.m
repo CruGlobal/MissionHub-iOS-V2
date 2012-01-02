@@ -73,7 +73,7 @@
         mi.tag = 999;
         [self addSubview: mi];
     } else {
-        mi = (HJManagedImageV*) [self viewWithTag:999]; 
+        mi = (HJManagedImageV*) [self viewWithTag:999];  
         [mi clear];
     }
     

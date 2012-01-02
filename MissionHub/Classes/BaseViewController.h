@@ -19,5 +19,12 @@
 // Override these methods on child classes for specifics
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier;
 
+- (void) initActivityLabel;
+- (void) showActivityLabel;
+- (void) hideActivityLabel;
+
+@property (nonatomic, retain) TTActivityLabel *activityView;
+@property (nonatomic, retain) TTActivityLabel *activityLabel;
+
 
 @end
