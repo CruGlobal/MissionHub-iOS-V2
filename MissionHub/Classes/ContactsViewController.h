@@ -10,22 +10,15 @@
 
 @protocol SearchContactsControllerDelegate;
 
-@class ContactCell;
-
 @interface ContactsViewController : TTTableViewController <TTSearchTextFieldDelegate> {
     id<SearchContactsControllerDelegate> _delegate;
 }
 
 @property(nonatomic,assign) id<SearchContactsControllerDelegate> delegate;
-@property (nonatomic, retain) NSMutableArray *dataArray;
 
 - (IBAction)onBackBtn:(id)sender;
 - (IBAction)onSegmentChange:(id)sender;
 - (IBAction)onAddContactBtn:(id)sender;
-
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, assign) IBOutlet ContactCell *contactCell;
-
 
 @end
 

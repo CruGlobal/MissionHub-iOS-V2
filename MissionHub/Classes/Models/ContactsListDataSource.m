@@ -8,6 +8,10 @@
 
 #import "ContactsListDataSource.h"
 #import "MissionHubAppDelegate.h"
+#import "TableSubtitleItemCell.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//// ContactsListRequestModel
 
 @implementation ContactsListRequestModel
 
@@ -33,6 +37,8 @@
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
     NSLog(@"url params is: %@", self.urlParams);
+    [_delegates perform:@selector(modelDidStartLoad:) withObject:self];
+    
     if (!self.isLoading && TTIsStringWithAnyText(self.urlParams)) {
 
         [dataArray removeAllObjects];
@@ -78,6 +84,8 @@
         [dataArray addObject: person];
         [filteredDataArray addObject:person];
     }
+    
+    [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
 }
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier {
@@ -89,11 +97,11 @@
     //[self showActivityLabel];
 }
 
-- (void)requestDidStartLoad:(TTURLRequest*)request {    
-    NSLog(@"start live http request: %@ method: %@", request.urlPath, request.httpMethod);    
-    
-    [super requestDidStartLoad: request];
-}
+//- (void)requestDidStartLoad:(TTURLRequest*)request {    
+//    NSLog(@"start live http request: %@ method: %@", request.urlPath, request.httpMethod);    
+//    
+//    [super requestDidStartLoad: request];
+//}
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
     //[self hideActivityLabel];
@@ -110,17 +118,19 @@
     [super requestDidFinishLoad:request];
 }
 
-- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-    //[self hideActivityLabel];
-    
-    int status = [error code];
-    NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
-    //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
-    [super didFailLoadWithError:error];
-}
+//- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
+//    //[self hideActivityLabel];
+//    
+//    int status = [error code];
+//    NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
+//    //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
+//    [super didFailLoadWithError:error];
+//}
 
 @end
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//// ContactsListDataSource
 
 @implementation ContactsListDataSource
 
@@ -139,44 +149,37 @@
     [super dealloc];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// UITableViewDataSource
-
-- (NSArray*)sectionIndexTitlesForTableView:(UITableView*)tableView {
-    return [TTTableViewDataSource lettersForSectionsWithSearch:NO summary:NO];
-} 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewDataSource
 
+
+- (Class)tableView:(UITableView *)tableView cellClassForObject:(id)object {
+    if ([object isKindOfClass:[TTTableSubtitleItem class]]) {
+        return [TableSubtitleItemCell class];
+    } else {
+        return [super tableView:tableView cellClassForObject:object];
+    }
+}
+
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
     self.items = [NSMutableArray array];
-    self.sections = [NSMutableArray array];
-    
-    NSMutableDictionary* groups = [NSMutableDictionary dictionary];
     
     for (NSDictionary *person in contactList.filteredDataArray) {
         NSString *name = [person objectForKey:@"name"];
-        
-        NSString* letter = [NSString stringWithFormat:@"%C", [name characterAtIndex:0]];
-        NSMutableArray* section = [groups objectForKey:letter];
-        if (!section) {
-            section = [NSMutableArray array];
-            [groups setObject:section forKey:letter];
-        }
-        
-  
-        TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:[person objectForKey:@"name"] subtitle:[person objectForKey:@"status"] imageURL:[person objectForKey:@"picture"] URL: nil];
-        item.userInfo = person;
-        
-        [section addObject:item];        
-    }
+        NSString *status = [person objectForKey:@"status"];
+        NSString *picture = [person objectForKey:@"picture"];        
+        NSString *gender = [person objectForKey:@"gender"];
 
-    NSArray* letters = [groups.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    for (NSString* letter in letters) {
-        NSArray* items = [groups objectForKey:letter];
-        [_sections addObject:letter];
-        [_items addObject:items];
+        UIImage *defaultImage = [UIImage imageNamed:@"facebook_male.gif"];
+        if ([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"male"]) {
+            defaultImage = [UIImage imageNamed:@"facebook_female.gif"];
+        }
+
+        TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:status imageURL:picture defaultImage:defaultImage URL:nil accessoryURL:nil];
+        item.userInfo = person;        
+        
+        [_items addObject:item];    
     }
 }
 

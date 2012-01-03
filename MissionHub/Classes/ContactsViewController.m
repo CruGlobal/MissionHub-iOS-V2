@@ -14,9 +14,6 @@
 
 @implementation ContactsViewController
 
-//@synthesize tableView;
-@synthesize dataArray;
-@synthesize contactCell;
 @synthesize delegate = _delegate;
 
 
@@ -40,7 +37,7 @@
     self.searchViewController = searchController;
     self.tableView.tableHeaderView = _searchController.searchBar;
     
-    ContactsListDataSource *ds = [[ContactsListDataSource alloc] init];
+    ContactsListDataSource *ds = [[[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]] autorelease];
     //searchController.dataSource = [[[MockSearchDataSource alloc] initWithDuration:1.5] autorelease];    
     self.searchViewController.dataSource = ds;
     
@@ -127,7 +124,6 @@
 
 
 - (IBAction)onSegmentChange:(id)sender {
-    [dataArray removeAllObjects];
     
     ContactsListDataSource *ds = nil;
     UISegmentedControl *segmentedControl = sender;

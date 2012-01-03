@@ -3,28 +3,25 @@
 //  MissionHub
 //
 //  Created by David Ang on 1/2/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 __26AM__. All rights reserved.
 //
 
-@class TTTwitterSearchFeedModel;
+@interface  ContactsListRequestModel : TTURLRequestModel
 
-@interface  ContactsListRequestModel : TTURLRequestModel {
-}
-
-@property (nonatomic, retain)   NSString       *urlParams;
+@property (nonatomic, retain) NSString       *urlParams;
 @property (nonatomic, retain) NSMutableArray *dataArray;
 @property (nonatomic, retain) NSMutableArray *filteredDataArray;
 
 - (id)initWithParams:(NSString*)aParams;
+- (void)search:(NSString*)text;
 
 @end
 
-@interface ContactsListDataSource : TTSectionedDataSource {
-     TTTwitterSearchFeedModel* _searchFeedModel;
-}
+
+@interface ContactsListDataSource : TTListDataSource 
+
+@property (nonatomic, retain) ContactsListRequestModel *contactList;
 
 - (id)initWithParams:(NSString*)aParams;
-
-@property (nonatomic, readonly) ContactsListRequestModel *contactList;
 
 @end
