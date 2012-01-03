@@ -32,6 +32,10 @@
 @synthesize assignBtn;
 
 
+- (UIViewController*)personId:(NSString*)aPersonId {
+    
+}
+    
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super init]){ 
         self.personData =[query objectForKey:@"personData"]; 
@@ -214,7 +218,8 @@
 }
 
 - (IBAction)onBackBtn:(id)sender {    
-    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts"] applyAnimated:YES]];    
+//    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts"] applyAnimated:YES]];    
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://nib/ContactsViewController" ] applyAnimated:YES]];    
 }
 
 #pragma mark - UITableViewDelegate

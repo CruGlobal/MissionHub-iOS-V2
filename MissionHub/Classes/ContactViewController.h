@@ -15,6 +15,7 @@
 @interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 
+@property (nonatomic, retain) NSString *personId;
 @property (nonatomic, retain) NSDictionary *personData;
 @property (nonatomic, retain) NSMutableArray *commentsArray;
 @property (nonatomic, retain) NSMutableArray *infoArray;
@@ -39,6 +40,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *statusBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *saveBtn;
 //@property (nonatomic, retain) IBOutlet UITextField *commentTxt;
+
+- (id)initWithNibNameAndPersonId:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil personId:(NSString*)aPersonId;
 
 - (IBAction)onBackBtn:(id)sender;
 

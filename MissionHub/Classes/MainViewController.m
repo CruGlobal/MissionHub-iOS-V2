@@ -65,7 +65,8 @@
 }
 
 - (IBAction)onContactsBtn:(id)sender {
-    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts" ] applyAnimated:YES]];    
+    //[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts" ] applyAnimated:YES]];    
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://nib/ContactsViewController" ] applyAnimated:YES]];    
 }
 
 - (IBAction)onSurveyBtn:(id)sender {

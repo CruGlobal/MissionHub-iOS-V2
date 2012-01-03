@@ -8,10 +8,15 @@
 
 #import "BaseViewController.h"
 
+@protocol SearchContactsControllerDelegate;
+
 @class ContactCell;
 
-@interface ContactsViewController : BaseViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ContactsViewController : TTTableViewController <TTSearchTextFieldDelegate> {
+    id<SearchContactsControllerDelegate> _delegate;
+}
 
+@property(nonatomic,assign) id<SearchContactsControllerDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *dataArray;
 
 - (IBAction)onBackBtn:(id)sender;
@@ -21,4 +26,12 @@
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet ContactCell *contactCell;
 
+
 @end
+
+@protocol SearchContactsControllerDelegate <NSObject>
+
+- (void)searchContactsController:(ContactsViewController*)controller didSelectObject:(id)object;
+
+@end
+

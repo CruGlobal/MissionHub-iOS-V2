@@ -55,8 +55,9 @@
     [map from:@"mh://login" toSharedViewController:[LoginViewController class]];    
     [map from:@"mh://main" toSharedViewController:[MainViewController class]];        
     [map from:@"mh://profile" toSharedViewController:[ProfileViewController class]];            
-    [map from:@"mh://contacts" toSharedViewController:[ContactsViewController class]];                
+    [map from:@"mh://contacts" toViewController:[ContactsViewController class]];                
     [map from:@"mh://contact" toViewController:[ContactViewController class]];  
+    [map from:@"mh://contact/(personId:)" toViewController:[ContactViewController class]];      
     [map from:@"mh://composeEmail?to=(composeEmailTo:)" toModalViewController:[MessageController alloc] selector:@selector(composeEmailTo:)];
     [map from:@"mh://composeSms?to=(composeSmsTo:)" toModalViewController:[MessageController alloc] selector:@selector(composeSmsTo:)];    
     [map from:@"mh://createContact" toViewController:[CreateContactViewController class]];  

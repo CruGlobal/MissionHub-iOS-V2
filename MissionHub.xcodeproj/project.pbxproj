@@ -17,11 +17,12 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
-		632C8E4D14A8F1F9008B1FA1 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 632C8E4C14A8F1F9008B1FA1 /* Entitlements.plist */; };
+		6346730014B1D64E00F45765 /* ContactsListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 634672FF14B1D64E00F45765 /* ContactsListDataSource.m */; };
 		636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793BF149698FB00B52C74 /* SimpleCell.xib */; };
 		636793C214969B8600B52C74 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793C114969B8600B52C74 /* CommentCell.xib */; };
 		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; };
 		636793C91496A60D00B52C74 /* SimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C81496A60D00B52C74 /* SimpleCell.m */; };
+		636C5E2914B2D48300CE800D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 636C5E2814B2D48300CE800D /* Entitlements.plist */; };
 		63957E1E14AA813700ABA6F9 /* CreateContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */; };
 		63957E2314AA822900ABA6F9 /* CreateContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63957E2114AA822900ABA6F9 /* CreateContactViewController.xib */; };
 		639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639A15101497E3EE00FFAC44 /* ContactCell.xib */; };
@@ -382,13 +383,15 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
-		632C8E4C14A8F1F9008B1FA1 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		634672FE14B1D64E00F45765 /* ContactsListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsListDataSource.h; path = Classes/Models/ContactsListDataSource.h; sourceTree = "<group>"; };
+		634672FF14B1D64E00F45765 /* ContactsListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsListDataSource.m; path = Classes/Models/ContactsListDataSource.m; sourceTree = "<group>"; };
 		636793BF149698FB00B52C74 /* SimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCell.xib; sourceTree = "<group>"; };
 		636793C114969B8600B52C74 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		636793C41496A60100B52C74 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		636793C51496A60100B52C74 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		636793C71496A60D00B52C74 /* SimpleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCell.h; sourceTree = "<group>"; };
 		636793C81496A60D00B52C74 /* SimpleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleCell.m; sourceTree = "<group>"; };
+		636C5E2814B2D48300CE800D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		63957E1C14AA813600ABA6F9 /* CreateContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateContactViewController.h; sourceTree = "<group>"; };
 		63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateContactViewController.m; sourceTree = "<group>"; };
 		63957E2214AA822900ABA6F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/CreateContactViewController.xib; sourceTree = "<group>"; };
@@ -751,7 +754,7 @@
 		63B61B02148A58F400CBE54B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				632C8E4C14A8F1F9008B1FA1 /* Entitlements.plist */,
+				636C5E2814B2D48300CE800D /* Entitlements.plist */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				63B61B03148A58F400CBE54B /* MissionHub-Info.plist */,
 				63B61B04148A58F400CBE54B /* InfoPlist.strings */,
@@ -975,6 +978,8 @@
 		63E02D3E1492603300BC2DEF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				634672FE14B1D64E00F45765 /* ContactsListDataSource.h */,
+				634672FF14B1D64E00F45765 /* ContactsListDataSource.m */,
 				63E02D3F1492604A00BC2DEF /* User.h */,
 				63E02D401492604A00BC2DEF /* User.m */,
 				63DBAF86149953EC002A8D86 /* MockDataSource.h */,
@@ -1372,9 +1377,9 @@
 				636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */,
 				636793C214969B8600B52C74 /* CommentCell.xib in Resources */,
 				639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */,
-				632C8E4D14A8F1F9008B1FA1 /* Entitlements.plist in Resources */,
 				63957E2314AA822900ABA6F9 /* CreateContactViewController.xib in Resources */,
 				63DE0A5614ACE0B500F50B8D /* createContact.json in Resources */,
+				636C5E2914B2D48300CE800D /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1441,6 +1446,7 @@
 				63DBAF8B14995463002A8D86 /* SearchTestController.m in Sources */,
 				63957E1E14AA813700ABA6F9 /* CreateContactViewController.m in Sources */,
 				63DE0A5914ACFE3100F50B8D /* Contact.m in Sources */,
+				6346730014B1D64E00F45765 /* ContactsListDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1588,7 +1594,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -1601,7 +1606,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -1613,12 +1618,13 @@
 		6328333E14A8ED2100C82449 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
@@ -1647,7 +1653,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Ang (8L7H7A9RBC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (8L7H7A9RBC)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1663,8 +1671,10 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1675,7 +1685,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -1688,7 +1697,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -1700,13 +1709,19 @@
 		63B61B35148A58F500CBE54B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Ang (8L7H7A9RBC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (8L7H7A9RBC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "51200382-689C-44DB-A25C-A4F18B3B33A7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "51200382-689C-44DB-A25C-A4F18B3B33A7";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1720,6 +1735,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;

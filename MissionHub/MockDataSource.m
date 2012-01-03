@@ -334,7 +334,7 @@
         }
     }
     
-    [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+    //[_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
 }
 
 - (void)fakeSearchReady:(NSTimer*)timer {
