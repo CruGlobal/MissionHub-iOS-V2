@@ -69,6 +69,9 @@
 //
 - (void)textField:(TTSearchTextField*)textField didSelectObject:(id)object {
     [_delegate searchContactsController:self didSelectObject:object];
+    
+    
+    [self didSelectObject:object atIndexPath:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,15 +129,20 @@
 - (IBAction)onSegmentChange:(id)sender {
     
     ContactsListDataSource *ds = nil;
+    ContactsListDataSource *ds2 = nil;    
     UISegmentedControl *segmentedControl = sender;
     if (segmentedControl.selectedSegmentIndex == 1) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];
+        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];        
     } else if (segmentedControl.selectedSegmentIndex == 2) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];        
+        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];                
     } else {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];        
+        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];                
     }
 
+    self.searchViewController.dataSource = ds2;
     self.dataSource = ds;
     [ds release];
 }

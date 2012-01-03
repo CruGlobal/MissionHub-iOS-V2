@@ -94,7 +94,6 @@
 
 - (void) makeHttpRequest:(NSString *)path params:(NSString*)aParams identifier:(NSString*)aIdentifier {
       
-    //[self showActivityLabel];
 }
 
 //- (void)requestDidStartLoad:(TTURLRequest*)request {    
@@ -104,7 +103,6 @@
 //}
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-    //[self hideActivityLabel];
     
     TTURLJSONResponse* response = request.response;
     if (request.respondedFromCache) {
@@ -118,14 +116,13 @@
     [super requestDidFinishLoad:request];
 }
 
-//- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-//    //[self hideActivityLabel];
-//    
-//    int status = [error code];
-//    NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
-//    //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
-//    [super didFailLoadWithError:error];
-//}
+- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
+    
+    int status = [error code];
+    NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
+    //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
+    [super didFailLoadWithError:error];
+}
 
 @end
 
@@ -164,6 +161,8 @@
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
     self.items = [NSMutableArray array];
+    
+    NSLog(@"tableViewDidLoadModel");
     
     for (NSDictionary *person in contactList.filteredDataArray) {
         NSString *name = [person objectForKey:@"name"];
