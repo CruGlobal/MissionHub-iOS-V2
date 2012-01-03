@@ -30,26 +30,27 @@
 }
 
 - (void) createModel {
-    ContactsListDataSource *ds = [[[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]] autorelease];
-    self.dataSource = ds;
-//    self.dataSource = [[[TTTwitterSearchFeedDataSource alloc]
-//                        initWithSearchQuery:@"three20"] autorelease];
+    self.dataSource = [[[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]] autorelease];
 }
 
 - (void)loadView {
     [super loadView];
     
-//    TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
-//    //searchController.dataSource = [[[MockSearchDataSource alloc] initWithDuration:1.5] autorelease];
-//    self.searchViewController = searchController;
-//    self.tableView.tableHeaderView = _searchController.searchBar;
-//    
-//    ContactsListDataSource *ds = [[ContactsListDataSource alloc] init];
-//    self.searchViewController.dataSource = ds;
+    TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
+    self.searchViewController = searchController;
+    self.tableView.tableHeaderView = _searchController.searchBar;
     
-    [self.tableView setFrame:CGRectMake(0, 33, 320, 398)];
+    ContactsListDataSource *ds = [[ContactsListDataSource alloc] init];
+    //searchController.dataSource = [[[MockSearchDataSource alloc] initWithDuration:1.5] autorelease];    
+    self.searchViewController.dataSource = ds;
     
+    [self.tableView setFrame:CGRectMake(0, 33, 320, 398)];    
 }
+
+- (id<TTTableViewDelegate>) createDelegate {
+    return (id<TTTableViewDelegate>)[[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];    
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewController
@@ -59,12 +60,7 @@
     [_delegate searchContactsController:self didSelectObject:object];
 
     TTTableSubtitleItem *item = (TTTableSubtitleItem*)object;
-    NSLog(@"%@",item.userInfo);
-    
-//    ContactsListDataSource *ds = (ContactsListDataSource*)self.dataSource;
-//    
     NSDictionary *person = item.userInfo;
-//    
     TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"] 
                              applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]] 
                             applyAnimated:YES];
@@ -198,10 +194,6 @@
 //- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //	return 60.0f;
 //}
-
-- (id<TTTableViewDelegate>) createDelegate {
-  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];    
-}
 
 
 @end

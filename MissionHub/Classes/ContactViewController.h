@@ -14,8 +14,6 @@
 
 @interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
-
-@property (nonatomic, retain) NSString *personId;
 @property (nonatomic, retain) NSDictionary *personData;
 @property (nonatomic, retain) NSMutableArray *commentsArray;
 @property (nonatomic, retain) NSMutableArray *infoArray;

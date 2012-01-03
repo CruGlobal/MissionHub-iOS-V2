@@ -23,6 +23,7 @@
 		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; };
 		636793C91496A60D00B52C74 /* SimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C81496A60D00B52C74 /* SimpleCell.m */; };
 		636C5E2914B2D48300CE800D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 636C5E2814B2D48300CE800D /* Entitlements.plist */; };
+		6386778B14B2DCAF00075947 /* configDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6386778A14B2DCAF00075947 /* configDev.plist */; };
 		63957E1E14AA813700ABA6F9 /* CreateContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */; };
 		63957E2314AA822900ABA6F9 /* CreateContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63957E2114AA822900ABA6F9 /* CreateContactViewController.xib */; };
 		639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639A15101497E3EE00FFAC44 /* ContactCell.xib */; };
@@ -392,6 +393,7 @@
 		636793C71496A60D00B52C74 /* SimpleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCell.h; sourceTree = "<group>"; };
 		636793C81496A60D00B52C74 /* SimpleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleCell.m; sourceTree = "<group>"; };
 		636C5E2814B2D48300CE800D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		6386778A14B2DCAF00075947 /* configDev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configDev.plist; sourceTree = "<group>"; };
 		63957E1C14AA813600ABA6F9 /* CreateContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateContactViewController.h; sourceTree = "<group>"; };
 		63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateContactViewController.m; sourceTree = "<group>"; };
 		63957E2214AA822900ABA6F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/CreateContactViewController.xib; sourceTree = "<group>"; };
@@ -760,6 +762,7 @@
 				63B61B04148A58F400CBE54B /* InfoPlist.strings */,
 				63B61B07148A58F400CBE54B /* main.m */,
 				63B61B09148A58F400CBE54B /* MissionHub-Prefix.pch */,
+				6386778A14B2DCAF00075947 /* configDev.plist */,
 				63EAD050148EB74A00524305 /* config.plist */,
 				63DE0A5514ACE0B500F50B8D /* createContact.json */,
 			);
@@ -1380,6 +1383,7 @@
 				63957E2314AA822900ABA6F9 /* CreateContactViewController.xib in Resources */,
 				63DE0A5614ACE0B500F50B8D /* createContact.json in Resources */,
 				636C5E2914B2D48300CE800D /* Entitlements.plist in Resources */,
+				6386778B14B2DCAF00075947 /* configDev.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1618,6 +1622,7 @@
 		6328333E14A8ED2100C82449 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
@@ -1654,7 +1659,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Ang (8L7H7A9RBC)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (8L7H7A9RBC)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1673,7 +1678,6 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1709,8 +1713,9 @@
 		63B61B35148A58F500CBE54B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Ang (8L7H7A9RBC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (8L7H7A9RBC)";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Ang (2GMWD86BLK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (2GMWD86BLK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -1720,8 +1725,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "51200382-689C-44DB-A25C-A4F18B3B33A7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "51200382-689C-44DB-A25C-A4F18B3B33A7";
+				PROVISIONING_PROFILE = "EA49D713-3327-4029-8070-699317334B02";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EA49D713-3327-4029-8070-699317334B02";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};

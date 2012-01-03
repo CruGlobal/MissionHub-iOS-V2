@@ -70,7 +70,6 @@
 
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
     
-    TTListDataSource* dataSource = [[[TTListDataSource alloc] init] autorelease];
     NSDictionary *result = (NSDictionary *)aResult;
     NSArray *contacts = [result objectForKey:@"contacts"];
     
@@ -79,8 +78,6 @@
         [dataArray addObject: person];
         [filteredDataArray addObject:person];
     }
-    
-
 }
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier {
@@ -146,7 +143,7 @@
 // UITableViewDataSource
 
 - (NSArray*)sectionIndexTitlesForTableView:(UITableView*)tableView {
-    return [TTTableViewDataSource lettersForSectionsWithSearch:YES summary:NO];
+    return [TTTableViewDataSource lettersForSectionsWithSearch:NO summary:NO];
 } 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
