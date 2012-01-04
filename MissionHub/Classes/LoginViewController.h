@@ -6,9 +6,9 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface LoginViewController : UIViewController {
+@interface LoginViewController : BaseViewController<UIWebViewDelegate> {
     UIButton *aboutBtn;
 }
 
@@ -16,5 +16,9 @@
 - (IBAction)onLoginBtn:(id)sender;
 
 @property (nonatomic, retain) IBOutlet UIButton *aboutBtn;
+@property (nonatomic, retain) UIWebView *fbWebView;
+@property (nonatomic, retain) UIButton *closeBtn;
+@property (nonatomic, retain) TTView *webViewContainer;
+@property BOOL accesssGranted;
 
 @end
