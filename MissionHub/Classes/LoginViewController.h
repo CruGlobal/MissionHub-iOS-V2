@@ -17,8 +17,7 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *aboutBtn;
 @property (nonatomic, retain) UIWebView *fbWebView;
-@property (nonatomic, retain) UIButton *closeBtn;
-@property (nonatomic, retain) TTView *webViewContainer;
+@property (nonatomic, retain) TTView *fbWebViewContainer;
 @property BOOL accesssGranted;
 
 @end

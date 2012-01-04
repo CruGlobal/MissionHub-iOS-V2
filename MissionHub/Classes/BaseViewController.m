@@ -152,8 +152,11 @@
 }
 
 - (void) showActivityLabel {
+    [self.view bringSubviewToFront:activityView];
+    [self.view bringSubviewToFront:activityLabel];    
     [activityView setHidden:NO];
     [activityLabel setHidden:NO];    
+    
 }
 
 - (void) hideActivityLabel {

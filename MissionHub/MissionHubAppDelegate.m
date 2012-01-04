@@ -10,7 +10,6 @@
 
 #import "LoginViewController.h"
 #import "MainViewController.h"
-#import "PopupTTWebController.h"
 #import "ProfileViewController.h"
 #import "ContactsViewController.h"
 #import "ContactViewController.h"
@@ -51,7 +50,7 @@
  
     [map from: @"tt://catalog" toSharedViewController: [CatalogController class]];
 
-    [map from:@"*" toSharedViewController:[PopupTTWebController class]];
+    [map from:@"*" toSharedViewController:[TTWebController class]];
     [map from:@"mh://login" toSharedViewController:[LoginViewController class]];    
     [map from:@"mh://main" toSharedViewController:[MainViewController class]];        
     [map from:@"mh://profile" toSharedViewController:[ProfileViewController class]];            

@@ -162,7 +162,6 @@
 		63E02D70149278DF00BC2DEF /* HJObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D66149278DF00BC2DEF /* HJObjManager.m */; };
 		63E02D71149278DF00BC2DEF /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D68149278DF00BC2DEF /* HJWeakMutableArray.m */; };
 		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
-		63EAD05D148EC78500524305 /* PopupTTWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EAD05B148EC78500524305 /* PopupTTWebController.m */; };
 		63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD05C148EC78500524305 /* PopupTTWebController.xib */; };
 		63F7858814AC6E18009D6CE4 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63957E3014AAB6CB00ABA6F9 /* libQuickDialog.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		63F7858A14AC6E6C009D6CE4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */; };
@@ -567,8 +566,6 @@
 		63E02D67149278DF00BC2DEF /* HJWeakMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJWeakMutableArray.h; sourceTree = "<group>"; };
 		63E02D68149278DF00BC2DEF /* HJWeakMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJWeakMutableArray.m; sourceTree = "<group>"; };
 		63EAD050148EB74A00524305 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
-		63EAD05A148EC78500524305 /* PopupTTWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupTTWebController.h; sourceTree = "<group>"; };
-		63EAD05B148EC78500524305 /* PopupTTWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupTTWebController.m; sourceTree = "<group>"; };
 		63EAD05C148EC78500524305 /* PopupTTWebController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupTTWebController.xib; path = Classes/PopupTTWebController.xib; sourceTree = "<group>"; };
 		63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		63F7858B14AC6E96009D6CE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -959,8 +956,6 @@
 				639A1516149817CE00FFAC44 /* BaseViewController.m */,
 				63DF236F148D559A0039A964 /* LoginViewController.h */,
 				63DF2370148D559A0039A964 /* LoginViewController.m */,
-				63EAD05A148EC78500524305 /* PopupTTWebController.h */,
-				63EAD05B148EC78500524305 /* PopupTTWebController.m */,
 				63DD6ADC148EF5C90087313E /* MainViewController.h */,
 				63DD6ADD148EF5C90087313E /* MainViewController.m */,
 				63DD6AEB148FF8BE0087313E /* ProfileViewController.h */,
@@ -1429,7 +1424,6 @@
 				63B61B10148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m in Sources */,
 				63B61B17148A58F400CBE54B /* MissionHubAppDelegate_iPad.m in Sources */,
 				63DF2372148D559A0039A964 /* LoginViewController.m in Sources */,
-				63EAD05D148EC78500524305 /* PopupTTWebController.m in Sources */,
 				63DD6ADF148EF5C90087313E /* MainViewController.m in Sources */,
 				63DD6AEE148FF8BE0087313E /* ProfileViewController.m in Sources */,
 				63E02CEB149001B500BC2DEF /* MHNavigationBar.m in Sources */,

@@ -7,15 +7,14 @@
 //
 
 #import "LoginViewController.h"
-#import "PopupTTWebController.h"
 #import "MissionHubAppDelegate.h"
 
 @implementation LoginViewController
 
 @synthesize aboutBtn;
-@synthesize fbWebView, closeBtn;
+@synthesize fbWebView;
 @synthesize accesssGranted;
-@synthesize webViewContainer;
+@synthesize fbWebViewContainer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,42 +43,34 @@
     TTDINFO(@"viewDidLoad");
 
     fbWebView = [[UIWebView alloc] initWithFrame:CGRectMake(5, 5, 290, 420)];
+    [fbWebView setBackgroundColor:[UIColor whiteColor]];        
     [fbWebView setDelegate:self];    
     
-    closeBtn = [TTButton buttonWithStyle:@"toolbarButton:" title:@"X"];  
+    UIButton *closeBtn = [TTButton buttonWithStyle:@"toolbarButton:" title:@"X"];  
     closeBtn.font = [UIFont systemFontOfSize:12.0f];
     [closeBtn addTarget:self action:@selector(closeWebView) forControlEvents:UIControlEventTouchUpInside]; 
     [closeBtn sizeToFit];
     
+    // Adjust close button position
     CGRect btnFrame = closeBtn.frame;   
     btnFrame.origin.x = 260;
     btnFrame.origin.y = 10;    
     [closeBtn setFrame:btnFrame];
-    
-//    [fbWebView setHidden:YES];
-//    [closeBtn setHidden:YES];
 
-    webViewContainer = [[[TTView alloc] initWithFrame:CGRectMake(10, 10, 310, 440)] autorelease];
-    UIColor* black = RGBCOLOR(158, 163, 172);    
-    webViewContainer.style =  [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
+    fbWebViewContainer = [[[TTView alloc] initWithFrame:CGRectMake(10, 10, 310, 440)] autorelease];
+    fbWebViewContainer.style =  [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
                                [TTShadowStyle styleWithColor:RGBACOLOR(0,0,0,0.5) blur:5 offset:CGSizeMake(1, 1) next:
                                 [TTInsetStyle styleWithInset:UIEdgeInsetsMake(0.15, 0.15, 0.15, 0.5) next:
                                  [TTSolidFillStyle styleWithColor:[[UIColor blackColor] colorWithAlphaComponent:0.2] next:
                                   [TTInsetStyle styleWithInset:UIEdgeInsetsMake(-0.15, -0.15, -0.15, -0.15) next:
                                    [TTSolidBorderStyle styleWithColor:[UIColor clearColor] width:0 next:nil]]]]]];
+    [fbWebViewContainer setBackgroundColor:[UIColor clearColor]];
     
-    //webViewContainer.alpha = 0.5f;
-    //[webViewContainer setBackgroundColor:[[UIColor clearColor] colorWithAlphaComponent:0.5]];
-    webViewContainer.backgroundColor = [UIColor clearColor];
+    [fbWebViewContainer addSubview:fbWebView];
+    [fbWebViewContainer addSubview:closeBtn];
+    [self.view addSubview:fbWebViewContainer];    
     
-    //[view addSubview:webView];
-    [self.view addSubview:webViewContainer];
-    [webViewContainer setHidden:YES];
-    
-    [webViewContainer addSubview:fbWebView];
-    [webViewContainer addSubview:closeBtn];
-    
-    [fbWebView setBackgroundColor:[UIColor whiteColor]];    
+    [fbWebViewContainer setHidden:YES];    
 }
 
 - (void)viewWillAppear:(BOOL)animated 
@@ -137,18 +128,18 @@
     
 //    [fbWebView setHidden:YES];
 //    [closeBtn setHidden:YES];  
-    [webViewContainer setHidden:NO];      
+    [fbWebViewContainer setHidden:NO];      
 
-    webViewContainer.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    fbWebViewContainer.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
 
      // Bounce it slightly large 
      [UIView animateWithDuration:0.25f 
-                      animations:^{webViewContainer.transform = 
+                      animations:^{fbWebViewContainer.transform = 
                           CGAffineTransformMakeScale(1.15f, 1.15f);} 
                       completion:^(BOOL done){ 
                           // Shrink it back to normal 
                           [UIView animateWithDuration:0.2f 
-                                           animations:^{webViewContainer.transform = 
+                                           animations:^{fbWebViewContainer.transform = 
                                                CGAffineTransformIdentity;} 
                                            completion:^(BOOL done){ 
                                                self.navigationItem.rightBarButtonItem.enabled = YES; 
@@ -191,9 +182,7 @@
 //}
 
 - (void) closeWebView {
-//    [fbWebView setHidden:YES];
-//    [closeBtn setHidden:YES];
-    [webViewContainer setHidden:YES];
+    [fbWebViewContainer setHidden:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -226,7 +215,7 @@
             accesssGranted = YES;
             NSLog(@"Access Granted * Access Granted * Access Granted * Access Granted * Access Granted * Access Granted * Access Granted");
 
-            [webViewContainer setHidden:YES];
+            [fbWebViewContainer setHidden:YES];
             
             [self showActivityLabel];
         }
@@ -295,7 +284,9 @@
 }
 
 - (void)dealloc {
-    [aboutBtn release];
+    TT_RELEASE_SAFELY(aboutBtn);    
+    TT_RELEASE_SAFELY(fbWebView);
+    TT_RELEASE_SAFELY(fbWebViewContainer);
     [super dealloc];
 }
 @end
