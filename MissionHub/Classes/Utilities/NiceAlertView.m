@@ -38,18 +38,12 @@
         styledLabel.textAlignment = UITextAlignmentCenter;
         
         CGSize maximumLabelSize = CGSizeMake(296,9999);
-        CGSize textSize = [text sizeWithFont:[styledLabel font]
-                           constrainedToSize:maximumLabelSize 
-                               lineBreakMode:UILineBreakModeWordWrap]; 
+        CGSize textSize = [text sizeWithFont:[styledLabel font] constrainedToSize:maximumLabelSize  lineBreakMode:UILineBreakModeWordWrap]; 
         
         CGFloat textWidth = textSize.width;
-        CGFloat textHeight = textSize.height + 45;        
+        CGFloat textHeight = textSize.height + 45;       
         
-        CGRect styledLabelFrame = styledLabel.frame;
-        styledLabelFrame.origin.x = 0;
-        styledLabelFrame.origin.y = 0;
-        styledLabelFrame.size.width = textWidth;
-        styledLabelFrame.size.height = textHeight;
+        CGRect styledLabelFrame = CGRectMake(0, 0, textWidth, textHeight);
         [styledLabel setFrame:styledLabelFrame];        
         
         styledLabelFrame.origin.x = window.bounds.size.width / 2 - textWidth / 2;

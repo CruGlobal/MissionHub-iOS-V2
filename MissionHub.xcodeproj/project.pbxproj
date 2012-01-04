@@ -26,6 +26,7 @@
 		6386778B14B2DCAF00075947 /* configDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6386778A14B2DCAF00075947 /* configDev.plist */; };
 		6386778E14B31ED000075947 /* TableSubtitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386778D14B31ED000075947 /* TableSubtitleItemCell.m */; };
 		6386782014B43C1D00075947 /* NiceAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386781F14B43C1D00075947 /* NiceAlertView.m */; };
+		6386782214B469CC00075947 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6386782114B469CC00075947 /* appicon.png */; };
 		63957E1E14AA813700ABA6F9 /* CreateContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */; };
 		63957E2314AA822900ABA6F9 /* CreateContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63957E2114AA822900ABA6F9 /* CreateContactViewController.xib */; };
 		639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639A15101497E3EE00FFAC44 /* ContactCell.xib */; };
@@ -399,6 +400,7 @@
 		6386778D14B31ED000075947 /* TableSubtitleItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSubtitleItemCell.m; sourceTree = "<group>"; };
 		6386781E14B43C1D00075947 /* NiceAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiceAlertView.h; sourceTree = "<group>"; };
 		6386781F14B43C1D00075947 /* NiceAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NiceAlertView.m; sourceTree = "<group>"; };
+		6386782114B469CC00075947 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		63957E1C14AA813600ABA6F9 /* CreateContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateContactViewController.h; sourceTree = "<group>"; };
 		63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateContactViewController.m; sourceTree = "<group>"; };
 		63957E2214AA822900ABA6F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/CreateContactViewController.xib; sourceTree = "<group>"; };
@@ -847,6 +849,7 @@
 		63DF2251148D2E490039A964 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6386782114B469CC00075947 /* appicon.png */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				63DF2252148D2E490039A964 /* images */,
 			);
@@ -1398,6 +1401,7 @@
 				63DE0A5614ACE0B500F50B8D /* createContact.json in Resources */,
 				636C5E2914B2D48300CE800D /* Entitlements.plist in Resources */,
 				6386778B14B2DCAF00075947 /* configDev.plist in Resources */,
+				6386782214B469CC00075947 /* appicon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1637,13 +1641,17 @@
 		6328333E14A8ED2100C82449 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -1728,6 +1736,10 @@
 		63B61B35148A58F500CBE54B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: David Ang (2GMWD86BLK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (2GMWD86BLK)";
@@ -1737,7 +1749,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "EA49D713-3327-4029-8070-699317334B02";
@@ -1750,12 +1762,16 @@
 		63B61B36148A58F500CBE54B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
