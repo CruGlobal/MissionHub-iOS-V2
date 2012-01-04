@@ -112,11 +112,6 @@
     NSString *authorizeUrl = [NSString stringWithFormat:@"%@/oauth/authorize?display=touch&simple=true&response_type=code&redirect_uri=%@&client_id=5&scope=%@", baseUrl, redirectUrl, scope];
 
     NSLog(@"%@", authorizeUrl);
-//    TTOpenURL(authorizeUrl); 
-//
-//    TTNavigator *navigator = [TTNavigator navigator];
-//    [navigator.topViewController.navigationController setNavigationBarHidden:NO];   
-    
     NSURL *url = [NSURL URLWithString:authorizeUrl];
     
     //URL Requst Object
@@ -124,26 +119,21 @@
     [fbWebView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML = \"\";"];
     //Load the request in the UIWebView.
     [fbWebView loadRequest:requestObj];
-    //[self showActivityLabel];
-    
-//    [fbWebView setHidden:YES];
-//    [closeBtn setHidden:YES];  
     [fbWebViewContainer setHidden:NO];      
 
     fbWebViewContainer.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
-
      // Bounce it slightly large 
      [UIView animateWithDuration:0.25f 
-                      animations:^{fbWebViewContainer.transform = 
-                          CGAffineTransformMakeScale(1.15f, 1.15f);} 
-                      completion:^(BOOL done){ 
-                          // Shrink it back to normal 
-                          [UIView animateWithDuration:0.2f 
-                                           animations:^{fbWebViewContainer.transform = 
-                                               CGAffineTransformIdentity;} 
-                                           completion:^(BOOL done){ 
-                                               self.navigationItem.rightBarButtonItem.enabled = YES; 
-                                           }];}];
+      animations:^{fbWebViewContainer.transform = 
+          CGAffineTransformMakeScale(1.15f, 1.15f);} 
+      completion:^(BOOL done){ 
+          // Shrink it back to normal 
+          [UIView animateWithDuration:0.2f 
+               animations:^{fbWebViewContainer.transform = 
+                   CGAffineTransformIdentity;} 
+               completion:^(BOOL done){ 
+                   self.navigationItem.rightBarButtonItem.enabled = YES; 
+               }];}];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -164,22 +154,10 @@
     return YES;
 }
 
-//- (void)webViewDidStartLoad:(UIWebView *)webView {
-//    NSURL* url = [webView.request  URL];
-//    NSLog(@"webViewDidStartLoad: %@", [url absoluteString]);
-//
-//    
-//    //NSLog(@"webViewDidStartLoad. request url was: %@",     webView.request.URL);    
-//    
-//    NSRange aRange = [[webView.request.URL absoluteString] rangeOfString:@"facebook"];
-//    if (aRange.location != NSNotFound) {    
-//        [self showActivityLabel];
-//    }
-//    
-//
-////    [fbWebView setHidden:YES];
-////    [closeBtn setHidden:YES];    
-//}
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSURL* url = [webView.request  URL];
+    NSLog(@"webViewDidStartLoad: %@", [url absoluteString]);
+}
 
 - (void) closeWebView {
     [fbWebViewContainer setHidden:YES];
@@ -276,7 +254,6 @@
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-    //TTURLDataResponse *response =  (TTURLDataResponse *)request.response;  
     int status = [error code];
     NSLog(@"didFailLoadWithError. HTTP return status code: %d", status);
 

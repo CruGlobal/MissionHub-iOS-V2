@@ -25,6 +25,7 @@
 		636C5E2914B2D48300CE800D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 636C5E2814B2D48300CE800D /* Entitlements.plist */; };
 		6386778B14B2DCAF00075947 /* configDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6386778A14B2DCAF00075947 /* configDev.plist */; };
 		6386778E14B31ED000075947 /* TableSubtitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386778D14B31ED000075947 /* TableSubtitleItemCell.m */; };
+		6386782014B43C1D00075947 /* NiceAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386781F14B43C1D00075947 /* NiceAlertView.m */; };
 		63957E1E14AA813700ABA6F9 /* CreateContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */; };
 		63957E2314AA822900ABA6F9 /* CreateContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63957E2114AA822900ABA6F9 /* CreateContactViewController.xib */; };
 		639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639A15101497E3EE00FFAC44 /* ContactCell.xib */; };
@@ -396,6 +397,8 @@
 		6386778A14B2DCAF00075947 /* configDev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configDev.plist; sourceTree = "<group>"; };
 		6386778C14B31ED000075947 /* TableSubtitleItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableSubtitleItemCell.h; sourceTree = "<group>"; };
 		6386778D14B31ED000075947 /* TableSubtitleItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSubtitleItemCell.m; sourceTree = "<group>"; };
+		6386781E14B43C1D00075947 /* NiceAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiceAlertView.h; sourceTree = "<group>"; };
+		6386781F14B43C1D00075947 /* NiceAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NiceAlertView.m; sourceTree = "<group>"; };
 		63957E1C14AA813600ABA6F9 /* CreateContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateContactViewController.h; sourceTree = "<group>"; };
 		63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateContactViewController.m; sourceTree = "<group>"; };
 		63957E2214AA822900ABA6F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/CreateContactViewController.xib; sourceTree = "<group>"; };
@@ -687,6 +690,16 @@
 			path = Classes/CustomCells;
 			sourceTree = "<group>";
 		};
+		6386781D14B43BF700075947 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6386781E14B43C1D00075947 /* NiceAlertView.h */,
+				6386781F14B43C1D00075947 /* NiceAlertView.m */,
+			);
+			name = Utilities;
+			path = Classes/Utilities;
+			sourceTree = "<group>";
+		};
 		63957E2514AAB6CB00ABA6F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +754,7 @@
 		63B61B01148A58F400CBE54B /* MissionHub */ = {
 			isa = PBXGroup;
 			children = (
+				6386781D14B43BF700075947 /* Utilities */,
 				636793C31496A5EB00B52C74 /* CustomCells */,
 				63DF2318148D471D0039A964 /* Classes */,
 				63B61B0A148A58F400CBE54B /* MissionHubAppDelegate.h */,
@@ -1451,6 +1465,7 @@
 				63DE0A5914ACFE3100F50B8D /* Contact.m in Sources */,
 				6346730014B1D64E00F45765 /* ContactsListDataSource.m in Sources */,
 				6386778E14B31ED000075947 /* TableSubtitleItemCell.m in Sources */,
+				6386782014B43C1D00075947 /* NiceAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

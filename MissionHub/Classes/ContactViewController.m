@@ -10,7 +10,6 @@
 #import "HJManagedImageV.h"
 #import "CommentCell.h"
 #import "SimpleCell.h"
-#import <extThree20JSON/SBJsonWriter.h>
 
 @implementation ContactViewController
 
@@ -30,11 +29,6 @@
 @synthesize rejoicablesArray;
 @synthesize statusSelected;
 @synthesize assignBtn;
-
-
-- (UIViewController*)personId:(NSString*)aPersonId {
-    
-}
     
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super init]){ 
@@ -111,7 +105,7 @@
 }
 
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
-    NSDictionary *result = aResult;    
+    NSDictionary *result = (NSDictionary*)aResult;    
     if ([aIdentifier isEqualToString:@"followup_comments"]) {
         [commentsArray removeAllObjects];
         
@@ -399,9 +393,11 @@
     }
 }
 
-
 - (IBAction)onSaveBtn:(id)sender {
-    
+    if ([self.statusSelected length] == 0) {
+        [[[NiceAlertView alloc] initWithText:@"You need to set a status before you can save."] autorelease];
+        return;
+    }
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: 
                         [NSDictionary dictionaryWithObjectsAndKeys: 
                             CurrentUser.orgId, @"organization_id",
@@ -430,6 +426,7 @@
        }
     }
     [rejoicablesArray removeAllObjects];
+    self.statusSelected = @"";
 }
 
 - (IBAction)onSegmentChange:(id)sender {    

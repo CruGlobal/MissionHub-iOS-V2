@@ -39,8 +39,6 @@
 //@property (nonatomic, retain) IBOutlet UIButton *saveBtn;
 //@property (nonatomic, retain) IBOutlet UITextField *commentTxt;
 
-- (id)initWithNibNameAndPersonId:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil personId:(NSString*)aPersonId;
-
 - (IBAction)onBackBtn:(id)sender;
 
 - (IBAction)onCallBtn:(id)sender;

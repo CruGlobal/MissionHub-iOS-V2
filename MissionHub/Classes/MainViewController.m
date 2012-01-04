@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "MissionHubAppDelegate.h"
+#import "NiceAlertView.h"
 
 @implementation MainViewController
 
@@ -41,6 +42,33 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+//    TTLabel *alert = [[TTLabel alloc] initWithText:@"I'm a ttlabel"];
+//    alert.frame = CGRectMake(40, self.view.bounds.size.height / 2, 250, 100);
+//    alert.style =  [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
+//                    [TTShadowStyle styleWithColor:RGBACOLOR(0,0,0,0.5) blur:5 offset:CGSizeMake(1, 1) next:
+//                      [TTSolidFillStyle styleWithColor:[[UIColor blackColor] colorWithAlphaComponent:0.9] next:
+//                        [TTTextStyle styleWithFont:[UIFont systemFontOfSize:25] color:[[UIColor whiteColor] colorWithAlphaComponent:1.0] next: nil                        
+//                            ]]]];
+//    [alert setBackgroundColor:[UIColor clearColor]];
+////    [alert sizeToFit];
+//    
+//    [[[UIApplication sharedApplication] keyWindow] addSubview:alert];
+//    TT_RELEASE_SAFELY(alert);
+//   
+//    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self
+//                                                       selector:@selector(removeAlert) userInfo:nil repeats:NO];
+}
+
+- (void) removeAlert {
+   TTLabel *alert = [[self.view subviews] lastObject];
+
+    [UIView animateWithDuration:1.25f 
+                     animations:^{alert.alpha = 0.0;
+                     }
+                     completion:^(BOOL done){ 
+                         [alert removeFromSuperview];
+                                            }];
+
 }
 
 - (void)viewDidUnload
@@ -66,7 +94,7 @@
 
 - (IBAction)onContactsBtn:(id)sender {
     //[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts" ] applyAnimated:YES]];    
-    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://nib/ContactsViewController" ] applyAnimated:YES]];    
+   [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://nib/ContactsViewController" ] applyAnimated:YES]];    
 }
 
 - (IBAction)onSurveyBtn:(id)sender {
