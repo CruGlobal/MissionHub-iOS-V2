@@ -166,7 +166,7 @@
 		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
 		63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD05C148EC78500524305 /* PopupTTWebController.xib */; };
 		63F7858814AC6E18009D6CE4 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63957E3014AAB6CB00ABA6F9 /* libQuickDialog.a */; settings = {ATTRIBUTES = (Required, ); }; };
-		63F7858A14AC6E6C009D6CE4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */; };
+		63F7858A14AC6E6C009D6CE4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		63F7858C14AC6E96009D6CE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858B14AC6E96009D6CE4 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -714,8 +714,6 @@
 		63B61AEC148A58F400CBE54B = {
 			isa = PBXGroup;
 			children = (
-				63F7858B14AC6E96009D6CE4 /* MapKit.framework */,
-				63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */,
 				63B61B01148A58F400CBE54B /* MissionHub */,
 				63B61B28148A58F400CBE54B /* MissionHubTests */,
 				63B61AFA148A58F400CBE54B /* Frameworks */,
@@ -742,9 +740,11 @@
 				320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */,
 				320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */,
 				320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */,
-				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
 				320A5A189C235877202780D0 /* Three20Network.xcodeproj */,
 				320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */,
+				63F7858B14AC6E96009D6CE4 /* MapKit.framework */,
+				63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */,
+				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
 				63B61AFB148A58F400CBE54B /* UIKit.framework */,
 				63B61AFD148A58F400CBE54B /* Foundation.framework */,
 				63B61AFF148A58F400CBE54B /* CoreGraphics.framework */,
@@ -1615,8 +1615,11 @@
 		6328333D14A8ED2100C82449 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Campus Crusade for Christ Inc";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -1629,11 +1632,16 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-fobjc-arc",
+					"-ObjC",
+				);
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "434D6818-1BAE-49E6-919F-CA28D6F2359E";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "Ad Hoc";
@@ -1646,14 +1654,28 @@
 					armv6,
 				);
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Campus Crusade for Christ Inc";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
+				);
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/QuickDialog/TouchJSON/Support/build/Debug\"",
+				);
+				OTHER_LDFLAGS = (
+					"-fobjc-arc",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "434D6818-1BAE-49E6-919F-CA28D6F2359E";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1679,7 +1701,7 @@
 		63B61B32148A58F500CBE54B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "";
@@ -1699,19 +1721,24 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_LDFLAGS = (
+					"-fobjc-arc",
+					"-ObjC",
+				);
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
 			};
 			name = Debug;
 		};
 		63B61B33148A58F500CBE54B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -1724,11 +1751,15 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-fobjc-arc",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1741,19 +1772,30 @@
 					armv6,
 				);
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Ang (2GMWD86BLK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (2GMWD86BLK)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (8L7H7A9RBC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
+				);
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/QuickDialog/TouchJSON/Support/build/Debug\"",
+				);
+				OTHER_LDFLAGS = (
+					"-fobjc-arc",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "EA49D713-3327-4029-8070-699317334B02";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EA49D713-3327-4029-8070-699317334B02";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1766,13 +1808,26 @@
 					"$(ARCHS_STANDARD_32_BIT)",
 					armv6,
 				);
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
+				);
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/QuickDialog/TouchJSON/Support/build/Debug\"",
+				);
+				OTHER_LDFLAGS = (
+					"-fobjc-arc",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;

@@ -28,7 +28,8 @@
                  [NSDictionary dictionaryWithObjectsAndKeys: self.email, @"email", @"1", @"primary", nil], @"email_address",
                  [NSDictionary dictionaryWithObjectsAndKeys: self.phone, @"number", @"1", @"primary", nil], @"phone_number",
                  [NSDictionary dictionaryWithObjectsAndKeys: self.address1, @"address1", self.address2, @"address2", self.city, @"city", self.zip, @"zip", nil], @"current_address_attributes",                 
-                 nil], @"person", nil]];
+                 nil], @"person", 
+                [NSDictionary dictionaryWithObjectsAndKeys: nil], @"answers", nil]];
     
     // NOTE: copying is very important if you'll call the callback asynchronously,
     // even with garbage collection!
