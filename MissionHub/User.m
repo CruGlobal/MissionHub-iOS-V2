@@ -51,7 +51,14 @@ static User *sharedUser = nil;
    self.fbId = [data objectForKey:@"fb_id"];
    self.organizations = [data objectForKey:@"organization_membership"];
    self.userId = [[data objectForKey:@"id"] stringValue];
-   self.orgId = [[data objectForKey:@"request_org_id"] stringValue];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *savedOrgId = [userDefaults stringForKey:@"orgId"];
+    if (savedOrgId) {
+        self.orgId = savedOrgId; 
+    } else {
+        self.orgId = [[data objectForKey:@"request_org_id"] stringValue];        
+    }
     
    NSLog(@"Current user name is: %@", self.name);
    NSLog(@"Organization: %@", self.organizations); 

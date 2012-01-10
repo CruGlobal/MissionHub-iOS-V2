@@ -45,7 +45,7 @@
         [filteredDataArray removeAllObjects];
         
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&access_token=%@", baseUrl, @"contacts.json", self.urlParams, CurrentUser.accessToken];
+        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&org_id=%@&access_token=%@", baseUrl, @"contacts.json", self.urlParams, CurrentUser.orgId, CurrentUser.accessToken];
         NSLog(@"making http GET request: %@", requestUrl);    
         
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];

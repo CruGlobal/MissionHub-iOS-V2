@@ -60,9 +60,21 @@
     [orgLabel setText: [[CurrentUser.organizations objectAtIndex:0] objectForKey:@"name"]];
     
     orgsArray = [[NSMutableArray alloc] init];
+    
+    NSInteger selectedRow = 0;
+    NSInteger index = 0;    
     for (NSDictionary *organization in CurrentUser.organizations) {
-        [orgsArray addObject: [organization objectForKey:@"name"]]; 
+        NSString *orgId = [NSString stringWithFormat:@"%@", [organization objectForKey:@"org_id"]];
+        if ([orgId isEqualToString:CurrentUser.orgId]) {
+            selectedRow = index;
+        }
+        [orgsArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: orgId, @"org_id", [organization objectForKey:@"name"], @"name", nil]];         
+        index++;
     }
+    
+    [pickerView selectRow:selectedRow inComponent:0 animated:NO];
+
+
 }
 
 - (void)viewDidUnload
@@ -93,11 +105,19 @@
 //PickerViewController.m
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    NSLog(@"Selected Color: %@. Index of selected color: %i", [orgsArray objectAtIndex:row], row);
+    NSDictionary *dict = [orgsArray objectAtIndex:row];
+    
+    NSLog(@"Selected org: %@ id: %@", [dict objectForKey:@"name"], [dict objectForKey:@"org_id"]);
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[dict objectForKey:@"org_id"] forKey:@"orgId"];			
+    
+    CurrentUser.orgId = [dict objectForKey:@"org_id"];
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [orgsArray objectAtIndex:row];
+    NSDictionary *dict = [orgsArray objectAtIndex:row];
+    return [dict objectForKey:@"name"];
 }
 
 - (IBAction)onChangeOrgBtn:(id)sender {
