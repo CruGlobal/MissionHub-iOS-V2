@@ -44,6 +44,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+    orgsArray = [[NSMutableArray alloc] init];
+}
+
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     // Set user's image
     NSString *picture = [CurrentUser.data objectForKey:@"picture"];
     
@@ -57,24 +64,31 @@
     
     // set name & org
     [nameLabel setText: CurrentUser.name];
-    [orgLabel setText: [[CurrentUser.organizations objectAtIndex:0] objectForKey:@"name"]];
-    
-    orgsArray = [[NSMutableArray alloc] init];
-    
+    //[orgLabel setText: [[CurrentUser.organizations objectAtIndex:0] objectForKey:@"name"]];
+    [orgsArray removeAllObjects];    
     NSInteger selectedRow = 0;
     NSInteger index = 0;    
     for (NSDictionary *organization in CurrentUser.organizations) {
         NSString *orgId = [NSString stringWithFormat:@"%@", [organization objectForKey:@"org_id"]];
         if ([orgId isEqualToString:CurrentUser.orgId]) {
             selectedRow = index;
+            [orgLabel setText: [organization objectForKey:@"name"]];
         }
         [orgsArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: orgId, @"org_id", [organization objectForKey:@"name"], @"name", nil]];         
         index++;
     }
-    
+
+    [pickerView reloadAllComponents];
     [pickerView selectRow:selectedRow inComponent:0 animated:NO];
+    
+    [self resizeFontForLabel: nameLabel maxSize:20 minSize:10];
+    [self resizeFontForLabel: orgLabel maxSize:14 minSize:10];    
 
-
+    // adjust position
+    CGRect nameLabelFrame = nameLabel.frame;
+    CGRect orgLabelFrame = orgLabel.frame;
+    orgLabelFrame.origin.y = nameLabelFrame.origin.y + nameLabelFrame.size.height + 5;
+    [orgLabel setFrame:orgLabelFrame];
 }
 
 - (void)viewDidUnload
@@ -113,6 +127,9 @@
     [userDefaults setObject:[dict objectForKey:@"org_id"] forKey:@"orgId"];			
     
     CurrentUser.orgId = [dict objectForKey:@"org_id"];
+    [orgLabel setText:[dict objectForKey:@"name"]];
+
+    [self viewDidAppear:NO];
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {

@@ -6,9 +6,9 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ProfileViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
+@interface ProfileViewController : BaseViewController<UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (nonatomic, retain) NSMutableArray *orgsArray;
 
