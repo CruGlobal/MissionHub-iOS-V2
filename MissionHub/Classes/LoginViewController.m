@@ -119,7 +119,7 @@
     [fbWebView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML = \"\";"];
     //Load the request in the UIWebView.
     [fbWebView loadRequest:requestObj];
-    [fbWebViewContainer setHidden:NO];      
+    [fbWebViewContainer setHidden:NO];     
 
     fbWebViewContainer.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
      // Bounce it slightly large 
@@ -150,7 +150,19 @@
     if (aRange.location != NSNotFound) {    
         [self showActivityLabel];
     }
+
+    aRange = [[url absoluteString] rangeOfString:@"missionhub.com/oauth/authorize"];
+    if (aRange.location != NSNotFound) {    
+        [self showActivityLabel];
+    }
     
+    aRange = [[url absoluteString] rangeOfString:@"missionhub.com/users/auth/facebook"];
+    if (aRange.location != NSNotFound) {    
+        [self showActivityLabel];
+    }
+
+    
+
     return YES;
 }
 
@@ -161,6 +173,7 @@
 
 - (void) closeWebView {
     [fbWebViewContainer setHidden:YES];
+    [self hideActivityLabel];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -170,8 +183,7 @@
     [webView setScalesPageToFit:YES];
     
     NSRange aRange = [[webView.request.URL absoluteString] rangeOfString:@"facebook"];
-    NSRange aRange2 = [[webView.request.URL absoluteString] rangeOfString:@"survey"];    
-    if (aRange.location == NSNotFound && aRange2.location == NSNotFound && !accesssGranted) {
+    if (aRange.location == NSNotFound && !accesssGranted) {
         
         NSArray *parameters = [[webView.request.URL query] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=&"]];
         NSMutableDictionary *keyValueParm = [NSMutableDictionary dictionary];

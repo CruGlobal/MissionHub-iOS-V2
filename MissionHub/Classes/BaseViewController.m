@@ -143,7 +143,6 @@
     activityView.alpha = 0.5f;
     activityLabel = [[[TTActivityLabel alloc] initWithStyle:TTActivityLabelStyleBlackBezel] autorelease];
     activityLabel.alpha = 1.f;
-    [activityLabel setText: @" Loading..."];
     [activityLabel setFrame: CGRectMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2, activityLabel.bounds.size.width, activityLabel.bounds.size.height)];
     [self.view addSubview:activityView];
     [self.view addSubview:activityLabel];        
@@ -152,10 +151,32 @@
 }
 
 - (void) showActivityLabel {
+    [activityLabel setText: @" Loading..."];
+    
     [self.view bringSubviewToFront:activityView];
     [self.view bringSubviewToFront:activityLabel];    
     [activityView setHidden:NO];
     [activityLabel setHidden:NO];    
+}
+
+- (void) showActivityLabel:(BOOL)aDimBackground {
+    if (aDimBackground) {
+        [self showActivityLabel];
+    } else {
+        [self.view bringSubviewToFront:activityLabel];        
+        [activityLabel setHidden:NO];        
+    }
+}
+
+- (void) showActivityLabelWithText:(NSString*)aText dimBackground:(BOOL)aDimBackground {
+    [activityLabel setText:aText];
+    
+    if (aDimBackground) {
+        [self.view bringSubviewToFront:activityLabel];    
+        [activityView setHidden:NO];
+    }
+    [self.view bringSubviewToFront:activityLabel];        
+    [activityLabel setHidden:NO];        
     
 }
 

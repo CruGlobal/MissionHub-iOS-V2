@@ -21,6 +21,8 @@
 
 - (void) initActivityLabel;
 - (void) showActivityLabel;
+- (void) showActivityLabel:(BOOL)aDimBackground;
+- (void) showActivityLabelWithText:(NSString*)aText dimBackground:(BOOL)aDimBackground;
 - (void) hideActivityLabel;
 
 @property (nonatomic, retain) TTActivityLabel *activityView;
