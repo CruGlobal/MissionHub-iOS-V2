@@ -19,6 +19,7 @@
     NSString *userId;
     NSString *orgId;
     NSString *fbId;
+    NSString *picture;
     
     NSDictionary *data;
     
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) NSString *fbId;
 @property (nonatomic, retain) NSString *orgId;
 @property (nonatomic, retain) NSString *accessToken;
+@property (nonatomic, retain) NSString *picture;
 @property (nonatomic, retain) NSArray *organizations;
 
 - (void) setData:(NSDictionary*)input;

@@ -20,6 +20,7 @@ static User *sharedUser = nil;
 @synthesize data;
 @synthesize accessToken;
 @synthesize organizations;
+@synthesize picture;
 
 - (id)init
 {
@@ -51,6 +52,7 @@ static User *sharedUser = nil;
    self.fbId = [data objectForKey:@"fb_id"];
    self.organizations = [data objectForKey:@"organization_membership"];
    self.userId = [[data objectForKey:@"id"] stringValue];
+    self.picture = [data objectForKey:@"picture"];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *savedOrgId = [userDefaults stringForKey:@"orgId"];

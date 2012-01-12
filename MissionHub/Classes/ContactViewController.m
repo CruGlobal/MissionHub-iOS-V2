@@ -196,7 +196,7 @@
         }
 
     } else if ([aIdentifier isEqualToString:@"onSaveBtn"]) {
-        [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];   
+        //[self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];   
     }
     [tableView reloadData];
 }
@@ -430,7 +430,7 @@
     }
 
     
-    NSDictionary *commenter = [NSDictionary dictionaryWithObjectsAndKeys: CurrentUser.name, @"name", nil];
+    NSDictionary *commenter = [NSDictionary dictionaryWithObjectsAndKeys: CurrentUser.name, @"name", CurrentUser.picture, @"picture", nil];
     NSMutableArray *rejoicables = [[NSMutableArray alloc] initWithCapacity:3];
     for(NSString *rejoicable in rejoicablesArray) {
         [rejoicables addObject: [NSDictionary dictionaryWithObjectsAndKeys:rejoicable, @"what", nil]];
