@@ -49,12 +49,17 @@
 		63B61B2D148A58F400CBE54B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63B61B2B148A58F400CBE54B /* InfoPlist.strings */; };
 		63B61B2F148A58F500CBE54B /* MissionHubTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 63B61B2E148A58F500CBE54B /* MissionHubTests.h */; };
 		63B61B31148A58F500CBE54B /* MissionHubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B61B30148A58F500CBE54B /* MissionHubTests.m */; };
+		63CFAA1914BF272C00977E22 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA1714BF272C00977E22 /* MainViewController.xib */; };
+		63CFAA2014BF2EB300977E22 /* ContactsViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA1A14BF2EB300977E22 /* ContactsViewController_iPad.xib */; };
+		63CFAA2114BF2EB300977E22 /* MainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA1C14BF2EB300977E22 /* MainViewController_iPad.xib */; };
+		63CFAA2214BF2EB300977E22 /* ProfileViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA1E14BF2EB300977E22 /* ProfileViewController_iPad.xib */; };
+		63CFAA2714BF322C00977E22 /* ContactViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA2314BF322C00977E22 /* ContactViewController_iPad.xib */; };
+		63CFAA2814BF322C00977E22 /* LoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA2514BF322C00977E22 /* LoginViewController_iPad.xib */; };
 		63DBAF82149946BF002A8D86 /* CatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF81149946BF002A8D86 /* CatalogController.m */; };
 		63DBAF8514994F16002A8D86 /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8414994F15002A8D86 /* MessageController.m */; };
 		63DBAF88149953EC002A8D86 /* MockDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF87149953EC002A8D86 /* MockDataSource.m */; };
 		63DBAF8B14995463002A8D86 /* SearchTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8A14995463002A8D86 /* SearchTestController.m */; };
 		63DD6ADF148EF5C90087313E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6ADD148EF5C90087313E /* MainViewController.m */; };
-		63DD6AE0148EF5C90087313E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6ADE148EF5C90087313E /* MainViewController.xib */; };
 		63DD6AEE148FF8BE0087313E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6AEC148FF8BE0087313E /* ProfileViewController.m */; };
 		63DD6AF2148FF9200087313E /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6AF0148FF9200087313E /* ProfileViewController.xib */; };
 		63DE0A5614ACE0B500F50B8D /* createContact.json in Resources */ = {isa = PBXBuildFile; fileRef = 63DE0A5514ACE0B500F50B8D /* createContact.json */; };
@@ -432,6 +437,13 @@
 		63B61B2C148A58F400CBE54B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		63B61B2E148A58F500CBE54B /* MissionHubTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MissionHubTests.h; sourceTree = "<group>"; };
 		63B61B30148A58F500CBE54B /* MissionHubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissionHubTests.m; sourceTree = "<group>"; };
+		63CFAA1814BF272C00977E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainViewController.xib; sourceTree = "<group>"; };
+		63CFAA1B14BF2EB300977E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/ContactsViewController_iPad.xib; sourceTree = "<group>"; };
+		63CFAA1D14BF2EB300977E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainViewController_iPad.xib; sourceTree = "<group>"; };
+		63CFAA1F14BF2EB300977E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/ProfileViewController_iPad.xib; sourceTree = "<group>"; };
+		63CFAA2414BF322C00977E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/ContactViewController_iPad.xib; sourceTree = "<group>"; };
+		63CFAA2614BF322C00977E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/LoginViewController_iPad.xib; sourceTree = "<group>"; };
+		63D681D814BF1D2F001864AB /* MissionHub copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MissionHub copy-Info.plist"; path = "/Users/david/Documents/MissionHub/MissionHub copy-Info.plist"; sourceTree = "<absolute>"; };
 		63DBAF80149946BE002A8D86 /* CatalogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogController.h; sourceTree = "<group>"; };
 		63DBAF81149946BF002A8D86 /* CatalogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogController.m; sourceTree = "<group>"; };
 		63DBAF8314994F15002A8D86 /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
@@ -443,7 +455,6 @@
 		63DD6AB2148EF0BE0087313E /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = "<group>"; };
 		63DD6ADC148EF5C90087313E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		63DD6ADD148EF5C90087313E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		63DD6ADE148EF5C90087313E /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
 		63DD6AEB148FF8BE0087313E /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		63DD6AEC148FF8BE0087313E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		63DD6AF1148FF9200087313E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/ProfileViewController.xib; sourceTree = "<group>"; };
@@ -718,6 +729,7 @@
 				63B61B28148A58F400CBE54B /* MissionHubTests */,
 				63B61AFA148A58F400CBE54B /* Frameworks */,
 				63B61AF8148A58F400CBE54B /* Products */,
+				63D681D814BF1D2F001864AB /* MissionHub copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -790,10 +802,10 @@
 		63B61B0D148A58F400CBE54B /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				63CFAA1714BF272C00977E22 /* MainViewController.xib */,
 				63B61B0E148A58F400CBE54B /* MissionHubAppDelegate_iPhone.h */,
 				63B61B0F148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m */,
 				63B61B11148A58F400CBE54B /* MainWindow_iPhone.xib */,
-				63DD6ADE148EF5C90087313E /* MainViewController.xib */,
 				63DF2374148D5C340039A964 /* LoginViewController.xib */,
 				63DD6AF0148FF9200087313E /* ProfileViewController.xib */,
 				63EAD05C148EC78500524305 /* PopupTTWebController.xib */,
@@ -810,6 +822,11 @@
 		63B61B14148A58F400CBE54B /* iPad */ = {
 			isa = PBXGroup;
 			children = (
+				63CFAA2314BF322C00977E22 /* ContactViewController_iPad.xib */,
+				63CFAA2514BF322C00977E22 /* LoginViewController_iPad.xib */,
+				63CFAA1A14BF2EB300977E22 /* ContactsViewController_iPad.xib */,
+				63CFAA1C14BF2EB300977E22 /* MainViewController_iPad.xib */,
+				63CFAA1E14BF2EB300977E22 /* ProfileViewController_iPad.xib */,
 				63B61B15148A58F400CBE54B /* MissionHubAppDelegate_iPad.h */,
 				63B61B16148A58F400CBE54B /* MissionHubAppDelegate_iPad.m */,
 				63B61B18148A58F400CBE54B /* MainWindow_iPad.xib */,
@@ -1390,7 +1407,6 @@
 				63DF2376148D5C340039A964 /* LoginViewController.xib in Resources */,
 				63EAD051148EB74A00524305 /* config.plist in Resources */,
 				63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */,
-				63DD6AE0148EF5C90087313E /* MainViewController.xib in Resources */,
 				63DD6AF2148FF9200087313E /* ProfileViewController.xib in Resources */,
 				63E02D34149017D600BC2DEF /* ContactsViewController.xib in Resources */,
 				63E02D3C14902BBA00BC2DEF /* ContactViewController.xib in Resources */,
@@ -1402,6 +1418,12 @@
 				636C5E2914B2D48300CE800D /* Entitlements.plist in Resources */,
 				6386778B14B2DCAF00075947 /* configDev.plist in Resources */,
 				6386782214B469CC00075947 /* appicon.png in Resources */,
+				63CFAA1914BF272C00977E22 /* MainViewController.xib in Resources */,
+				63CFAA2014BF2EB300977E22 /* ContactsViewController_iPad.xib in Resources */,
+				63CFAA2114BF2EB300977E22 /* MainViewController_iPad.xib in Resources */,
+				63CFAA2214BF2EB300977E22 /* ProfileViewController_iPad.xib in Resources */,
+				63CFAA2714BF322C00977E22 /* ContactViewController_iPad.xib in Resources */,
+				63CFAA2814BF322C00977E22 /* LoginViewController_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1577,6 +1599,54 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		63CFAA1714BF272C00977E22 /* MainViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63CFAA1814BF272C00977E22 /* en */,
+			);
+			name = MainViewController.xib;
+			sourceTree = "<group>";
+		};
+		63CFAA1A14BF2EB300977E22 /* ContactsViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63CFAA1B14BF2EB300977E22 /* en */,
+			);
+			name = ContactsViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		63CFAA1C14BF2EB300977E22 /* MainViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63CFAA1D14BF2EB300977E22 /* en */,
+			);
+			name = MainViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		63CFAA1E14BF2EB300977E22 /* ProfileViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63CFAA1F14BF2EB300977E22 /* en */,
+			);
+			name = ProfileViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		63CFAA2314BF322C00977E22 /* ContactViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63CFAA2414BF322C00977E22 /* en */,
+			);
+			name = ContactViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		63CFAA2514BF322C00977E22 /* LoginViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63CFAA2614BF322C00977E22 /* en */,
+			);
+			name = LoginViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
 		63DD6AF0148FF9200087313E /* ProfileViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1677,6 +1747,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "434D6818-1BAE-49E6-919F-CA28D6F2359E";
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Ad Hoc";
@@ -1797,6 +1868,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1830,6 +1902,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

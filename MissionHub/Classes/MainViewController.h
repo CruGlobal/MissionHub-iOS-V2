@@ -6,9 +6,9 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : BaseViewController
 
 - (IBAction)onLogoutBtn:(id)sender;
 - (IBAction)onProfileBtn:(id)sender;
