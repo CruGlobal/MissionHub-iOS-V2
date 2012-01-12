@@ -102,6 +102,7 @@
         [assignBtn setTitle: @"Assign" forState:UIControlStateNormal];
     }
 
+    [self showActivityLabel:NO];
 }
 
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
@@ -115,6 +116,8 @@
             NSDictionary *comment = [tempDict objectForKey:@"followup_comment"];
             [commentsArray addObject: comment];
         }
+        
+        [self hideActivityLabel];
     } else if ([aIdentifier isEqualToString:@"contacts"]) {
         NSArray *people = [result objectForKey:@"contacts"];
         NSDictionary *personAndFormDict = [people objectAtIndex:0];
@@ -211,11 +214,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)onBackBtn:(id)sender {    
-//    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts"] applyAnimated:YES]];    
-    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://nib/ContactsViewController" ] applyAnimated:YES]];    
-}
-
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
@@ -293,6 +291,12 @@
 
 #pragma mark - button events
 
+- (IBAction)onBackBtn:(id)sender {
+    // [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts"] applyAnimated:YES]];    
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://nib/ContactsViewController" ] applyAnimated:YES]];    
+    [[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self]; 
+}
+
 - (IBAction)onCallBtn:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:99022002"]]; 
 }
@@ -323,7 +327,7 @@
 }
 
 - (IBAction)onShowRejoicablesBtn:(id)sender {
-     CGRect frame = self.rejoicablesView.frame;
+    CGRect frame = self.rejoicablesView.frame;
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.75];
@@ -415,8 +419,7 @@
                                                                                       commentTextView.text, @"comment",                                                                                      
                                                                                       [self.personData objectForKey:@"id"], @"contact_id", nil]];
 
-    [commentTextView resignFirstResponder];
-    [commentTextView setText:@""];
+
     
     // unselect all rejoicable buttons
     for(UIView *subview in [rejoicablesView subviews]) {
@@ -425,6 +428,60 @@
            btn.selected = NO;    
        }
     }
+
+    
+    NSDictionary *commenter = [NSDictionary dictionaryWithObjectsAndKeys: CurrentUser.name, @"name", nil];
+    NSMutableArray *rejoicables = [[NSMutableArray alloc] initWithCapacity:3];
+    for(NSString *rejoicable in rejoicablesArray) {
+        [rejoicables addObject: [NSDictionary dictionaryWithObjectsAndKeys:rejoicable, @"what", nil]];
+    }
+
+    NSDictionary *comment = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSDictionary dictionaryWithObjectsAndKeys: 
+                              commentTextView.text, @"comment",
+                              @"few seconds ago", @"created_at_words",
+                              self.statusSelected, @"status",
+                              commenter, @"commenter", nil], @"comment",
+                              rejoicables, @"rejoicables",
+                              nil];
+    
+    
+//    "followup_comment" =             {
+//        comment =                 {
+//            comment = "";
+//            commenter =                     {
+//                id = 2160584;
+//                name = "David Ang";
+//                picture = "http://graph.facebook.com/1322439723/picture";
+//            };
+//            "contact_id" = 1744343;
+//            "created_at" = "2011-12-27 20:09:33 UTC";
+//            "created_at_words" = "15 days ago";
+//            id = 55;
+//            "organization_id" = 1;
+//            status = "attempted_contact";
+//            "updated_at" = "2011-12-27 20:09:33 UTC";
+//        };
+//        rejoicables =                 (
+//                                       {
+//                                           id = 68;
+//                                           what = "gospel_presentation";
+//                                       },
+//                                       {
+//                                           id = 69;
+//                                           what = "prayed_to_receive";
+//                                       }
+//                                       );
+//    };
+    
+    [commentsArray insertObject:comment atIndex:0];
+    
+    NSLog(@"%@",  [jsonWriter stringWithObject:comment]);
+    [tableView reloadData];
+    
+    
+    [commentTextView resignFirstResponder];
+    [commentTextView setText:@""];
     [rejoicablesArray removeAllObjects];
     self.statusSelected = @"";
 }

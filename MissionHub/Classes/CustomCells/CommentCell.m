@@ -47,6 +47,10 @@
     label = (UILabel *)[self viewWithTag:5];
     label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"status"]];
     
+    [(UIImageView *)[self viewWithTag:6] setHidden:YES]; 
+    [(UIImageView *)[self viewWithTag:7] setHidden:YES]; 
+    [(UIImageView *)[self viewWithTag:8] setHidden:YES];     
+    
     // rejoicables
     for (NSDictionary *rejoicable in rejoicables) {
         if ([[rejoicable objectForKey:@"what"] isEqualToString:@"gospel_presentation"]) {

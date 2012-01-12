@@ -76,8 +76,6 @@
     request.cachePolicy = TTURLRequestCachePolicyNone;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     [request send];    
-
-    [self showActivityLabel];
 }
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData {
@@ -104,8 +102,6 @@
     request.httpBody = postData;
 
     [request send];
-    
-    [self showActivityLabel];
 }
 
 - (void)requestDidStartLoad:(TTURLRequest*)request {    
@@ -113,7 +109,6 @@
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-    [self hideActivityLabel];
     
     TTURLJSONResponse* response = request.response;
     if (request.respondedFromCache) {
@@ -126,7 +121,6 @@
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-    [self hideActivityLabel];
     
     int status = [error code];
     NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
@@ -160,6 +154,8 @@
 }
 
 - (void) showActivityLabel:(BOOL)aDimBackground {
+    [activityLabel setText: @" Loading..."];
+    
     if (aDimBackground) {
         [self showActivityLabel];
     } else {
