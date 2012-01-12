@@ -68,7 +68,7 @@
 
 - (void) makeHttpRequest:(NSString *)path params:(NSString*)aParams identifier:(NSString*)aIdentifier {
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&access_token=%@", baseUrl, path, aParams, CurrentUser.accessToken];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&org_id=%@&&access_token=%@", baseUrl, path, aParams, CurrentUser.orgId, CurrentUser.accessToken];
     NSLog(@"making http GET request: %@", requestUrl);    
     
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
@@ -80,7 +80,7 @@
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData {
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?access_token=%@", baseUrl, path, CurrentUser.accessToken];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?org_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
     NSLog(@"making http POST request: %@", requestUrl);    
     
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];

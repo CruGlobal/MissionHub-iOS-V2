@@ -35,7 +35,7 @@
     
     // Load config into an NSDictionary
     NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSString *finalPath = [path stringByAppendingPathComponent:@"configDev.plist"];
+    NSString *finalPath = [path stringByAppendingPathComponent:@"config.plist"];
     config = [[NSDictionary dictionaryWithContentsOfFile:finalPath] retain];
     
     //self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
