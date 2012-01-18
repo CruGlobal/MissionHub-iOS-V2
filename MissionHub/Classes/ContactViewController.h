@@ -12,7 +12,7 @@
 @class CommentCell;
 @class SimpleCell;
 
-@interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, retain) NSDictionary *personData;
 @property (nonatomic, retain) NSMutableArray *commentsArray;
@@ -20,9 +20,10 @@
 @property (nonatomic, retain) NSMutableArray *surveyArray;
 @property (nonatomic, retain) NSMutableArray *rejoicablesArray;
 @property (nonatomic, retain) NSString *statusSelected;
+@property (nonatomic, retain) UIImagePickerController *imagePicker;
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl;
-@property (nonatomic, retain) IBOutlet UIImageView *placeHolderImageView;
+@property (nonatomic, retain) IBOutlet UIButton *placeHolderImageView;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet SimpleCell *simpleCell;
 @property (nonatomic, assign) IBOutlet CommentCell *commentCell;
@@ -50,5 +51,6 @@
 - (IBAction)onSaveBtn:(id)sender;
 - (IBAction)onSegmentChange:(id)sender;
 - (IBAction)onRejoicableBtn:(id)sender;
+- (IBAction)onPlaceHolderImageBtn:(id)sender;
 
 @end

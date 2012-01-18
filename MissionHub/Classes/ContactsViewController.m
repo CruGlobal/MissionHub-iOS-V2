@@ -130,6 +130,7 @@
     
     ContactsListDataSource *ds = nil;
     ContactsListDataSource *ds2 = nil;    
+
     UISegmentedControl *segmentedControl = sender;
     if (segmentedControl.selectedSegmentIndex == 1) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];
@@ -137,9 +138,10 @@
     } else if (segmentedControl.selectedSegmentIndex == 2) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];        
         ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];                
-    } else {
+    } else if (segmentedControl.selectedSegmentIndex == 3) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];        
         ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];                
+    } else {
     }
 
     self.searchViewController.dataSource = ds2;

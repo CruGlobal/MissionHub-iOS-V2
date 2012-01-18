@@ -145,6 +145,20 @@
     [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
 }
 
+- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
+    
+    int status = [error code];
+    NSLog(@"didFailLoadWithError HTTP return status code: %d", status);    
+
+    if (status == 401) { // token has expired / invalid authentication
+        NSLog(@"... access token has been invalidated");    
+        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        
+        [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];    
+    }
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

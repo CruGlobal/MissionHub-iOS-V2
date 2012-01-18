@@ -29,6 +29,7 @@
 @synthesize rejoicablesArray;
 @synthesize statusSelected;
 @synthesize assignBtn;
+@synthesize imagePicker;
     
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super init]){ 
@@ -64,6 +65,12 @@
     infoArray = [[NSMutableArray alloc] initWithCapacity:10];
     surveyArray = [[NSMutableArray alloc] initWithCapacity:10];    
     rejoicablesArray = [[NSMutableArray alloc] initWithCapacity:3];    
+    
+    imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.allowsImageEditing = YES;
+    imagePicker.delegate = self;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -288,6 +295,20 @@
     return YES;
 }
 
+#pragma mark UIImagePickerControllerDelegate methods
+
+- (void) imagePickerController:(UIImagePickerController *) picker didFinishPickingImage:(UIImage *) image editingInfo:(NSDictionary *) editingInfo {
+
+    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
+    
+}
+
+- (void) imagePickerControllerDidCancel:(UIImagePickerController *) picker {
+    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
+
+}
+
+
 
 #pragma mark - button events
 
@@ -489,6 +510,10 @@
 - (IBAction)onSegmentChange:(id)sender {    
         
     [tableView reloadData];
+}
+
+- (IBAction)onPlaceHolderImageBtn:(id)sender {
+    [self presentModalViewController: imagePicker animated:YES];
 }
 
 
