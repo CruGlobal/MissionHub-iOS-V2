@@ -11,6 +11,7 @@
 #import "ContactCell.h"
 #import "MockDataSource.h"
 #import "ContactsListDataSource.h"
+#import "LeadersListDataSource.h"
 
 @implementation ContactsViewController
 
@@ -130,7 +131,10 @@
     
     ContactsListDataSource *ds = nil;
     ContactsListDataSource *ds2 = nil;    
-
+    
+    LeadersListDataSource *ld = nil;
+    LeadersListDataSource *ld2 = nil;    
+    
     UISegmentedControl *segmentedControl = sender;
     if (segmentedControl.selectedSegmentIndex == 1) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];
@@ -138,15 +142,23 @@
     } else if (segmentedControl.selectedSegmentIndex == 2) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];        
         ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];                
-    } else if (segmentedControl.selectedSegmentIndex == 3) {
+    } else if (segmentedControl.selectedSegmentIndex == 0) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];        
         ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];                
     } else {
+        ld = [[LeadersListDataSource alloc] init];        
+        ld2 = [[LeadersListDataSource alloc] init];                
     }
 
-    self.searchViewController.dataSource = ds2;
-    self.dataSource = ds;
-    [ds release];
+    if (ld == nil) {
+        self.searchViewController.dataSource = ds2;
+        self.dataSource = ds;
+        [ds release];
+    } else {
+        self.searchViewController.dataSource = ld2;
+        self.dataSource = ld;
+        [ld release];
+    }
 }
 
 //#pragma mark - UITableViewDelegate

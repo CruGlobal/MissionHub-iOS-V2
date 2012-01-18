@@ -168,6 +168,7 @@
 		63E02D6F149278DF00BC2DEF /* HJMOUserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D64149278DF00BC2DEF /* HJMOUserBase.m */; };
 		63E02D70149278DF00BC2DEF /* HJObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D66149278DF00BC2DEF /* HJObjManager.m */; };
 		63E02D71149278DF00BC2DEF /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D68149278DF00BC2DEF /* HJWeakMutableArray.m */; };
+		63E040DC14C743A9006859BF /* LeadersListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E040DB14C743A9006859BF /* LeadersListDataSource.m */; };
 		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
 		63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD05C148EC78500524305 /* PopupTTWebController.xib */; };
 		63F7858814AC6E18009D6CE4 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63957E3014AAB6CB00ABA6F9 /* libQuickDialog.a */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -581,6 +582,8 @@
 		63E02D66149278DF00BC2DEF /* HJObjManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJObjManager.m; sourceTree = "<group>"; };
 		63E02D67149278DF00BC2DEF /* HJWeakMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJWeakMutableArray.h; sourceTree = "<group>"; };
 		63E02D68149278DF00BC2DEF /* HJWeakMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJWeakMutableArray.m; sourceTree = "<group>"; };
+		63E040DA14C743A8006859BF /* LeadersListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeadersListDataSource.h; path = Classes/Models/LeadersListDataSource.h; sourceTree = "<group>"; };
+		63E040DB14C743A9006859BF /* LeadersListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeadersListDataSource.m; path = Classes/Models/LeadersListDataSource.m; sourceTree = "<group>"; };
 		63EAD050148EB74A00524305 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		63EAD05C148EC78500524305 /* PopupTTWebController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupTTWebController.xib; path = Classes/PopupTTWebController.xib; sourceTree = "<group>"; };
 		63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1017,6 +1020,8 @@
 			children = (
 				634672FE14B1D64E00F45765 /* ContactsListDataSource.h */,
 				634672FF14B1D64E00F45765 /* ContactsListDataSource.m */,
+				63E040DA14C743A8006859BF /* LeadersListDataSource.h */,
+				63E040DB14C743A9006859BF /* LeadersListDataSource.m */,
 				63E02D3F1492604A00BC2DEF /* User.h */,
 				63E02D401492604A00BC2DEF /* User.m */,
 				63DBAF86149953EC002A8D86 /* MockDataSource.h */,
@@ -1492,6 +1497,7 @@
 				6346730014B1D64E00F45765 /* ContactsListDataSource.m in Sources */,
 				6386778E14B31ED000075947 /* TableSubtitleItemCell.m in Sources */,
 				6386782014B43C1D00075947 /* NiceAlertView.m in Sources */,
+				63E040DC14C743A9006859BF /* LeadersListDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
