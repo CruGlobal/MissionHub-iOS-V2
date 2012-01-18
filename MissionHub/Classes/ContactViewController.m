@@ -221,6 +221,22 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void) uploadPersonPhoto {
+    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(placeHolderImageView.imageView.image)];
+    
+    NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/contacts/%@/photo?org_id=%@&access_token=%@", baseUrl, [personData objectForKey:@"id"], CurrentUser.orgId, CurrentUser.accessToken];
+    NSLog(@"making http POST request: %@", requestUrl);    
+    
+    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    request.httpMethod = @"POST";
+    request.cachePolicy = TTURLRequestCachePolicyNone;
+
+    [request addFile:imageData mimeType:@"image/png" fileName:@"photo"];
+    [request send];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
@@ -298,8 +314,9 @@
 #pragma mark UIImagePickerControllerDelegate methods
 
 - (void) imagePickerController:(UIImagePickerController *) picker didFinishPickingImage:(UIImage *) image editingInfo:(NSDictionary *) editingInfo {
-
     [placeHolderImageView setImage:image forState:UIControlStateNormal];
+
+    [self uploadPersonPhoto];
     [self dismissModalViewControllerAnimated:YES];
 }
 
