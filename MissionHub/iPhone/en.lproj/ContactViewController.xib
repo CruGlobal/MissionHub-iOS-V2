@@ -128,7 +128,7 @@
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">08-chat2.png</string>
 										</object>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="891691493">
+										<object class="IBUIFontDescription" key="IBUIFontDescription" id="753732943">
 											<string key="name">Helvetica-Bold</string>
 											<string key="family">Helvetica</string>
 											<int key="traits">2</int>
@@ -162,7 +162,7 @@
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">18-envelope2.png</string>
 										</object>
-										<reference key="IBUIFontDescription" ref="891691493"/>
+										<reference key="IBUIFontDescription" ref="753732943"/>
 										<reference key="IBUIFont" ref="445399515"/>
 									</object>
 									<object class="IBUIButton" id="1003207927">
@@ -187,7 +187,7 @@
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">75-phone2.png</string>
 										</object>
-										<reference key="IBUIFontDescription" ref="891691493"/>
+										<reference key="IBUIFontDescription" ref="753732943"/>
 										<reference key="IBUIFont" ref="445399515"/>
 									</object>
 									<object class="IBUIButton" id="335173049">
@@ -211,7 +211,7 @@
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">assign_button.png</string>
 										</object>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="827462661">
+										<object class="IBUIFontDescription" key="IBUIFontDescription" id="274910275">
 											<string key="name">Helvetica-Bold</string>
 											<string key="family">Helvetica</string>
 											<int key="traits">2</int>
@@ -244,7 +244,7 @@
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">status_button.png</string>
 										</object>
-										<reference key="IBUIFontDescription" ref="827462661"/>
+										<reference key="IBUIFontDescription" ref="274910275"/>
 										<reference key="IBUIFont" ref="322339773"/>
 									</object>
 									<object class="IBUIButton" id="262404575">
@@ -268,7 +268,7 @@
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">post_button.png</string>
 										</object>
-										<reference key="IBUIFontDescription" ref="891691493"/>
+										<reference key="IBUIFontDescription" ref="753732943"/>
 										<reference key="IBUIFont" ref="445399515"/>
 									</object>
 									<object class="IBUIButton" id="398786740">
@@ -294,7 +294,7 @@
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">rejoicable_icon.png</string>
 										</object>
-										<reference key="IBUIFontDescription" ref="891691493"/>
+										<reference key="IBUIFontDescription" ref="753732943"/>
 										<reference key="IBUIFont" ref="445399515"/>
 									</object>
 									<object class="IBUITextView" id="1057288133">
@@ -364,7 +364,7 @@
 													<string key="NSResourceName">icon-s-convo-white.png</string>
 												</object>
 												<reference key="IBUINormalBackgroundImage" ref="659646449"/>
-												<reference key="IBUIFontDescription" ref="827462661"/>
+												<reference key="IBUIFontDescription" ref="274910275"/>
 												<reference key="IBUIFont" ref="322339773"/>
 											</object>
 											<object class="IBUIButton" id="603797171">
@@ -396,7 +396,7 @@
 												</object>
 												<reference key="IBUISelectedBackgroundImage" ref="659646449"/>
 												<reference key="IBUINormalBackgroundImage" ref="659646449"/>
-												<reference key="IBUIFontDescription" ref="827462661"/>
+												<reference key="IBUIFontDescription" ref="274910275"/>
 												<reference key="IBUIFont" ref="322339773"/>
 											</object>
 											<object class="IBUIButton" id="220428015">
@@ -427,7 +427,7 @@
 													<string key="NSResourceName">icon-g-present-white.png</string>
 												</object>
 												<reference key="IBUINormalBackgroundImage" ref="659646449"/>
-												<reference key="IBUIFontDescription" ref="827462661"/>
+												<reference key="IBUIFontDescription" ref="274910275"/>
 												<reference key="IBUIFont" ref="322339773"/>
 											</object>
 											<object class="IBUIButton" id="145641504">
@@ -450,7 +450,7 @@
 												</object>
 												<reference key="IBUINormalTitleShadowColor" ref="712959347"/>
 												<reference key="IBUINormalImage" ref="223551410"/>
-												<reference key="IBUIFontDescription" ref="891691493"/>
+												<reference key="IBUIFontDescription" ref="753732943"/>
 												<reference key="IBUIFont" ref="445399515"/>
 											</object>
 										</object>
@@ -465,7 +465,7 @@
 										</object>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									</object>
-									<object class="IBUIButton" id="521470844">
+									<object class="IBUIButton" id="314945499">
 										<reference key="NSNextResponder" ref="676192107"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{20, 21}, {85, 72}}</string>
@@ -702,6 +702,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">placeHolderImageView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="314945499"/>
+					</object>
+					<int key="connectionID">79</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="171890046"/>
 						<reference key="destination" ref="372490531"/>
@@ -844,11 +852,11 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onPlaceHolderImageBtn:</string>
-						<reference key="source" ref="521470844"/>
+						<reference key="source" ref="314945499"/>
 						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">3</int>
+						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">77</int>
+					<int key="connectionID">78</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -910,7 +918,7 @@
 							<reference ref="870506119"/>
 							<reference ref="1057288133"/>
 							<reference ref="19661317"/>
-							<reference ref="521470844"/>
+							<reference ref="314945499"/>
 						</object>
 						<reference key="parent" ref="171890046"/>
 					</object>
@@ -1013,7 +1021,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">76</int>
-						<reference key="object" ref="521470844"/>
+						<reference key="object" ref="314945499"/>
 						<reference key="parent" ref="676192107"/>
 					</object>
 				</object>
@@ -1099,7 +1107,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">77</int>
+			<int key="maxID">79</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

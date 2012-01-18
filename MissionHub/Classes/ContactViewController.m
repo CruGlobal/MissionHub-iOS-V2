@@ -299,13 +299,12 @@
 
 - (void) imagePickerController:(UIImagePickerController *) picker didFinishPickingImage:(UIImage *) image editingInfo:(NSDictionary *) editingInfo {
 
-    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
-    
+    [placeHolderImageView setImage:image forState:UIControlStateNormal];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void) imagePickerControllerDidCancel:(UIImagePickerController *) picker {
-    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
-
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
