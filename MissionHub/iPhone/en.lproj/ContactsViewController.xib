@@ -60,7 +60,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{5, 2}, {60, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="800856739"/>
+						<reference key="NSNextKeyView" ref="872780317"/>
 						<string key="NSReuseIdentifierKey">_NS:222</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -111,7 +111,7 @@
 						<reference key="IBUIFontDescription" ref="607127541"/>
 						<reference key="IBUIFont" ref="315360306"/>
 					</object>
-					<object class="IBUIButton" id="67942008">
+					<object class="IBUIButton" id="853875520">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{138, 3}, {88, 30}}</string>
@@ -130,12 +130,12 @@
 						<reference key="IBUIFontDescription" ref="607127541"/>
 						<reference key="IBUIFont" ref="315360306"/>
 					</object>
-					<object class="IBUIButton" id="800856739">
+					<object class="IBUIButton" id="872780317">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{66, 2}, {71, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="67942008"/>
+						<reference key="NSNextKeyView" ref="853875520"/>
 						<string key="NSReuseIdentifierKey">_NS:222</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -231,7 +231,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">cancelBtn</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="800856739"/>
+						<reference key="destination" ref="872780317"/>
 					</object>
 					<int key="connectionID">47</int>
 				</object>
@@ -239,7 +239,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">assignBtn</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="67942008"/>
+						<reference key="destination" ref="853875520"/>
 					</object>
 					<int key="connectionID">48</int>
 				</object>
@@ -273,7 +273,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onAssignBtn:</string>
-						<reference key="source" ref="67942008"/>
+						<reference key="source" ref="853875520"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -282,7 +282,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onCancelBtn:</string>
-						<reference key="source" ref="800856739"/>
+						<reference key="source" ref="872780317"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -309,8 +309,8 @@
 							<reference ref="86372876"/>
 							<reference ref="34885295"/>
 							<reference ref="999925159"/>
-							<reference ref="67942008"/>
-							<reference ref="800856739"/>
+							<reference ref="853875520"/>
+							<reference ref="872780317"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -347,12 +347,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">39</int>
-						<reference key="object" ref="67942008"/>
+						<reference key="object" ref="853875520"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">43</int>
-						<reference key="object" ref="800856739"/>
+						<reference key="object" ref="872780317"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>

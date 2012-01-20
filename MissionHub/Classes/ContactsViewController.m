@@ -168,6 +168,8 @@
 
 - (IBAction)onSegmentChange:(id)sender {
     assignMode = NO;
+    [assignBtn setTitle:@"Assign" forState:UIControlStateNormal];
+    [cancelBtn setHidden:YES];
     
     ContactsListDataSource *ds = nil;
     ContactsListDataSource *ds2 = nil;    
