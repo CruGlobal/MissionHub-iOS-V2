@@ -132,10 +132,12 @@
 @implementation ContactsListDataSource
 
 @synthesize contactList;
+@synthesize assignMode;
 
 - (id)initWithParams:(NSString*)aParams {
     if (self = [super init]) {
         contactList = [[ContactsListRequestModel alloc] initWithParams:aParams];
+        assignMode = NO;
         self.model = contactList;
     }
     return self;
@@ -150,8 +152,28 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewDataSource
 
+- (id) tableView:(UITableView *)tableView objectForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [super tableView:tableView objectForRowAtIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView cell:(UITableViewCell *)cell willAppearAtIndexPath:(NSIndexPath *)indexPath {
+    TTTableSubtitleItem *item = [_items objectAtIndex:indexPath.row];
+    NSDictionary *userInfo = (NSDictionary*)item.userInfo;
+    
+    if (assignMode) {
+        if ([userInfo objectForKey:@"checked"] == @"1") {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+
+}
 
 - (Class)tableView:(UITableView *)tableView cellClassForObject:(id)object {
+   
     if ([object isKindOfClass:[TTTableSubtitleItem class]]) {
         return [TableSubtitleItemCell class];
     } else {

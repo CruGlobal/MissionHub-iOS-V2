@@ -67,10 +67,15 @@
     rejoicablesArray = [[NSMutableArray alloc] initWithCapacity:3];    
     
     imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.allowsImageEditing = YES;
-    imagePicker.delegate = self;
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
+    [imagePicker setAllowsImageEditing:YES];
+    [imagePicker setDelegate:self];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES) {
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    }
+    else {
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -233,7 +238,7 @@
     request.httpMethod = @"POST";
     request.cachePolicy = TTURLRequestCachePolicyNone;
 
-    [request addFile:imageData mimeType:@"image/png" fileName:@"photo"];
+    [request addFile:imageData mimeType:@"image/png" fileName:@"image"];
     [request send];
 }
 

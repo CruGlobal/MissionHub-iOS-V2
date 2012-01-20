@@ -12,6 +12,7 @@
 @property (nonatomic, retain) NSMutableArray *dataArray;
 @property (nonatomic, retain) NSMutableArray *filteredDataArray;
 
+
 - (id)initWithParams:(NSString*)aParams;
 - (void)search:(NSString*)text;
 
@@ -21,6 +22,7 @@
 @interface ContactsListDataSource : TTListDataSource 
 
 @property (nonatomic, retain) ContactsListRequestModel *contactList;
+@property BOOL assignMode;
 
 - (id)initWithParams:(NSString*)aParams;
 

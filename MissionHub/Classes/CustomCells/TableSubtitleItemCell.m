@@ -21,7 +21,7 @@
 //            [self.contentView addSubview:placeholderImageView];
 //            //[self addSubview:placeholderImageView];
 //        }
-        
+
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         self.selectionStyle = UITableViewCellSelectionStyleGray;
     }

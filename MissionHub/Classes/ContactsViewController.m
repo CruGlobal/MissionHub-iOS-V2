@@ -16,7 +16,9 @@
 @implementation ContactsViewController
 
 @synthesize delegate = _delegate;
-
+@synthesize assignMode;
+@synthesize cancelBtn;
+@synthesize assignBtn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,11 +60,25 @@
     [_delegate searchContactsController:self didSelectObject:object];
 
     TTTableSubtitleItem *item = (TTTableSubtitleItem*)object;
-    NSDictionary *person = item.userInfo;
-    TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"] 
-                             applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]] 
-                            applyAnimated:YES];
-    [[TTNavigator navigator] openURLAction:action];
+    
+    if (assignMode == YES) {
+        NSMutableDictionary *userInfo = item.userInfo;
+        TTTableViewCell* cell = (TTTableViewCell*) [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            [userInfo setObject:@"0" forKey:@"checked"];
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [userInfo setObject:@"1" forKey:@"checked"];      
+        }
+    } else {
+    
+        NSDictionary *person = item.userInfo;
+        TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"] 
+                                 applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]] 
+                                applyAnimated:YES];
+        [[TTNavigator navigator] openURLAction:action];
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -122,12 +138,36 @@
     [self presentModalViewController:navigation animated:YES];
 }
 
+- (IBAction)onAssignBtn:(id)sender {
+    if (assignMode) {
+
+    } else {
+        assignMode = YES;    
+        ((ContactsListDataSource*)self.dataSource).assignMode = YES;
+        
+        [assignBtn setTitle:@"Select Leader" forState:UIControlStateNormal];
+        [cancelBtn setHidden:NO];
+        
+        [self.tableView reloadData];
+    }
+}
+
+- (IBAction)onCancelBtn:(id)sender {
+    assignMode = NO;    
+    ((ContactsListDataSource*)self.dataSource).assignMode = NO;
+    
+    [assignBtn setTitle:@"Assign" forState:UIControlStateNormal];
+    [cancelBtn setHidden:YES];    
+    
+    [self.tableView reloadData];
+}
+
 - (IBAction)onCreateContactBackBtn:(id)sender {    
     [self dismissModalViewControllerAnimated:YES];
 }
 
-
 - (IBAction)onSegmentChange:(id)sender {
+    assignMode = NO;
     
     ContactsListDataSource *ds = nil;
     ContactsListDataSource *ds2 = nil;    

@@ -12,7 +12,7 @@
 @class CommentCell;
 @class SimpleCell;
 
-@interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate>
+@interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, retain) NSDictionary *personData;
 @property (nonatomic, retain) NSMutableArray *commentsArray;
