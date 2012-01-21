@@ -19,6 +19,7 @@
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
 		6346730014B1D64E00F45765 /* ContactsListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 634672FF14B1D64E00F45765 /* ContactsListDataSource.m */; };
 		634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */; };
+		634F6A6714CAA19600D63948 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6614CAA19600D63948 /* TableViewController.m */; };
 		636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793BF149698FB00B52C74 /* SimpleCell.xib */; };
 		636793C214969B8600B52C74 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793C114969B8600B52C74 /* CommentCell.xib */; };
 		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; };
@@ -397,6 +398,8 @@
 		634672FF14B1D64E00F45765 /* ContactsListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsListDataSource.m; path = Classes/Models/ContactsListDataSource.m; sourceTree = "<group>"; };
 		634F6A6214CA917300D63948 /* LeaderSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderSelectionViewController.h; sourceTree = "<group>"; };
 		634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderSelectionViewController.m; sourceTree = "<group>"; };
+		634F6A6514CAA19500D63948 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		634F6A6614CAA19600D63948 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		636793BF149698FB00B52C74 /* SimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCell.xib; sourceTree = "<group>"; };
 		636793C114969B8600B52C74 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		636793C41496A60100B52C74 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
@@ -994,6 +997,8 @@
 			children = (
 				639A1515149817CD00FFAC44 /* BaseViewController.h */,
 				639A1516149817CE00FFAC44 /* BaseViewController.m */,
+				634F6A6514CAA19500D63948 /* TableViewController.h */,
+				634F6A6614CAA19600D63948 /* TableViewController.m */,
 				63DF236F148D559A0039A964 /* LoginViewController.h */,
 				63DF2370148D559A0039A964 /* LoginViewController.m */,
 				63DD6ADC148EF5C90087313E /* MainViewController.h */,
@@ -1504,6 +1509,7 @@
 				6386782014B43C1D00075947 /* NiceAlertView.m in Sources */,
 				63E040DC14C743A9006859BF /* LeadersListDataSource.m in Sources */,
 				634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */,
+				634F6A6714CAA19600D63948 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

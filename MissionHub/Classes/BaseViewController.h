@@ -11,7 +11,6 @@
 
 @interface BaseViewController : UIViewController<TTURLRequestDelegate>
 
-
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier;
 - (void) makeHttpRequest:(NSString *)path params:(NSString*)aParams identifier:(NSString*)aIdentifier;
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData;

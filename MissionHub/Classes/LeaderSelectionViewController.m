@@ -13,6 +13,8 @@
 
 @implementation LeaderSelectionViewController
 
+@synthesize leaderId;
+
 - (void) createModel {
     self.dataSource = [[[LeadersListDataSource alloc] initAsSelection:YES] autorelease];
 }
@@ -24,8 +26,7 @@
 
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
     TTTableSubtitleItem *item = (TTTableSubtitleItem*)object;
-    
-    NSDictionary *leader = item.userInfo;
+    leaderId = [item.userInfo objectForKey:@"id"]; // store the leader id selected by user
     
     ContactsViewController *contactsViewController = (ContactsViewController *)[[TTNavigator navigator] viewControllerForURL:@"mh://nib/ContactsViewController"];
     ContactsListDataSource *contactsListDataSource = contactsViewController.dataSource;
@@ -47,6 +48,17 @@
     // the user clicked one of the OK/Cancel buttons
     if (buttonIndex == 1)
     {
+        ContactsViewController *contactsViewController = (ContactsViewController *)[[TTNavigator navigator] viewControllerForURL:@"mh://nib/ContactsViewController"];
+        ContactsListDataSource *contactsListDataSource = contactsViewController.dataSource;
+        
+        for (TTTableSubtitleItem *item in contactsListDataSource.items) {
+            NSDictionary *userInfo = item.userInfo;
+            if ([[userInfo objectForKey:@"checked"] intValue] == 1) {
+                NSString *params = [NSString stringWithFormat:@"id=%@&type=leader&assign_to_id=%@", [userInfo objectForKey:@"id"], leaderId];
+                [self makeHttpRequest:@"contact_assignments" identifier:@"contact_assignments" postString: params];
+            }
+        }
+        
         
         [[self parentViewController] dismissModalViewControllerAnimated:YES];
     }

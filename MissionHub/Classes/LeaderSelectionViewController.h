@@ -6,8 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "TableViewController.h"
 
-@interface LeaderSelectionViewController : TTTableViewController
+@interface LeaderSelectionViewController : TableViewController
+
+@property NSString *leaderId;
 
 @end
