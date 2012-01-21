@@ -35,20 +35,20 @@
 
 - (void)loadView {
     [super loadView];
-    
+
     TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
     self.searchViewController = searchController;
     self.tableView.tableHeaderView = _searchController.searchBar;
-    
+
     ContactsListDataSource *ds = [[[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]] autorelease];
-    //searchController.dataSource = [[[MockSearchDataSource alloc] initWithDuration:1.5] autorelease];    
+    //searchController.dataSource = [[[MockSearchDataSource alloc] initWithDuration:1.5] autorelease];
     self.searchViewController.dataSource = ds;
-    
-    [self.tableView setFrame:CGRectMake(0, 33, 320, 398)];    
+
+    [self.tableView setFrame:CGRectMake(0, 33, 320, 398)];
 }
 
 - (id<TTTableViewDelegate>) createDelegate {
-    return (id<TTTableViewDelegate>)[[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];    
+    return (id<TTTableViewDelegate>)[[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
 }
 
 
@@ -56,11 +56,11 @@
 // TTTableViewController
 
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
-    
+
     [_delegate searchContactsController:self didSelectObject:object];
 
     TTTableSubtitleItem *item = (TTTableSubtitleItem*)object;
-    
+
     if (assignMode == YES) {
         NSMutableDictionary *userInfo = item.userInfo;
         TTTableViewCell* cell = (TTTableViewCell*) [self.tableView cellForRowAtIndexPath:indexPath];
@@ -69,13 +69,13 @@
             [userInfo setObject:@"0" forKey:@"checked"];
         } else {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            [userInfo setObject:@"1" forKey:@"checked"];      
+            [userInfo setObject:@"1" forKey:@"checked"];
         }
     } else {
-    
+
         NSDictionary *person = item.userInfo;
-        TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"] 
-                                 applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]] 
+        TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
+                                 applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]
                                 applyAnimated:YES];
         [[TTNavigator navigator] openURLAction:action];
     }
@@ -86,8 +86,8 @@
 //
 - (void)textField:(TTSearchTextField*)textField didSelectObject:(id)object {
     [_delegate searchContactsController:self didSelectObject:object];
-    
-    
+
+
     [self didSelectObject:object atIndexPath:nil];
 }
 
@@ -95,7 +95,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -104,7 +104,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.    
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
@@ -120,76 +120,86 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)onBackBtn:(id)sender {    
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
+- (IBAction)onBackBtn:(id)sender {
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
 }
 
 
 - (IBAction)onAddContactBtn:(id)sender {
-    //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://nib/CreateContactViewController"]];       
-    //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://createContact"]];       
-    
+    //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://nib/CreateContactViewController"]];
+    //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://createContact"]];
+
     QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
     UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
 
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(onCreateContactBackBtn:)];          
-    navigation.navigationBar.topItem.leftBarButtonItem = anotherButton;
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(onCreateContactBackBtn:)];
+    navigation.navigationBar.topItem.leftBarButtonItem = cancelBtn;
 
     [self presentModalViewController:navigation animated:YES];
 }
 
 - (IBAction)onAssignBtn:(id)sender {
     if (assignMode) {
+        TTTableViewController *tableViewController = [[TTTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        tableViewController.dataSource = [[LeadersListDataSource alloc] init];
+
+        UINavigationController *navigation =  [[UINavigationController alloc] initWithRootViewController:tableViewController ];
+        UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCreateContactBackBtn:)];
+        navigation.navigationBar.topItem.leftBarButtonItem = cancelBtn;
+
+        [self presentModalViewController:navigation animated:YES];
 
     } else {
-        assignMode = YES;    
+        assignMode = YES;
         ((ContactsListDataSource*)self.dataSource).assignMode = YES;
-        
+
         [assignBtn setTitle:@"Select Leader" forState:UIControlStateNormal];
         [cancelBtn setHidden:NO];
-        
+
         [self.tableView reloadData];
     }
 }
 
 - (IBAction)onCancelBtn:(id)sender {
-    assignMode = NO;    
+    assignMode = NO;
     ((ContactsListDataSource*)self.dataSource).assignMode = NO;
-    
+
     [assignBtn setTitle:@"Assign" forState:UIControlStateNormal];
-    [cancelBtn setHidden:YES];    
-    
+    [cancelBtn setHidden:YES];
+
     [self.tableView reloadData];
 }
 
-- (IBAction)onCreateContactBackBtn:(id)sender {    
+- (IBAction)onCreateContactBackBtn:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)onSegmentChange:(id)sender {
     assignMode = NO;
     [assignBtn setTitle:@"Assign" forState:UIControlStateNormal];
+    [assignBtn setHidden:NO];
     [cancelBtn setHidden:YES];
-    
+
     ContactsListDataSource *ds = nil;
-    ContactsListDataSource *ds2 = nil;    
-    
+    ContactsListDataSource *ds2 = nil;
+
     LeadersListDataSource *ld = nil;
-    LeadersListDataSource *ld2 = nil;    
-    
+    LeadersListDataSource *ld2 = nil;
+
     UISegmentedControl *segmentedControl = sender;
     if (segmentedControl.selectedSegmentIndex == 1) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];
-        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];        
+        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];
     } else if (segmentedControl.selectedSegmentIndex == 2) {
-        ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];        
-        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];                
+        ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];
+        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];
     } else if (segmentedControl.selectedSegmentIndex == 0) {
-        ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];        
-        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];                
+        ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
+        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
     } else {
-        ld = [[LeadersListDataSource alloc] init];        
-        ld2 = [[LeadersListDataSource alloc] init];                
+        [assignBtn setHidden:YES];
+        ld = [[LeadersListDataSource alloc] init];
+        ld2 = [[LeadersListDataSource alloc] init];
     }
 
     if (ld == nil) {
@@ -216,9 +226,9 @@
 //}
 //
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
+//
 //    static NSString *CellIdentifier = @"ContactCell";
-//    
+//
 //    // Dequeue or create a cell of the appropriate type.
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 //    if (cell == nil) {
@@ -227,7 +237,7 @@
 //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //        self.contactCell = nil;
 //    }
-//    
+//
 //    NSDictionary *person = [dataArray objectAtIndex: indexPath.row];
 //    // Configure the cell.
 //    [(ContactCell*)cell setData: person];
@@ -237,18 +247,18 @@
 //
 //// Detect when player selects a section/row
 //- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
+//
 //    NSDictionary *person = [dataArray objectAtIndex: indexPath.row];
-//    
-//    TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"] 
-//                             applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]] 
+//
+//    TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
+//                             applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]
 //                            applyAnimated:YES];
 //    [[TTNavigator navigator] openURLAction:action];
-//    
+//
 ////    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contact"]
 ////                                            applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]
 ////                             applyAnimated: YES];
-//    
+//
 //}
 //
 //- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
