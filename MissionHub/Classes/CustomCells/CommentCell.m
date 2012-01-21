@@ -30,46 +30,46 @@
 
 - (void)setData:(NSDictionary *)data {
     NSDictionary *comment = [data objectForKey:@"comment"];
-    NSDictionary *commenter = [comment objectForKey:@"commenter"];    
-    NSDictionary *rejoicables = [data objectForKey:@"rejoicables"];     
+    NSDictionary *commenter = [comment objectForKey:@"commenter"];
+    NSDictionary *rejoicables = [data objectForKey:@"rejoicables"];
 
     UILabel *label;
-    
+
     label = (UILabel *)[self viewWithTag:2];
-    label.text = [NSString stringWithFormat:@"%@", [commenter objectForKey:@"name"]];    
-    
+    label.text = [NSString stringWithFormat:@"%@", [commenter objectForKey:@"name"]];
+
     label = (UILabel *)[self viewWithTag:3];
     label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
-    
+
     label = (UILabel *)[self viewWithTag:4];
     label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"created_at_words"]];
-    
+
     label = (UILabel *)[self viewWithTag:5];
     label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"status"]];
-    
-    [(UIImageView *)[self viewWithTag:6] setHidden:YES]; 
-    [(UIImageView *)[self viewWithTag:7] setHidden:YES]; 
-    [(UIImageView *)[self viewWithTag:8] setHidden:YES];     
-    
+
+    [(UIImageView *)[self viewWithTag:6] setHidden:YES];
+    [(UIImageView *)[self viewWithTag:7] setHidden:YES];
+    [(UIImageView *)[self viewWithTag:8] setHidden:YES];
+
     // rejoicables
     for (NSDictionary *rejoicable in rejoicables) {
         if ([[rejoicable objectForKey:@"what"] isEqualToString:@"gospel_presentation"]) {
-            [(UIImageView *)[self viewWithTag:8] setHidden:NO];             
+            [(UIImageView *)[self viewWithTag:8] setHidden:NO];
         }
         if ([[rejoicable objectForKey:@"what"] isEqualToString:@"prayed_to_receive"]) {
-            [(UIImageView *)[self viewWithTag:7] setHidden:NO];             
+            [(UIImageView *)[self viewWithTag:7] setHidden:NO];
         }
         if ([[rejoicable objectForKey:@"what"] isEqualToString:@"spiritual_conversation"]) {
-            [(UIImageView *)[self viewWithTag:6] setHidden:NO]; 
-            
+            [(UIImageView *)[self viewWithTag:6] setHidden:NO];
+
         }
     }
-    
+
     // picture
-    NSString *fbUrl = [commenter objectForKey:@"picture"]; 
+    NSString *fbUrl = [commenter objectForKey:@"picture"];
     NSURL * imageURL = [NSURL URLWithString: fbUrl];
     UIImageView *placeHolderImageView = (UIImageView *)[self viewWithTag:1];
-    
+
     HJManagedImageV* mi = nil;
     if ([self viewWithTag:999] == nil) {
         NSLog(@"loading image for %@ with url: %@", label.text, [imageURL absoluteString]);
@@ -77,13 +77,13 @@
         mi.tag = 999;
         [self addSubview: mi];
     } else {
-        mi = (HJManagedImageV*) [self viewWithTag:999];  
+        mi = (HJManagedImageV*) [self viewWithTag:999];
         [mi clear];
     }
-    
+
     if ([fbUrl length] != 0) {
-        mi.url = imageURL;    
-        [AppDelegate.imageManager manage:mi];    
+        mi.url = imageURL;
+        [AppDelegate.imageManager manage:mi];
     }
 
 }

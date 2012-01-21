@@ -10,15 +10,15 @@
 #import "MissionHubAppDelegate.h"
 #import "TableSubtitleItemCell.h"
 
-@implementation LeadersListRequestModel 
+@implementation LeadersListRequestModel
 
 @synthesize dataArray;
 
 - (id)init {
     if (self = [super init]) {
-        self.dataArray = [[NSMutableArray alloc] initWithCapacity:50];                
+        self.dataArray = [[NSMutableArray alloc] initWithCapacity:50];
     }
-    
+
     return self;
 }
 
@@ -30,53 +30,53 @@
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
     [_delegates perform:@selector(modelDidStartLoad:) withObject:self];
-    
+
     if (!self.isLoading) {
-        
+
         [dataArray removeAllObjects];
-        
+
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
         NSString *requestUrl = [NSString stringWithFormat:@"%@/contacts/leaders?&org_id=%@&access_token=%@", baseUrl, CurrentUser.orgId, CurrentUser.accessToken];
-        NSLog(@"making http GET request: %@", requestUrl);    
-        
+        NSLog(@"making http GET request: %@", requestUrl);
+
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
         request.cachePolicy = TTURLRequestCachePolicyNone;
         //request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
         request.response = [[[TTURLJSONResponse alloc] init] autorelease];
-        [request send];    
-        
+        [request send];
+
     }
 }
 
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
-    
+
     NSArray *result = (NSArray *)aResult;
-    
+
     for (NSDictionary *tempDict in result) {
         NSDictionary *person = [tempDict objectForKey:@"person"];
         [dataArray addObject: person];
     }
-    
+
     [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
 }
 
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-    
+
     TTURLJSONResponse* response = request.response;
     if (request.respondedFromCache) {
-        NSLog(@"requestDidFinishLoad from cache:%@", response.rootObject);   
+        NSLog(@"requestDidFinishLoad from cache:%@", response.rootObject);
     } else {
-        NSLog(@"requestDidFinishLoad:%@", response.rootObject);   
+        NSLog(@"requestDidFinishLoad:%@", response.rootObject);
     }
-    
+
     [self handleRequestResult:(id*)response.rootObject identifier:request.userInfo];
-    
+
     [super requestDidFinishLoad:request];
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-    
+
     int status = [error code];
     NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
     //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
@@ -117,24 +117,24 @@
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
     self.items = [NSMutableArray array];
-    
+
     NSLog(@"tableViewDidLoadModel");
-    
+
     for (NSDictionary *person in leadersList.dataArray) {
         NSString *name = [person objectForKey:@"name"];
 //        NSString *status = [person objectForKey:@"status"];
-        NSString *picture = [person objectForKey:@"picture"];        
+        NSString *picture = [person objectForKey:@"picture"];
         NSString *gender = [person objectForKey:@"gender"];
-//        
+//
         UIImage *defaultImage = [UIImage imageNamed:@"facebook_male.gif"];
         if ([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"male"]) {
             defaultImage = [UIImage imageNamed:@"facebook_female.gif"];
         }
-//        
+//
         TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:@"" imageURL:picture defaultImage:defaultImage URL:nil accessoryURL:nil];
-        item.userInfo = person;        
-//        
-        [_items addObject:item];    
+        item.userInfo = person;
+//
+        [_items addObject:item];
     }
 }
 

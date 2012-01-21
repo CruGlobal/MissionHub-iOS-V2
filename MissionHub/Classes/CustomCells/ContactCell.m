@@ -31,13 +31,13 @@
 - (void)setData:(NSDictionary *)data {
     UILabel *label;
     UIImageView *placeHolderImageView = (UIImageView *)[self viewWithTag:1];
-    
-    label = (UILabel *)[self viewWithTag:2];
-    label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"name"]];    
 
-    NSString *fbUrl = [data objectForKey:@"picture"]; 
+    label = (UILabel *)[self viewWithTag:2];
+    label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"name"]];
+
+    NSString *fbUrl = [data objectForKey:@"picture"];
     NSURL * imageURL = [NSURL URLWithString: fbUrl];
-    
+
 
     HJManagedImageV* mi = nil;
     if ([self viewWithTag:999] == nil) {
@@ -46,13 +46,13 @@
        mi.tag = 999;
        [self addSubview: mi];
     } else {
-       mi = (HJManagedImageV*) [self viewWithTag:999]; 
+       mi = (HJManagedImageV*) [self viewWithTag:999];
        [mi clear];
     }
-    
+
     if ([fbUrl length] != 0) {
-        mi.url = imageURL;    
-        [AppDelegate.imageManager manage:mi];    
+        mi.url = imageURL;
+        [AppDelegate.imageManager manage:mi];
     }
 
 }

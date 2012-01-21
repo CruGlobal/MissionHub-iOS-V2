@@ -12,7 +12,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         _delegate = nil;
-        
+
         self.title = @"Search Test";
         self.dataSource = [[[MockDataSource alloc] init] autorelease];
     }
@@ -28,7 +28,7 @@
 
 - (void)loadView {
     [super loadView];
-    
+
     TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
     searchController.dataSource = [[[MockSearchDataSource alloc] initWithDuration:1.5] autorelease];
     self.searchViewController = searchController;

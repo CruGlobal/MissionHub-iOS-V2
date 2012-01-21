@@ -23,15 +23,15 @@
         }
     }
 
-    NSLog(@"initWithNibName: %@", childClassName);        
+    NSLog(@"initWithNibName: %@", childClassName);
     if([[NSBundle mainBundle] pathForResource:nibName ofType:@"nib"] != nil) {
-        self = [super initWithNibName:nibName bundle:nibBundleOrNil];   
+        self = [super initWithNibName:nibName bundle:nibBundleOrNil];
     } else {
-        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];           
+        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     }
-    
+
     if (self) {
-        // Custom initialization               
+        // Custom initialization
     }
     return self;
 }
@@ -40,7 +40,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -83,20 +83,20 @@
 - (void) makeHttpRequest:(NSString *)path params:(NSString*)aParams identifier:(NSString*)aIdentifier {
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&org_id=%@&access_token=%@", baseUrl, path, aParams, CurrentUser.orgId, CurrentUser.accessToken];
-    NSLog(@"making http GET request: %@", requestUrl);    
-    
+    NSLog(@"making http GET request: %@", requestUrl);
+
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
     request.cachePolicy = TTURLRequestCachePolicyNone;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
-    [request send];    
+    [request send];
 }
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData {
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?org_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
-    NSLog(@"making http POST request: %@", requestUrl);    
-    
+    NSLog(@"making http POST request: %@", requestUrl);
+
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
@@ -107,7 +107,7 @@
     NSMutableString* postStr = [NSMutableString string];
     for (NSString *key in aPostData) {
         NSString *value = [aPostData objectForKey: key];
-        [postStr appendString:[NSString stringWithFormat:@"%@=%@&", key, value]];      
+        [postStr appendString:[NSString stringWithFormat:@"%@=%@&", key, value]];
 
         [request.parameters setObject:value forKey:key];
     }
@@ -118,24 +118,24 @@
     [request send];
 }
 
-- (void)requestDidStartLoad:(TTURLRequest*)request {    
-     NSLog(@"start live http request: %@ method: %@", request.urlPath, request.httpMethod);    
+- (void)requestDidStartLoad:(TTURLRequest*)request {
+     NSLog(@"start live http request: %@ method: %@", request.urlPath, request.httpMethod);
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-    
+
     TTURLJSONResponse* response = request.response;
     if (request.respondedFromCache) {
-        NSLog(@"requestDidFinishLoad from cache:%@", response.rootObject);   
+        NSLog(@"requestDidFinishLoad from cache:%@", response.rootObject);
     } else {
-        NSLog(@"requestDidFinishLoad:%@", response.rootObject);   
+        NSLog(@"requestDidFinishLoad:%@", response.rootObject);
     }
-    
+
     [self handleRequestResult:(id*)response.rootObject identifier:request.userInfo];
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-    
+
     int status = [error code];
     NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
     //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
@@ -147,64 +147,64 @@
 
 - (void) initActivityLabel {
     activityView = [[UIView alloc] initWithFrame:self.view.frame];
-    [activityView setBackgroundColor:[UIColor blackColor]];                                           
+    [activityView setBackgroundColor:[UIColor blackColor]];
     activityView.alpha = 0.5f;
     activityLabel = [[[TTActivityLabel alloc] initWithStyle:TTActivityLabelStyleBlackBezel] autorelease];
     activityLabel.alpha = 1.f;
     [activityLabel setFrame: CGRectMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2, activityLabel.bounds.size.width, activityLabel.bounds.size.height)];
     [self.view addSubview:activityView];
-    [self.view addSubview:activityLabel];        
-    
+    [self.view addSubview:activityLabel];
+
     [self hideActivityLabel];
 }
 
 - (void) showActivityLabel {
     [activityLabel setText: @" Loading..."];
-    
+
     [self.view bringSubviewToFront:activityView];
-    [self.view bringSubviewToFront:activityLabel];    
+    [self.view bringSubviewToFront:activityLabel];
     [activityView setHidden:NO];
-    [activityLabel setHidden:NO];    
+    [activityLabel setHidden:NO];
 }
 
 - (void) showActivityLabel:(BOOL)aDimBackground {
     [activityLabel setText: @" Loading..."];
-    
+
     if (aDimBackground) {
         [self showActivityLabel];
     } else {
-        [self.view bringSubviewToFront:activityLabel];        
-        [activityLabel setHidden:NO];        
+        [self.view bringSubviewToFront:activityLabel];
+        [activityLabel setHidden:NO];
     }
 }
 
 - (void) showActivityLabelWithText:(NSString*)aText dimBackground:(BOOL)aDimBackground {
     [activityLabel setText:aText];
-    
+
     if (aDimBackground) {
-        [self.view bringSubviewToFront:activityLabel];    
+        [self.view bringSubviewToFront:activityLabel];
         [activityView setHidden:NO];
     }
-    [self.view bringSubviewToFront:activityLabel];        
-    [activityLabel setHidden:NO];        
-    
+    [self.view bringSubviewToFront:activityLabel];
+    [activityLabel setHidden:NO];
+
 }
 
 - (void) hideActivityLabel {
     [activityView setHidden:YES];
-    [activityLabel setHidden:YES];    
-    
+    [activityLabel setHidden:YES];
+
 }
 
-- (void)resizeFontForLabel:(UILabel*)aLabel maxSize:(int)maxSize minSize:(int)minSize { 
+- (void)resizeFontForLabel:(UILabel*)aLabel maxSize:(int)maxSize minSize:(int)minSize {
     // use font from provided label so we don't lose color, style, etc
     UIFont *font = aLabel.font;
-    
+
     // start with maxSize and keep reducing until it doesn't clip
     for(int i = maxSize; i >= minSize; i--) {
         font = [font fontWithSize:i];
         CGSize constraintSize = CGSizeMake(aLabel.frame.size.width, MAXFLOAT);
-        
+
         // This step checks how tall the label would be with the desired font.
         CGSize labelSize = [aLabel.text sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
         if(labelSize.height <= aLabel.frame.size.height)

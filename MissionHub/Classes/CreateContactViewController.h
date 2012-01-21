@@ -13,6 +13,6 @@
 
 @end
 
-@interface CreateContactQuickDialogDelegate : QuickDialogController 
+@interface CreateContactQuickDialogDelegate : QuickDialogController
 
 @end

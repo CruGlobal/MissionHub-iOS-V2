@@ -20,26 +20,26 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     NSLog(@"CreateContactViewController viewDidLoad");
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    
+
     QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
     UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
-    
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];          
+
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
     navigation.navigationBar.topItem.leftBarButtonItem = anotherButton;
-    
+
     [self presentModalViewController:navigation animated:YES];
 }
 
-- (IBAction)onBackBtn:(id)sender {    
+- (IBAction)onBackBtn:(id)sender {
     TTNavigator *navigator = [TTNavigator navigator];
-    //[navigator.topViewController.navigationController setNavigationBarHidden:YES];       
-    [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://contacts"]];    
-    //[self.navigationController popToViewController:navigator.topViewController animated:YES];        
+    //[navigator.topViewController.navigationController setNavigationBarHidden:YES];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://contacts"]];
+    //[self.navigationController popToViewController:navigator.topViewController animated:YES];
 
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -47,19 +47,19 @@
 @end
 
 
-@implementation CreateContactQuickDialogDelegate 
+@implementation CreateContactQuickDialogDelegate
 
 - (void)onCreateContactBtn:(QButtonElement *)buttonElement {
     [self loading:YES];
     Contact *contact = [[Contact alloc] init];
     [self.root fetchValueIntoObject:contact];
-    
+
     [contact create:^(int result){
         // Prints 10
         NSLog(@"using blocks");
         [self loading:NO];
-        [self dismissModalViewControllerAnimated:YES];  
+        [self dismissModalViewControllerAnimated:YES];
     }];
-    
+
 }
 @end

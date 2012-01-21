@@ -11,18 +11,18 @@
 
 - (UIViewController*)composeEmailTo:(NSString*)recipient {
     TTTableTextItem* item = [TTTableTextItem itemWithText:recipient URL:nil];
-    
+
     TTMessageController* controller =
     [[[TTMessageController alloc] initWithRecipients:[NSArray arrayWithObject:item]] autorelease];
     controller.dataSource = [[[MockSearchDataSource alloc] init] autorelease];
     controller.delegate = self;
-    
+
     return controller;
 }
 
 - (UIViewController*)composeSmsTo:(NSString*)recipient {
     TTTableTextItem* item = [TTTableTextItem itemWithText:recipient URL:nil];
-    
+
     TTMessageController* controller =
     [[[TTMessageController alloc] initWithRecipients:[NSArray arrayWithObject:item]] autorelease];
     controller.dataSource = [[[MockSearchDataSource alloc] init] autorelease];
@@ -47,11 +47,11 @@
 
 - (void)sendDelayed:(NSTimer*)timer {
     _sendTimer = nil;
-    
+
     NSArray* fields = timer.userInfo;
     UIView* lastView = [self.view.subviews lastObject];
     CGFloat y = lastView.bottom + 20;
-    
+
     TTMessageRecipientField* toField = [fields objectAtIndex:0];
     for (id recipient in toField.recipients) {
         UILabel* label = [[[UILabel alloc] init] autorelease];
@@ -62,7 +62,7 @@
         y += label.height;
         [self.view addSubview:label];
     }
-    
+
     [self.modalViewController dismissModalViewControllerAnimated:YES];
 }
 
@@ -72,10 +72,10 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         _sendTimer = nil;
-        
+
 //        [[TTNavigator navigator].URLMap from:@"tt://compose?to=(composeTo:)"
 //                       toModalViewController:self selector:@selector(composeTo:)];
-//        
+//
 //        [[TTNavigator navigator].URLMap from:@"tt://post"
 //                            toViewController:self selector:@selector(post:)];
     }
@@ -96,22 +96,22 @@
     CGRect appFrame = [UIScreen mainScreen].applicationFrame;
     self.view = [[[UIView alloc] initWithFrame:appFrame] autorelease];;
     self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
-//    
+//
 //    UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    [button setTitle:@"Show TTMessageController" forState:UIControlStateNormal];
 //    [button addTarget:@"tt://compose?to=David%20Ang" action:@selector(openURL)
 //     forControlEvents:UIControlEventTouchUpInside];
 //    button.frame = CGRectMake(20, 20, appFrame.size.width - 40, 50);
 //    [self.view addSubview:button];
-//    
+//
 //    UIButton* button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    [button2 setTitle:@"Show TTPostController" forState:UIControlStateNormal];
 //    [button2 addTarget:@"tt://post" action:@selector(openURLFromButton:)
 //      forControlEvents:UIControlEventTouchUpInside];
 //    button2.frame = CGRectMake(20, button.bottom + 20, appFrame.size.width - 40, 50);
 //    [self.view addSubview:button2];
-    
-//    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"tt://compose?to=DavidAng"] applyAnimated:YES]];       
+
+//    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"tt://compose?to=DavidAng"] applyAnimated:YES]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -129,7 +129,7 @@
 - (void)composeControllerDidCancel:(TTMessageController*)controller {
     [_sendTimer invalidate];
     _sendTimer = nil;
-    
+
     [controller dismissModalViewControllerAnimated:YES];
 }
 
@@ -141,7 +141,7 @@
     searchController.navigationItem.rightBarButtonItem =
     [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                    target:self action:@selector(cancelAddressBook)] autorelease];
-    
+
     UINavigationController* navController = [[[UINavigationController alloc] init] autorelease];
     [navController pushViewController:searchController animated:NO];
     [controller presentModalViewController:navController animated:YES];

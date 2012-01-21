@@ -13,7 +13,7 @@
 - (void)setObject:(id)object {
     if (_item != object) {
         [super setObject:object];
-        
+
 //        TTTableSubtitleItem *item = object;
 //        if (item.imageURL == nil) {
 //            UIImageView *placeholderImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"facebook_male.gif"]];
@@ -26,5 +26,5 @@
         self.selectionStyle = UITableViewCellSelectionStyleGray;
     }
 }
-    
+
 @end

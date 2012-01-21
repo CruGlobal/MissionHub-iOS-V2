@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Contact : NSObject<TTURLRequestDelegate> {
-    void (^_completionHandler)(int someParameter);    
+    void (^_completionHandler)(int someParameter);
 }
 
 @property(strong) NSString *firstName;

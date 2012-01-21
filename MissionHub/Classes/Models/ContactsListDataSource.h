@@ -19,7 +19,7 @@
 @end
 
 
-@interface ContactsListDataSource : TTListDataSource 
+@interface ContactsListDataSource : TTListDataSource
 
 @property (nonatomic, retain) ContactsListRequestModel *contactList;
 @property BOOL assignMode;

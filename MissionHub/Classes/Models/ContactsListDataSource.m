@@ -20,12 +20,12 @@
 - (id)initWithParams:(NSString*)aParams {
     if (self = [super init]) {
 
-        self.dataArray = [[NSMutableArray alloc] initWithCapacity:50];                
-        self.filteredDataArray = [[NSMutableArray alloc] initWithCapacity:50];                
+        self.dataArray = [[NSMutableArray alloc] initWithCapacity:50];
+        self.filteredDataArray = [[NSMutableArray alloc] initWithCapacity:50];
         self.urlParams = aParams;
         NSLog(@"initWithParams: %@", self.urlParams);
     }
-    
+
     return self;
 }
 
@@ -38,21 +38,21 @@
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
     NSLog(@"url params is: %@", self.urlParams);
     [_delegates perform:@selector(modelDidStartLoad:) withObject:self];
-    
+
     if (!self.isLoading && TTIsStringWithAnyText(self.urlParams)) {
 
         [dataArray removeAllObjects];
         [filteredDataArray removeAllObjects];
-        
+
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
         NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&org_id=%@&access_token=%@", baseUrl, @"contacts.json", self.urlParams, CurrentUser.orgId, CurrentUser.accessToken];
-        NSLog(@"making http GET request: %@", requestUrl);    
-        
+        NSLog(@"making http GET request: %@", requestUrl);
+
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
         request.cachePolicy = TTURLRequestCachePolicyNone;
         //request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
         request.response = [[[TTURLJSONResponse alloc] init] autorelease];
-        [request send];    
+        [request send];
 
     }
 }
@@ -60,7 +60,7 @@
 - (void)search:(NSString*)text {
     NSLog(@"searching...%@", text);
     [filteredDataArray removeAllObjects];
-    
+
     if (text.length) {
         text = [text lowercaseString];
         for (NSDictionary *person in dataArray) {
@@ -70,21 +70,21 @@
             }
         }
     }
-    
+
     [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
 }
 
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
-    
+
     NSDictionary *result = (NSDictionary *)aResult;
     NSArray *contacts = [result objectForKey:@"contacts"];
-    
+
     for (NSDictionary *tempDict in contacts) {
         NSDictionary *person = [tempDict objectForKey:@"person"];
         [dataArray addObject: person];
         [filteredDataArray addObject:person];
     }
-    
+
     [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
 }
 
@@ -93,31 +93,31 @@
 }
 
 - (void) makeHttpRequest:(NSString *)path params:(NSString*)aParams identifier:(NSString*)aIdentifier {
-      
+
 }
 
-//- (void)requestDidStartLoad:(TTURLRequest*)request {    
-//    NSLog(@"start live http request: %@ method: %@", request.urlPath, request.httpMethod);    
-//    
+//- (void)requestDidStartLoad:(TTURLRequest*)request {
+//    NSLog(@"start live http request: %@ method: %@", request.urlPath, request.httpMethod);
+//
 //    [super requestDidStartLoad: request];
 //}
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-    
+
     TTURLJSONResponse* response = request.response;
     if (request.respondedFromCache) {
-        NSLog(@"requestDidFinishLoad from cache:%@", response.rootObject);   
+        NSLog(@"requestDidFinishLoad from cache:%@", response.rootObject);
     } else {
-        NSLog(@"requestDidFinishLoad:%@", response.rootObject);   
+        NSLog(@"requestDidFinishLoad:%@", response.rootObject);
     }
-    
+
     [self handleRequestResult:(id*)response.rootObject identifier:request.userInfo];
-    
+
     [super requestDidFinishLoad:request];
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-    
+
     int status = [error code];
     NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
     //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
@@ -159,7 +159,7 @@
 - (void)tableView:(UITableView *)tableView cell:(UITableViewCell *)cell willAppearAtIndexPath:(NSIndexPath *)indexPath {
     TTTableSubtitleItem *item = [_items objectAtIndex:indexPath.row];
     NSDictionary *userInfo = (NSDictionary*)item.userInfo;
-    
+
     if (assignMode) {
         if ([userInfo objectForKey:@"checked"] == @"1") {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -173,7 +173,7 @@
 }
 
 - (Class)tableView:(UITableView *)tableView cellClassForObject:(id)object {
-   
+
     if ([object isKindOfClass:[TTTableSubtitleItem class]]) {
         return [TableSubtitleItemCell class];
     } else {
@@ -183,13 +183,13 @@
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
     self.items = [NSMutableArray array];
-    
+
     NSLog(@"tableViewDidLoadModel");
-    
+
     for (NSDictionary *person in contactList.filteredDataArray) {
         NSString *name = [person objectForKey:@"name"];
         NSString *status = [person objectForKey:@"status"];
-        NSString *picture = [person objectForKey:@"picture"];        
+        NSString *picture = [person objectForKey:@"picture"];
         NSString *gender = [person objectForKey:@"gender"];
 
         UIImage *defaultImage = [UIImage imageNamed:@"facebook_male.gif"];
@@ -198,9 +198,9 @@
         }
 
         TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:status imageURL:picture defaultImage:defaultImage URL:nil accessoryURL:nil];
-        item.userInfo = person;        
-        
-        [_items addObject:item];    
+        item.userInfo = person;
+
+        [_items addObject:item];
     }
 }
 

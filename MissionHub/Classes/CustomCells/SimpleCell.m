@@ -28,10 +28,10 @@
 
 - (void)setData:(NSDictionary *)data {
     UILabel *label;
-    
+
     label = (UILabel *)[self viewWithTag:1];
-    label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"label"]];    
-    
+    label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"label"]];
+
     label = (UILabel *)[self viewWithTag:2];
     label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"value"]];
 
