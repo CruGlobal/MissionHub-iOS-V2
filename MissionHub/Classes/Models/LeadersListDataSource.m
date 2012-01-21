@@ -36,7 +36,7 @@
         [dataArray removeAllObjects];
 
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-        NSString *requestUrl = [NSString stringWithFormat:@"%@/contacts/leaders?&org_id=%@&access_token=%@", baseUrl, CurrentUser.orgId, CurrentUser.accessToken];
+        NSString *requestUrl = [NSString stringWithFormat:@"%@/people/leaders?&org_id=%@&access_token=%@", baseUrl, CurrentUser.orgId, CurrentUser.accessToken];
         NSLog(@"making http GET request: %@", requestUrl);
 
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
@@ -50,11 +50,11 @@
 
 - (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
 
-    NSArray *result = (NSArray *)aResult;
+    NSDictionary *result = (NSDictionary *)aResult;
+    NSArray *leaders = [result objectForKey:@"leaders"];
 
-    for (NSDictionary *tempDict in result) {
-        NSDictionary *person = [tempDict objectForKey:@"person"];
-        [dataArray addObject: person];
+    for (NSDictionary *tempDict in leaders) {
+        [dataArray addObject: tempDict];
     }
 
     [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
@@ -135,13 +135,15 @@
 //        NSString *status = [person objectForKey:@"status"];
         NSString *picture = [person objectForKey:@"picture"];
         NSString *gender = [person objectForKey:@"gender"];
+        NSString *numContacts = [NSString stringWithFormat:@"%@ contacts", [person objectForKey:@"num_contacts"]];
 //
         UIImage *defaultImage = [UIImage imageNamed:@"facebook_male.gif"];
         if ([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"male"]) {
             defaultImage = [UIImage imageNamed:@"facebook_female.gif"];
         }
 //
-        TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:@"" imageURL:picture defaultImage:defaultImage URL:nil accessoryURL:nil];
+        TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:numContacts
+                                                             imageURL:picture defaultImage:defaultImage URL:nil accessoryURL:nil];
         item.userInfo = person;
 //
         [_items addObject:item];
