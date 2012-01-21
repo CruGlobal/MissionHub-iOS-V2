@@ -18,6 +18,7 @@
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
 		6346730014B1D64E00F45765 /* ContactsListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 634672FF14B1D64E00F45765 /* ContactsListDataSource.m */; };
+		634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */; };
 		636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793BF149698FB00B52C74 /* SimpleCell.xib */; };
 		636793C214969B8600B52C74 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793C114969B8600B52C74 /* CommentCell.xib */; };
 		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; };
@@ -394,6 +395,8 @@
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		634672FE14B1D64E00F45765 /* ContactsListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsListDataSource.h; path = Classes/Models/ContactsListDataSource.h; sourceTree = "<group>"; };
 		634672FF14B1D64E00F45765 /* ContactsListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsListDataSource.m; path = Classes/Models/ContactsListDataSource.m; sourceTree = "<group>"; };
+		634F6A6214CA917300D63948 /* LeaderSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderSelectionViewController.h; sourceTree = "<group>"; };
+		634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderSelectionViewController.m; sourceTree = "<group>"; };
 		636793BF149698FB00B52C74 /* SimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCell.xib; sourceTree = "<group>"; };
 		636793C114969B8600B52C74 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		636793C41496A60100B52C74 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
@@ -771,9 +774,9 @@
 		63B61B01148A58F400CBE54B /* MissionHub */ = {
 			isa = PBXGroup;
 			children = (
+				63DF2318148D471D0039A964 /* Classes */,
 				6386781D14B43BF700075947 /* Utilities */,
 				636793C31496A5EB00B52C74 /* CustomCells */,
-				63DF2318148D471D0039A964 /* Classes */,
 				63B61B0A148A58F400CBE54B /* MissionHubAppDelegate.h */,
 				63B61B0B148A58F400CBE54B /* MissionHubAppDelegate.m */,
 				63E02D3E1492603300BC2DEF /* Models */,
@@ -1011,6 +1014,8 @@
 				63DBAF8A14995463002A8D86 /* SearchTestController.m */,
 				63957E1C14AA813600ABA6F9 /* CreateContactViewController.h */,
 				63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */,
+				634F6A6214CA917300D63948 /* LeaderSelectionViewController.h */,
+				634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1498,6 +1503,7 @@
 				6386778E14B31ED000075947 /* TableSubtitleItemCell.m in Sources */,
 				6386782014B43C1D00075947 /* NiceAlertView.m in Sources */,
 				63E040DC14C743A9006859BF /* LeadersListDataSource.m in Sources */,
+				634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

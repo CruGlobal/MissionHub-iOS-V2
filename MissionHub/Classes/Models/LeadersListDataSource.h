@@ -16,5 +16,8 @@
 @interface LeadersListDataSource : TTListDataSource
 
 @property (nonatomic, retain) LeadersListRequestModel *leadersList;
+@property BOOL selection;
+
+- (id)initAsSelection:(BOOL)aSelection;
 
 @end

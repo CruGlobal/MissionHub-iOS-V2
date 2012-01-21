@@ -88,6 +88,12 @@
 @implementation LeadersListDataSource
 
 @synthesize leadersList;
+@synthesize selection;
+
+- (id)initAsSelection:(BOOL)aSelection {
+    selection = aSelection;
+    return [self init]; 
+}
 
 - (id)init {
     if (self = [super init]) {
@@ -109,7 +115,11 @@
 
 - (Class)tableView:(UITableView *)tableView cellClassForObject:(id)object {
     if ([object isKindOfClass:[TTTableSubtitleItem class]]) {
-        return [TableSubtitleItemCell class];
+        if (selection) {
+            return [TTTableSubtitleItemCell class];
+        } else {
+            return [TableSubtitleItemCell class];
+        }
     } else {
         return [super tableView:tableView cellClassForObject:object];
     }

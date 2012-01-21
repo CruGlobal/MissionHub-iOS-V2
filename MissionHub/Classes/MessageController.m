@@ -28,18 +28,18 @@
     controller.dataSource = [[[MockSearchDataSource alloc] init] autorelease];
     controller.delegate = self;
     [[controller viewForFieldAtIndex:1] removeFromSuperview];
-    [controller setFieldIndexOfFirstResponder: 99];
+    //[controller setFieldIndexOfFirstResponder: 99];
     return controller;
 }
 
-- (UIViewController*)post:(NSDictionary*)query {
-    TTPostController* controller = [[[TTPostController alloc] initWithNavigatorURL:nil
-                                                                             query:
-                                     [NSDictionary dictionaryWithObjectsAndKeys:@"Default Text", @"text", nil]]
-                                    autorelease];
-    controller.originView = [query objectForKey:@"__target__"];
-    return controller;
-}
+//- (UIViewController*)post:(NSDictionary*)query {
+//    TTPostController* controller = [[[TTPostController alloc] initWithNavigatorURL:nil
+//                                                                             query:
+//                                     [NSDictionary dictionaryWithObjectsAndKeys:@"Default Text", @"text", nil]]
+//                                    autorelease];
+//    controller.originView = [query objectForKey:@"__target__"];
+//    return controller;
+//}
 
 - (void)cancelAddressBook {
     [[TTNavigator navigator].visibleViewController dismissModalViewControllerAnimated:YES];

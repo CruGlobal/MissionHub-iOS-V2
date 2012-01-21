@@ -12,6 +12,7 @@
 #import "MockDataSource.h"
 #import "ContactsListDataSource.h"
 #import "LeadersListDataSource.h"
+#import "LeaderSelectionViewController.h"
 
 @implementation ContactsViewController
 
@@ -131,21 +132,18 @@
 
     QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
     UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
-
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(onCreateContactBackBtn:)];
-    navigation.navigationBar.topItem.leftBarButtonItem = cancelBtn;
+    navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController:)];;
 
     [self presentModalViewController:navigation animated:YES];
 }
 
 - (IBAction)onAssignBtn:(id)sender {
     if (assignMode) {
-        TTTableViewController *tableViewController = [[TTTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        tableViewController.dataSource = [[LeadersListDataSource alloc] init];
+        LeaderSelectionViewController *tableViewController = [[LeaderSelectionViewController alloc] initWithStyle:UITableViewStylePlain];
 
         UINavigationController *navigation =  [[UINavigationController alloc] initWithRootViewController:tableViewController ];
-        UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCreateContactBackBtn:)];
-        navigation.navigationBar.topItem.leftBarButtonItem = cancelBtn;
+        navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController:)];;
+        [navigation.navigationBar.topItem setTitle:@"Select a leader"];
 
         [self presentModalViewController:navigation animated:YES];
 
@@ -170,7 +168,7 @@
     [self.tableView reloadData];
 }
 
-- (IBAction)onCreateContactBackBtn:(id)sender {
+- (IBAction)dismissModalViewController:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
 
