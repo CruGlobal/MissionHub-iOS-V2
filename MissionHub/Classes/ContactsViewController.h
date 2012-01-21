@@ -18,6 +18,7 @@
 @property BOOL assignMode;
 @property (nonatomic, retain) IBOutlet UIButton *cancelBtn;
 @property (nonatomic, retain) IBOutlet UIButton *assignBtn;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *filterSegmentedControl;
 
 - (IBAction)onBackBtn:(id)sender;
 - (IBAction)onSegmentChange:(id)sender;

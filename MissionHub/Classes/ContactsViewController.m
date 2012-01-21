@@ -20,6 +20,7 @@
 @synthesize assignMode;
 @synthesize cancelBtn;
 @synthesize assignBtn;
+@synthesize filterSegmentedControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,12 +74,15 @@
             [userInfo setObject:@"1" forKey:@"checked"];
         }
     } else {
-
-        NSDictionary *person = item.userInfo;
-        TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
-                                 applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]
-                                applyAnimated:YES];
-        [[TTNavigator navigator] openURLAction:action];
+        if (filterSegmentedControl.selectedSegmentIndex == 3) {
+            // leader
+            self.dataSource = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", [item.userInfo objectForKey: @"id"]]];
+        } else {
+            TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
+                                     applyQuery:[NSDictionary dictionaryWithObject: item.userInfo forKey:@"personData"]]
+                                    applyAnimated:YES];
+            [[TTNavigator navigator] openURLAction:action];
+        }
     }
 }
 
@@ -122,7 +126,11 @@
 }
 
 - (IBAction)onBackBtn:(id)sender {
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
+     if (filterSegmentedControl.selectedSegmentIndex == 3) {
+         self.dataSource = [[[LeadersListDataSource alloc] init] autorelease];
+     } else {
+         [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];         
+     }
 }
 
 

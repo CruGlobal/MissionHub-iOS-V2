@@ -154,4 +154,7 @@
     return leadersList;
 }
 
+- (NSString*)titleForLoading:(BOOL)reloading {
+    return @"Loading leaders...";
+}
 @end

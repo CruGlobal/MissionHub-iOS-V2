@@ -213,7 +213,7 @@
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {
-    return @"Loading content...";
+    return @"Loading contacts...";
 }
 
 
