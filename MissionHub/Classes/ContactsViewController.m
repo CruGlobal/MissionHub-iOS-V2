@@ -74,8 +74,9 @@
             [userInfo setObject:@"1" forKey:@"checked"];
         }
     } else {
-        if (filterSegmentedControl.selectedSegmentIndex == 3) {
-            // leader
+        // Check category and user is not drilled down to leaders contacts
+        if (filterSegmentedControl.selectedSegmentIndex == 3 && [self.dataSource isKindOfClass:[LeadersListDataSource class]]) {
+            // show leader listing
             self.dataSource = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", [item.userInfo objectForKey: @"id"]]];
         } else {
             TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
@@ -126,7 +127,8 @@
 }
 
 - (IBAction)onBackBtn:(id)sender {
-     if (filterSegmentedControl.selectedSegmentIndex == 3) {
+    // Check category and user is currently viewing a leader's contacts
+     if (filterSegmentedControl.selectedSegmentIndex == 3 && [self.dataSource isKindOfClass:[ContactsListDataSource class]]) {
          self.dataSource = [[LeadersListDataSource alloc] init];
      } else {
          [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];         
