@@ -31,10 +31,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[TTURLRequestQueue mainQueue] setMaxContentLength:0];
     
     // Load config into an NSDictionary
     NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSString *finalPath = [path stringByAppendingPathComponent:@"configDev.plist"];
+    NSString *finalPath = [path stringByAppendingPathComponent:@"config.plist"];
     config = [NSDictionary dictionaryWithContentsOfFile:finalPath];
     
     //self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];

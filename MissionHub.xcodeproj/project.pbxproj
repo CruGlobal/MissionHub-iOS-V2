@@ -29,7 +29,7 @@
 		6386778E14B31ED000075947 /* TableSubtitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386778D14B31ED000075947 /* TableSubtitleItemCell.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		6386782014B43C1D00075947 /* NiceAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386781F14B43C1D00075947 /* NiceAlertView.m */; };
 		6386782214B469CC00075947 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6386782114B469CC00075947 /* appicon.png */; };
-		63957E1E14AA813700ABA6F9 /* CreateContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */; };
+		63957E1E14AA813700ABA6F9 /* CreateContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		63957E2314AA822900ABA6F9 /* CreateContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63957E2114AA822900ABA6F9 /* CreateContactViewController.xib */; };
 		639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639A15101497E3EE00FFAC44 /* ContactCell.xib */; };
 		639A15141497E40600FFAC44 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A15131497E40600FFAC44 /* ContactCell.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
