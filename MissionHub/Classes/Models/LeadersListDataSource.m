@@ -139,7 +139,7 @@
         }
 //
         TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:numContacts
-                                                             imageURL:picture defaultImage:defaultImage URL:nil accessoryURL:nil];
+                                                             imageURL:(picture ? picture : @"") defaultImage:defaultImage URL:nil accessoryURL:nil];
         item.userInfo = person;
 //
         [_items addObject:item];

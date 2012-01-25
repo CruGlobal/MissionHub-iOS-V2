@@ -177,15 +177,15 @@
     for (NSDictionary *person in contactList.filteredDataArray) {
         NSString *name = [person objectForKey:@"name"];
         NSString *status = [person objectForKey:@"status"];
-        NSString *picture = [person objectForKey:@"picture"];
+        NSString *picture = [person objectForKey:@"picture"] ?  [person objectForKey:@"picture"]  : nil;
         NSString *gender = [person objectForKey:@"gender"];
 
         UIImage *defaultImage = [UIImage imageNamed:@"facebook_male.gif"];
-        if ([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"male"]) {
+        if ([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
             defaultImage = [UIImage imageNamed:@"facebook_female.gif"];
         }
 
-        TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:status imageURL:picture defaultImage:defaultImage URL:nil accessoryURL:nil];
+        TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:status imageURL:(picture != nil ? picture : @"") defaultImage:defaultImage URL:nil accessoryURL:nil];
         item.userInfo = person;
 
         [_items addObject:item];
@@ -206,3 +206,4 @@
 
 
 @end
+

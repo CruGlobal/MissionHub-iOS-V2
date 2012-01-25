@@ -185,6 +185,8 @@
     [assignBtn setTitle:@"Assign" forState:UIControlStateNormal];
     [assignBtn setHidden:NO];
     [cancelBtn setHidden:YES];
+    
+    [[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];    
 
     ContactsListDataSource *ds = nil;
     ContactsListDataSource *ds2 = nil;
