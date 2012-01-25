@@ -14,7 +14,6 @@
 #import "ContactsViewController.h"
 #import "ContactViewController.h"
 #import "MessageController.h"
-#import "CatalogController.h"
 #import "CreateContactViewController.h"
 
 #import "HJObjManager.h"
@@ -36,7 +35,7 @@
     // Load config into an NSDictionary
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSString *finalPath = [path stringByAppendingPathComponent:@"configDev.plist"];
-    config = [[NSDictionary dictionaryWithContentsOfFile:finalPath] retain];
+    config = [NSDictionary dictionaryWithContentsOfFile:finalPath];
     
     //self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     //self.window.rootViewController = self.loginViewController;
@@ -48,8 +47,6 @@
 
     TTURLMap *map = navigator.URLMap;
  
-    [map from: @"tt://catalog" toSharedViewController: [CatalogController class]];
-
     [map from:@"*" toSharedViewController:[TTWebController class]];
     [map from:@"mh://login" toSharedViewController:[LoginViewController class]];    
     [map from:@"mh://main" toSharedViewController:[MainViewController class]];        
@@ -75,13 +72,11 @@
         
     }    
 
-    //[navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://catalog"]];
-    
     // init HJObjManager, if you are using for full screen images, you'll need a smaller memory cache:
 	imageManager = [[HJObjManager alloc] initWithLoadingBufferSize:6 memCacheSize:20];
 	
 	NSString* cacheDirectory = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/imgcache/MissionHub/"] ;
-	HJMOFileCache* fileCache = [[[HJMOFileCache alloc] initWithRootPath:cacheDirectory] autorelease];
+	HJMOFileCache* fileCache = [[HJMOFileCache alloc] initWithRootPath:cacheDirectory];
 	imageManager.fileCache = fileCache;
 	
 	fileCache.fileCountLimit = 100;
@@ -104,7 +99,7 @@
 
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
         request.cachePolicy = TTURLRequestCachePolicyNone;        
-        request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+        request.response = [[TTURLJSONResponse alloc] init] ;
         [request send];
     }
     
@@ -118,8 +113,7 @@
 - (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
     UIViewController* newController = [[NSClassFromString(className) alloc]
                                        initWithNibName:nibName bundle:nil];
-    [newController autorelease];
-    
+       
     return newController;
 }
 
@@ -209,8 +203,6 @@
 - (void)dealloc
 {
     //[_loginViewController release];
-    [_window release];
-    [super dealloc];
 }
 
 @end

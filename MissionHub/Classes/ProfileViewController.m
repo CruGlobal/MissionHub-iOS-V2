@@ -55,7 +55,7 @@
     NSString *picture = [CurrentUser.data objectForKey:@"picture"];
 
     if ([picture length] != 0) {
-        TTImageView* profileImageView = [[[TTImageView alloc] initWithFrame:placeHolderImageView.frame] autorelease];
+        TTImageView* profileImageView = [[TTImageView alloc] initWithFrame:placeHolderImageView.frame];
         profileImageView.urlPath = [NSString stringWithFormat:@"%@?type=large", picture];
         [self.view addSubview:profileImageView];
 
@@ -160,7 +160,6 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
 }
 
 

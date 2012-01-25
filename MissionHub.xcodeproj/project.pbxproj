@@ -22,17 +22,17 @@
 		634F6A6714CAA19600D63948 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6614CAA19600D63948 /* TableViewController.m */; };
 		636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793BF149698FB00B52C74 /* SimpleCell.xib */; };
 		636793C214969B8600B52C74 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793C114969B8600B52C74 /* CommentCell.xib */; };
-		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; };
-		636793C91496A60D00B52C74 /* SimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C81496A60D00B52C74 /* SimpleCell.m */; };
+		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		636793C91496A60D00B52C74 /* SimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C81496A60D00B52C74 /* SimpleCell.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		636C5E2914B2D48300CE800D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 636C5E2814B2D48300CE800D /* Entitlements.plist */; };
 		6386778B14B2DCAF00075947 /* configDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6386778A14B2DCAF00075947 /* configDev.plist */; };
-		6386778E14B31ED000075947 /* TableSubtitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386778D14B31ED000075947 /* TableSubtitleItemCell.m */; };
+		6386778E14B31ED000075947 /* TableSubtitleItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386778D14B31ED000075947 /* TableSubtitleItemCell.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		6386782014B43C1D00075947 /* NiceAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386781F14B43C1D00075947 /* NiceAlertView.m */; };
 		6386782214B469CC00075947 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6386782114B469CC00075947 /* appicon.png */; };
 		63957E1E14AA813700ABA6F9 /* CreateContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */; };
 		63957E2314AA822900ABA6F9 /* CreateContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63957E2114AA822900ABA6F9 /* CreateContactViewController.xib */; };
 		639A15111497E3EE00FFAC44 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639A15101497E3EE00FFAC44 /* ContactCell.xib */; };
-		639A15141497E40600FFAC44 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A15131497E40600FFAC44 /* ContactCell.m */; };
+		639A15141497E40600FFAC44 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A15131497E40600FFAC44 /* ContactCell.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		639A1517149817CE00FFAC44 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A1516149817CE00FFAC44 /* BaseViewController.m */; };
 		63B61AFC148A58F400CBE54B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFB148A58F400CBE54B /* UIKit.framework */; };
 		63B61AFE148A58F400CBE54B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFD148A58F400CBE54B /* Foundation.framework */; };
@@ -57,15 +57,14 @@
 		63CFAA2214BF2EB300977E22 /* ProfileViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA1E14BF2EB300977E22 /* ProfileViewController_iPad.xib */; };
 		63CFAA2714BF322C00977E22 /* ContactViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA2314BF322C00977E22 /* ContactViewController_iPad.xib */; };
 		63CFAA2814BF322C00977E22 /* LoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA2514BF322C00977E22 /* LoginViewController_iPad.xib */; };
-		63DBAF82149946BF002A8D86 /* CatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF81149946BF002A8D86 /* CatalogController.m */; };
 		63DBAF8514994F16002A8D86 /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8414994F15002A8D86 /* MessageController.m */; };
-		63DBAF88149953EC002A8D86 /* MockDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF87149953EC002A8D86 /* MockDataSource.m */; };
-		63DBAF8B14995463002A8D86 /* SearchTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8A14995463002A8D86 /* SearchTestController.m */; };
+		63DBAF88149953EC002A8D86 /* MockDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF87149953EC002A8D86 /* MockDataSource.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63DBAF8B14995463002A8D86 /* SearchTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8A14995463002A8D86 /* SearchTestController.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		63DD6ADF148EF5C90087313E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6ADD148EF5C90087313E /* MainViewController.m */; };
 		63DD6AEE148FF8BE0087313E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6AEC148FF8BE0087313E /* ProfileViewController.m */; };
 		63DD6AF2148FF9200087313E /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6AF0148FF9200087313E /* ProfileViewController.xib */; };
 		63DE0A5614ACE0B500F50B8D /* createContact.json in Resources */ = {isa = PBXBuildFile; fileRef = 63DE0A5514ACE0B500F50B8D /* createContact.json */; };
-		63DE0A5914ACFE3100F50B8D /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE0A5814ACFE3100F50B8D /* Contact.m */; };
+		63DE0A5914ACFE3100F50B8D /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE0A5814ACFE3100F50B8D /* Contact.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		63DF22AC148D2E490039A964 /* 08-chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2253148D2E490039A964 /* 08-chat.png */; };
 		63DF22AD148D2E490039A964 /* 08-chat2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2254148D2E490039A964 /* 08-chat2.png */; };
 		63DF22AE148D2E490039A964 /* 18-envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DF2255148D2E490039A964 /* 18-envelope.png */; };
@@ -160,16 +159,16 @@
 		63E02D34149017D600BC2DEF /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E02D32149017D600BC2DEF /* ContactsViewController.xib */; };
 		63E02D3814902B9400BC2DEF /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D3614902B9300BC2DEF /* ContactViewController.m */; };
 		63E02D3C14902BBA00BC2DEF /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E02D3A14902BBA00BC2DEF /* ContactViewController.xib */; };
-		63E02D411492604A00BC2DEF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D401492604A00BC2DEF /* User.m */; };
-		63E02D69149278DF00BC2DEF /* HJCircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D56149278DF00BC2DEF /* HJCircularBuffer.m */; };
-		63E02D6A149278DF00BC2DEF /* HJManagedImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D58149278DF00BC2DEF /* HJManagedImageV.m */; };
-		63E02D6B149278DF00BC2DEF /* HJMOBigFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D5B149278DF00BC2DEF /* HJMOBigFileCache.m */; };
-		63E02D6C149278DF00BC2DEF /* HJMOFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D5D149278DF00BC2DEF /* HJMOFileCache.m */; };
-		63E02D6D149278DF00BC2DEF /* HJMOHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D5F149278DF00BC2DEF /* HJMOHandler.m */; };
-		63E02D6E149278DF00BC2DEF /* HJMOPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D61149278DF00BC2DEF /* HJMOPolicy.m */; };
-		63E02D6F149278DF00BC2DEF /* HJMOUserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D64149278DF00BC2DEF /* HJMOUserBase.m */; };
-		63E02D70149278DF00BC2DEF /* HJObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D66149278DF00BC2DEF /* HJObjManager.m */; };
-		63E02D71149278DF00BC2DEF /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D68149278DF00BC2DEF /* HJWeakMutableArray.m */; };
+		63E02D411492604A00BC2DEF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D401492604A00BC2DEF /* User.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63E02D69149278DF00BC2DEF /* HJCircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D56149278DF00BC2DEF /* HJCircularBuffer.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63E02D6A149278DF00BC2DEF /* HJManagedImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D58149278DF00BC2DEF /* HJManagedImageV.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63E02D6B149278DF00BC2DEF /* HJMOBigFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D5B149278DF00BC2DEF /* HJMOBigFileCache.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63E02D6C149278DF00BC2DEF /* HJMOFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D5D149278DF00BC2DEF /* HJMOFileCache.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63E02D6D149278DF00BC2DEF /* HJMOHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D5F149278DF00BC2DEF /* HJMOHandler.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63E02D6E149278DF00BC2DEF /* HJMOPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D61149278DF00BC2DEF /* HJMOPolicy.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63E02D6F149278DF00BC2DEF /* HJMOUserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D64149278DF00BC2DEF /* HJMOUserBase.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63E02D70149278DF00BC2DEF /* HJObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D66149278DF00BC2DEF /* HJObjManager.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63E02D71149278DF00BC2DEF /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E02D68149278DF00BC2DEF /* HJWeakMutableArray.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		63E040DC14C743A9006859BF /* LeadersListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E040DB14C743A9006859BF /* LeadersListDataSource.m */; };
 		63EAD051148EB74A00524305 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD050148EB74A00524305 /* config.plist */; };
 		63EAD05E148EC78500524305 /* PopupTTWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EAD05C148EC78500524305 /* PopupTTWebController.xib */; };
@@ -451,8 +450,6 @@
 		63CFAA2414BF322C00977E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/ContactViewController_iPad.xib; sourceTree = "<group>"; };
 		63CFAA2614BF322C00977E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/LoginViewController_iPad.xib; sourceTree = "<group>"; };
 		63D681D814BF1D2F001864AB /* MissionHub copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MissionHub copy-Info.plist"; path = "/Users/david/Documents/MissionHub/MissionHub copy-Info.plist"; sourceTree = "<absolute>"; };
-		63DBAF80149946BE002A8D86 /* CatalogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogController.h; sourceTree = "<group>"; };
-		63DBAF81149946BF002A8D86 /* CatalogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogController.m; sourceTree = "<group>"; };
 		63DBAF8314994F15002A8D86 /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
 		63DBAF8414994F15002A8D86 /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageController.m; sourceTree = "<group>"; };
 		63DBAF86149953EC002A8D86 /* MockDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDataSource.h; sourceTree = "<group>"; };
@@ -1013,8 +1010,6 @@
 				63E02D3614902B9300BC2DEF /* ContactViewController.m */,
 				63DBAF8314994F15002A8D86 /* MessageController.h */,
 				63DBAF8414994F15002A8D86 /* MessageController.m */,
-				63DBAF80149946BE002A8D86 /* CatalogController.h */,
-				63DBAF81149946BF002A8D86 /* CatalogController.m */,
 				63DBAF8914995462002A8D86 /* SearchTestController.h */,
 				63DBAF8A14995463002A8D86 /* SearchTestController.m */,
 				63957E1C14AA813600ABA6F9 /* CreateContactViewController.h */,
@@ -1131,6 +1126,9 @@
 /* Begin PBXProject section */
 		63B61AEE148A58F400CBE54B /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 63B61AF1148A58F400CBE54B /* Build configuration list for PBXProject "MissionHub" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -1498,7 +1496,6 @@
 				636793C91496A60D00B52C74 /* SimpleCell.m in Sources */,
 				639A15141497E40600FFAC44 /* ContactCell.m in Sources */,
 				639A1517149817CE00FFAC44 /* BaseViewController.m in Sources */,
-				63DBAF82149946BF002A8D86 /* CatalogController.m in Sources */,
 				63DBAF8514994F16002A8D86 /* MessageController.m in Sources */,
 				63DBAF88149953EC002A8D86 /* MockDataSource.m in Sources */,
 				63DBAF8B14995463002A8D86 /* SearchTestController.m in Sources */,
@@ -1705,6 +1702,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Campus Crusade for Christ Inc";
@@ -1780,6 +1779,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MissionHubTests/MissionHubTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1792,6 +1792,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (8L7H7A9RBC)";
@@ -1827,6 +1829,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1935,6 +1939,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MissionHubTests/MissionHubTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1952,6 +1957,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MissionHubTests/MissionHubTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

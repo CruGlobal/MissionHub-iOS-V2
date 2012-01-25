@@ -14,13 +14,12 @@
         _delegate = nil;
 
         self.title = @"Search Test";
-        self.dataSource = [[[MockDataSource alloc] init] autorelease];
+        self.dataSource = [[MockDataSource alloc] init];
     }
     return self;
 }
 
 - (void)dealloc {
-	[super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,8 +28,8 @@
 - (void)loadView {
     [super loadView];
 
-    TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
-    searchController.dataSource = [[[MockSearchDataSource alloc] initWithDuration:1.5] autorelease];
+    TTTableViewController* searchController = [[TTTableViewController alloc] init] ;
+    searchController.dataSource = [[MockSearchDataSource alloc] initWithDuration:1.5] ;
     self.searchViewController = searchController;
     self.tableView.tableHeaderView = _searchController.searchBar;
 }

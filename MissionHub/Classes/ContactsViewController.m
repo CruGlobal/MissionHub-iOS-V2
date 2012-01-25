@@ -16,7 +16,7 @@
 
 @implementation ContactsViewController
 
-@synthesize delegate = _delegate;
+@synthesize delegate;
 @synthesize assignMode;
 @synthesize cancelBtn;
 @synthesize assignBtn;
@@ -32,17 +32,17 @@
 }
 
 - (void) createModel {
-    self.dataSource = [[[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]] autorelease];
+    self.dataSource = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
 }
 
 - (void)loadView {
     [super loadView];
 
-    TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
+    TTTableViewController* searchController = [[TTTableViewController alloc] init];
     self.searchViewController = searchController;
     self.tableView.tableHeaderView = _searchController.searchBar;
 
-    ContactsListDataSource *ds = [[[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]] autorelease];
+    ContactsListDataSource *ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
     //searchController.dataSource = [[[MockSearchDataSource alloc] initWithDuration:1.5] autorelease];
     self.searchViewController.dataSource = ds;
 
@@ -50,7 +50,7 @@
 }
 
 - (id<TTTableViewDelegate>) createDelegate {
-    return (id<TTTableViewDelegate>)[[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+    return (id<TTTableViewDelegate>)[[TTTableViewDragRefreshDelegate alloc] initWithController:self];
 }
 
 
@@ -127,7 +127,7 @@
 
 - (IBAction)onBackBtn:(id)sender {
      if (filterSegmentedControl.selectedSegmentIndex == 3) {
-         self.dataSource = [[[LeadersListDataSource alloc] init] autorelease];
+         self.dataSource = [[LeadersListDataSource alloc] init];
      } else {
          [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];         
      }
@@ -211,11 +211,9 @@
     if (ld == nil) {
         self.searchViewController.dataSource = ds2;
         self.dataSource = ds;
-        [ds release];
     } else {
         self.searchViewController.dataSource = ld2;
         self.dataSource = ld;
-        [ld release];
     }
 }
 

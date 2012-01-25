@@ -29,7 +29,7 @@
                          ]]];
         [self setBackgroundColor:[UIColor clearColor]];
 
-        TTStyledTextLabel* styledLabel = [[[TTStyledTextLabel alloc] initWithFrame:CGRectZero] autorelease];
+        TTStyledTextLabel* styledLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
         styledLabel.font = aFont;
         styledLabel.text = [TTStyledText textFromXHTML:text lineBreaks:YES URLs:NO];
         styledLabel.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);

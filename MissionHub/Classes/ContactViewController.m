@@ -88,15 +88,9 @@
     // Set user's image
     NSString *picture = [self.personData objectForKey:@"picture"];
     if ([picture length] != 0) {
-        NSString *fbUrl = [NSString stringWithFormat:@"%@?type=large", picture];
-        NSURL * imageURL = [NSURL URLWithString: fbUrl];
-
-        // Do we need to check if this has been allocated before?
-        HJManagedImageV* mi = [[[HJManagedImageV alloc] initWithFrame:placeHolderImageView.frame] autorelease];
-        [tableView addSubview: mi];
-        mi.url = imageURL;
-
-        [AppDelegate.imageManager manage:mi];
+        TTImageView* profileImageView = [[TTImageView alloc] initWithFrame:placeHolderImageView.frame];
+        profileImageView.urlPath = [NSString stringWithFormat:@"%@?type=large", picture];
+        [tableView addSubview:profileImageView];
 
         [placeHolderImageView setHidden: YES];
     }
@@ -117,8 +111,8 @@
     [self showActivityLabel:NO];
 }
 
-- (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
-    NSDictionary *result = (NSDictionary*)aResult;
+- (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {
+    NSDictionary *result = aResult;
     if ([aIdentifier isEqualToString:@"followup_comments"]) {
         [commentsArray removeAllObjects];
 
@@ -220,6 +214,9 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void) dealloc {
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -234,7 +231,7 @@
     NSLog(@"making http POST request: %@", requestUrl);
 
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
-    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    request.response = [[TTURLJSONResponse alloc] init];
     request.httpMethod = @"POST";
     request.cachePolicy = TTURLRequestCachePolicyNone;
 
@@ -419,7 +416,6 @@
     UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
                                                    otherButtonTitles:@"Uncontacted", @"Attempted Contact", @"Contacted", @"Completed", @"Do Not Contact", nil];
     [statusSheet showInView:self.view];
-    [statusSheet release];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -441,7 +437,7 @@
 
 - (IBAction)onSaveBtn:(id)sender {
     if ([self.statusSelected length] == 0) {
-        [[[NiceAlertView alloc] initWithText:@"You need to set a status before you can save."] autorelease];
+        [[NiceAlertView alloc] initWithText:@"You need to set a status before you can save."];
         return;
     }
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:

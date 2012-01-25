@@ -10,6 +10,6 @@
 
 @interface LeaderSelectionViewController : TableViewController
 
-@property NSString *leaderId;
+@property (nonatomic, strong) NSString *leaderId;
 
 @end

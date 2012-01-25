@@ -24,12 +24,10 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) dealloc {
-    TT_RELEASE_SAFELY(dataArray);
-    [super dealloc];
 }
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
-    [_delegates perform:@selector(modelDidStartLoad:) withObject:self];
+    //[_delegates perform:@selector(modelDidStartLoad:) withObject:self];
 
     if (!self.isLoading) {
 
@@ -42,22 +40,22 @@
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
         request.cachePolicy = TTURLRequestCachePolicyNone;
         //request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
-        request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+        request.response = [[TTURLJSONResponse alloc] init];
         [request send];
 
     }
 }
 
-- (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
+- (void) handleRequestResult:(NSDictionary*)aResult identifier:(NSString*)aIdentifier {
 
-    NSDictionary *result = (NSDictionary *)aResult;
+    NSDictionary *result = aResult;
     NSArray *leaders = [result objectForKey:@"leaders"];
 
     for (NSDictionary *tempDict in leaders) {
         [dataArray addObject: tempDict];
     }
 
-    [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+    //[_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
 }
 
 
@@ -70,7 +68,7 @@
         NSLog(@"requestDidFinishLoad:%@", response.rootObject);
     }
 
-    [self handleRequestResult:(id*)response.rootObject identifier:request.userInfo];
+    [self handleRequestResult:response.rootObject identifier:request.userInfo];
 
     [super requestDidFinishLoad:request];
 }
@@ -104,8 +102,6 @@
 }
 
 - (void)dealloc {
-    TT_RELEASE_SAFELY(leadersList);
-    [super dealloc];
 }
 
 

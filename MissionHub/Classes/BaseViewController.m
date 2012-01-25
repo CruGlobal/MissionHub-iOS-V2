@@ -88,7 +88,7 @@
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
     request.cachePolicy = TTURLRequestCachePolicyNone;
-    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    request.response = [[TTURLJSONResponse alloc] init];
     [request send];
 }
 
@@ -99,7 +99,7 @@
 
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
-    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    request.response = [[TTURLJSONResponse alloc] init];
     request.httpMethod = @"POST";
     request.cachePolicy = TTURLRequestCachePolicyNone;
     request.contentType = @"application/x-www-form-urlencoded";
@@ -131,7 +131,7 @@
         NSLog(@"requestDidFinishLoad:%@", response.rootObject);
     }
 
-    [self handleRequestResult:(id*)response.rootObject identifier:request.userInfo];
+    [self handleRequestResult:response.rootObject identifier:request.userInfo];
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
@@ -142,14 +142,14 @@
 }
 
 // Empty implementation, child class can override behavior to handle result from the HTTP request
-- (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
+- (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {
 }
 
 - (void) initActivityLabel {
     activityView = [[UIView alloc] initWithFrame:self.view.frame];
     [activityView setBackgroundColor:[UIColor blackColor]];
     activityView.alpha = 0.5f;
-    activityLabel = [[[TTActivityLabel alloc] initWithStyle:TTActivityLabelStyleBlackBezel] autorelease];
+    activityLabel = [[TTActivityLabel alloc] initWithStyle:TTActivityLabelStyleBlackBezel];
     activityLabel.alpha = 1.f;
     [activityLabel setFrame: CGRectMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2, activityLabel.bounds.size.width, activityLabel.bounds.size.height)];
     [self.view addSubview:activityView];

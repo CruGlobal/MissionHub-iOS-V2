@@ -15,6 +15,7 @@
 }
 
 @property(nonatomic,assign) id<SearchContactsControllerDelegate> delegate;
+
 @property BOOL assignMode;
 @property (nonatomic, retain) IBOutlet UIButton *cancelBtn;
 @property (nonatomic, retain) IBOutlet UIButton *assignBtn;

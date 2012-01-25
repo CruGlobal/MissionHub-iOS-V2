@@ -24,7 +24,7 @@
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
     request.cachePolicy = TTURLRequestCachePolicyNone;
-    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    request.response = [[TTURLJSONResponse alloc] init];
     [request send];
 }
 
@@ -35,7 +35,7 @@
     
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
-    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    request.response = [[TTURLJSONResponse alloc] init];
     request.httpMethod = @"POST";
     request.cachePolicy = TTURLRequestCachePolicyNone;
     request.contentType = @"application/x-www-form-urlencoded";
@@ -54,7 +54,7 @@
     
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
-    request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+    request.response = [[TTURLJSONResponse alloc] init];
     request.httpMethod = @"POST";
     request.cachePolicy = TTURLRequestCachePolicyNone;
     request.contentType = @"application/x-www-form-urlencoded";
@@ -86,7 +86,7 @@
         NSLog(@"requestDidFinishLoad:%@", response.rootObject);
     }
     
-    [self handleRequestResult:(id*)response.rootObject identifier:request.userInfo];
+    [self handleRequestResult:response.rootObject identifier:request.userInfo];
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
@@ -97,7 +97,7 @@
 }
 
 // Empty implementation, child class can override behavior to handle result from the HTTP request
-- (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier {
+- (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {
 }
 
 @end

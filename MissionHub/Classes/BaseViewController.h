@@ -16,7 +16,7 @@
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData;
 
 // Override these methods on child classes for specifics
-- (void) handleRequestResult:(id *)aResult identifier:(NSString*)aIdentifier;
+- (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier;
 
 - (void) initActivityLabel;
 - (void) showActivityLabel;

@@ -13,4 +13,8 @@
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData;
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postString:(NSString*)aPostString;
 
+// Override these methods on child classes for specifics
+- (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier;
+
+
 @end

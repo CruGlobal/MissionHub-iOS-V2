@@ -57,7 +57,7 @@
     btnFrame.origin.y = 10;
     [closeBtn setFrame:btnFrame];
 
-    fbWebViewContainer = [[[TTView alloc] initWithFrame:CGRectMake(10, 10, 310, 440)] autorelease];
+    fbWebViewContainer = [[TTView alloc] initWithFrame:CGRectMake(10, 10, 310, 440)];
     fbWebViewContainer.style =  [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
                                [TTShadowStyle styleWithColor:RGBACOLOR(0,0,0,0.5) blur:5 offset:CGSizeMake(1, 1) next:
                                 [TTInsetStyle styleWithInset:UIEdgeInsetsMake(0.15, 0.15, 0.15, 0.5) next:
@@ -199,7 +199,7 @@
             NSString *grantUrl = [NSString stringWithFormat:@"%@/grant.json?authorization=%@", baseUrl, authorization];
 
             TTURLRequest *request = [TTURLRequest requestWithURL: grantUrl delegate: self];
-            request.response = [[[TTURLJSONResponse alloc] init] autorelease];
+            request.response = [[TTURLJSONResponse alloc] init];
             [request send];
 
             accesssGranted = YES;
@@ -256,7 +256,7 @@
         newRequest.contentType=@"application/x-www-form-urlencoded";
 
         NSLog(@"request url:%@", request.urlPath);
-        newRequest.response = [[[TTURLJSONResponse alloc] init] autorelease];
+        newRequest.response = [[TTURLJSONResponse alloc] init];
 
         newRequest.httpBody = myRequestData;
 
@@ -273,9 +273,5 @@
 }
 
 - (void)dealloc {
-    TT_RELEASE_SAFELY(aboutBtn);
-    TT_RELEASE_SAFELY(fbWebView);
-    TT_RELEASE_SAFELY(fbWebViewContainer);
-    [super dealloc];
 }
 @end

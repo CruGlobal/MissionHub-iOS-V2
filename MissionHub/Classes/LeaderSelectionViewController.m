@@ -16,7 +16,7 @@
 @synthesize leaderId;
 
 - (void) createModel {
-    self.dataSource = [[[LeadersListDataSource alloc] initAsSelection:YES] autorelease];
+    self.dataSource = [[LeadersListDataSource alloc] initAsSelection:YES];
 }
 
 
@@ -41,7 +41,6 @@
     // open a alert with an OK and cancel button
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: item.text message:[NSString stringWithFormat:@"Assign %d contacts to this leader?", selectedCount] delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     [alert show];
-    [alert release];
 }
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

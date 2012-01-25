@@ -12,9 +12,8 @@
 - (UIViewController*)composeEmailTo:(NSString*)recipient {
     TTTableTextItem* item = [TTTableTextItem itemWithText:recipient URL:nil];
 
-    TTMessageController* controller =
-    [[[TTMessageController alloc] initWithRecipients:[NSArray arrayWithObject:item]] autorelease];
-    controller.dataSource = [[[MockSearchDataSource alloc] init] autorelease];
+    TTMessageController* controller = [[TTMessageController alloc] initWithRecipients:[NSArray arrayWithObject:item]];
+    controller.dataSource = [[MockSearchDataSource alloc] init];
     controller.delegate = self;
 
     return controller;
@@ -23,9 +22,8 @@
 - (UIViewController*)composeSmsTo:(NSString*)recipient {
     TTTableTextItem* item = [TTTableTextItem itemWithText:recipient URL:nil];
 
-    TTMessageController* controller =
-    [[[TTMessageController alloc] initWithRecipients:[NSArray arrayWithObject:item]] autorelease];
-    controller.dataSource = [[[MockSearchDataSource alloc] init] autorelease];
+    TTMessageController* controller = [[TTMessageController alloc] initWithRecipients:[NSArray arrayWithObject:item]];
+    controller.dataSource = [[MockSearchDataSource alloc] init];
     controller.delegate = self;
     [[controller viewForFieldAtIndex:1] removeFromSuperview];
     //[controller setFieldIndexOfFirstResponder: 99];
@@ -54,7 +52,7 @@
 
     TTMessageRecipientField* toField = [fields objectAtIndex:0];
     for (id recipient in toField.recipients) {
-        UILabel* label = [[[UILabel alloc] init] autorelease];
+        UILabel* label = [[UILabel alloc] init];
         label.backgroundColor = self.view.backgroundColor;
         label.text = [NSString stringWithFormat:@"Sent to: %@", recipient];
         [label sizeToFit];
@@ -86,7 +84,6 @@
     [[TTNavigator navigator].URLMap removeURL:@"tt://compose?to=(composeTo:)"];
     [[TTNavigator navigator].URLMap removeURL:@"tt://post"];
     [_sendTimer invalidate];
-	[super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -94,7 +91,7 @@
 
 - (void)loadView {
     CGRect appFrame = [UIScreen mainScreen].applicationFrame;
-    self.view = [[[UIView alloc] initWithFrame:appFrame] autorelease];;
+    self.view = [[UIView alloc] initWithFrame:appFrame];
     self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
 //
 //    UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -134,15 +131,14 @@
 }
 
 - (void)composeControllerShowRecipientPicker:(TTMessageController*)controller {
-    SearchTestController* searchController = [[[SearchTestController alloc] init] autorelease];
+    SearchTestController* searchController = [[SearchTestController alloc] init];
     searchController.delegate = self;
     searchController.title = @"Address Book";
     searchController.navigationItem.prompt = @"Select a recipient";
     searchController.navigationItem.rightBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                   target:self action:@selector(cancelAddressBook)] autorelease];
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddressBook)];
 
-    UINavigationController* navController = [[[UINavigationController alloc] init] autorelease];
+    UINavigationController* navController = [[UINavigationController alloc] init];
     [navController pushViewController:searchController animated:NO];
     [controller presentModalViewController:navController animated:YES];
 }
