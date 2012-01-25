@@ -15,7 +15,10 @@
 
 @implementation ContactsListRequestModel
 
-@synthesize dataArray, filteredDataArray, urlParams;
+@synthesize dataArray;
+@synthesize filteredDataArray;
+@synthesize urlParams;
+@synthesize page;
 
 - (id)initWithParams:(NSString*)aParams {
     if (self = [super init]) {
@@ -38,12 +41,16 @@
     //[_delegates perform:@selector(modelDidStartLoad:) withObject:self];
 
     if (!self.isLoading && TTIsStringWithAnyText(self.urlParams)) {
-
-        [dataArray removeAllObjects];
-        [filteredDataArray removeAllObjects];
+        if (more) {
+            page += 1;
+        } else {
+            page = 1;
+            [dataArray removeAllObjects];
+            [filteredDataArray removeAllObjects];
+        }
 
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&org_id=%@&access_token=%@", baseUrl, @"contacts.json", self.urlParams, CurrentUser.orgId, CurrentUser.accessToken];
+        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&start=%d&limit=25&org_id=%@&access_token=%@", baseUrl, @"contacts.json", self.urlParams, (page - 25) * 100, CurrentUser.orgId, CurrentUser.accessToken];
         NSLog(@"making http GET request: %@", requestUrl);
 
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
@@ -145,25 +152,35 @@
 }
 
 - (void)tableView:(UITableView *)tableView cell:(UITableViewCell *)cell willAppearAtIndexPath:(NSIndexPath *)indexPath {
-    TTTableSubtitleItem *item = [_items objectAtIndex:indexPath.row];
-    NSDictionary *userInfo = (NSDictionary*)item.userInfo;
-
-    if (assignMode) {
-        if ([userInfo objectForKey:@"checked"] == @"1") {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+	if (indexPath.row == self.items.count - 1 && [cell isKindOfClass:[TTTableMoreButtonCell class]]) {
+		TTTableMoreButton* moreBtn = [(TTTableMoreButtonCell *)cell object];
+		moreBtn.isLoading = YES;
+		[(TTTableMoreButtonCell *)cell setAnimating:YES];
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+		[self.model load:TTURLRequestCachePolicyDefault more:YES];		
+        NSLog(@"showing more...");
+	} else {
+        TTTableSubtitleItem *item = [_items objectAtIndex:indexPath.row];
+        NSDictionary *userInfo = (NSDictionary*)item.userInfo;
+        
+        if (assignMode) {
+            if ([userInfo objectForKey:@"checked"] == @"1") {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
         } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-
 }
 
 - (Class)tableView:(UITableView *)tableView cellClassForObject:(id)object {
 
-    if ([object isKindOfClass:[TTTableSubtitleItem class]]) {
-        return [TableSubtitleItemCell class];
+    if ([object isKindOfClass:[TTTableMoreButton class]]) {        
+        return [TTTableMoreButtonCell class];        
+    } else if ([object isKindOfClass:[TTTableSubtitleItem class]]) {
+            return [TableSubtitleItemCell class];
     } else {
         return [super tableView:tableView cellClassForObject:object];
     }
@@ -189,6 +206,12 @@
         item.userInfo = person;
 
         [_items addObject:item];
+    }
+    
+    // See if we need to show the more button
+    if (self.items.count == contactList.page * 25) {
+        TTTableMoreButton  *moreBtn = [TTTableMoreButton itemWithText:@"More"];
+        [_items addObject:moreBtn];
     }
 }
 
