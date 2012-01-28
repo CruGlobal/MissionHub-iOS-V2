@@ -18,6 +18,7 @@
 
 @synthesize delegate;
 @synthesize assignMode;
+@synthesize selectedIndexPath;
 @synthesize cancelBtn;
 @synthesize assignBtn;
 @synthesize filterSegmentedControl;
@@ -47,12 +48,39 @@
     self.searchViewController.dataSource = ds;
 
     [self.tableView setFrame:CGRectMake(0, 33, 320, 398)];
+    
+    UILongPressGestureRecognizer* gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (id<TTTableViewDelegate>) createDelegate {
     return (id<TTTableViewDelegate>)[[TTTableViewDragRefreshDelegate alloc] initWithController:self];
 }
 
+- (void)handleGesture:(UILongPressGestureRecognizer *)recognizer {
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {    
+        CGPoint p = [recognizer locationInView: self.tableView];
+        selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
+        if (selectedIndexPath != nil) {
+            UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
+                                                            otherButtonTitles:@"Promote to Leader", @"Cancel", nil];
+            [statusSheet showInView:self.view];
+        }
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"End");
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if ([title isEqualToString:@"Promote to Leader"]) {
+        NSLog(@"index row: %d",selectedIndexPath.row);
+        NSDictionary *person = [((ContactsListDataSource*)self.dataSource).contactList.dataArray objectAtIndex:selectedIndexPath.row];
+        
+        [self makeHttpPutRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];
+    } 
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewController
@@ -60,6 +88,7 @@
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
 
     [_delegate searchContactsController:self didSelectObject:object];
+    selectedIndexPath = indexPath;
 
     TTTableSubtitleItem *item = (TTTableSubtitleItem*)object;
 
@@ -158,7 +187,8 @@
         [self presentModalViewController:navigation animated:YES];
 
     } else {
-        assignMode = YES;
+        // Set assign mode to this view and the data source
+        assignMode = YES;        
         ((ContactsListDataSource*)self.dataSource).assignMode = YES;
 
         [assignBtn setTitle:@"Select Leader" forState:UIControlStateNormal];
@@ -188,7 +218,7 @@
     [assignBtn setHidden:NO];
     [cancelBtn setHidden:YES];
     
-    [[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];    
+    //[[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];    
 
     ContactsListDataSource *ds = nil;
     ContactsListDataSource *ds2 = nil;

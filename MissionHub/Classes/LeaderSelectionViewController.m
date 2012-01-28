@@ -54,7 +54,7 @@
             NSDictionary *userInfo = item.userInfo;
             if ([[userInfo objectForKey:@"checked"] intValue] == 1) {
                 NSString *params = [NSString stringWithFormat:@"id=%@&type=leader&assign_to_id=%@", [userInfo objectForKey:@"id"], leaderId];
-                [self makeHttpRequest:@"contact_assignments" identifier:@"contact_assignments" postString: params];
+                [self makeHttpPostRequest:@"contact_assignments" identifier:@"contact_assignments" postString: params];
             }
         }
         

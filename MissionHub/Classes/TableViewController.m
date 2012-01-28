@@ -28,7 +28,8 @@
     [request send];
 }
 
-- (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postString:(NSString*)aPostString {
+// Make an HTTP POST using NSString
+- (void) makeHttpPostRequest:(NSString *)path identifier:(NSString*)aIdentifier postString:(NSString*)aPostString {
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?org_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
     NSLog(@"making http POST request: %@", requestUrl);
@@ -47,7 +48,8 @@
     [request send];    
 }
 
-- (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData {
+// Make an HTTP POST using NSDictionary
+- (void) makeHttpPostRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData {
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?org_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
     NSLog(@"making http POST request: %@", requestUrl);
@@ -71,6 +73,27 @@
     request.httpBody = postData;
     
     [request send];
+}
+
+// Make an HTTP POST using NSString
+- (void) makeHttpPutRequest:(NSString *)path identifier:(NSString*)aIdentifier params:(NSString*)aParams {
+    NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?org_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
+    NSLog(@"making http PUT request: %@", requestUrl);
+    
+    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+    request.userInfo = aIdentifier;
+    request.httpMethod = @"POST";
+    request.response = [[TTURLJSONResponse alloc] init];
+    request.cachePolicy = TTURLRequestCachePolicyNone;
+    request.contentType = @"application/x-www-form-urlencoded";
+    
+    NSString *params = [NSString stringWithFormat:@"%@&_method=put", aParams];
+    NSLog(@"   put params: %@", params);    
+    NSData *httpBody = [ NSData dataWithBytes: [ params UTF8String ] length: [ params length ] ];
+    request.httpBody = httpBody;
+    
+    [request send];    
 }
 
 - (void)requestDidStartLoad:(TTURLRequest*)request {

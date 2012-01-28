@@ -6,20 +6,22 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "TableViewController.h"
 
 @protocol SearchContactsControllerDelegate;
 
-@interface ContactsViewController : TTTableViewController <TTSearchTextFieldDelegate> {
+@interface ContactsViewController : TableViewController <TTSearchTextFieldDelegate, UIActionSheetDelegate> {
     id<SearchContactsControllerDelegate> _delegate;
 }
 
 @property(nonatomic,assign) id<SearchContactsControllerDelegate> delegate;
 
-@property BOOL assignMode;
+@property (nonatomic, assign) BOOL assignMode;
+@property (nonatomic, retain) NSIndexPath *selectedIndexPath;
 @property (nonatomic, retain) IBOutlet UIButton *cancelBtn;
 @property (nonatomic, retain) IBOutlet UIButton *assignBtn;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *filterSegmentedControl;
+
 
 - (IBAction)onBackBtn:(id)sender;
 - (IBAction)onSegmentChange:(id)sender;
