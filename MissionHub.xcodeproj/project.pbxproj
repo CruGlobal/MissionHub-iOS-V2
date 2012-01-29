@@ -59,7 +59,7 @@
 		63CFAA2214BF2EB300977E22 /* ProfileViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA1E14BF2EB300977E22 /* ProfileViewController_iPad.xib */; };
 		63CFAA2714BF322C00977E22 /* ContactViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA2314BF322C00977E22 /* ContactViewController_iPad.xib */; };
 		63CFAA2814BF322C00977E22 /* LoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CFAA2514BF322C00977E22 /* LoginViewController_iPad.xib */; };
-		63DBAF8514994F16002A8D86 /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8414994F15002A8D86 /* MessageController.m */; };
+		63DBAF8514994F16002A8D86 /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8414994F15002A8D86 /* MessageController.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		63DBAF88149953EC002A8D86 /* MockDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF87149953EC002A8D86 /* MockDataSource.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		63DBAF8B14995463002A8D86 /* SearchTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DBAF8A14995463002A8D86 /* SearchTestController.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		63DD6ADF148EF5C90087313E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6ADD148EF5C90087313E /* MainViewController.m */; };
@@ -1771,6 +1771,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "92EE2254-C3BF-40D8-858A-B707CD9447E5";
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1897,6 +1898,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1931,6 +1933,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

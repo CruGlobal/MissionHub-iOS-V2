@@ -174,7 +174,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if (shouldRefresh) {
+    if (shouldRefresh || [self.tableView.visibleCells count] == 0) {
         [self invalidateModel];            
         shouldRefresh = NO;
     }
