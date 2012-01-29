@@ -22,6 +22,10 @@
 @property (nonatomic, retain) NSString *statusSelected;
 @property (nonatomic, retain) UIImagePickerController *imagePicker;
 
+// for convenience
+@property (nonatomic, retain) NSString *email;
+@property (nonatomic, retain) NSString *phoneNo;
+
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl;
 @property (nonatomic, retain) IBOutlet UIButton *placeHolderImageView;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

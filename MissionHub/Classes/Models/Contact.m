@@ -18,7 +18,26 @@
 @synthesize gender;
 @synthesize address1, address2, city, zip;
 
+- (id) init {
+    self = [super init];
+    if (self != nil) {
+        // initializations go here.
+        
+        self.email       = @"";
+        self.phone       = @"";
+        self.address1    = @"";
+        self.address2    = @"";
+        self.city        = @"";
+        self.zip         = @"";
+    }
+    return self;
+}
+
 -(void) create:(void(^)(int))handler {
+    
+    self.lastName = (self.lastName ? self.lastName : @"");
+    self.gender = (self.gender ? self.gender : @"");
+    
     [self makeHttpRequest:@"contacts"
                identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys:
                 [NSDictionary dictionaryWithObjectsAndKeys:
@@ -50,6 +69,7 @@
     request.cachePolicy = TTURLRequestCachePolicyNone;
 
     NSString* json = (NSString*)[aPostData JSONRepresentation];
+    NSLog(@"params: %@", json);
     NSData *jsonData = [NSData dataWithBytes:[json UTF8String] length:[json length]];
     [request setHttpBody:jsonData];
 

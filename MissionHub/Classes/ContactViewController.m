@@ -30,6 +30,8 @@
 @synthesize statusSelected;
 @synthesize assignBtn;
 @synthesize imagePicker;
+@synthesize email;
+@synthesize phoneNo;
 
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
@@ -171,9 +173,13 @@
             [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"First Contact Date", @"label", [person objectForKey:@"first_contact_date"], @"value", nil]];
         }
         if ([person objectForKey:@"phone_number"]) {
+            phoneNo = [person objectForKey:@"phone_number"];
             [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Phone Number", @"label", [person objectForKey:@"phone_number"], @"value", nil]];
         }
-        [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Email Address", @"label", [person objectForKey:@"email_address"], @"value", nil]];
+        if ([person objectForKey:@"email_address"]) {
+            email = [person objectForKey:@"email_address"];
+            [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Email Address", @"label", [person objectForKey:@"email_address"], @"value", nil]];
+        }
         if ([person objectForKey:@"birthday"]) {
             [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Birthday", @"label", [person objectForKey:@"birthday"], @"value", nil]];
         }
@@ -345,17 +351,30 @@
 }
 
 - (IBAction)onCallBtn:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:99022002"]];
+    if (phoneNo) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNo]];
+    } else {
+        [[NiceAlertView alloc] initWithText:@"This contact does not have number to call to."];
+    }
 }
 
 - (IBAction)onSmsBtn:(id)sender {
-    NSString *path = [NSString stringWithFormat:@"mh://composeSms?to=%@", [[self.personData objectForKey:@"name"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:path] applyAnimated:YES]];
+    if (phoneNo) {
+        NSString *path = [NSString stringWithFormat:@"mh://composeSms?to=%@", phoneNo];
+        [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:path] applyAnimated:YES]];
+    } else {
+        [[NiceAlertView alloc] initWithText:@"This contact does not have number to send a text message to."];
+
+    }
 }
 
 - (IBAction)onEmailBtn:(id)sender {
-    NSString *path = [NSString stringWithFormat:@"mh://composeEmail?to=%@", [[self.personData objectForKey:@"name"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:path] applyAnimated:YES]];
+    if (email) {
+        NSString *path = [NSString stringWithFormat:@"mh://composeEmail?to=%@", email];
+        [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:path] applyAnimated:YES]];
+    } else {
+        [[NiceAlertView alloc] initWithText:@"This contact does not have an email address to send email to."];
+    }
 }
 
 - (IBAction)onAssignBtn:(id)sender {
