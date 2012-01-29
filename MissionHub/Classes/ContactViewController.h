@@ -14,6 +14,7 @@
 
 @interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (nonatomic, assign) BOOL shouldRefresh;
 @property (nonatomic, retain) NSDictionary *personData;
 @property (nonatomic, retain) NSMutableArray *commentsArray;
 @property (nonatomic, retain) NSMutableArray *infoArray;

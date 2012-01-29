@@ -32,7 +32,7 @@
 @synthesize imagePicker;
 @synthesize email;
 @synthesize phoneNo;
-
+@synthesize shouldRefresh;
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
     if (self = [super init]){
@@ -80,6 +80,7 @@
         [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     }
 
+    shouldRefresh = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -87,38 +88,42 @@
     [super viewWillAppear:YES];
 
     // Do any additional setup after loading the view from its nib.
-    [nameLbl setText:[personData objectForKey:@"name"]];
-    
-    NSString *gender = [personData objectForKey:@"gender"];
+    if (shouldRefresh) {
+        [nameLbl setText:[personData objectForKey:@"name"]];
+        
+        NSString *gender = [personData objectForKey:@"gender"];
 
-    // Set user's image
-    NSString *picture = [self.personData objectForKey:@"picture"];
-    if ([picture length] != 0) {
-        TTImageView* profileImageView = [[TTImageView alloc] initWithFrame:placeHolderImageView.frame];
-        profileImageView.urlPath = [NSString stringWithFormat:@"%@?type=large", picture];
-        [tableView addSubview:profileImageView];
+        // Set user's image
+        NSString *picture = [self.personData objectForKey:@"picture"];
+        if ([picture length] != 0) {
+            TTImageView* profileImageView = [[TTImageView alloc] initWithFrame:placeHolderImageView.frame];
+            profileImageView.urlPath = [NSString stringWithFormat:@"%@?type=large", picture];
+            [tableView addSubview:profileImageView];
 
-        [placeHolderImageView setHidden: YES];
-    } else if([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
-        // replace male placeholder image when contact is a female
-        placeHolderImageView.imageView.image = [UIImage imageNamed:@"facebook_female.gif"];
+            [placeHolderImageView setHidden: YES];
+        } else if([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
+            // replace male placeholder image when contact is a female
+            placeHolderImageView.imageView.image = [UIImage imageNamed:@"facebook_female.gif"];
+        }
+
+        [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];
+        [self makeHttpRequest:[NSString stringWithFormat:@"contacts/%@.json", [self.personData objectForKey:@"id"]] identifier:@"contacts"];
+
+        // tuck away the rejoicable selection
+        CGRect frame = self.rejoicablesView.frame;
+        frame.origin.x = -400.0f;
+        self.rejoicablesView.frame = frame;
+
+        // set the assign button
+        NSDictionary *assignment = [self.personData objectForKey:@"assignment"];
+        if ([[assignment objectForKey:@"person_assigned_to"] count] == 0) {
+            [assignBtn setTitle: @"Assign" forState:UIControlStateNormal];
+        }
+
+        [self showActivityLabel:NO];
+        
+        shouldRefresh = NO;
     }
-
-    [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];
-    [self makeHttpRequest:[NSString stringWithFormat:@"contacts/%@.json", [self.personData objectForKey:@"id"]] identifier:@"contacts"];
-
-    // tuck away the rejoicable selection
-    CGRect frame = self.rejoicablesView.frame;
-    frame.origin.x = -400.0f;
-    self.rejoicablesView.frame = frame;
-
-    // set the assign button
-    NSDictionary *assignment = [self.personData objectForKey:@"assignment"];
-    if ([[assignment objectForKey:@"person_assigned_to"] count] == 0) {
-        [assignBtn setTitle: @"Assign" forState:UIControlStateNormal];
-    }
-
-    [self showActivityLabel:NO];
 }
 
 - (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {
@@ -135,6 +140,9 @@
 
         [self hideActivityLabel];
     } else if ([aIdentifier isEqualToString:@"contacts"]) {
+        [infoArray removeAllObjects];
+        [surveyArray removeAllObjects];
+        
         NSArray *people = [result objectForKey:@"contacts"];
         NSDictionary *personAndFormDict = [people objectAtIndex:0];
         NSDictionary *person = [personAndFormDict objectForKey:@"person"];
@@ -348,6 +356,8 @@
     // [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contacts"] applyAnimated:YES]];
     [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://nib/ContactsViewController" ] applyAnimated:YES]];
     [[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];
+    
+    shouldRefresh = YES;
 }
 
 - (IBAction)onCallBtn:(id)sender {
