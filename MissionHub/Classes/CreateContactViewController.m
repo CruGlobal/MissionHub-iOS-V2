@@ -55,10 +55,11 @@
     [self.root fetchValueIntoObject:contact];
 
     [contact create:^(int result){
-        // Prints 10
-        NSLog(@"using blocks");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"contactCreated" object: nil ];    
+        
         [self loading:NO];
         [self dismissModalViewControllerAnimated:YES];
+        
     }];
 
 }

@@ -86,6 +86,8 @@
 
     // Do any additional setup after loading the view from its nib.
     [nameLbl setText:[personData objectForKey:@"name"]];
+    
+    NSString *gender = [personData objectForKey:@"gender"];
 
     // Set user's image
     NSString *picture = [self.personData objectForKey:@"picture"];
@@ -95,7 +97,7 @@
         [tableView addSubview:profileImageView];
 
         [placeHolderImageView setHidden: YES];
-    } else if([[personData objectForKey:@"gender"] isEqualToString:@"female"]) {
+    } else if([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
         // replace male placeholder image when contact is a female
         placeHolderImageView.imageView.image = [UIImage imageNamed:@"facebook_female.gif"];
     }

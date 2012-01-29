@@ -35,7 +35,19 @@
 
 - (void) createModel {
     NSLog(@"ContactsViewController createModel");
-    self.dataSource = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
+    
+    NSString *params = nil;
+    
+    if (filterSegmentedControl.selectedSegmentIndex == 1) {
+        params = @"filters[status]=completed";        
+    } else if (filterSegmentedControl.selectedSegmentIndex == 2) {
+        params = @"filters[assigned_to]=none";
+    } else if (filterSegmentedControl.selectedSegmentIndex == 0) {
+        params = [NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId];
+    }
+
+    //self.searchViewController.dataSource = [[ContactsListDataSource alloc] initWithParams:params];
+    self.dataSource = [[ContactsListDataSource alloc] initWithParams:params];
 }
 
 - (void)loadView {
@@ -53,6 +65,19 @@
     
     UILongPressGestureRecognizer* gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.view addGestureRecognizer:gestureRecognizer];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"contactUpdated" object:nil queue:[NSOperationQueue mainQueue] 
+                                                  usingBlock:^(NSNotification *notif) {
+                                                      shouldRefresh = YES;
+                                                  }];
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"contactCreated" object:nil queue:[NSOperationQueue mainQueue] 
+                                                  usingBlock:^(NSNotification *notif) {
+                                                      filterSegmentedControl.selectedSegmentIndex = 2;
+                                                      [self invalidateModel];
+                                                  }];
+    
+    
 }
 
 - (id<TTTableViewDelegate>) createDelegate {
@@ -144,10 +169,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"contactUpdated" object:nil queue:[NSOperationQueue mainQueue] 
-                                                  usingBlock:^(NSNotification *notif) {
-                                                      shouldRefresh = YES;
-                                                  }];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -272,58 +293,5 @@
         self.dataSource = ld;
     }
 }
-
-//#pragma mark - UITableViewDelegate
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
-//    // Return the number of sections.
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
-//    // Return the number of rows in the section.
-//    return [dataArray count];
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    static NSString *CellIdentifier = @"ContactCell";
-//
-//    // Dequeue or create a cell of the appropriate type.
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        [[NSBundle mainBundle] loadNibNamed:@"ContactCell" owner:self options:nil];
-//        cell = contactCell;
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        self.contactCell = nil;
-//    }
-//
-//    NSDictionary *person = [dataArray objectAtIndex: indexPath.row];
-//    // Configure the cell.
-//    [(ContactCell*)cell setData: person];
-//
-//    return cell;
-//}
-//
-//// Detect when player selects a section/row
-//- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    NSDictionary *person = [dataArray objectAtIndex: indexPath.row];
-//
-//    TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
-//                             applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]
-//                            applyAnimated:YES];
-//    [[TTNavigator navigator] openURLAction:action];
-//
-////    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"mh://contact"]
-////                                            applyQuery:[NSDictionary dictionaryWithObject:person forKey:@"personData"]]
-////                             applyAnimated: YES];
-//
-//}
-//
-//- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//	return 60.0f;
-//}
-
 
 @end
