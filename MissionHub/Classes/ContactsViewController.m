@@ -58,17 +58,19 @@
 }
 
 - (void)handleGesture:(UILongPressGestureRecognizer *)recognizer {
-    
-    if (recognizer.state == UIGestureRecognizerStateBegan) {    
-        CGPoint p = [recognizer locationInView: self.tableView];
-        selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
-        if (selectedIndexPath != nil) {
-            UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
-                                                            otherButtonTitles:@"Promote to Leader", @"Cancel", nil];
-            [statusSheet showInView:self.view];
+    // only handle gestures when not in mass assign mode    
+    if (!assignMode) {        
+        if (recognizer.state == UIGestureRecognizerStateBegan) {    
+            CGPoint p = [recognizer locationInView: self.tableView];
+            selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
+            if (selectedIndexPath != nil) {
+                UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
+                                                                otherButtonTitles:@"Promote to Leader", @"Cancel", nil];
+                [statusSheet showInView:self.view];
+            }
+        } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+            NSLog(@"End");
         }
-    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"End");
     }
 }
 
