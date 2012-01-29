@@ -172,6 +172,11 @@
     //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://createContact"]];
 
     QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
+    QSection *firstSection = [root getSectionForIndex:0];
+    QBooleanElement *genderElement = [firstSection.elements objectAtIndex:2];
+    genderElement.onImage = [UIImage imageNamed:@"maleicon.png"];
+    genderElement.offImage = [UIImage imageNamed:@"femaleicon.png"];
+    
     UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
     navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController:)];;
 

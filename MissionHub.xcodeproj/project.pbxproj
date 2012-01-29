@@ -20,6 +20,8 @@
 		6346730014B1D64E00F45765 /* ContactsListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 634672FF14B1D64E00F45765 /* ContactsListDataSource.m */; };
 		634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */; };
 		634F6A6714CAA19600D63948 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6614CAA19600D63948 /* TableViewController.m */; };
+		6350561D14D5274B0050B73F /* femaleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6350561B14D5274B0050B73F /* femaleicon.png */; };
+		6350561E14D5274B0050B73F /* maleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6350561C14D5274B0050B73F /* maleicon.png */; };
 		636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793BF149698FB00B52C74 /* SimpleCell.xib */; };
 		636793C214969B8600B52C74 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793C114969B8600B52C74 /* CommentCell.xib */; };
 		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -399,6 +401,8 @@
 		634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderSelectionViewController.m; sourceTree = "<group>"; };
 		634F6A6514CAA19500D63948 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		634F6A6614CAA19600D63948 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		6350561B14D5274B0050B73F /* femaleicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = femaleicon.png; sourceTree = "<group>"; };
+		6350561C14D5274B0050B73F /* maleicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maleicon.png; sourceTree = "<group>"; };
 		636793BF149698FB00B52C74 /* SimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCell.xib; sourceTree = "<group>"; };
 		636793C114969B8600B52C74 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		636793C41496A60100B52C74 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
@@ -705,8 +709,7 @@
 				6386778C14B31ED000075947 /* TableSubtitleItemCell.h */,
 				6386778D14B31ED000075947 /* TableSubtitleItemCell.m */,
 			);
-			name = CustomCells;
-			path = Classes/CustomCells;
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 		6386781D14B43BF700075947 /* Utilities */ = {
@@ -715,8 +718,7 @@
 				6386781E14B43C1D00075947 /* NiceAlertView.h */,
 				6386781F14B43C1D00075947 /* NiceAlertView.m */,
 			);
-			name = Utilities;
-			path = Classes/Utilities;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		63957E2514AAB6CB00ABA6F9 /* Products */ = {
@@ -775,11 +777,8 @@
 			isa = PBXGroup;
 			children = (
 				63DF2318148D471D0039A964 /* Classes */,
-				6386781D14B43BF700075947 /* Utilities */,
-				636793C31496A5EB00B52C74 /* CustomCells */,
 				63B61B0A148A58F400CBE54B /* MissionHubAppDelegate.h */,
 				63B61B0B148A58F400CBE54B /* MissionHubAppDelegate.m */,
-				63E02D3E1492603300BC2DEF /* Models */,
 				63E02D53149278D500BC2DEF /* Libs */,
 				63B61B0D148A58F400CBE54B /* iPhone */,
 				63B61B14148A58F400CBE54B /* iPad */,
@@ -882,6 +881,8 @@
 		63DF2252148D2E490039A964 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6350561B14D5274B0050B73F /* femaleicon.png */,
+				6350561C14D5274B0050B73F /* maleicon.png */,
 				63DF2253148D2E490039A964 /* 08-chat.png */,
 				63DF2254148D2E490039A964 /* 08-chat2.png */,
 				63DF2255148D2E490039A964 /* 18-envelope.png */,
@@ -992,6 +993,9 @@
 		63DF2318148D471D0039A964 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				63E02D3E1492603300BC2DEF /* Models */,
+				6386781D14B43BF700075947 /* Utilities */,
+				636793C31496A5EB00B52C74 /* CustomCells */,
 				639A1515149817CD00FFAC44 /* BaseViewController.h */,
 				639A1516149817CE00FFAC44 /* BaseViewController.m */,
 				634F6A6514CAA19500D63948 /* TableViewController.h */,
@@ -1035,6 +1039,7 @@
 				63DE0A5814ACFE3100F50B8D /* Contact.m */,
 			);
 			name = Models;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		63E02D53149278D500BC2DEF /* Libs */ = {
@@ -1437,6 +1442,8 @@
 				63CFAA2214BF2EB300977E22 /* ProfileViewController_iPad.xib in Resources */,
 				63CFAA2714BF322C00977E22 /* ContactViewController_iPad.xib in Resources */,
 				63CFAA2814BF322C00977E22 /* LoginViewController_iPad.xib in Resources */,
+				6350561D14D5274B0050B73F /* femaleicon.png in Resources */,
+				6350561E14D5274B0050B73F /* maleicon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
