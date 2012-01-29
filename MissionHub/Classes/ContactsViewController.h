@@ -14,8 +14,8 @@
     id<SearchContactsControllerDelegate> _delegate;
 }
 
-@property(nonatomic,assign) id<SearchContactsControllerDelegate> delegate;
-
+@property (nonatomic, assign) id<SearchContactsControllerDelegate> delegate;
+@property (nonatomic, assign) BOOL shouldRefresh;
 @property (nonatomic, assign) BOOL assignMode;
 @property (nonatomic, retain) NSIndexPath *selectedIndexPath;
 @property (nonatomic, retain) IBOutlet UIButton *cancelBtn;

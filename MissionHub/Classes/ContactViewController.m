@@ -31,6 +31,7 @@
 @synthesize assignBtn;
 @synthesize imagePicker;
 
+
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
     if (self = [super init]){
         self.personData =[query objectForKey:@"personData"];
@@ -76,6 +77,7 @@
     else {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -83,7 +85,7 @@
     [super viewWillAppear:YES];
 
     // Do any additional setup after loading the view from its nib.
-    [nameLbl setText:[self.personData objectForKey:@"name"]];
+    [nameLbl setText:[personData objectForKey:@"name"]];
 
     // Set user's image
     NSString *picture = [self.personData objectForKey:@"picture"];
@@ -93,6 +95,9 @@
         [tableView addSubview:profileImageView];
 
         [placeHolderImageView setHidden: YES];
+    } else if([[personData objectForKey:@"gender"] isEqualToString:@"female"]) {
+        // replace male placeholder image when contact is a female
+        placeHolderImageView.imageView.image = [UIImage imageNamed:@"facebook_female.gif"];
     }
 
     [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];
@@ -103,6 +108,7 @@
     frame.origin.x = -400.0f;
     self.rejoicablesView.frame = frame;
 
+    // set the assign button
     NSDictionary *assignment = [self.personData objectForKey:@"assignment"];
     if ([[assignment objectForKey:@"person_assigned_to"] count] == 0) {
         [assignBtn setTitle: @"Assign" forState:UIControlStateNormal];
@@ -363,6 +369,8 @@
                    identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys: @"delete", @"_method", [self.personData objectForKey:@"id"], @"ids", nil]];
         [btn setTitle:@"Assign" forState:UIControlStateNormal];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"contactUpdated" object: nil ];    
 }
 
 - (IBAction)onShowRejoicablesBtn:(id)sender {
@@ -522,6 +530,8 @@
     [commentTextView setText:@""];
     [rejoicablesArray removeAllObjects];
     self.statusSelected = @"";
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"contactUpdated" object: nil ];
 }
 
 - (IBAction)onSegmentChange:(id)sender {

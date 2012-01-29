@@ -22,6 +22,7 @@
 @synthesize cancelBtn;
 @synthesize assignBtn;
 @synthesize filterSegmentedControl;
+@synthesize shouldRefresh;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +34,7 @@
 }
 
 - (void) createModel {
+    NSLog(@"ContactsViewController createModel");
     self.dataSource = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
 }
 
@@ -142,6 +144,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"contactUpdated" object:nil queue:[NSOperationQueue mainQueue] 
+                                                  usingBlock:^(NSNotification *notif) {
+                                                      shouldRefresh = YES;
+                                                  }];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (shouldRefresh) {
+        [self invalidateModel];            
+        shouldRefresh = NO;
+    }
 }
 
 - (void)viewDidUnload
