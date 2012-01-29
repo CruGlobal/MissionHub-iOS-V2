@@ -201,6 +201,10 @@
         if ([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
             defaultImage = [UIImage imageNamed:@"facebook_female.gif"];
         }
+        
+        if ([status isEqualToString:@"attempted_contact"]) {
+            status = @"attempted contact";
+        }
 
         TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:status imageURL:(picture != nil ? picture : @"") defaultImage:defaultImage URL:nil accessoryURL:nil];
         item.userInfo = person;
