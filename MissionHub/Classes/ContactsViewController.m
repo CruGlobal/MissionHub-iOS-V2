@@ -85,8 +85,8 @@
 }
 
 - (void)handleGesture:(UILongPressGestureRecognizer *)recognizer {
-    // only handle gestures when not in mass assign mode    
-    if (!assignMode) {        
+    // only handle gestures when not in mass assign mode and leader listing    
+    if (!assignMode && filterSegmentedControl.selectedSegmentIndex != 3) {        
         if (recognizer.state == UIGestureRecognizerStateBegan) {    
             CGPoint p = [recognizer locationInView: self.tableView];
             selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
