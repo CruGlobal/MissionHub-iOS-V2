@@ -109,7 +109,13 @@
         NSLog(@"requestDidFinishLoad:%@", response.rootObject);
     }
     
-    [self handleRequestResult:response.rootObject identifier:request.userInfo];
+    NSDictionary *result = response.rootObject;
+    NSDictionary *error = [result objectForKey:@"error"];
+    if (error) {    
+        [[NiceAlertView alloc] initWithText: [error objectForKey:@"message"]];
+    } else {
+        [self handleRequestResult: result identifier:request.userInfo];
+    }
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {

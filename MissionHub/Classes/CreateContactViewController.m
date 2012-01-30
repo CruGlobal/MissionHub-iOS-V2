@@ -49,11 +49,16 @@
 
 @implementation CreateContactQuickDialogDelegate
 
-- (void)onCreateContactBtn:(QButtonElement *)buttonElement {
-    [self loading:YES];
+- (void)onCreateContactBtn:(QButtonElement *)buttonElement {    
     Contact *contact = [[Contact alloc] init];
     [self.root fetchValueIntoObject:contact];
-
+    
+    if (contact.firstName == nil) {
+        [[NiceAlertView alloc] initWithText: @"At minimum you need to enter a first name for the contact."];
+        return;
+    }
+    
+    [self loading:YES];    
     [contact create:^(int result){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"contactCreated" object: nil ];    
         
