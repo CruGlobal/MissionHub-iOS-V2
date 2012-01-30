@@ -143,22 +143,22 @@
 
     NSRange aRange = [[url absoluteString] rangeOfString:@"facebook.com/oauth/authorize"];
     if (aRange.location != NSNotFound) {
-        [self showActivityLabel];
+        [self showActivityLabel:NO];
     }
 
     aRange = [[url absoluteString] rangeOfString:@"facebook.com/login"];
     if (aRange.location != NSNotFound) {
-        [self showActivityLabel];
+        [self showActivityLabel:NO];
     }
 
     aRange = [[url absoluteString] rangeOfString:@"missionhub.com/oauth/authorize"];
     if (aRange.location != NSNotFound) {
-        [self showActivityLabel];
+        [self showActivityLabel:NO];
     }
 
     aRange = [[url absoluteString] rangeOfString:@"missionhub.com/users/auth/facebook"];
     if (aRange.location != NSNotFound) {
-        [self showActivityLabel];
+        [self showActivityLabel:NO];
     }
 
 

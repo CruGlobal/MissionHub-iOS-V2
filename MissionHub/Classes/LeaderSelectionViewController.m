@@ -39,7 +39,11 @@
     }        
     
     // open a alert with an OK and cancel button
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: item.text message:[NSString stringWithFormat:@"Assign %d contacts to this leader?", selectedCount] delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    NSString *msg = @"Assign 1 contact to this leader?";
+    if (selectedCount > 0) {
+        msg = [NSString stringWithFormat:@"Assign %d contacts to this leader?", selectedCount];
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: item.text message: msg delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     [alert show];
 }
 

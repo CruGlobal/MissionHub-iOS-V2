@@ -221,8 +221,21 @@
 
 - (IBAction)onAssignBtn:(id)sender {
     if (assignMode) {
-        LeaderSelectionViewController *tableViewController = [[LeaderSelectionViewController alloc] initWithStyle:UITableViewStylePlain];
+        // check if there are any contact that has been assigned
+        ContactsListDataSource *contactsListDataSource = self.dataSource;
+        NSInteger selectedCount = 0;
+        for (TTTableSubtitleItem *item in contactsListDataSource.items) {
+            if ([[item.userInfo objectForKey:@"checked"] intValue] == 1) {
+                selectedCount++;
+            }
+        }                
+        if (selectedCount == 0) {
+            [[NiceAlertView alloc] initWithText:@"Please mark at least 1 contact to assign to a new leader."];
+            return;
+        }
 
+        LeaderSelectionViewController *tableViewController = [[LeaderSelectionViewController alloc] initWithStyle:UITableViewStylePlain];
+        
         UINavigationController *navigation =  [[UINavigationController alloc] initWithRootViewController:tableViewController ];
         navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController:)];;
         [navigation.navigationBar.topItem setTitle:@"Select a leader"];
