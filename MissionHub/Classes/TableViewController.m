@@ -11,6 +11,17 @@
 
 @implementation TableViewController
 
+#pragma mark - View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    // Determine the class name of this view controller using reflection.
+    NSString *className = NSStringFromClass([self class]);
+    [[EasyTracker sharedTracker] dispatchViewDidAppear:className];
+}
+
+#pragma mark - HTTP convenience methods
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier {
     [self makeHttpRequest:path params:@"" identifier:aIdentifier];

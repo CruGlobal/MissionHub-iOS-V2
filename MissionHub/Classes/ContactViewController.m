@@ -85,7 +85,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:YES];
+    [super viewWillAppear:animated];
 
     // Do any additional setup after loading the view from its nib.
     if (shouldRefresh) {

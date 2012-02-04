@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>accountId</key>
+	<string>UA-28881368-1
+UA-28881368-1
+</string>
+	<key>debugEnabled</key>
+	<true/>
+	<key>LoginViewController</key>
+	<string>Login Screen</string>
+	<key>MainViewController</key>
+	<string>Main Screen</string>
+	<key>ContactsViewController</key>
+	<string>Contacts Listing Screen</string>
+	<key>Contact</key>
+	<string>Contact Screen</string>
+</dict>
+</plist>

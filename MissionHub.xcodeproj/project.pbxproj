@@ -22,6 +22,11 @@
 		634F6A6714CAA19600D63948 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6614CAA19600D63948 /* TableViewController.m */; };
 		6350561D14D5274B0050B73F /* femaleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6350561B14D5274B0050B73F /* femaleicon.png */; };
 		6350561E14D5274B0050B73F /* maleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6350561C14D5274B0050B73F /* maleicon.png */; };
+		63505AFA14DDB0540050B73F /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63505AF914DDB0540050B73F /* libGoogleAnalytics.a */; };
+		63505AFD14DDB1EF0050B73F /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 63505AFC14DDB1EF0050B73F /* EasyTracker.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		63505AFF14DDB27C0050B73F /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63505AFE14DDB27C0050B73F /* EasyTracker.plist */; };
+		63505B0114DDB4F70050B73F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63505B0014DDB4F70050B73F /* libsqlite3.dylib */; };
+		63505B0314DDB5220050B73F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63505B0214DDB5220050B73F /* CFNetwork.framework */; };
 		636793C0149698FB00B52C74 /* SimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793BF149698FB00B52C74 /* SimpleCell.xib */; };
 		636793C214969B8600B52C74 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636793C114969B8600B52C74 /* CommentCell.xib */; };
 		636793C61496A60100B52C74 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636793C51496A60100B52C74 /* CommentCell.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -403,6 +408,13 @@
 		634F6A6614CAA19600D63948 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		6350561B14D5274B0050B73F /* femaleicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = femaleicon.png; sourceTree = "<group>"; };
 		6350561C14D5274B0050B73F /* maleicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maleicon.png; sourceTree = "<group>"; };
+		63505AF814DDB02D0050B73F /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = Libs/GANTracker.h; sourceTree = "<group>"; };
+		63505AF914DDB0540050B73F /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = MissionHub/Libs/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		63505AFB14DDB1EF0050B73F /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = Libs/EasyTracker.h; sourceTree = "<group>"; };
+		63505AFC14DDB1EF0050B73F /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = Libs/EasyTracker.m; sourceTree = "<group>"; };
+		63505AFE14DDB27C0050B73F /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
+		63505B0014DDB4F70050B73F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		63505B0214DDB5220050B73F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		636793BF149698FB00B52C74 /* SimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCell.xib; sourceTree = "<group>"; };
 		636793C114969B8600B52C74 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		636793C41496A60100B52C74 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
@@ -602,6 +614,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63505B0314DDB5220050B73F /* CFNetwork.framework in Frameworks */,
+				63505B0114DDB4F70050B73F /* libsqlite3.dylib in Frameworks */,
+				63505AFA14DDB0540050B73F /* libGoogleAnalytics.a in Frameworks */,
 				63F7858C14AC6E96009D6CE4 /* MapKit.framework in Frameworks */,
 				63F7858A14AC6E6C009D6CE4 /* CoreLocation.framework in Frameworks */,
 				63F7858814AC6E18009D6CE4 /* libQuickDialog.a in Frameworks */,
@@ -733,6 +748,8 @@
 		63B61AEC148A58F400CBE54B = {
 			isa = PBXGroup;
 			children = (
+				63505B0214DDB5220050B73F /* CFNetwork.framework */,
+				63505B0014DDB4F70050B73F /* libsqlite3.dylib */,
 				63B61B01148A58F400CBE54B /* MissionHub */,
 				63B61B28148A58F400CBE54B /* MissionHubTests */,
 				63B61AFA148A58F400CBE54B /* Frameworks */,
@@ -762,6 +779,7 @@
 				320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */,
 				320A5A189C235877202780D0 /* Three20Network.xcodeproj */,
 				320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */,
+				63505AF914DDB0540050B73F /* libGoogleAnalytics.a */,
 				63F7858B14AC6E96009D6CE4 /* MapKit.framework */,
 				63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */,
 				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
@@ -791,6 +809,7 @@
 		63B61B02148A58F400CBE54B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				63505AFE14DDB27C0050B73F /* EasyTracker.plist */,
 				636C5E2814B2D48300CE800D /* Entitlements.plist */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				63B61B03148A58F400CBE54B /* MissionHub-Info.plist */,
@@ -1045,6 +1064,9 @@
 		63E02D53149278D500BC2DEF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				63505AFB14DDB1EF0050B73F /* EasyTracker.h */,
+				63505AFC14DDB1EF0050B73F /* EasyTracker.m */,
+				63505AF814DDB02D0050B73F /* GANTracker.h */,
 				63E02D54149278DF00BC2DEF /* HJCacheClasses */,
 			);
 			name = Libs;
@@ -1444,6 +1466,7 @@
 				63CFAA2814BF322C00977E22 /* LoginViewController_iPad.xib in Resources */,
 				6350561D14D5274B0050B73F /* femaleicon.png in Resources */,
 				6350561E14D5274B0050B73F /* maleicon.png in Resources */,
+				63505AFF14DDB27C0050B73F /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1514,6 +1537,7 @@
 				63E040DC14C743A9006859BF /* LeadersListDataSource.m in Sources */,
 				634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */,
 				634F6A6714CAA19600D63948 /* TableViewController.m in Sources */,
+				63505AFD14DDB1EF0050B73F /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1763,6 +1787,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/QuickDialog/TouchJSON/Support/build/Debug\"",
+					"\"$(SRCROOT)/MissionHub/Libs\"",
 				);
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",
@@ -1890,6 +1915,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/QuickDialog/TouchJSON/Support/build/Debug\"",
+					"\"$(SRCROOT)/MissionHub/Libs\"",
 				);
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",
@@ -1926,6 +1952,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/QuickDialog/TouchJSON/Support/build/Debug\"",
+					"\"$(SRCROOT)/MissionHub/Libs\"",
 				);
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",

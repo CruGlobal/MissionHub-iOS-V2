@@ -33,6 +33,9 @@
     // Override point for customization after application launch.
     [[TTURLRequestQueue mainQueue] setMaxContentLength:0];
     
+    [EasyTracker launchWithOptions:launchOptions withParameters:nil withError:nil];
+
+    
     // Load config into an NSDictionary
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSString *finalPath = [path stringByAppendingPathComponent:@"configDev.plist"];

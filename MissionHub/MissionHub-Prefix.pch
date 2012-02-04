@@ -18,3 +18,4 @@
 #import <QuickDialog/QuickDialog.h>
 
 #import "NiceAlertView.h"
+#import "EasyTracker.h"

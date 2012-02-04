@@ -53,6 +53,13 @@
 }
 */
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    // Determine the class name of this view controller using reflection.
+    NSString *className = NSStringFromClass([self class]);
+    [[EasyTracker sharedTracker] dispatchViewDidAppear:className];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad

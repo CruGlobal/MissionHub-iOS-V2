@@ -7,8 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "MissionHubAppDelegate.h"
-#import "NiceAlertView.h"
 
 @implementation MainViewController
 
@@ -31,11 +29,13 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
     NSLog(@"viewWillAppear");
     TTNavigator *navigator = [TTNavigator navigator];
     [navigator.topViewController.navigationController setNavigationBarHidden:YES];
+    
 }
 
 - (void)viewDidLoad
