@@ -112,12 +112,28 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSLog(@"index row: %d", selectedIndexPath.row);
     NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+
     if ([title isEqualToString:@"Promote to Leader"]) {
-        NSDictionary *person = [((ContactsListDataSource*)self.dataSource).contactList.dataArray objectAtIndex:selectedIndexPath.row];
+        
+        NSMutableArray *contactsArray = ((ContactsListDataSource*)self.dataSource).contactList.dataArray;
+        NSDictionary *person = [contactsArray objectAtIndex:selectedIndexPath.row];
+        
         [self makeHttpPutRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];
+        
+        [[NiceAlertView alloc] initWithText: [NSString stringWithFormat:@"%@ is now a leader", [person objectForKey:@"name"]]];
+        
     } else if ([title isEqualToString:@"Remove Leadership Role"]) {
-        NSDictionary *person = [((LeadersListDataSource*)self.dataSource).leadersList.dataArray objectAtIndex:selectedIndexPath.row];
-        [self makeHttpDeleteRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];
+        
+        NSMutableArray *leadersArray = ((LeadersListDataSource*)self.dataSource).leadersList.dataArray;
+        NSDictionary *person = [leadersArray objectAtIndex:selectedIndexPath.row];
+
+        [self makeHttpDeleteRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];        
+        [leadersArray removeObjectAtIndex:selectedIndexPath.row];
+        
+        [self.dataSource invalidate:YES];
+        [self reload];
+        
+        [[NiceAlertView alloc] initWithText: [NSString stringWithFormat:@"You have removed %@ leadership's role", [person objectForKey:@"name"]]];        
     }
 }
 
