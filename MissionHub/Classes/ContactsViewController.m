@@ -35,11 +35,11 @@
 
 - (void) createModel {
     NSLog(@"ContactsViewController createModel");
-    
+
     NSString *params = nil;
-    
+
     if (filterSegmentedControl.selectedSegmentIndex == 1) {
-        params = @"filters[status]=completed";        
+        params = @"filters[status]=completed";
     } else if (filterSegmentedControl.selectedSegmentIndex == 2) {
         params = @"filters[assigned_to]=none";
     } else if (filterSegmentedControl.selectedSegmentIndex == 0) {
@@ -62,22 +62,22 @@
     self.searchViewController.dataSource = ds;
 
     [self.tableView setFrame:CGRectMake(0, 33, 320, 398)];
-    
+
     UILongPressGestureRecognizer* gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.view addGestureRecognizer:gestureRecognizer];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"contactUpdated" object:nil queue:[NSOperationQueue mainQueue] 
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"contactUpdated" object:nil queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *notif) {
                                                       shouldRefresh = YES;
                                                   }];
 
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"contactCreated" object:nil queue:[NSOperationQueue mainQueue] 
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"contactCreated" object:nil queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *notif) {
                                                       filterSegmentedControl.selectedSegmentIndex = 2;
                                                       [self invalidateModel];
                                                   }];
-    
-    
+
+
 }
 
 - (id<TTTableViewDelegate>) createDelegate {
@@ -85,30 +85,40 @@
 }
 
 - (void)handleGesture:(UILongPressGestureRecognizer *)recognizer {
-    // only handle gestures when not in mass assign mode and leader listing    
-    if (!assignMode && filterSegmentedControl.selectedSegmentIndex != 3) {        
-        if (recognizer.state == UIGestureRecognizerStateBegan) {    
+    // only handle gestures when not in mass assign mode and leader listing
+    if (!assignMode) {
+        if (recognizer.state == UIGestureRecognizerStateBegan) {
+            // grab the index of the row where the user touch
             CGPoint p = [recognizer locationInView: self.tableView];
+            // store the selected index path so we can use it to retrieve person from the contact list data array
             selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
             if (selectedIndexPath != nil) {
-                UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
-                                                                otherButtonTitles:@"Promote to Leader", @"Cancel", nil];
-                [statusSheet showInView:self.view];
+                if (filterSegmentedControl.selectedSegmentIndex != 3) {
+                    UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
+                                                                    otherButtonTitles:@"Promote to Leader", @"Cancel", nil];
+                    [statusSheet showInView:self.view];
+                } else {
+                    // leaders listing
+                    UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
+                                                                    otherButtonTitles:@"Remove Leadership Role", @"Cancel", nil];
+                    [statusSheet showInView:self.view];
+                }
             }
         } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-            NSLog(@"End");
         }
     }
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"index row: %d", selectedIndexPath.row);
     NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
     if ([title isEqualToString:@"Promote to Leader"]) {
-        NSLog(@"index row: %d",selectedIndexPath.row);
         NSDictionary *person = [((ContactsListDataSource*)self.dataSource).contactList.dataArray objectAtIndex:selectedIndexPath.row];
-        
         [self makeHttpPutRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];
-    } 
+    } else if ([title isEqualToString:@"Remove Leadership Role"]) {
+        NSDictionary *person = [((LeadersListDataSource*)self.dataSource).leadersList.dataArray objectAtIndex:selectedIndexPath.row];
+        [self makeHttpDeleteRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,9 +183,9 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     if (shouldRefresh || [self.tableView.visibleCells count] == 0) {
-        [self invalidateModel];            
+        [self invalidateModel];
         shouldRefresh = NO;
     }
 }
@@ -198,7 +208,7 @@
      if (filterSegmentedControl.selectedSegmentIndex == 3 && [self.dataSource isKindOfClass:[ContactsListDataSource class]]) {
          self.dataSource = [[LeadersListDataSource alloc] init];
      } else {
-         [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];         
+         [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
      }
 }
 
@@ -212,7 +222,7 @@
     QBooleanElement *genderElement = [firstSection.elements objectAtIndex:2];
     genderElement.onImage = [UIImage imageNamed:@"maleicon.png"];
     genderElement.offImage = [UIImage imageNamed:@"femaleicon.png"];
-    
+
     UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
     navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController:)];;
 
@@ -228,14 +238,14 @@
             if ([[item.userInfo objectForKey:@"checked"] intValue] == 1) {
                 selectedCount++;
             }
-        }                
+        }
         if (selectedCount == 0) {
             [[NiceAlertView alloc] initWithText:@"Please mark at least 1 contact to assign to a new leader."];
             return;
         }
 
         LeaderSelectionViewController *tableViewController = [[LeaderSelectionViewController alloc] initWithStyle:UITableViewStylePlain];
-        
+
         UINavigationController *navigation =  [[UINavigationController alloc] initWithRootViewController:tableViewController ];
         navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController:)];;
         [navigation.navigationBar.topItem setTitle:@"Select a leader"];
@@ -244,7 +254,7 @@
 
     } else {
         // Set assign mode to this view and the data source
-        assignMode = YES;        
+        assignMode = YES;
         ((ContactsListDataSource*)self.dataSource).assignMode = YES;
 
         [assignBtn setTitle:@"Select Leader" forState:UIControlStateNormal];
@@ -273,8 +283,8 @@
     [assignBtn setTitle:@"Assign" forState:UIControlStateNormal];
     [assignBtn setHidden:NO];
     [cancelBtn setHidden:YES];
-    
-    //[[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];    
+
+    //[[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];
 
     ContactsListDataSource *ds = nil;
     ContactsListDataSource *ds2 = nil;

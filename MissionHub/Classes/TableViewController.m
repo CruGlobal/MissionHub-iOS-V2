@@ -15,7 +15,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
+
     // Determine the class name of this view controller using reflection.
     NSString *className = NSStringFromClass([self class]);
     [[EasyTracker sharedTracker] dispatchViewDidAppear:className];
@@ -31,7 +31,7 @@
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&org_id=%@&access_token=%@", baseUrl, path, aParams, CurrentUser.orgId, CurrentUser.accessToken];
     NSLog(@"making http GET request: %@", requestUrl);
-    
+
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
     request.cachePolicy = TTURLRequestCachePolicyNone;
@@ -44,19 +44,19 @@
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?org_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
     NSLog(@"making http POST request: %@", requestUrl);
-    
+
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
     request.response = [[TTURLJSONResponse alloc] init];
     request.httpMethod = @"POST";
     request.cachePolicy = TTURLRequestCachePolicyNone;
     request.contentType = @"application/x-www-form-urlencoded";
- 
+
     NSLog(@"   post params: %@", aPostString);
     NSData *postData = [ NSData dataWithBytes: [ aPostString UTF8String ] length: [ aPostString length ] ];
     request.httpBody = postData;
-    
-    [request send];    
+
+    [request send];
 }
 
 // Make an HTTP POST using NSDictionary
@@ -64,47 +64,67 @@
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?org_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
     NSLog(@"making http POST request: %@", requestUrl);
-    
+
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
     request.response = [[TTURLJSONResponse alloc] init];
     request.httpMethod = @"POST";
     request.cachePolicy = TTURLRequestCachePolicyNone;
     request.contentType = @"application/x-www-form-urlencoded";
-    
+
     NSMutableString* postStr = [NSMutableString string];
     for (NSString *key in aPostData) {
         NSString *value = [aPostData objectForKey: key];
         [postStr appendString:[NSString stringWithFormat:@"%@=%@&", key, value]];
-        
+
         [request.parameters setObject:value forKey:key];
     }
     NSLog(@"   post params: %@", postStr);
     NSData *postData = [ NSData dataWithBytes: [ postStr UTF8String ] length: [ postStr length ] ];
     request.httpBody = postData;
-    
+
     [request send];
 }
 
-// Make an HTTP POST using NSString
+// Make an HTTP PUT using NSString
 - (void) makeHttpPutRequest:(NSString *)path identifier:(NSString*)aIdentifier params:(NSString*)aParams {
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?org_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
     NSLog(@"making http PUT request: %@", requestUrl);
-    
+
     TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
     request.userInfo = aIdentifier;
     request.httpMethod = @"POST";
     request.response = [[TTURLJSONResponse alloc] init];
     request.cachePolicy = TTURLRequestCachePolicyNone;
     request.contentType = @"application/x-www-form-urlencoded";
-    
+
     NSString *params = [NSString stringWithFormat:@"%@&_method=put", aParams];
-    NSLog(@"   put params: %@", params);    
+    NSLog(@"   put params: %@", params);
     NSData *httpBody = [ NSData dataWithBytes: [ params UTF8String ] length: [ params length ] ];
     request.httpBody = httpBody;
-    
-    [request send];    
+
+    [request send];
+}
+
+- (void) makeHttpDeleteRequest:(NSString *)path identifier:(NSString*)aIdentifier params:(NSString*)aParams {
+    NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?org_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
+    NSLog(@"making http DELETE request: %@", requestUrl);
+
+    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+    request.userInfo = aIdentifier;
+    request.httpMethod = @"POST";
+    request.response = [[TTURLJSONResponse alloc] init];
+    request.cachePolicy = TTURLRequestCachePolicyNone;
+    request.contentType = @"application/x-www-form-urlencoded";
+
+    NSString *params = [NSString stringWithFormat:@"%@&_method=delete", aParams];
+    NSLog(@"   delete params: %@", params);
+    NSData *httpBody = [ NSData dataWithBytes: [ params UTF8String ] length: [ params length ] ];
+    request.httpBody = httpBody;
+
+    [request send];
 }
 
 - (void)requestDidStartLoad:(TTURLRequest*)request {
@@ -112,25 +132,29 @@
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-    
+
     TTURLJSONResponse* response = request.response;
     if (request.respondedFromCache) {
         NSLog(@"requestDidFinishLoad from cache:%@", response.rootObject);
     } else {
         NSLog(@"requestDidFinishLoad:%@", response.rootObject);
     }
-    
+
     NSDictionary *result = response.rootObject;
-    NSDictionary *error = [result objectForKey:@"error"];
-    if (error) {    
-        [[NiceAlertView alloc] initWithText: [error objectForKey:@"message"]];
+    if ([result isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *error = [result objectForKey:@"error"];
+        if (error) {
+            [[NiceAlertView alloc] initWithText: [error objectForKey:@"message"]];
+        } else {
+            [self handleRequestResult: result identifier:request.userInfo];
+        }
     } else {
-        [self handleRequestResult: result identifier:request.userInfo];
+        NSLog(@"WARNING: API returned a none dictionary object.");
     }
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-    
+
     int status = [error code];
     NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
     //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
