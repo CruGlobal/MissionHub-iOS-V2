@@ -137,6 +137,12 @@
             NSDictionary *comment = [tempDict objectForKey:@"followup_comment"];
             [commentsArray addObject: comment];
         }
+        
+        if ([commentsArray count] == 0) {
+            [commentsArray addObject: [NSDictionary dictionaryWithObjectsAndKeys:                                      
+                                       [NSDictionary dictionaryWithObjectsAndKeys: @"No comments available", @"comment", nil],
+                                        @"comment", nil]];
+        }
 
         [self hideActivityLabel];
     } else if ([aIdentifier isEqualToString:@"contacts"]) {

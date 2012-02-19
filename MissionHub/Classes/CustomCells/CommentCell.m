@@ -12,56 +12,52 @@
 
 @implementation CommentCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)setData:(NSDictionary *)data {
+    [((UILabel *)[self viewWithTag:2]) setText:@""];
+    [((UILabel *)[self viewWithTag:3]) setText:@""];
+    [((UILabel *)[self viewWithTag:4]) setText:@""];
+    [((UILabel *)[self viewWithTag:5]) setText:@""]; 
+    
     NSDictionary *comment = [data objectForKey:@"comment"];
     NSDictionary *commenter = [comment objectForKey:@"commenter"];
     NSDictionary *rejoicables = [data objectForKey:@"rejoicables"];
 
     UILabel *label;
 
-    label = (UILabel *)[self viewWithTag:2];
-    label.text = [NSString stringWithFormat:@"%@", [commenter objectForKey:@"name"]];
+    if ([commenter objectForKey:@"name"]) {
+        label = (UILabel *)[self viewWithTag:2];
+        label.text = [NSString stringWithFormat:@"%@", [commenter objectForKey:@"name"]];
+    }
 
     label = (UILabel *)[self viewWithTag:3];
     label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
 
-    label = (UILabel *)[self viewWithTag:4];
-    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"created_at_words"]];
-
-    label = (UILabel *)[self viewWithTag:5];
-    label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"status"]];
-    CGRect frame = label.frame;    
-    
-    if ([label.text isEqualToString:@"attempted_contact"]) {
-        label.text = @"attempted contact";
-        frame.origin.x = 200;
-        frame.size.width = 100;
-    } else if ([label.text isEqualToString:@"do_not_contact"]) {
-        label.text = @"do not contact";
-        frame.origin.x = 220;
-        frame.size.width = 100;
-    } else {
-        frame.origin.x = 240;
-        frame.size.width = 60;
+    if ([commenter objectForKey:@"created_at_words"]) {    
+        label = (UILabel *)[self viewWithTag:4];
+        label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"created_at_words"]];
     }
+
+    if ([commenter objectForKey:@"status"]) {
+        label = (UILabel *)[self viewWithTag:5];
+        label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"status"]];
     
-    [label setFrame:frame];        
+        CGRect frame = label.frame;    
+        
+        if ([label.text isEqualToString:@"attempted_contact"]) {
+            label.text = @"attempted contact";
+            frame.origin.x = 200;
+            frame.size.width = 100;
+        } else if ([label.text isEqualToString:@"do_not_contact"]) {
+            label.text = @"do not contact";
+            frame.origin.x = 220;
+            frame.size.width = 100;
+        } else {
+            frame.origin.x = 240;
+            frame.size.width = 60;
+        }
+        
+        [label setFrame:frame];        
+    }
 
     [(UIImageView *)[self viewWithTag:6] setHidden:YES];
     [(UIImageView *)[self viewWithTag:7] setHidden:YES];
