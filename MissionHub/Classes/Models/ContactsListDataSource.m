@@ -198,10 +198,10 @@
         NSString *picture = [person objectForKey:@"picture"] ?  [person objectForKey:@"picture"]  : nil;
         NSString *gender = [person objectForKey:@"gender"];
 
-        UIImage *defaultImage = [UIImage imageNamed:@"facebook_male.gif"];
-        if ([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
-            defaultImage = [UIImage imageNamed:@"facebook_female.gif"];
-        }
+        UIImage *defaultImage = [UIImage imageNamed:@"default_contact.jpg"];
+//        if ([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
+//            defaultImage = [UIImage imageNamed:@"facebook_female.gif"];
+//        }
         
         if ([status isEqualToString:@"attempted_contact"]) {
             status = @"attempted contact";

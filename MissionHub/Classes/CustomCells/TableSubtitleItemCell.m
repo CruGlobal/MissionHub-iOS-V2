@@ -7,6 +7,7 @@
 //
 
 #import "TableSubtitleItemCell.h"
+#import "Three20UI/TTTableSubtitleItemCell.h"
 
 @implementation TableSubtitleItemCell
 
@@ -25,6 +26,13 @@
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         self.selectionStyle = UITableViewCellSelectionStyleGray;
     }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    _imageView2.frame = CGRectMake(5, 5, 50, 50); 
 }
 
 @end

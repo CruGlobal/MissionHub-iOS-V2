@@ -140,7 +140,7 @@
         
         if ([commentsArray count] == 0) {
             [commentsArray addObject: [NSDictionary dictionaryWithObjectsAndKeys:                                      
-                                       [NSDictionary dictionaryWithObjectsAndKeys: @"No comments available", @"comment", nil],
+                                       [NSDictionary dictionaryWithObjectsAndKeys: @"No Previous Comments", @"comment", nil],
                                         @"comment", nil]];
         }
 

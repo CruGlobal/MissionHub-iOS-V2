@@ -146,20 +146,14 @@
 
     for (NSDictionary *person in leadersList.dataArray) {
         NSString *name = [person objectForKey:@"name"];
-//        NSString *status = [person objectForKey:@"status"];
         NSString *picture = [person objectForKey:@"picture"];
         NSString *gender = [person objectForKey:@"gender"];
         NSString *numContacts = [NSString stringWithFormat:@"%@ contacts", [person objectForKey:@"num_contacts"]];
-//
-        UIImage *defaultImage = [UIImage imageNamed:@"facebook_male.gif"];
-        if ([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"male"]) {
-            defaultImage = [UIImage imageNamed:@"facebook_female.gif"];
-        }
-//
+
+        UIImage *defaultImage = [UIImage imageNamed:@"default_contact.jpg"];
         TTTableSubtitleItem *item = [TTTableSubtitleItem itemWithText:name subtitle:numContacts
                                                              imageURL:(picture ? picture : @"") defaultImage:defaultImage URL:nil accessoryURL:nil];
         item.userInfo = person;
-//
         [_items addObject:item];
     }
 }
