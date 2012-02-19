@@ -92,15 +92,20 @@
         [nameLbl setText:[personData objectForKey:@"name"]];
         
         NSString *gender = [personData objectForKey:@"gender"];
+        placeHolderImageView.layer.borderColor = [UIColor blackColor].CGColor;
+        placeHolderImageView.layer.borderWidth = 2;
 
         // Set user's image
         NSString *picture = [self.personData objectForKey:@"picture"];
         if ([picture length] != 0) {
             TTImageView* profileImageView = [[TTImageView alloc] initWithFrame:placeHolderImageView.frame];
             profileImageView.urlPath = [NSString stringWithFormat:@"%@?type=large", picture];
-            [tableView addSubview:profileImageView];
+            profileImageView.layer.borderColor = [UIColor blackColor].CGColor;
+            profileImageView.layer.borderWidth = 2;
+            [[[self.view subviews] objectAtIndex:0] addSubview: profileImageView];
 
             [placeHolderImageView setHidden: YES];
+                
         } else if([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
             // replace male placeholder image when contact is a female
             placeHolderImageView.imageView.image = [UIImage imageNamed:@"facebook_female.gif"];
@@ -124,6 +129,10 @@
         
         shouldRefresh = NO;
     }
+}
+
+
+- (void)imageView:(TTImageView*)imageView didLoadImage:(UIImage*)image {
 }
 
 - (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {

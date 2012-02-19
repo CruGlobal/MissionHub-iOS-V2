@@ -60,7 +60,7 @@
     ContactsListDataSource *ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
     self.searchViewController.dataSource = ds;
 
-    [self.tableView setFrame:CGRectMake(0, 33, 320, 398)];
+    [self.tableView setFrame:CGRectMake(0, 40, 320, 391)];
 
     UILongPressGestureRecognizer* gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.view addGestureRecognizer:gestureRecognizer];
