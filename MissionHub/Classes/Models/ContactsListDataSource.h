@@ -11,7 +11,7 @@
 @property (nonatomic, strong) NSString       *urlParams;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *filteredDataArray;
-@property (nonatomic, assign)   NSInteger      page;
+@property (nonatomic, assign) NSInteger      page;
 
 
 - (id)initWithParams:(NSString*)aParams;

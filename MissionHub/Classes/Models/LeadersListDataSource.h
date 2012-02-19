@@ -9,6 +9,7 @@
 @interface  LeadersListRequestModel : TTURLRequestModel
 
 @property (nonatomic, retain) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *filteredDataArray;
 
 @end
 

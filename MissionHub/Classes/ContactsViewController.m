@@ -58,7 +58,6 @@
     self.tableView.tableHeaderView = _searchController.searchBar;
 
     ContactsListDataSource *ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
-    //searchController.dataSource = [[[MockSearchDataSource alloc] initWithDuration:1.5] autorelease];
     self.searchViewController.dataSource = ds;
 
     [self.tableView setFrame:CGRectMake(0, 33, 320, 398)];
@@ -137,6 +136,18 @@
     }
 }
 
+// delegate for searching text field 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TTTableSubtitleItemCell *cell = (TTTableSubtitleItemCell *) [tableView cellForRowAtIndexPath:indexPath];
+    TTTableSubtitleItem *item = (TTTableSubtitleItem*)cell.object;
+    
+    TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
+                             applyQuery:[NSDictionary dictionaryWithObject: item.userInfo forKey:@"personData"]]
+                            applyAnimated:YES];
+    [[TTNavigator navigator] openURLAction:action];
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewController
 
@@ -204,6 +215,8 @@
         [self invalidateModel];
         shouldRefresh = NO;
     }
+    
+    _searchController.searchResultsTableView.delegate = self;    
 }
 
 - (void)viewDidUnload
@@ -325,11 +338,13 @@
     }
 
     if (ld == nil) {
-        self.searchViewController.dataSource = ds2;
         self.dataSource = ds;
+        self.searchViewController.dataSource = ds2;
+        _searchController.searchResultsTableView.delegate = self;            
     } else {
+        self.dataSource = ld;        
         self.searchViewController.dataSource = ld2;
-        self.dataSource = ld;
+        _searchController.searchResultsTableView.delegate = self;            
     }
 }
 

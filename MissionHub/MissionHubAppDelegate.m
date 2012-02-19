@@ -97,6 +97,7 @@
     CurrentUser.accessToken = [userDefaults stringForKey:@"accessToken"];	
     if (CurrentUser.accessToken) {
         NSLog(@"Found accesstoken: %@", CurrentUser.accessToken);
+        //[[NiceAlertView alloc] initWithText:@"Please wait while the app tries to log you in..."];        
         
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
         NSString *requestUrl = [NSString stringWithFormat:@"%@/people/me.json?access_token=%@", baseUrl, CurrentUser.accessToken];

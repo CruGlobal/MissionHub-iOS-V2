@@ -12,7 +12,7 @@
 
 @implementation LeadersListRequestModel
 
-@synthesize dataArray;
+@synthesize dataArray, filteredDataArray;
 
 - (id)init {
     if (self = [super init]) {
@@ -46,6 +46,24 @@
     }
 }
 
+- (void)search:(NSString*)text {
+    NSLog(@"searching...%@", text);
+    [filteredDataArray removeAllObjects];
+    
+    if (text.length) {
+        text = [text lowercaseString];
+        for (NSDictionary *person in dataArray) {
+            NSString *name = [person objectForKey:@"name"];
+            if ([[name lowercaseString] rangeOfString:text].location == 0) {
+                [filteredDataArray addObject:person];
+                NSLog(@"person found");
+            }
+        }
+    }
+    
+    [_delegates makeObjectsPerformSelector:@selector(modelDidFinishLoad:) withObject:self];   
+}
+
 - (void) handleRequestResult:(NSDictionary*)aResult identifier:(NSString*)aIdentifier {
 
     NSDictionary *result = aResult;
@@ -55,7 +73,7 @@
         [dataArray addObject: tempDict];
     }
 
-    //[_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+   [_delegates makeObjectsPerformSelector:@selector(modelDidFinishLoad:) withObject:self];
 }
 
 

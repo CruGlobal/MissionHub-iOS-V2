@@ -50,7 +50,7 @@
         }
 
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&start=%d&limit=25&org_id=%@&access_token=%@", baseUrl, @"contacts.json", self.urlParams, (page - 25) * 100, CurrentUser.orgId, CurrentUser.accessToken];
+        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&start=%d&limit=25&org_id=%@&access_token=%@", baseUrl, @"contacts.json", self.urlParams, (page - 1) * 25, CurrentUser.orgId, CurrentUser.accessToken];
         NSLog(@"making http GET request: %@", requestUrl);
 
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
@@ -67,15 +67,16 @@
     [filteredDataArray removeAllObjects];
 
     if (text.length) {
-        text = [text lowercaseString];
         for (NSDictionary *person in dataArray) {
             NSString *name = [person objectForKey:@"name"];
-            if ([[name lowercaseString] rangeOfString:text].location == 0) {
+            if ([[name lowercaseString] rangeOfString:[text lowercaseString]].location != NSNotFound) {
                 [filteredDataArray addObject:person];
+                NSLog(@"person found");
             }
         }
     }
 
+    [_delegates makeObjectsPerformSelector:@selector(modelDidFinishLoad:) withObject:self];
     //[_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
 }
 
@@ -90,7 +91,7 @@
         [filteredDataArray addObject:person];
     }
 
-    //[_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+    [_delegates makeObjectsPerformSelector:@selector(modelDidFinishLoad:) withObject:self];
 }
 
 //- (void)requestDidStartLoad:(TTURLRequest*)request {
@@ -189,7 +190,7 @@
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
     self.items = [NSMutableArray array];
 
-    NSLog(@"tableViewDidLoadModel");
+    NSLog(@"ContactListDataSource::tableViewDidLoadModel");
 
     for (NSDictionary *person in contactList.filteredDataArray) {
         NSString *name = [person objectForKey:@"name"];
