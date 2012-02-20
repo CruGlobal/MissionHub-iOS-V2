@@ -6,13 +6,17 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
+
 #import "BaseViewController.h"
 
 @class CommentCell;
 @class SimpleCell;
 
-@interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, 
+UIImagePickerControllerDelegate, UINavigationControllerDelegate, 
+MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, assign) BOOL shouldRefresh;
 @property (nonatomic, retain) NSDictionary *personData;
@@ -45,6 +49,10 @@
 @property (nonatomic, retain) IBOutlet UIButton *statusBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *saveBtn;
 //@property (nonatomic, retain) IBOutlet UITextField *commentTxt;
+
+
+- (void)displayMailComposerSheet;
+- (void)displaySMSComposerSheet;
 
 - (IBAction)onBackBtn:(id)sender;
 

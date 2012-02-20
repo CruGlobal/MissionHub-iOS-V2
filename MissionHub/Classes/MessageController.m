@@ -23,8 +23,10 @@
     TTTableTextItem* item = [TTTableTextItem itemWithText:recipient URL:nil];
 
     TTMessageController* controller = [[TTMessageController alloc] initWithRecipients:[NSArray arrayWithObject:item]];
-    controller.dataSource = [[MockSearchDataSource alloc] init];
-    controller.delegate = self;
+//    controller.dataSource = [[MockSearchDataSource alloc] init];
+//    controller.delegate = self;
+
+    // remove subject field
     [[controller viewForFieldAtIndex:1] removeFromSuperview];
     //[controller setFieldIndexOfFirstResponder: 99];
     return controller;

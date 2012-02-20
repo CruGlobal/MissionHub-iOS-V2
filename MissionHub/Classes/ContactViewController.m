@@ -374,6 +374,82 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+#pragma mark Messaging and MFMailComposeViewControllerDelegate methods
+
+-(void)displayMailComposerSheet {
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    picker.mailComposeDelegate = self;
+
+    // Set up recipients
+    NSArray *toRecipients = [NSArray arrayWithObject:email];         
+    [picker setToRecipients:toRecipients];
+    
+//  [picker setSubject:@""];            
+//  NSString *emailBody = @"";
+//  [picker setMessageBody:emailBody isHTML:NO];
+    
+    [self presentModalViewController:picker animated:YES];
+}
+
+// Displays an SMS composition interface inside the application. 
+- (void)displaySMSComposerSheet {
+    MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+    [picker setRecipients:[NSArray arrayWithObject:phoneNo]];
+    picker.messageComposeDelegate = self;
+    
+    [self presentModalViewController:picker animated:YES];
+}
+
+// Dismisses the email composition interface when users tap Cancel or Send. Proceeds to update the message field with the result of the operation.
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {   
+    
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Result: canceled");
+            break;
+        case MFMailComposeResultSaved:
+            [[NiceAlertView alloc] initWithText:@"Your email has been saved."];
+            break;
+        case MFMailComposeResultSent:
+            [[NiceAlertView alloc] initWithText:@"Your email has been sent."];
+            break;
+        case MFMailComposeResultFailed:
+            [[NiceAlertView alloc] initWithText:@"We failed to deliver you remail, can you try again?"];
+            break;
+        default:
+            [[NiceAlertView alloc] initWithText:@"We are unable to deliver your email. Please try other means to send email to this person."];
+            break;
+    }
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+// Dismisses the message composition interface when users tap Cancel or Send. Proceeds to update the 
+// feedback message field with the result of the operation.
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller 
+                 didFinishWithResult:(MessageComposeResult)result {
+    
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MessageComposeResultCancelled:
+            NSLog(@"Result: SMS sending canceled");
+            break;
+        case MessageComposeResultSent:
+            [[NiceAlertView alloc] initWithText:@"Your SMS has been sent"];
+            break;
+        case MessageComposeResultFailed:
+            [[NiceAlertView alloc] initWithText:@"We failed to deliver your SMS, can you try again?"];
+            break;
+        default:
+            [[NiceAlertView alloc] initWithText:@"We are unable to deliver your SMS. Please try other means to send SMS to this person."];
+            break;
+    }
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+
 
 
 #pragma mark - button events
@@ -396,8 +472,24 @@
 
 - (IBAction)onSmsBtn:(id)sender {
     if (phoneNo) {
-        NSString *path = [NSString stringWithFormat:@"mh://composeSms?to=%@", phoneNo];
-        [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:path] applyAnimated:YES]];
+        //  The MFMessageComposeViewController class is only available in iPhone OS 4.0 or later. 
+        //  So, we must verify the existence of the above class and log an error message for devices
+        //      running earlier versions of the iPhone OS. Set feedbackMsg if device doesn't support 
+        //      MFMessageComposeViewController API.
+        Class messageClass = (NSClassFromString(@"MFMessageComposeViewController"));
+        
+        if (messageClass != nil) {          
+            // Check whether the current device is configured for sending SMS messages
+            if ([messageClass canSendText]) {
+                [self displaySMSComposerSheet];
+            }
+            else {  
+                [[NiceAlertView alloc] initWithText:@"Your device is not configured to send SMS. No SIM card?"];
+            }
+        }
+        else {
+            [[NiceAlertView alloc] initWithText:@"Your device is not configured to send SMS."];
+        }
     } else {
         [[NiceAlertView alloc] initWithText:@"This contact does not have number to send a text message to."];
 
@@ -406,12 +498,34 @@
 
 - (IBAction)onEmailBtn:(id)sender {
     if (email) {
-        NSString *path = [NSString stringWithFormat:@"mh://composeEmail?to=%@", email];
-        [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:path] applyAnimated:YES]];
-    } else {
+
+        // The MFMailComposeViewController class is only available in iPhone OS 3.0 or later. 
+        // So, we must verify the existence of the above class and provide a workaround for devices running 
+        // earlier versions of the iPhone OS. 
+        // We display an email composition interface if MFMailComposeViewController exists and the device 
+        // can send emails. Display feedback message, otherwise.
+        Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+        
+        if (mailClass != nil) {
+            //[self displayMailComposerSheet];
+            // We must always check whether the current device is configured for sending emails
+            if ([mailClass canSendMail]) {
+                [self displayMailComposerSheet];
+            }
+            else {
+                [[NiceAlertView alloc] initWithText:@"Please configure your device mail settings first before you can send email."];
+            }
+        }
+        else {
+            [[NiceAlertView alloc] initWithText:@"This device cannot send email."];
+        }
+        
+        
+           } else {
         [[NiceAlertView alloc] initWithText:@"This contact does not have an email address to send email to."];
     }
 }
+
 
 - (IBAction)onAssignBtn:(id)sender {
     UIButton *btn = (UIButton *)sender;
