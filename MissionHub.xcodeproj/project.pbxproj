@@ -18,6 +18,7 @@
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
 		6346730014B1D64E00F45765 /* ContactsListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 634672FF14B1D64E00F45765 /* ContactsListDataSource.m */; };
+		63486A0E14F23FC7005EF6CF /* facebookicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 63486A0D14F23FC7005EF6CF /* facebookicon.png */; };
 		634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */; };
 		634F6A6714CAA19600D63948 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6614CAA19600D63948 /* TableViewController.m */; };
 		6350561D14D5274B0050B73F /* femaleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6350561B14D5274B0050B73F /* femaleicon.png */; };
@@ -402,6 +403,7 @@
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		634672FE14B1D64E00F45765 /* ContactsListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsListDataSource.h; path = Classes/Models/ContactsListDataSource.h; sourceTree = "<group>"; };
 		634672FF14B1D64E00F45765 /* ContactsListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsListDataSource.m; path = Classes/Models/ContactsListDataSource.m; sourceTree = "<group>"; };
+		63486A0D14F23FC7005EF6CF /* facebookicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookicon.png; sourceTree = "<group>"; };
 		634F6A6214CA917300D63948 /* LeaderSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderSelectionViewController.h; sourceTree = "<group>"; };
 		634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderSelectionViewController.m; sourceTree = "<group>"; };
 		634F6A6514CAA19500D63948 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
@@ -900,6 +902,7 @@
 		63DF2252148D2E490039A964 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				63486A0D14F23FC7005EF6CF /* facebookicon.png */,
 				6350561B14D5274B0050B73F /* femaleicon.png */,
 				6350561C14D5274B0050B73F /* maleicon.png */,
 				63DF2253148D2E490039A964 /* 08-chat.png */,
@@ -1467,6 +1470,7 @@
 				6350561D14D5274B0050B73F /* femaleicon.png in Resources */,
 				6350561E14D5274B0050B73F /* maleicon.png in Resources */,
 				63505AFF14DDB27C0050B73F /* EasyTracker.plist in Resources */,
+				63486A0E14F23FC7005EF6CF /* facebookicon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

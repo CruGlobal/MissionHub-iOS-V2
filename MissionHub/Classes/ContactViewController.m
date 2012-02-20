@@ -33,6 +33,7 @@
 @synthesize email;
 @synthesize phoneNo;
 @synthesize shouldRefresh;
+@synthesize facebookBtn;
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
     if (self = [super init]){
@@ -129,6 +130,16 @@
         
         shouldRefresh = NO;
     }
+
+    [rejoicablesView setHidden:YES];
+
+    [facebookBtn setHidden:NO];
+    if ([personData objectForKey:@"fb_id"] == nil) {
+        [facebookBtn setHidden:YES];
+    }   
+    
+    TTNavigator *navigator = [TTNavigator navigator];
+    [navigator.topViewController.navigationController setNavigationBarHidden:YES];
 }
 
 
@@ -420,6 +431,8 @@
 }
 
 - (IBAction)onShowRejoicablesBtn:(id)sender {
+    [rejoicablesView setHidden:NO];
+    
     CGRect frame = self.rejoicablesView.frame;
 
     [UIView beginAnimations:nil context:NULL];
@@ -587,6 +600,15 @@
 
 - (IBAction)onPlaceHolderImageBtn:(id)sender {
     [self presentModalViewController: imagePicker animated:YES];
+}
+
+- (IBAction)onFacebookBtn:(id)sender {    
+    NSString *fbProfileUrl = [NSString stringWithFormat:@"http://www.facebook.com/profile.php?id=%@", [personData objectForKey:@"fb_id"]];
+    
+    TTOpenURL(fbProfileUrl);
+    
+    TTNavigator *navigator = [TTNavigator navigator];
+    [navigator.topViewController.navigationController setNavigationBarHidden:NO];
 }
 
 

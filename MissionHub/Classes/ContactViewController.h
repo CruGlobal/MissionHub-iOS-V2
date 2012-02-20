@@ -35,6 +35,7 @@
 @property (nonatomic, assign) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, assign) IBOutlet UITextView *commentTextView;
 @property (nonatomic, assign) IBOutlet UIView *rejoicablesView;
+@property (nonatomic, assign) IBOutlet UIButton *facebookBtn;
 
 //@property (nonatomic, retain) IBOutlet UIButton *callBtn;
 //@property (nonatomic, retain) IBOutlet UIButton *smsBtn;
@@ -57,5 +58,6 @@
 - (IBAction)onSegmentChange:(id)sender;
 - (IBAction)onRejoicableBtn:(id)sender;
 - (IBAction)onPlaceHolderImageBtn:(id)sender;
+- (IBAction)onFacebookBtn:(id)sender;
 
 @end
