@@ -32,12 +32,12 @@
     label = (UILabel *)[self viewWithTag:3];
     label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
 
-    if ([commenter objectForKey:@"created_at_words"]) {    
+    if ([comment objectForKey:@"created_at_words"]) {    
         label = (UILabel *)[self viewWithTag:4];
         label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"created_at_words"]];
     }
 
-    if ([commenter objectForKey:@"status"]) {
+    if ([comment objectForKey:@"status"]) {
         label = (UILabel *)[self viewWithTag:5];
         label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"status"]];
     

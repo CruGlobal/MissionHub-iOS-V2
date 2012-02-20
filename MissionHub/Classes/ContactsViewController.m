@@ -93,13 +93,13 @@
             selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
             if (selectedIndexPath != nil) {
                 if (filterSegmentedControl.selectedSegmentIndex != 3) {
-                    UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
+                    UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Action" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
                                                                     otherButtonTitles:@"Promote to Leader", @"Cancel", nil];
                     [statusSheet showInView:self.view];
                 } else {
                     // leaders listing
-                    UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Status" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
-                                                                    otherButtonTitles:@"Remove Leadership Role", @"Cancel", nil];
+                    UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Action" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
+                                                                    otherButtonTitles:@"Show Assigned Contacts", @"Remove Leadership Role", @"Cancel", nil];
                     [statusSheet showInView:self.view];
                 }
             }
@@ -133,6 +133,11 @@
         [self reload];
         
         [[NiceAlertView alloc] initWithText: [NSString stringWithFormat:@"You have removed %@ leadership's role", [person objectForKey:@"name"]]];        
+    } else if ([title isEqualToString:@"Show Assigned Contacts"]) {
+        NSMutableArray *leadersArray = ((LeadersListDataSource*)self.dataSource).leadersList.dataArray;
+        NSDictionary *person = [leadersArray objectAtIndex:selectedIndexPath.row];
+        // show leader listing
+        self.dataSource = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", [person objectForKey: @"id"]]];
     }
 }
 
@@ -169,16 +174,11 @@
             [userInfo setObject:@"1" forKey:@"checked"];
         }
     } else {
-        // Check category and user is not drilled down to leaders contacts
-        if (filterSegmentedControl.selectedSegmentIndex == 3 && [self.dataSource isKindOfClass:[LeadersListDataSource class]]) {
-            // show leader listing
-            self.dataSource = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", [item.userInfo objectForKey: @"id"]]];
-        } else {
-            TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
-                                     applyQuery:[NSDictionary dictionaryWithObject: item.userInfo forKey:@"personData"]]
-                                    applyAnimated:YES];
-            [[TTNavigator navigator] openURLAction:action];
-        }
+        TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
+                                 applyQuery:[NSDictionary dictionaryWithObject: item.userInfo forKey:@"personData"]]
+                                applyAnimated:YES];
+        [[TTNavigator navigator] openURLAction:action];
+
     }
 }
 
