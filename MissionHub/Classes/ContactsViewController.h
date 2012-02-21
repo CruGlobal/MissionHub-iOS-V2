@@ -10,7 +10,7 @@
 
 @protocol SearchContactsControllerDelegate;
 
-@interface ContactsViewController : TableViewController <TTSearchTextFieldDelegate, UIActionSheetDelegate> {
+@interface ContactsViewController : TableViewController <TTSearchTextFieldDelegate, UIActionSheetDelegate, UISearchBarDelegate> {
     id<SearchContactsControllerDelegate> _delegate;
 }
 
@@ -21,6 +21,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *cancelBtn;
 @property (nonatomic, retain) IBOutlet UIButton *assignBtn;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *filterSegmentedControl;
+@property (nonatomic, assign) BOOL isSearching;
 
 
 - (IBAction)onBackBtn:(id)sender;

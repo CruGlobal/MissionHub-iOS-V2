@@ -23,6 +23,7 @@
 @synthesize assignBtn;
 @synthesize filterSegmentedControl;
 @synthesize shouldRefresh;
+@synthesize isSearching;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,7 +55,9 @@
     [super loadView];
 
     TTTableViewController* searchController = [[TTTableViewController alloc] init];
+    _searchController.searchResultsTableView.delegate = self;
     self.searchViewController = searchController;
+
     self.tableView.tableHeaderView = _searchController.searchBar;
 
     ContactsListDataSource *ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
@@ -85,7 +88,7 @@
 
 - (void)handleGesture:(UILongPressGestureRecognizer *)recognizer {
     // only handle gestures when not in mass assign mode and leader listing
-    if (!assignMode) {
+    if (!assignMode && !isSearching) {
         if (recognizer.state == UIGestureRecognizerStateBegan) {
             // grab the index of the row where the user touch
             CGPoint p = [recognizer locationInView: self.tableView];
@@ -113,26 +116,26 @@
     NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
 
     if ([title isEqualToString:@"Promote to Leader"]) {
-        
+
         NSMutableArray *contactsArray = ((ContactsListDataSource*)self.dataSource).contactList.dataArray;
         NSDictionary *person = [contactsArray objectAtIndex:selectedIndexPath.row];
-        
+
         [self makeHttpPutRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];
-        
+
         [[NiceAlertView alloc] initWithText: [NSString stringWithFormat:@"%@ is now a leader", [person objectForKey:@"name"]]];
-        
+
     } else if ([title isEqualToString:@"Remove Leadership Role"]) {
-        
+
         NSMutableArray *leadersArray = ((LeadersListDataSource*)self.dataSource).leadersList.dataArray;
         NSDictionary *person = [leadersArray objectAtIndex:selectedIndexPath.row];
 
-        [self makeHttpDeleteRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];        
+        [self makeHttpDeleteRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];
         [leadersArray removeObjectAtIndex:selectedIndexPath.row];
-        
+
         [self.dataSource invalidate:YES];
         [self reload];
-        
-        [[NiceAlertView alloc] initWithText: [NSString stringWithFormat:@"You have removed %@ leadership's role", [person objectForKey:@"name"]]];        
+
+        [[NiceAlertView alloc] initWithText: [NSString stringWithFormat:@"You have removed %@ leadership's role", [person objectForKey:@"name"]]];
     } else if ([title isEqualToString:@"Show Assigned Contacts"]) {
         NSMutableArray *leadersArray = ((LeadersListDataSource*)self.dataSource).leadersList.dataArray;
         NSDictionary *person = [leadersArray objectAtIndex:selectedIndexPath.row];
@@ -141,17 +144,34 @@
     }
 }
 
-// delegate for searching text field 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+# pragma mark UISearchDisplayController and UISearchBar delegates
+// delegate for search controller
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+//    NSLog(@"contact list datasource size: %d, search view datasource size: %d", ((ContactsListDataSource*)self.dataSource).contactList.dataArray.count,
+//          ((ContactsListDataSource*)self.searchViewController.dataSource).contactList.dataArray.count);
+    isSearching = YES;
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    isSearching = NO;
+}
+
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     TTTableSubtitleItemCell *cell = (TTTableSubtitleItemCell *) [tableView cellForRowAtIndexPath:indexPath];
     TTTableSubtitleItem *item = (TTTableSubtitleItem*)cell.object;
-    
+
     TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"mh://contact"]
                              applyQuery:[NSDictionary dictionaryWithObject: item.userInfo forKey:@"personData"]]
                             applyAnimated:YES];
     [[TTNavigator navigator] openURLAction:action];
 }
+
+//- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
+//    return 59;
+//}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewController
@@ -188,7 +208,6 @@
 - (void)textField:(TTSearchTextField*)textField didSelectObject:(id)object {
     [_delegate searchContactsController:self didSelectObject:object];
 
-
     [self didSelectObject:object atIndexPath:nil];
 }
 
@@ -215,8 +234,11 @@
         [self invalidateModel];
         shouldRefresh = NO;
     }
-    
-    _searchController.searchResultsTableView.delegate = self;    
+
+    // for some reason this needs to be here else when user is coming back to this view the delegates won't be honored anymore
+    _searchController.searchResultsTableView.delegate = self;
+    _searchController.searchBar.placeholder = @"Enter a name to search";
+    _searchController.searchBar.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -340,12 +362,12 @@
     if (ld == nil) {
         self.dataSource = ds;
         self.searchViewController.dataSource = ds2;
-        _searchController.searchResultsTableView.delegate = self;            
     } else {
-        self.dataSource = ld;        
+        self.dataSource = ld;
         self.searchViewController.dataSource = ld2;
-        _searchController.searchResultsTableView.delegate = self;            
     }
+
+    _searchController.searchResultsTableView.delegate = self;
 }
 
 @end
