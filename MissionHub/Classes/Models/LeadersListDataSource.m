@@ -3,7 +3,7 @@
 //  MissionHub
 //
 //  Created by David Ang on 1/19/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 CCCI. All rights reserved.
 //
 
 #import "LeadersListDataSource.h"
@@ -42,26 +42,7 @@
         //request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
         request.response = [[TTURLJSONResponse alloc] init];
         [request send];
-
     }
-}
-
-- (void)search:(NSString*)text {
-    NSLog(@"searching...%@", text);
-    [filteredDataArray removeAllObjects];
-    
-    if (text.length) {
-        text = [text lowercaseString];
-        for (NSDictionary *person in dataArray) {
-            NSString *name = [person objectForKey:@"name"];
-            if ([[name lowercaseString] rangeOfString:text].location == 0) {
-                [filteredDataArray addObject:person];
-                NSLog(@"person found");
-            }
-        }
-    }
-    
-    [_delegates makeObjectsPerformSelector:@selector(modelDidFinishLoad:) withObject:self];   
 }
 
 - (void) handleRequestResult:(NSDictionary*)aResult identifier:(NSString*)aIdentifier {
@@ -142,7 +123,7 @@
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
     self.items = [NSMutableArray array];
 
-    NSLog(@"tableViewDidLoadModel");
+    NSLog(@"LeadersListDataSource::tableViewDidLoadModel");
 
     for (NSDictionary *person in leadersList.dataArray) {
         NSString *name = [person objectForKey:@"name"];

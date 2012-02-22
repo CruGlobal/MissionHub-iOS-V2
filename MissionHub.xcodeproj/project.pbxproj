@@ -20,10 +20,13 @@
 		6346730014B1D64E00F45765 /* ContactsListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 634672FF14B1D64E00F45765 /* ContactsListDataSource.m */; };
 		63486A0E14F23FC7005EF6CF /* facebookicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 63486A0D14F23FC7005EF6CF /* facebookicon.png */; };
 		63486A1014F24C59005EF6CF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63486A0F14F24C59005EF6CF /* MessageUI.framework */; };
+		63486A6914F43584005EF6CF /* gender-f.png in Resources */ = {isa = PBXBuildFile; fileRef = 63486A6714F43584005EF6CF /* gender-f.png */; };
+		63486A6A14F43584005EF6CF /* gender-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 63486A6814F43584005EF6CF /* gender-m.png */; };
+		63486A6D14F4F134005EF6CF /* BaseDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63486A6C14F4F134005EF6CF /* BaseDataSource.m */; };
+		63486A7014F4F3E4005EF6CF /* BaseSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63486A6F14F4F3E3005EF6CF /* BaseSearchDataSource.m */; };
+		63486A7314F4F863005EF6CF /* ContactsListSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63486A7214F4F862005EF6CF /* ContactsListSearchDataSource.m */; };
 		634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */; };
 		634F6A6714CAA19600D63948 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6614CAA19600D63948 /* TableViewController.m */; };
-		6350561D14D5274B0050B73F /* femaleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6350561B14D5274B0050B73F /* femaleicon.png */; };
-		6350561E14D5274B0050B73F /* maleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6350561C14D5274B0050B73F /* maleicon.png */; };
 		63505AFA14DDB0540050B73F /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63505AF914DDB0540050B73F /* libGoogleAnalytics.a */; };
 		63505AFD14DDB1EF0050B73F /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 63505AFC14DDB1EF0050B73F /* EasyTracker.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		63505AFF14DDB27C0050B73F /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63505AFE14DDB27C0050B73F /* EasyTracker.plist */; };
@@ -406,12 +409,18 @@
 		634672FF14B1D64E00F45765 /* ContactsListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsListDataSource.m; path = Classes/Models/ContactsListDataSource.m; sourceTree = "<group>"; };
 		63486A0D14F23FC7005EF6CF /* facebookicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookicon.png; sourceTree = "<group>"; };
 		63486A0F14F24C59005EF6CF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		63486A6714F43584005EF6CF /* gender-f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gender-f.png"; sourceTree = "<group>"; };
+		63486A6814F43584005EF6CF /* gender-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gender-m.png"; sourceTree = "<group>"; };
+		63486A6B14F4F134005EF6CF /* BaseDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseDataSource.h; path = Classes/Models/BaseDataSource.h; sourceTree = "<group>"; };
+		63486A6C14F4F134005EF6CF /* BaseDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseDataSource.m; path = Classes/Models/BaseDataSource.m; sourceTree = "<group>"; };
+		63486A6E14F4F3E3005EF6CF /* BaseSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseSearchDataSource.h; path = Classes/Models/BaseSearchDataSource.h; sourceTree = "<group>"; };
+		63486A6F14F4F3E3005EF6CF /* BaseSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseSearchDataSource.m; path = Classes/Models/BaseSearchDataSource.m; sourceTree = "<group>"; };
+		63486A7114F4F862005EF6CF /* ContactsListSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactsListSearchDataSource.h; path = Classes/Models/ContactsListSearchDataSource.h; sourceTree = "<group>"; };
+		63486A7214F4F862005EF6CF /* ContactsListSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsListSearchDataSource.m; path = Classes/Models/ContactsListSearchDataSource.m; sourceTree = "<group>"; };
 		634F6A6214CA917300D63948 /* LeaderSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderSelectionViewController.h; sourceTree = "<group>"; };
 		634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderSelectionViewController.m; sourceTree = "<group>"; };
 		634F6A6514CAA19500D63948 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		634F6A6614CAA19600D63948 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		6350561B14D5274B0050B73F /* femaleicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = femaleicon.png; sourceTree = "<group>"; };
-		6350561C14D5274B0050B73F /* maleicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maleicon.png; sourceTree = "<group>"; };
 		63505AF814DDB02D0050B73F /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = Libs/GANTracker.h; sourceTree = "<group>"; };
 		63505AF914DDB0540050B73F /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = MissionHub/Libs/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		63505AFB14DDB1EF0050B73F /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = Libs/EasyTracker.h; sourceTree = "<group>"; };
@@ -906,9 +915,9 @@
 		63DF2252148D2E490039A964 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				63486A6714F43584005EF6CF /* gender-f.png */,
+				63486A6814F43584005EF6CF /* gender-m.png */,
 				63486A0D14F23FC7005EF6CF /* facebookicon.png */,
-				6350561B14D5274B0050B73F /* femaleicon.png */,
-				6350561C14D5274B0050B73F /* maleicon.png */,
 				63DF2253148D2E490039A964 /* 08-chat.png */,
 				63DF2254148D2E490039A964 /* 08-chat2.png */,
 				63DF2255148D2E490039A964 /* 18-envelope.png */,
@@ -1053,10 +1062,16 @@
 		63E02D3E1492603300BC2DEF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				63486A6B14F4F134005EF6CF /* BaseDataSource.h */,
+				63486A6C14F4F134005EF6CF /* BaseDataSource.m */,
+				63486A6E14F4F3E3005EF6CF /* BaseSearchDataSource.h */,
+				63486A6F14F4F3E3005EF6CF /* BaseSearchDataSource.m */,
 				634672FE14B1D64E00F45765 /* ContactsListDataSource.h */,
 				634672FF14B1D64E00F45765 /* ContactsListDataSource.m */,
 				63E040DA14C743A8006859BF /* LeadersListDataSource.h */,
 				63E040DB14C743A9006859BF /* LeadersListDataSource.m */,
+				63486A7114F4F862005EF6CF /* ContactsListSearchDataSource.h */,
+				63486A7214F4F862005EF6CF /* ContactsListSearchDataSource.m */,
 				63E02D3F1492604A00BC2DEF /* User.h */,
 				63E02D401492604A00BC2DEF /* User.m */,
 				63DBAF86149953EC002A8D86 /* MockDataSource.h */,
@@ -1471,10 +1486,10 @@
 				63CFAA2214BF2EB300977E22 /* ProfileViewController_iPad.xib in Resources */,
 				63CFAA2714BF322C00977E22 /* ContactViewController_iPad.xib in Resources */,
 				63CFAA2814BF322C00977E22 /* LoginViewController_iPad.xib in Resources */,
-				6350561D14D5274B0050B73F /* femaleicon.png in Resources */,
-				6350561E14D5274B0050B73F /* maleicon.png in Resources */,
 				63505AFF14DDB27C0050B73F /* EasyTracker.plist in Resources */,
 				63486A0E14F23FC7005EF6CF /* facebookicon.png in Resources */,
+				63486A6914F43584005EF6CF /* gender-f.png in Resources */,
+				63486A6A14F43584005EF6CF /* gender-m.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1546,6 +1561,9 @@
 				634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */,
 				634F6A6714CAA19600D63948 /* TableViewController.m in Sources */,
 				63505AFD14DDB1EF0050B73F /* EasyTracker.m in Sources */,
+				63486A6D14F4F134005EF6CF /* BaseDataSource.m in Sources */,
+				63486A7014F4F3E4005EF6CF /* BaseSearchDataSource.m in Sources */,
+				63486A7314F4F863005EF6CF /* ContactsListSearchDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

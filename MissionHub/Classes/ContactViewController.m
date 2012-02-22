@@ -463,8 +463,13 @@
 }
 
 - (IBAction)onCallBtn:(id)sender {
+    NSString *cleanedString = [[phoneNo componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+    NSString *escapedPhoneNumber = [cleanedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", escapedPhoneNumber]];
+    
+    NSLog(@"making phone call to: %@", phoneNo);
     if (phoneNo) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNo]];
+        [[UIApplication sharedApplication] openURL:telURL];
     } else {
         [[NiceAlertView alloc] initWithText:@"This contact does not have number to call to."];
     }

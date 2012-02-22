@@ -11,6 +11,7 @@
 #import "ContactCell.h"
 #import "MockDataSource.h"
 #import "ContactsListDataSource.h"
+#import "ContactsListSearchDataSource.h"
 #import "LeadersListDataSource.h"
 #import "LeaderSelectionViewController.h"
 
@@ -54,20 +55,21 @@
 - (void)loadView {
     [super loadView];
 
+    // Enable search bar
     TTTableViewController* searchController = [[TTTableViewController alloc] init];
     _searchController.searchResultsTableView.delegate = self;
     self.searchViewController = searchController;
+    self.searchViewController.dataSource = [[ContactsListSearchDataSource alloc] init];
+    self.tableView.tableHeaderView = _searchController.searchBar;    
 
-    self.tableView.tableHeaderView = _searchController.searchBar;
-
-    ContactsListDataSource *ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
-    self.searchViewController.dataSource = ds;
-
+    // Resize the table view
     [self.tableView setFrame:CGRectMake(0, 40, 320, 391)];
 
+    // Show action sheet on touch gesture
     UILongPressGestureRecognizer* gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.view addGestureRecognizer:gestureRecognizer];
 
+    // Refresh contact listing when a contact is created or updated
     [[NSNotificationCenter defaultCenter] addObserverForName:@"contactUpdated" object:nil queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *notif) {
                                                       shouldRefresh = YES;
@@ -78,13 +80,13 @@
                                                       filterSegmentedControl.selectedSegmentIndex = 2;
                                                       [self invalidateModel];
                                                   }];
-
-
 }
 
 - (id<TTTableViewDelegate>) createDelegate {
     return (id<TTTableViewDelegate>)[[TTTableViewDragRefreshDelegate alloc] initWithController:self];
 }
+
+#pragma mark Gesture Recognizer
 
 - (void)handleGesture:(UILongPressGestureRecognizer *)recognizer {
     // only handle gestures when not in mass assign mode and leader listing
@@ -230,7 +232,8 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    if (shouldRefresh || [self.tableView.visibleCells count] == 0) {
+//    if (shouldRefresh || [self.tableView.visibleCells count] == 0) {
+    if (shouldRefresh) {    
         [self invalidateModel];
         shouldRefresh = NO;
     }
@@ -254,6 +257,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark Button Events
+
 - (IBAction)onBackBtn:(id)sender {
     // Check category and user is currently viewing a leader's contacts
      if (filterSegmentedControl.selectedSegmentIndex == 3 && [self.dataSource isKindOfClass:[ContactsListDataSource class]]) {
@@ -271,8 +276,8 @@
     QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
     QSection *firstSection = [root getSectionForIndex:0];
     QBooleanElement *genderElement = [firstSection.elements objectAtIndex:2];
-    genderElement.onImage = [UIImage imageNamed:@"maleicon.png"];
-    genderElement.offImage = [UIImage imageNamed:@"femaleicon.png"];
+    genderElement.onImage = [UIImage imageNamed:@"gender-m.png"];
+    genderElement.offImage = [UIImage imageNamed:@"gender-f.png"];
 
     UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
     navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController:)];;
@@ -338,35 +343,27 @@
     //[[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];
 
     ContactsListDataSource *ds = nil;
-    ContactsListDataSource *ds2 = nil;
-
     LeadersListDataSource *ld = nil;
-    LeadersListDataSource *ld2 = nil;
 
     UISegmentedControl *segmentedControl = sender;
     if (segmentedControl.selectedSegmentIndex == 1) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];
-        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];
     } else if (segmentedControl.selectedSegmentIndex == 2) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];
-        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];
     } else if (segmentedControl.selectedSegmentIndex == 0) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
-        ds2 = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
     } else {
         [assignBtn setHidden:YES];
         ld = [[LeadersListDataSource alloc] init];
-        ld2 = [[LeadersListDataSource alloc] init];
     }
 
     if (ld == nil) {
         self.dataSource = ds;
-        self.searchViewController.dataSource = ds2;
     } else {
         self.dataSource = ld;
-        self.searchViewController.dataSource = ld2;
     }
 
+    self.searchViewController.dataSource = [[ContactsListSearchDataSource alloc] init];
     _searchController.searchResultsTableView.delegate = self;
 }
 

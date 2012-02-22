@@ -3,23 +3,15 @@
 //  MissionHub
 //
 //  Created by David Ang on 1/2/12.
-//  Copyright (c) 2012 __26AM__. All rights reserved.
+//  Copyright (c) 2012 CCCI. All rights reserved.
 //
 
-@interface  ContactsListRequestModel : TTURLRequestModel
+#import "BaseDataSource.h"
+#import "BaseSearchDataSource.h"
 
-@property (nonatomic, strong) NSString       *urlParams;
-@property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong) NSMutableArray *filteredDataArray;
-@property (nonatomic, assign) NSInteger      page;
-@property (nonatomic, assign) BOOL           isLoading;
-
-- (id)initWithParams:(NSString*)aParams;
-- (void)search:(NSString*)text;
-- (void)handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier;
+@interface ContactsListRequestModel : BaseURLRequestModel
 
 @end
-
 
 @interface ContactsListDataSource : TTListDataSource
 
@@ -29,3 +21,5 @@
 - (id)initWithParams:(NSString*)aParams;
 
 @end
+
+

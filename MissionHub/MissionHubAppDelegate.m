@@ -61,20 +61,13 @@
     [map from:@"mh://composeEmail?to=(composeEmailTo:)" toModalViewController:[MessageController alloc] selector:@selector(composeEmailTo:)];
     [map from:@"mh://composeSms?to=(composeSmsTo:)" toModalViewController:[MessageController alloc] selector:@selector(composeSmsTo:)];    
     [map from:@"mh://createContact" toViewController:[CreateContactViewController class]];  
-    
+
     [map from:@"mh://nib/(loadFromNib:)" toSharedViewController:self];
     
-//    [map            from: @"mh://contacts"
-//                  parent: @"mh://main"
-//        toViewController: [ContactsViewController class]
-//                selector: nil
-//              transition:UIViewAnimationTransitionCurlUp];
-
-    if (! [navigator restoreViewControllers]) {
+//    if (! [navigator restoreViewControllers]) {
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];
-        NSLog(@"opening...");
-        
-    }    
+
+//    }    
 
     // init HJObjManager, if you are using for full screen images, you'll need a smaller memory cache:
 	imageManager = [[HJObjManager alloc] initWithLoadingBufferSize:6 memCacheSize:20];

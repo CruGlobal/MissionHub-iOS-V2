@@ -7,7 +7,6 @@
 //
 
 #import "ContactsListDataSource.h"
-#import "MissionHubAppDelegate.h"
 #import "TableSubtitleItemCell.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,132 +14,18 @@
 
 @implementation ContactsListRequestModel
 
-@synthesize dataArray;
-@synthesize filteredDataArray;
-@synthesize urlParams;
-@synthesize page;
-@synthesize isLoading;
-
-- (id)initWithParams:(NSString*)aParams {
-    if (self = [super init]) {
-
-        dataArray = [[NSMutableArray alloc] initWithCapacity:50];
-        filteredDataArray = [[NSMutableArray alloc] initWithCapacity:50];
-        urlParams = aParams;
-        NSLog(@"initWithParams: %@", self.urlParams);
-        isLoading = NO;
-    }
-
-    return self;
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void) dealloc {
-}
-
-- (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
-    NSLog(@"url params is: %@", self.urlParams);
-    //[_delegates perform:@selector(modelDidStartLoad:) withObject:self];
-
-    if (!self.isLoading && TTIsStringWithAnyText(self.urlParams)) {
-        if (more) {
-            page += 1;
-        } else {
-            page = 1;
-            [dataArray removeAllObjects];
-            [filteredDataArray removeAllObjects];
-        }
-
-        NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&start=%d&limit=25&org_id=%@&access_token=%@", baseUrl, @"contacts.json", self.urlParams, (page - 1) * 25, CurrentUser.orgId, CurrentUser.accessToken];
-        NSLog(@"making http GET request: %@", requestUrl);
-
-        TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
-        request.cachePolicy = TTURLRequestCachePolicyNone;
-        //request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
-        request.response = [[TTURLJSONResponse alloc] init];
-        [request send];
-
-        isLoading = YES;
-        [_delegates makeObjectsPerformSelector:@selector(modelDidStartLoad:) withObject:self];
-    }
-}
-
-- (void)search:(NSString*)text {
-    NSLog(@"searching...%@", text);
-    [filteredDataArray removeAllObjects];
-
-    if (text.length > 2) {
-        [[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];
-
-        NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?term=%@&org_id=%@&access_token=%@", baseUrl, @"contacts/search.json", text, CurrentUser.orgId, CurrentUser.accessToken];
-        NSLog(@"making http GET request: %@", requestUrl);
-
-        TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
-        request.cachePolicy = TTURLRequestCachePolicyNone;
-        //request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
-        request.response = [[TTURLJSONResponse alloc] init];
-        [request send];
-
-        isLoading = YES;
-        [_delegates makeObjectsPerformSelector:@selector(modelDidStartLoad:) withObject:self];
-    } else {
-        [_delegates makeObjectsPerformSelector:@selector(modelDidChange:) withObject:self];
-    }
-}
-
-//- (void)requestDidStartLoad:(TTURLRequest*)request {
-//    NSLog(@"start live http request: %@ method: %@", request.urlPath, request.httpMethod);
-//
-//    [super requestDidStartLoad: request];
-//}
-
-- (void)requestDidFinishLoad:(TTURLRequest*)request {
-
-    TTURLJSONResponse* response = request.response;
-    if (request.respondedFromCache) {
-        NSLog(@"requestDidFinishLoad from cache:%@", response.rootObject);
-    } else {
-        NSLog(@"requestDidFinishLoad:%@", response.rootObject);
-    }
-
-    [self handleRequestResult:response.rootObject identifier:request.userInfo];
-
-    [super requestDidFinishLoad:request];
-}
-
-- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-
-    int status = [error code];
-    NSLog(@"request error on identifier: %@. HTTP return status code: %d", request.userInfo, status);
-    //NSLog(@"request didFailLoadWithError:%@", [[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding] autorelease]);
-    [super didFailLoadWithError:error];
-}
-
-
 - (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {
-    [filteredDataArray removeAllObjects];
-
     NSDictionary *result = aResult;
     NSArray *contacts = [result objectForKey:@"contacts"];
-
+    
     for (NSDictionary *tempDict in contacts) {
         NSDictionary *person = [tempDict objectForKey:@"person"];
-        [dataArray addObject: person];
-        [filteredDataArray addObject:person];
+        [self.dataArray addObject: person];
     }
-
-    isLoading = NO;
-    [_delegates makeObjectsPerformSelector:@selector(modelDidFinishLoad:) withObject:self];
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// TTModel
-
-- (BOOL)isLoading {
-    return isLoading;
+- (NSString*)urlPath { 
+    return @"contacts.json";
 }
 
 @end
@@ -213,7 +98,7 @@
 
     NSLog(@"ContactListDataSource::tableViewDidLoadModel");
 
-    for (NSDictionary *person in contactList.filteredDataArray) {
+    for (NSDictionary *person in contactList.dataArray) {
         NSString *name = [person objectForKey:@"name"];
         NSString *status = [person objectForKey:@"status"];
         NSString *picture = [person objectForKey:@"picture"] ?  [person objectForKey:@"picture"]  : nil;
@@ -234,7 +119,7 @@
     }
 
     // See if we need to show the more button
-    if (self.items.count == contactList.page * 25) {
+    if (self.items.count == contactList.currentPage * 25) {
         TTTableMoreButton  *moreBtn = [TTTableMoreButton itemWithText:@"More"];
         [_items addObject:moreBtn];
     }
@@ -254,4 +139,6 @@
 
 
 @end
+
+
 
