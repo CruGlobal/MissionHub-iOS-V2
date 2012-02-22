@@ -66,7 +66,6 @@
     
 //    if (! [navigator restoreViewControllers]) {
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];
-
 //    }    
 
     // init HJObjManager, if you are using for full screen images, you'll need a smaller memory cache:
@@ -83,7 +82,7 @@
 
     [navigator.topViewController.navigationController setNavigationBarHidden:YES];    
 	//[self.window.rootViewController pushViewController:webController animated:YES];
-    //[self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
