@@ -164,4 +164,9 @@
 - (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {
 }
 
+- (void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error {
+    [super model:model didFailLoadWithError:error];
+    NSLog(@"didFailLoadWithError");
+}
+
 @end

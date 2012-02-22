@@ -13,9 +13,7 @@
 @property (nonatomic, assign) NSInteger      currentPage;
 
 - (id)initWithParams:(NSString*)aParams;
-- (void)search:(NSString*)text;
 - (void)handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier;
-
 
 // Child class must override
 - (NSString*)urlPath; 

@@ -524,9 +524,7 @@
         else {
             [[NiceAlertView alloc] initWithText:@"This device cannot send email."];
         }
-        
-        
-           } else {
+    } else {
         [[NiceAlertView alloc] initWithText:@"This contact does not have an email address to send email to."];
     }
 }

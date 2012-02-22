@@ -131,7 +131,7 @@
     if ([object isKindOfClass:[TTTableMoreButton class]]) {
         return [TTTableMoreButtonCell class];
     } else if ([object isKindOfClass:[TTTableSubtitleItem class]]) {
-        return [TableSubtitleItemCell class];
+        return [TTTableSubtitleItemCell class];
     } else {
         return [super tableView:tableView cellClassForObject:object];
     }
@@ -146,7 +146,6 @@
         NSString *name = [person objectForKey:@"name"];
         NSString *status = [person objectForKey:@"status"];
         NSString *picture = [person objectForKey:@"picture"] ?  [person objectForKey:@"picture"]  : nil;
-        NSString *gender = [person objectForKey:@"gender"];
         UIImage *defaultImage = [UIImage imageNamed:@"default_contact.jpg"];
         
         if ([status isEqualToString:@"attempted_contact"]) {

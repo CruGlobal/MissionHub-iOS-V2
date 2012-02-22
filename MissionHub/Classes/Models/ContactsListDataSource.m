@@ -129,10 +129,6 @@
     return contactList;
 }
 
-- (void)search:(NSString*)text {
-    [contactList search:text];
-}
-
 - (NSString*)titleForLoading:(BOOL)reloading {
     return @"Loading contacts...";
 }

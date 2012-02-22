@@ -32,7 +32,6 @@
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
     NSLog(@"BaseURLRequestModel::load. url params is: %@", self.urlParams);
-    //[_delegates perform:@selector(modelDidStartLoad:) withObject:self];
     
     if (!self.isLoading && TTIsStringWithAnyText(self.urlParams)) {
         if (more) {
