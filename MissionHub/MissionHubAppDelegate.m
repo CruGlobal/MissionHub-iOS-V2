@@ -85,22 +85,6 @@
 	//[self.window.rootViewController pushViewController:webController animated:YES];
     //[self.window makeKeyAndVisible];
     
-    // Check if we already have an accessToken
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    CurrentUser.accessToken = [userDefaults stringForKey:@"accessToken"];	
-    if (CurrentUser.accessToken) {
-        NSLog(@"Found accesstoken: %@", CurrentUser.accessToken);
-        //[[NiceAlertView alloc] initWithText:@"Please wait while the app tries to log you in..."];        
-        
-        NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-        NSString *requestUrl = [NSString stringWithFormat:@"%@/people/me.json?access_token=%@", baseUrl, CurrentUser.accessToken];
-
-        TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
-        request.cachePolicy = TTURLRequestCachePolicyNone;        
-        request.response = [[TTURLJSONResponse alloc] init] ;
-        [request send];
-    }
-    
     return YES;
 }
 
@@ -123,32 +107,6 @@
  */
 - (UIViewController*)loadFromNib:(NSString*)className {
     return [self loadFromNib:className withClass:className];
-}
-
-- (void)requestDidFinishLoad:(TTURLRequest*)request {
-    
-    TTURLJSONResponse* response = request.response;
-    NSLog(@"requestDidStartLoad:%@", response.rootObject);    
-    //TTDASSERT([response.rootObject isKindOfClass:[NSArray class]]);
-
-    NSDictionary *result = response.rootObject;
-    [User sharedUser].data = [[result objectForKey:@"people"] objectAtIndex:0];
-    
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
-}
-
-- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-    
-    int status = [error code];
-    NSLog(@"didFailLoadWithError HTTP return status code: %d", status);    
-
-    if (status == 401) { // token has expired / invalid authentication
-        NSLog(@"... access token has been invalidated");    
-        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-        
-        [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];    
-    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -14,6 +14,7 @@
 @synthesize aboutBtn;
 @synthesize fbWebView;
 @synthesize accesssGranted;
+@synthesize isCheckingForAccessToken;
 @synthesize fbWebViewContainer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -73,13 +74,33 @@
     [fbWebViewContainer setHidden:YES];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     NSLog(@"viewWillAppear");
     TTNavigator *navigator = [TTNavigator navigator];
     [navigator.topViewController.navigationController setNavigationBarHidden:YES];
 
     accesssGranted = NO;
+    isCheckingForAccessToken = NO;
+    
+    // Check if we already have an accessToken
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    CurrentUser.accessToken = [userDefaults stringForKey:@"accessToken"];	
+    if (CurrentUser.accessToken) {
+        NSLog(@"Found accesstoken: %@", CurrentUser.accessToken);
+        
+        NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
+        NSString *requestUrl = [NSString stringWithFormat:@"%@/people/me.json?access_token=%@", baseUrl, CurrentUser.accessToken];
+        
+        TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+        request.cachePolicy = TTURLRequestCachePolicyNone;        
+        request.response = [[TTURLJSONResponse alloc] init] ;
+        [request send];
+        
+        isCheckingForAccessToken = YES;
+        
+        [self showActivityLabel:NO];
+    }
+
 }
 
 - (void)viewDidUnload
@@ -161,8 +182,6 @@
         [self showActivityLabel:NO];
     }
 
-
-
     return YES;
 }
 
@@ -219,55 +238,82 @@
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
 
-    NSDictionary* response = ((TTURLJSONResponse*)request.response).rootObject;
-
-    NSLog(@"requestDidFinishLoad:%@", response);
-    NSString *accessToken = [response objectForKey:@"access_token"];
-
-    // After user logs in through FB.
-    if (accessToken) {
-        // [[TTNavigator navigator].topViewController.navigationController popViewControllerAnimated:YES];
-        [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
-
-        NSLog(@"Saving access token to NSUserDefaults.");
-
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:accessToken forKey:@"accessToken"];
-
-        CurrentUser.data = [response objectForKey:@"person"];
-        CurrentUser.accessToken = accessToken;
-
+    if (isCheckingForAccessToken) {
+        TTURLJSONResponse* response = request.response;
+        NSLog(@"requestDidStartLoad:%@", response.rootObject);    
+        //TTDASSERT([response.rootObject isKindOfClass:[NSArray class]]);
+        
+        NSDictionary *result = response.rootObject;
+        [User sharedUser].data = [[result objectForKey:@"people"] objectAtIndex:0];
+        
+        [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];    
+        
         [self hideActivityLabel];
     } else {
 
-        NSString *baseUrl = [[AppDelegate config] objectForKey:@"base_url"];
-        NSString *oauthUrl = [[AppDelegate config] objectForKey:@"oauth_url"];
-        NSString *scope = [[AppDelegate config] objectForKey:@"oauth_scope"];
-        NSString *clientSecret = [[AppDelegate config] objectForKey:@"oauth_client_secret"];
-        NSString *redirectUrl = [NSString stringWithFormat:@"%@/oauth/done.json", baseUrl];
-        NSString *code = [response objectForKey: @"code"];
-        NSString *accessTokenUrl = [NSString stringWithFormat:@"%@/access_token?", oauthUrl];
-        NSString *myRequestString = [NSString stringWithFormat:@"grant_type=authorization_code&redirect_uri=%@&client_id=5&scope=%@&client_secret=%@&code=%@", redirectUrl, scope, clientSecret, code];
+        NSDictionary* response = ((TTURLJSONResponse*)request.response).rootObject;
 
-        NSData *myRequestData = [ NSData dataWithBytes: [ myRequestString UTF8String ] length: [ myRequestString length ] ];
+        NSLog(@"requestDidFinishLoad:%@", response);
+        NSString *accessToken = [response objectForKey:@"access_token"];
+
+        // After user logs in through FB.
+        if (accessToken) {
+            // [[TTNavigator navigator].topViewController.navigationController popViewControllerAnimated:YES];
+            [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://main"]];
+
+            NSLog(@"Saving access token to NSUserDefaults.");
+
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:accessToken forKey:@"accessToken"];
+
+            CurrentUser.data = [response objectForKey:@"person"];
+            CurrentUser.accessToken = accessToken;
+
+            [self hideActivityLabel];
+        } else {
+
+            NSString *baseUrl = [[AppDelegate config] objectForKey:@"base_url"];
+            NSString *oauthUrl = [[AppDelegate config] objectForKey:@"oauth_url"];
+            NSString *scope = [[AppDelegate config] objectForKey:@"oauth_scope"];
+            NSString *clientSecret = [[AppDelegate config] objectForKey:@"oauth_client_secret"];
+            NSString *redirectUrl = [NSString stringWithFormat:@"%@/oauth/done.json", baseUrl];
+            NSString *code = [response objectForKey: @"code"];
+            NSString *accessTokenUrl = [NSString stringWithFormat:@"%@/access_token?", oauthUrl];
+            NSString *myRequestString = [NSString stringWithFormat:@"grant_type=authorization_code&redirect_uri=%@&client_id=5&scope=%@&client_secret=%@&code=%@", redirectUrl, scope, clientSecret, code];
+
+            NSData *myRequestData = [ NSData dataWithBytes: [ myRequestString UTF8String ] length: [ myRequestString length ] ];
 
 
-        TTURLRequest *newRequest = [TTURLRequest requestWithURL: accessTokenUrl delegate: self];
-        newRequest.contentType=@"application/x-www-form-urlencoded";
+            TTURLRequest *newRequest = [TTURLRequest requestWithURL: accessTokenUrl delegate: self];
+            newRequest.contentType=@"application/x-www-form-urlencoded";
 
-        NSLog(@"request url:%@", request.urlPath);
-        newRequest.response = [[TTURLJSONResponse alloc] init];
+            NSLog(@"request url:%@", request.urlPath);
+            newRequest.response = [[TTURLJSONResponse alloc] init];
 
-        newRequest.httpBody = myRequestData;
+            newRequest.httpBody = myRequestData;
 
-        newRequest.httpMethod = @"POST";
-        [newRequest send];
+            newRequest.httpMethod = @"POST";
+            [newRequest send];
+        }
     }
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
     int status = [error code];
     NSLog(@"didFailLoadWithError. HTTP return status code: %d", status);
+    
+//    if (isCheckingForAccessToken) {
+//        int status = [error code];
+//        NSLog(@"didFailLoadWithError HTTP return status code: %d", status);    
+//        
+//        if (status == 401) { // token has expired / invalid authentication
+//            NSLog(@"... access token has been invalidated");    
+//            NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+//            [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+//            
+//            [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://login"]];    
+//        }
+//    }
 
     [self hideActivityLabel];
 }

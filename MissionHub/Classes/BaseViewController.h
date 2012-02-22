@@ -23,7 +23,7 @@
 - (void) showActivityLabel:(BOOL)aDimBackground;
 - (void) showActivityLabelWithText:(NSString*)aText dimBackground:(BOOL)aDimBackground;
 - (void) hideActivityLabel;
-- (void)resizeFontForLabel:(UILabel*)aLabel maxSize:(int)maxSize minSize:(int)minSize;
+- (void) resizeFontForLabel:(UILabel*)aLabel maxSize:(int)maxSize minSize:(int)minSize;
 
 @property (nonatomic, retain) TTActivityLabel *activityView;
 @property (nonatomic, retain) TTActivityLabel *activityLabel;

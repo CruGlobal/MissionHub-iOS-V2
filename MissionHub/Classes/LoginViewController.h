@@ -19,5 +19,6 @@
 @property (nonatomic, retain) UIWebView *fbWebView;
 @property (nonatomic, retain) TTView *fbWebViewContainer;
 @property BOOL accesssGranted;
+@property BOOL isCheckingForAccessToken;
 
 @end
