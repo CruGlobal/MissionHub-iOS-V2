@@ -112,7 +112,6 @@
 
 //PickerViewController.m
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-
     return [orgsArray count];
 }
 
@@ -130,6 +129,9 @@
     [orgLabel setText:[dict objectForKey:@"name"]];
 
     [self viewDidAppear:NO];
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"contactUpdated" object: nil ];
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {

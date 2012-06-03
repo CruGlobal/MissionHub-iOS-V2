@@ -619,6 +619,10 @@
     }
 }
 
+/*
+ Saves status, rejoicables and comments. 
+ Unselects all rejoicable buttons, refreshes comments list and sends a contactUpdated notification so the contact list updates
+ */
 - (IBAction)onSaveBtn:(id)sender {
     if ([self.statusSelected length] == 0) {
         [[NiceAlertView alloc] initWithText:@"You need to set a status before you can save."];
