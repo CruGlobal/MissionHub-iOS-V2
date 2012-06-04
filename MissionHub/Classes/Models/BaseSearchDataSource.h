@@ -11,6 +11,7 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, assign) BOOL           isSearching;
+@property (nonatomic, strong) NSString       *filter;
 
 - (void)search:(NSString*)text;
 - (void)handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier;

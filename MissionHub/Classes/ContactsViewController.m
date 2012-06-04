@@ -60,6 +60,11 @@
     _searchController.searchResultsTableView.delegate = self;
     self.searchViewController = searchController;
     self.searchViewController.dataSource = [[ContactsListSearchDataSource alloc] init];
+    
+    // Store the current view/filter so the search 
+    BaseSearchRequestModel *model = ((ContactsListSearchDataSource*)self.searchViewController.dataSource).model;
+    [model setFilter: [NSString stringWithFormat: @"assigned_to=%@", CurrentUser.userId]];
+    
     self.tableView.tableHeaderView = _searchController.searchBar;    
 
     // Resize the table view
@@ -324,7 +329,7 @@
     assignMode = NO;
     ((ContactsListDataSource*)self.dataSource).assignMode = NO;
 
-    [assignBtn setTitle:@"Assign" forState:UIControlStateNormal];
+    [assignBtn setTitle:@"Assign to me" forState:UIControlStateNormal];
     [cancelBtn setHidden:YES];
 
     [self.tableView reloadData];
@@ -346,12 +351,20 @@
     LeadersListDataSource *ld = nil;
 
     UISegmentedControl *segmentedControl = sender;
+    
+    self.searchViewController.dataSource = [[ContactsListSearchDataSource alloc] init];
+    _searchController.searchResultsTableView.delegate = self;
+    BaseSearchRequestModel *model = ((ContactsListSearchDataSource*)self.searchViewController.dataSource).model;    
+    
     if (segmentedControl.selectedSegmentIndex == 1) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];
+        [model setFilter: @"filters[status]=completed"];
     } else if (segmentedControl.selectedSegmentIndex == 2) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];
+        [model setFilter: @"filters[status]=none"];
     } else if (segmentedControl.selectedSegmentIndex == 0) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
+        [model setFilter: [NSString stringWithFormat: @"assigned_to=%@", CurrentUser.userId]];
     } else {
         [assignBtn setHidden:YES];
         ld = [[LeadersListDataSource alloc] init];
@@ -363,8 +376,6 @@
         self.dataSource = ld;
     }
 
-    self.searchViewController.dataSource = [[ContactsListSearchDataSource alloc] init];
-    _searchController.searchResultsTableView.delegate = self;
 }
 
 @end

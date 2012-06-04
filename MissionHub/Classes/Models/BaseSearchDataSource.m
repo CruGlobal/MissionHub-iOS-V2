@@ -14,6 +14,7 @@
 
 @synthesize dataArray;
 @synthesize isSearching;
+@synthesize filter;
 
 - (id)init {
     if (self = [super init]) {     
@@ -32,7 +33,7 @@
         [[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];
         
         NSString *baseUrl = [[AppDelegate config] objectForKey:@"api_url"];
-        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?term=%@&org_id=%@&access_token=%@", baseUrl, [self urlPath], text, CurrentUser.orgId, CurrentUser.accessToken];
+        NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?term=%@&%@&org_id=%@&access_token=%@", baseUrl, [self urlPath], text, [self filter], CurrentUser.orgId, CurrentUser.accessToken];
         NSLog(@"making http GET request: %@", requestUrl);
         
         TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
