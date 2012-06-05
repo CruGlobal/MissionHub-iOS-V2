@@ -229,6 +229,13 @@
         if ([location objectForKey:@"name"]) {
             [infoArray addObject: [NSDictionary dictionaryWithObjectsAndKeys: @"Location", @"label", [location objectForKey:@"name"], @"value", nil]];
         }
+        
+        if ([person objectForKey:@"status"]) {
+            statusSelected = [person objectForKey:@"status"];
+            // capitalize first letter
+            NSString *statusBtnTitle = [statusSelected stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[statusSelected  substringToIndex:1] capitalizedString]];
+            [statusBtn setTitle: statusBtnTitle forState:UIControlStateNormal];
+        }
 
         NSArray *questions = [result objectForKey:@"questions"];
         NSArray *answers = [personAndFormDict objectForKey:@"form"];
