@@ -187,6 +187,7 @@
 		63F7858814AC6E18009D6CE4 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63957E3014AAB6CB00ABA6F9 /* libQuickDialog.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		63F7858A14AC6E6C009D6CE4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		63F7858C14AC6E96009D6CE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858B14AC6E96009D6CE4 /* MapKit.framework */; };
+		D7E95B9A15A7D11B00606EBE /* PLWeakCompatibilityStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E95B9815A7D11B00606EBE /* PLWeakCompatibilityStubs.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -620,6 +621,8 @@
 		63EAD05C148EC78500524305 /* PopupTTWebController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupTTWebController.xib; path = Classes/PopupTTWebController.xib; sourceTree = "<group>"; };
 		63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		63F7858B14AC6E96009D6CE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D7E95B9715A7D11B00606EBE /* PLWeakCompatibilityStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLWeakCompatibilityStubs.h; path = ../Libs/PLWeakCompatibilityStubs.h; sourceTree = "<group>"; };
+		D7E95B9815A7D11B00606EBE /* PLWeakCompatibilityStubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLWeakCompatibilityStubs.m; path = ../Libs/PLWeakCompatibilityStubs.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1055,6 +1058,8 @@
 				63957E1D14AA813600ABA6F9 /* CreateContactViewController.m */,
 				634F6A6214CA917300D63948 /* LeaderSelectionViewController.h */,
 				634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */,
+				D7E95B9715A7D11B00606EBE /* PLWeakCompatibilityStubs.h */,
+				D7E95B9815A7D11B00606EBE /* PLWeakCompatibilityStubs.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1176,7 +1181,7 @@
 		63B61AEE148A58F400CBE54B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 63B61AF1148A58F400CBE54B /* Build configuration list for PBXProject "MissionHub" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1564,6 +1569,7 @@
 				63486A6D14F4F134005EF6CF /* BaseDataSource.m in Sources */,
 				63486A7014F4F3E4005EF6CF /* BaseSearchDataSource.m in Sources */,
 				63486A7314F4F863005EF6CF /* ContactsListSearchDataSource.m in Sources */,
+				D7E95B9A15A7D11B00606EBE /* PLWeakCompatibilityStubs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1763,11 +1769,11 @@
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Campus Crusade for Christ Inc";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cru Global, Inc";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1776,13 +1782,17 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"-Xclang",
+					"-fobjc-runtime-has-weak",
+				);
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "92EE2254-C3BF-40D8-858A-B707CD9447E5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8D2313DF-D662-46B8-8C9F-4E66415E89F3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
@@ -1798,10 +1808,11 @@
 					armv6,
 				);
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Campus Crusade for Christ Inc";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cru Global, Inc";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)/../three20",
@@ -1809,21 +1820,26 @@
 					../three20/Build/Products/three20,
 				);
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/QuickDialog/TouchJSON/Support/build/Debug\"",
 					"\"$(SRCROOT)/MissionHub/Libs\"",
+				);
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"-Xclang",
+					"-fobjc-runtime-has-weak",
 				);
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "92EE2254-C3BF-40D8-858A-B707CD9447E5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8D2313DF-D662-46B8-8C9F-4E66415E89F3";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Ad Hoc";
@@ -1855,14 +1871,14 @@
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (8L7H7A9RBC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Roemmich (MYMGBSNPE6)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "TTMAXLOGLEVEL=TTLOGLEVEL_INFO";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1871,12 +1887,16 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-fobjc-runtime-has-weak",
+				);
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5653DF25-53C5-42E3-8290-11F908284137";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
@@ -1894,7 +1914,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1903,8 +1923,12 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"-Xclang",
+					"-fobjc-runtime-has-weak",
+				);
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",
 					"-ObjC",
@@ -1925,11 +1949,12 @@
 				);
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Ang (8L7H7A9RBC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Roemmich (MYMGBSNPE6)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)/../three20",
@@ -1937,21 +1962,25 @@
 					../three20/Build/Products/three20,
 				);
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/QuickDialog/TouchJSON/Support/build/Debug\"",
 					"\"$(SRCROOT)/MissionHub/Libs\"",
+				);
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-fobjc-runtime-has-weak",
 				);
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6BD7406-6BC2-41CF-B2DD-945D84F195C7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5653DF25-53C5-42E3-8290-11F908284137";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1967,6 +1996,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)/../three20",
@@ -1974,11 +2004,16 @@
 					../three20/Build/Products/three20,
 				);
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/QuickDialog/TouchJSON/Support/build/Debug\"",
 					"\"$(SRCROOT)/MissionHub/Libs\"",
+				);
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"-Xclang",
+					"-fobjc-runtime-has-weak",
 				);
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",
@@ -1987,7 +2022,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
