@@ -8,11 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface CreateContactViewController : QuickDialogController
+@interface CreateContactViewController : QuickDialogController <QuickDialogStyleProvider, QuickDialogEntryElementDelegate> {
+	
+}
 
-
-@end
-
-@interface CreateContactQuickDialogDelegate : QuickDialogController
 
 @end
