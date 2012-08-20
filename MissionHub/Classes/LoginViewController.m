@@ -9,6 +9,10 @@
 #import "LoginViewController.h"
 #import "MissionHubAppDelegate.h"
 
+#import "UIViewController+MJPopupViewController.h"
+#import "TipViewController.h"
+
+
 @implementation LoginViewController
 
 @synthesize aboutBtn;
@@ -118,6 +122,10 @@
 }
 
 - (IBAction)onAboutBtn:(id)sender {
+//    TipViewController *tipViewController = [[TipViewController alloc] initWithNibName:@"TipViewController" bundle:nil];
+//    [self presentPopupViewController:tipViewController animationType:MJPopupViewAnimationFade];
+
+    
     TTOpenURL(@"http://www.missionhub.com?mobile=0");
 
     TTNavigator *navigator = [TTNavigator navigator];

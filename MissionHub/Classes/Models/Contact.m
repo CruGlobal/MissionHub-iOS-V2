@@ -81,7 +81,7 @@
 }
 
 - (void)requestDidStartLoad:(TTURLRequest*)request {
-    NSLog(@"start live http request: %@ method: %@", request.urlPath, request.httpMethod);
+    NSLog(@"start http request: %@ method: %@", request.urlPath, request.httpMethod);
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {

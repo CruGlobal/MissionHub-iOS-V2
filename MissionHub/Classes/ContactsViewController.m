@@ -91,6 +91,11 @@
     return (id<TTTableViewDelegate>)[[TTTableViewDragRefreshDelegate alloc] initWithController:self];
 }
 
+
+- (IBAction)dismissModalViewController:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark Gesture Recognizer
 
 - (void)handleGesture:(UILongPressGestureRecognizer *)recognizer {
@@ -180,9 +185,9 @@
 //    return 59;
 //}
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// TTTableViewController
+# pragma mark TTTableViewController delegates
 
+// TTTableViewController
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
 
     [_delegate searchContactsController:self didSelectObject:object];
@@ -329,14 +334,10 @@
     assignMode = NO;
     ((ContactsListDataSource*)self.dataSource).assignMode = NO;
 
-    [assignBtn setTitle:@"Assign to me" forState:UIControlStateNormal];
+    [assignBtn setTitle:@"Assign" forState:UIControlStateNormal];
     [cancelBtn setHidden:YES];
 
     [self.tableView reloadData];
-}
-
-- (IBAction)dismissModalViewController:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)onSegmentChange:(id)sender {

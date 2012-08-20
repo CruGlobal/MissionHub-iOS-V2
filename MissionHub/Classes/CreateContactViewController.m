@@ -22,7 +22,7 @@
     [super setQuickDialogTableView:aQuickDialogTableView];
 	
     self.quickDialogTableView.backgroundView = nil;
-    self.quickDialogTableView.backgroundColor = [UIColor colorWithHue:0.1174 saturation:0.7131 brightness:0.8618 alpha:1.0000];
+//    self.quickDialogTableView.backgroundColor = [UIColor colorWithHue:0.1174 saturation:0.7131 brightness:0.8618 alpha:1.0000];
     self.quickDialogTableView.bounces = YES;
     self.quickDialogTableView.styleProvider = self;
 	
@@ -31,7 +31,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
-    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+//    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Create" style:UIBarButtonItemStylePlain target:self action:@selector(onCreateContact)];
 	
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancelBtn:)];
@@ -57,12 +57,13 @@
 	Contact *contact = [[Contact alloc] init];
     [self.root fetchValueIntoObject:contact];
     
-    if (contact.firstName == nil) {
+    if (contact.firstName == nil || [contact.firstName length] == 0) {
         [[NiceAlertView alloc] initWithText: @"A First Name is required to create a contact."];
         return;
     }
     
     [self loading:YES];    
+    
     [contact create:^(int result){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"contactCreated" object: nil ];    
         
@@ -74,11 +75,11 @@
 }
 
 -(void) cell:(UITableViewCell *)cell willAppearForElement:(QElement *)element atIndexPath:(NSIndexPath *)indexPath{
-    cell.backgroundColor = [UIColor colorWithRed:0.9582 green:0.9104 blue:0.7991 alpha:1.0000];
-	
-    if ([element isKindOfClass:[QEntryElement class]] || [element isKindOfClass:[QButtonElement class]]|| [element isKindOfClass:[QBooleanElement class]]){
-        cell.textLabel.textColor = [UIColor colorWithRed:0.6033 green:0.2323 blue:0.0000 alpha:1.0000];
-    }   
+//    cell.backgroundColor = [UIColor colorWithRed:0.9582 green:0.9104 blue:0.7991 alpha:1.0000];
+//	
+//    if ([element isKindOfClass:[QEntryElement class]] || [element isKindOfClass:[QButtonElement class]]|| [element isKindOfClass:[QBooleanElement class]]){
+//        cell.textLabel.textColor = [UIColor colorWithRed:0.6033 green:0.2323 blue:0.0000 alpha:1.0000];
+//    }   
 }
 
 - (BOOL)QEntryShouldChangeCharactersInRangeForElement:(QEntryElement *)element andCell:(QEntryTableViewCell *)cell {
@@ -96,75 +97,4 @@
 	
 }
 
-/*
-///////////////////////////////////////////////////////////////////////////////////////////////////
--(void)dealloc {
-	
-	[super dealloc];
-
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    NSLog(@"CreateContactViewController viewDidLoad");
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-
-    QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
-    UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
-
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
-    navigation.navigationBar.topItem.leftBarButtonItem = anotherButton;
-
-    [self presentModalViewController:navigation animated:YES];
-}
-
-- (IBAction)onBackBtn:(id)sender {
-    TTNavigator *navigator = [TTNavigator navigator];
-    //[navigator.topViewController.navigationController setNavigationBarHidden:YES];
-    [navigator openURLAction:[TTURLAction actionWithURLPath:@"mh://contacts"]];
-    //[self.navigationController popToViewController:navigator.topViewController animated:YES];
-
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)onCreateContactBtn:(QButtonElement *)buttonElement {    
-    Contact *contact = [[Contact alloc] init];
-    [self.root fetchValueIntoObject:contact];
-    
-    if (contact.firstName == nil) {
-        [[NiceAlertView alloc] initWithText: @"At minimum you need to enter a first name for the contact."];
-        return;
-    }
-    
-    [self loading:YES];    
-    [contact create:^(int result){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"contactCreated" object: nil ];    
-        
-        [self loading:NO];
-        [self dismissModalViewControllerAnimated:YES];
-        
-    }];
-	
-}
-
-- (BOOL)QEntryShouldChangeCharactersInRangeForElement:(QEntryElement *)element andCell:(QEntryTableViewCell *)cell {
-    NSLog(@"Should change characters");
-    return YES;
-}
-
-- (void)QEntryEditingChangedForElement:(QEntryElement *)element andCell:(QEntryTableViewCell *)cell {
-    NSLog(@"Editing changed");
-}
-
-
-- (void)QEntryMustReturnForElement:(QEntryElement *)element andCell:(QEntryTableViewCell *)cell {
-    NSLog(@"Must return");
-	
-}
-*/
 @end

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContactViewController</key>
+	<string>Contact Screen Tip</string>
+	<key>ContactsViewController</key>
+	<string>Contacts Listing Tip</string>
+	<key>MainViewController</key>
+	<string>Main Screen Tip</string>
+</dict>
+</plist>

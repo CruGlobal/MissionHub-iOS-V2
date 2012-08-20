@@ -8,6 +8,8 @@
 
 #import "TableViewController.h"
 #import "MissionHubAppDelegate.h"
+#import "UIViewController+MJPopupViewController.h"
+#import "TipViewController.h"
 
 @implementation TableViewController
 
@@ -19,6 +21,23 @@
     // Determine the class name of this view controller using reflection.
     NSString *className = NSStringFromClass([self class]);
     [[EasyTracker sharedTracker] dispatchViewDidAppear:className];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLog([userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]);
+    if (![userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]) {        
+        [userDefaults setObject:@"1" forKey:[NSString stringWithFormat:@"tip-%@", className]];
+        
+        NSString *path = [[NSBundle mainBundle] bundlePath];
+        NSString *finalPath = [path stringByAppendingPathComponent:@"tips.plist"];
+        NSDictionary *tips = [NSDictionary dictionaryWithContentsOfFile:finalPath];
+        NSString *tipText = [tips objectForKey:className];
+        if(tipText) {
+            TipViewController *tipViewController = [[TipViewController alloc] initWithNibName:@"TipViewController" bundle:nil];
+            [self presentPopupViewController:tipViewController animationType:MJPopupViewAnimationFade];
+
+            [tipViewController.textView setText:tipText];
+        }
+    }    
 }
 
 #pragma mark - HTTP convenience methods

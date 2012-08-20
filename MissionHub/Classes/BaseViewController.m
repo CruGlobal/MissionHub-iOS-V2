@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "UIViewController+MJPopupViewController.h"
+#import "TipViewController.h"
 
 @implementation BaseViewController
 
@@ -59,6 +61,24 @@
     // Determine the class name of this view controller using reflection.
     NSString *className = NSStringFromClass([self class]);
     [[EasyTracker sharedTracker] dispatchViewDidAppear:className];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLog([userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]);
+    if (![userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]) {        
+        [userDefaults setObject:@"1" forKey:[NSString stringWithFormat:@"tip-%@", className]];
+        
+        // Load the tips into an NSDictionary
+        NSString *path = [[NSBundle mainBundle] bundlePath];
+        NSString *finalPath = [path stringByAppendingPathComponent:@"tips.plist"];
+        NSDictionary *tips = [NSDictionary dictionaryWithContentsOfFile:finalPath];        
+        NSString *tipText = [tips objectForKey:className];
+        if(tipText) {
+            TipViewController *tipViewController = [[TipViewController alloc] initWithNibName:@"TipViewController" bundle:nil];
+            [self presentPopupViewController:tipViewController animationType:MJPopupViewAnimationFade];
+            
+            [tipViewController.textView setText:tipText];
+        }
+    }
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -220,5 +240,12 @@
     // Set the UILabel's font to the newly adjusted font.
     aLabel.font = font;
 }
+
+- (void)cancelButtonClicked:(TipViewController *)tipsViewController {
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    tipsViewController = nil;
+}
+
+
 
 @end
