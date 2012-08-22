@@ -22,6 +22,7 @@
 
 @interface MissionHubAppDelegate : NSObject <UIApplicationDelegate>
 
+-(void)reachabilityChanged:(NSNotification*)note;
 
 @property (nonatomic, retain) HJObjManager * imageManager;
 @property (nonatomic, retain) NSDictionary *config;

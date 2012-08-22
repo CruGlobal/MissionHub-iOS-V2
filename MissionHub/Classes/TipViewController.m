@@ -7,8 +7,6 @@
 //
 
 #import "TipViewController.h"
-//#import "SSCheckBoxView.h"
-//#import "UIHelpers.h"
 #import "UIViewController+MJPopupViewController.h"
 
 @implementation TipViewController

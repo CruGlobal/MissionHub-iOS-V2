@@ -79,7 +79,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"viewWillAppear");
+    [super viewWillAppear:animated];
+    
     TTNavigator *navigator = [TTNavigator navigator];
     [navigator.topViewController.navigationController setNavigationBarHidden:YES];
 

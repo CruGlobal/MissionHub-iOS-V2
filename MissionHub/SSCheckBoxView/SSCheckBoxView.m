@@ -70,7 +70,8 @@ static const CGFloat kHeight = 36.0f;
     l.shadowOffset = CGSizeMake(0, 1);
     [self addSubview:l];
     textLabel = l;
-
+    [textLabel setFont:[UIFont systemFontOfSize:12]];
+    
     UIImage *img = [self checkBoxImageForStyle:style checked:checked];
     CGRect imageViewFrame = [self imageViewFrameForCheckBoxImage:img];
     UIImageView *iv = [[UIImageView alloc] initWithFrame:imageViewFrame];
@@ -105,6 +106,12 @@ static const CGFloat kHeight = 36.0f;
 {
     [textLabel setText:text];
 }
+
+- (void) setTextColor:(UIColor*)color {
+
+    [textLabel setTextColor:color];
+}
+
 
 - (void) setChecked:(BOOL)isChecked
 {

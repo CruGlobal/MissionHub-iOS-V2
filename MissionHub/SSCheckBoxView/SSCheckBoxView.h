@@ -63,6 +63,8 @@ typedef enum SSCheckBoxViewStyle_ {
              checked:(BOOL)aChecked;
 
 - (void) setText:(NSString *)text;
+- (void) setTextColor:(UIColor*)text;
+
 
 - (void) setChecked:(BOOL)isChecked;
 

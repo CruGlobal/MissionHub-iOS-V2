@@ -9,11 +9,15 @@
 #import "BaseViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "TipViewController.h"
+#import "NoInternetViewController.h"
+
+#import "Reachability.h"
 
 @implementation BaseViewController
 
 @synthesize activityView;
 @synthesize activityLabel;
+@synthesize alreadyShowNoInternet;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -63,8 +67,7 @@
     [[EasyTracker sharedTracker] dispatchViewDidAppear:className];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSLog([userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]);
-    if (![userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]) {        
+    if ([userDefaults stringForKey:@"showGuides"] || ![userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]) {        
         [userDefaults setObject:@"1" forKey:[NSString stringWithFormat:@"tip-%@", className]];
         
         // Load the tips into an NSDictionary
@@ -82,11 +85,39 @@
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     [self initActivityLabel];
+    alreadyShowNoInternet = NO;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(reachabilityChanged:) 
+                                                 name:kReachabilityChangedNotification 
+                                               object:nil];
+    
+    Reachability * reach = [Reachability reachabilityWithHostname:@"www.missionhub.com"];
+    
+    reach.reachableBlock = ^(Reachability * reachability) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Can be reach");
+        });
+    };
+    
+    reach.unreachableBlock = ^(Reachability * reachability) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSLog(@"Cannot be reach");
+            // ensure that this is only displayed once
+            if (!alreadyShowNoInternet) {
+                alreadyShowNoInternet = YES;
+                NoInternetViewController *noInternetViewController = [[NoInternetViewController alloc] initWithNibName:@"NoInternetViewController" bundle:nil];
+                [self presentPopupViewController:noInternetViewController animationType:MJPopupViewAnimationFade];
+            }
+        });
+    };
+    
+    [reach startNotifier];
 }
 
 
@@ -244,6 +275,23 @@
 - (void)cancelButtonClicked:(TipViewController *)tipsViewController {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     tipsViewController = nil;
+}
+
+
+-(void)reachabilityChanged:(NSNotification*)note {
+    Reachability * reach = [note object];
+    
+    if([reach isReachable]) {
+        NSLog(@"Notification can be reach");
+    }
+    else {
+        NSLog(@"Notification cannot be reach");
+        if (!alreadyShowNoInternet) {
+            alreadyShowNoInternet = YES;
+//            NoInternetViewController *noInternetViewController = [[NoInternetViewController alloc] initWithNibName:@"NoInternetViewController" bundle:nil];
+//            [self presentPopupViewController:noInternetViewController animationType:MJPopupViewAnimationFade];
+        }
+    }
 }
 
 

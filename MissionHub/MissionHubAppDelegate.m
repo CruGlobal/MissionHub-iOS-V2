@@ -157,5 +157,4 @@
 {
     //[_loginViewController release];
 }
-
 @end

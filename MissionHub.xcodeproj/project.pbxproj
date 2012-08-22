@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1090EEBE15E355EE001F19A8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1090EEBD15E355EE001F19A8 /* Reachability.m */; };
+		1090EEC015E36F30001F19A8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1090EEBF15E36F30001F19A8 /* SystemConfiguration.framework */; };
+		1090EEC115E38216001F19A8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1090EEBD15E355EE001F19A8 /* Reachability.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		1090EEC515E38753001F19A8 /* NoInternetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1090EEC315E38752001F19A8 /* NoInternetViewController.m */; };
+		1090EEC615E38753001F19A8 /* NoInternetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1090EEC415E38752001F19A8 /* NoInternetViewController.xib */; };
 		10AC725D15D9483A006D9A44 /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AC725A15D9483A006D9A44 /* MJPopupBackgroundView.m */; };
 		10AC725E15D9483A006D9A44 /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AC725C15D9483A006D9A44 /* UIViewController+MJPopupViewController.m */; };
 		10AC726315D95775006D9A44 /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AC726115D95774006D9A44 /* TipViewController.m */; };
@@ -424,6 +429,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1090EEBC15E355EE001F19A8 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1090EEBD15E355EE001F19A8 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		1090EEBF15E36F30001F19A8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1090EEC215E38751001F19A8 /* NoInternetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetViewController.h; sourceTree = "<group>"; };
+		1090EEC315E38752001F19A8 /* NoInternetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetViewController.m; sourceTree = "<group>"; };
+		1090EEC415E38752001F19A8 /* NoInternetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoInternetViewController.xib; path = Classes/NoInternetViewController.xib; sourceTree = "<group>"; };
 		10AC725915D9483A006D9A44 /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
 		10AC725A15D9483A006D9A44 /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
 		10AC725B15D9483A006D9A44 /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
@@ -689,6 +700,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1090EEC015E36F30001F19A8 /* SystemConfiguration.framework in Frameworks */,
 				63486A1014F24C59005EF6CF /* MessageUI.framework in Frameworks */,
 				63505B0314DDB5220050B73F /* CFNetwork.framework in Frameworks */,
 				63505B0114DDB4F70050B73F /* libsqlite3.dylib in Frameworks */,
@@ -883,6 +895,7 @@
 		63B61AEC148A58F400CBE54B = {
 			isa = PBXGroup;
 			children = (
+				1090EEBF15E36F30001F19A8 /* SystemConfiguration.framework */,
 				63486A0F14F24C59005EF6CF /* MessageUI.framework */,
 				63505B0214DDB5220050B73F /* CFNetwork.framework */,
 				63505B0014DDB4F70050B73F /* libsqlite3.dylib */,
@@ -977,6 +990,7 @@
 				639A15101497E3EE00FFAC44 /* ContactCell.xib */,
 				63957E2114AA822900ABA6F9 /* CreateContactViewController.xib */,
 				10AC726215D95775006D9A44 /* TipViewController.xib */,
+				1090EEC415E38752001F19A8 /* NoInternetViewController.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -1182,6 +1196,8 @@
 				D7E95B9815A7D11B00606EBE /* PLWeakCompatibilityStubs.m */,
 				10AC726015D95774006D9A44 /* TipViewController.h */,
 				10AC726115D95774006D9A44 /* TipViewController.m */,
+				1090EEC215E38751001F19A8 /* NoInternetViewController.h */,
+				1090EEC315E38752001F19A8 /* NoInternetViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1215,6 +1231,8 @@
 			children = (
 				10AC72B115D968C7006D9A44 /* SSCheckBoxView */,
 				10AC725815D9483A006D9A44 /* MJPopupViewController */,
+				1090EEBC15E355EE001F19A8 /* Reachability.h */,
+				1090EEBD15E355EE001F19A8 /* Reachability.m */,
 				63505AFB14DDB1EF0050B73F /* EasyTracker.h */,
 				63505AFC14DDB1EF0050B73F /* EasyTracker.m */,
 				63505AF814DDB02D0050B73F /* GANTracker.h */,
@@ -1641,6 +1659,7 @@
 				10AC72DD15D968C7006D9A44 /* cb_mono_off@2x.png in Resources */,
 				10AC72DE15D968C7006D9A44 /* cb_mono_on.png in Resources */,
 				10AC72DF15D968C7006D9A44 /* cb_mono_on@2x.png in Resources */,
+				1090EEC615E38753001F19A8 /* NoInternetViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1676,6 +1695,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1090EEC115E38216001F19A8 /* Reachability.m in Sources */,
 				63B61B08148A58F400CBE54B /* main.m in Sources */,
 				63B61B0C148A58F400CBE54B /* MissionHubAppDelegate.m in Sources */,
 				63B61B10148A58F400CBE54B /* MissionHubAppDelegate_iPhone.m in Sources */,
@@ -1721,6 +1741,7 @@
 				10AC726315D95775006D9A44 /* TipViewController.m in Sources */,
 				10AC72E015D968C7006D9A44 /* UIHelpers.m in Sources */,
 				10AC72E115D968C7006D9A44 /* SSCheckBoxView.m in Sources */,
+				1090EEC515E38753001F19A8 /* NoInternetViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1729,6 +1750,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B61B31148A58F500CBE54B /* MissionHubTests.m in Sources */,
+				1090EEBE15E355EE001F19A8 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

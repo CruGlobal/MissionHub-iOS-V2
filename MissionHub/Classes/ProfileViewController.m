@@ -12,6 +12,9 @@
 #import "HJManagedImageV.h"
 #import "MissionHubAppDelegate.h"
 
+#import "SSCheckBoxView.h"
+#import "UIHelpers.h"
+
 @implementation ProfileViewController
 
 @synthesize nameLabel;
@@ -45,6 +48,29 @@
     // Do any additional setup after loading the view from its nib.
 
     orgsArray = [[NSMutableArray alloc] init];
+    
+    SSCheckBoxView *cbv = [[SSCheckBoxView alloc] initWithFrame:CGRectMake(60, 170, 200, 30)
+                                                          style:kSSCheckBoxViewStyleGlossy
+                                                        checked:NO];
+    [cbv setText:@"Always show help"];
+    [cbv setTextColor:[UIColor whiteColor]];
+    [cbv setStateChangedTarget:self selector:@selector(checkBoxViewChangedState:)];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if([userDefaults stringForKey:@"showGuides"]) {
+        [cbv setChecked:YES];
+    }
+    
+    [self.view addSubview:cbv];
+}
+
+- (void) checkBoxViewChangedState:(SSCheckBoxView *)cbv {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if(cbv.checked) {
+        [userDefaults setObject:@"1" forKey:@"showGuides"];
+    } else {
+        [userDefaults removeObjectForKey:@"showGuides"];
+    }
 }
 
 

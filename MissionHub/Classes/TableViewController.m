@@ -23,8 +23,7 @@
     [[EasyTracker sharedTracker] dispatchViewDidAppear:className];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSLog([userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]);
-    if (![userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]) {        
+    if ([userDefaults stringForKey:@"showGuides"] || ![userDefaults stringForKey:[NSString stringWithFormat:@"tip-%@", className]]) {        
         [userDefaults setObject:@"1" forKey:[NSString stringWithFormat:@"tip-%@", className]];
         
         NSString *path = [[NSBundle mainBundle] bundlePath];

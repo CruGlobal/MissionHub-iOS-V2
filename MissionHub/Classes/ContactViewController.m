@@ -103,6 +103,7 @@
             profileImageView.urlPath = [NSString stringWithFormat:@"%@?type=large", picture];
             profileImageView.layer.borderColor = [UIColor blackColor].CGColor;
             profileImageView.layer.borderWidth = 2;
+            [profileImageView setDelegate:  self];
             [[[self.view subviews] objectAtIndex:0] addSubview: profileImageView];
 
             [placeHolderImageView setHidden: YES];
@@ -144,6 +145,7 @@
 
 
 - (void)imageView:(TTImageView*)imageView didLoadImage:(UIImage*)image {
+    NSLog(@"contact image loaded: %dx%d", image.size.width, image.size.height);          
 }
 
 - (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {
