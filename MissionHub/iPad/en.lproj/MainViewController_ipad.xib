@@ -2,20 +2,20 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">11C74</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138.23</string>
-		<string key="IBDocument.HIToolboxVersion">567.00</string>
+		<string key="IBDocument.SystemVersion">12B19</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
+		<string key="IBDocument.AppKitVersion">1187</string>
+		<string key="IBDocument.HIToolboxVersion">624.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">1498</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<string>IBProxyObject</string>
 			<string>IBUIButton</string>
 			<string>IBUIImageView</string>
 			<string>IBUIView</string>
-			<string>IBProxyObject</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -59,7 +59,7 @@
 					<object class="IBUIImageView" id="1018655007">
 						<reference key="NSNextResponder" ref="325423361"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{100, 150}, {570, 206}}</string>
+						<string key="NSFrame">{{99, 209}, {570, 206}}</string>
 						<reference key="NSSuperview" ref="325423361"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="729606957"/>
@@ -116,7 +116,6 @@
 						<string key="NSFrame">{{1, 793}, {768, 211}}</string>
 						<reference key="NSSuperview" ref="325423361"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:222</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -319,7 +318,6 @@
 						<reference key="object" ref="325423361"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1018655007"/>
 							<reference ref="347897140"/>
 							<reference ref="491941780"/>
 							<reference ref="65881447"/>
@@ -327,6 +325,7 @@
 							<reference ref="489456091"/>
 							<reference ref="201333549"/>
 							<reference ref="729606957"/>
+							<reference ref="1018655007"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -393,7 +392,7 @@
 					<string>7.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
 				</object>
-				<object class="NSMutableArray" key="dict.values">
+				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>MainViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -447,7 +446,7 @@
 							<string>onProfileBtn:</string>
 							<string>onSurveyBtn:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>id</string>
 							<string>id</string>
@@ -464,7 +463,7 @@
 							<string>onProfileBtn:</string>
 							<string>onSurveyBtn:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">onContactsBtn:</string>
@@ -510,7 +509,7 @@
 				<string>MH_TopBar@2x.png</string>
 				<string>btn_done@2x.png</string>
 			</object>
-			<object class="NSMutableArray" key="dict.values">
+			<object class="NSArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{640, 960}</string>
 				<string>{640, 211}</string>
@@ -520,6 +519,6 @@
 				<string>{120, 60}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">1498</string>
 	</data>
 </archive>

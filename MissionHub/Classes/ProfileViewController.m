@@ -170,7 +170,7 @@
     UIButton *btn = (UIButton *)sender;
     if ([btn.currentTitle isEqualToString:@"Change Current Organization"]) {
         [pickerView setHidden: NO];
-        [btn setTitle:@"Click to Close" forState:UIControlStateNormal];
+        [btn setTitle:@"Tap to Close" forState:UIControlStateNormal];
     } else {
         [pickerView setHidden: YES];
         [btn setTitle:@"Change Current Organization" forState:UIControlStateNormal];
