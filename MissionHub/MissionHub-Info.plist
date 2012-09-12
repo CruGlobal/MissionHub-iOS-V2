@@ -8,6 +8,15 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>appicon.png</string>
+		<string>appicon@2x.png</string>
+		<string>appicon-72.png</string>
+		<string>appicon-Small.png</string>
+		<string>appicon-Small@2x.png</string>
+		<string>appicon-Small-50.png</string>
+	</array>
 	<key>CFBundleIconFile</key>
 	<string>appicon.png</string>
 	<key>CFBundleIdentifier</key>

@@ -219,6 +219,11 @@
 		63F7858814AC6E18009D6CE4 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63957E3014AAB6CB00ABA6F9 /* libQuickDialog.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		63F7858A14AC6E6C009D6CE4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		63F7858C14AC6E96009D6CE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858B14AC6E96009D6CE4 /* MapKit.framework */; };
+		68C1BB6D1600DF2E005CD78E /* appicon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB6B1600DF2E005CD78E /* appicon-72.png */; };
+		68C1BB6E1600DF2E005CD78E /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB6C1600DF2E005CD78E /* appicon@2x.png */; };
+		68C1BB751600E122005CD78E /* appicon-small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB721600E122005CD78E /* appicon-small-50.png */; };
+		68C1BB761600E122005CD78E /* appicon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB731600E122005CD78E /* appicon-small.png */; };
+		68C1BB771600E122005CD78E /* appicon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB741600E122005CD78E /* appicon-small@2x.png */; };
 		D7E95B9A15A7D11B00606EBE /* PLWeakCompatibilityStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E95B9815A7D11B00606EBE /* PLWeakCompatibilityStubs.m */; };
 /* End PBXBuildFile section */
 
@@ -691,6 +696,11 @@
 		63EAD05C148EC78500524305 /* PopupTTWebController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupTTWebController.xib; path = Classes/PopupTTWebController.xib; sourceTree = "<group>"; };
 		63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		63F7858B14AC6E96009D6CE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		68C1BB6B1600DF2E005CD78E /* appicon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-72.png"; sourceTree = "<group>"; };
+		68C1BB6C1600DF2E005CD78E /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
+		68C1BB721600E122005CD78E /* appicon-small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-small-50.png"; sourceTree = "<group>"; };
+		68C1BB731600E122005CD78E /* appicon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-small.png"; sourceTree = "<group>"; };
+		68C1BB741600E122005CD78E /* appicon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-small@2x.png"; sourceTree = "<group>"; };
 		D7E95B9715A7D11B00606EBE /* PLWeakCompatibilityStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLWeakCompatibilityStubs.h; path = ../Libs/PLWeakCompatibilityStubs.h; sourceTree = "<group>"; };
 		D7E95B9815A7D11B00606EBE /* PLWeakCompatibilityStubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLWeakCompatibilityStubs.m; path = ../Libs/PLWeakCompatibilityStubs.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1042,6 +1052,11 @@
 		63DF2251148D2E490039A964 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				68C1BB721600E122005CD78E /* appicon-small-50.png */,
+				68C1BB731600E122005CD78E /* appicon-small.png */,
+				68C1BB741600E122005CD78E /* appicon-small@2x.png */,
+				68C1BB6B1600DF2E005CD78E /* appicon-72.png */,
+				68C1BB6C1600DF2E005CD78E /* appicon@2x.png */,
 				6386782114B469CC00075947 /* appicon.png */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				63DF2252148D2E490039A964 /* images */,
@@ -1660,6 +1675,11 @@
 				10AC72DE15D968C7006D9A44 /* cb_mono_on.png in Resources */,
 				10AC72DF15D968C7006D9A44 /* cb_mono_on@2x.png in Resources */,
 				1090EEC615E38753001F19A8 /* NoInternetViewController.xib in Resources */,
+				68C1BB6D1600DF2E005CD78E /* appicon-72.png in Resources */,
+				68C1BB6E1600DF2E005CD78E /* appicon@2x.png in Resources */,
+				68C1BB751600E122005CD78E /* appicon-small-50.png in Resources */,
+				68C1BB761600E122005CD78E /* appicon-small.png in Resources */,
+				68C1BB771600E122005CD78E /* appicon-small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
