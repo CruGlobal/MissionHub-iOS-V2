@@ -47,7 +47,11 @@
     // Do any additional setup after loading the view from its nib.
     TTDINFO(@"viewDidLoad");
 
-    fbWebView = [[UIWebView alloc] initWithFrame:CGRectMake(5, 5, 290, 420)];
+    if ([[UIDevice currentDevice].model hasPrefix:@"iPhone"]) {
+        fbWebView = [[UIWebView alloc] initWithFrame:CGRectMake(5, 5, 290, 420)];
+    } else {
+        fbWebView = [[UIWebView alloc] initWithFrame:CGRectMake(5, 5, 740, 970)];
+    }
     [fbWebView setBackgroundColor:[UIColor whiteColor]];
     [fbWebView setDelegate:self];
 
@@ -58,11 +62,20 @@
 
     // Adjust close button position
     CGRect btnFrame = closeBtn.frame;
-    btnFrame.origin.x = 260;
+    btnFrame.origin.x = 710;
     btnFrame.origin.y = 10;
     [closeBtn setFrame:btnFrame];
+    
+    if ([[UIDevice currentDevice].model hasPrefix:@"iPhone"]) {
+        btnFrame.origin.x = 260;
+    }      
 
-    fbWebViewContainer = [[TTView alloc] initWithFrame:CGRectMake(10, 10, 310, 440)];
+    if ([[UIDevice currentDevice].model hasPrefix:@"iPhone"]) {
+        fbWebViewContainer = [[TTView alloc] initWithFrame:CGRectMake(10, 10, 310, 440)];        
+    } else {
+        fbWebViewContainer = [[TTView alloc] initWithFrame:CGRectMake(10, 10, 760, 990)];        
+    }    
+
     fbWebViewContainer.style =  [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
                                [TTShadowStyle styleWithColor:RGBACOLOR(0,0,0,0.5) blur:5 offset:CGSizeMake(1, 1) next:
                                 [TTInsetStyle styleWithInset:UIEdgeInsetsMake(0.15, 0.15, 0.15, 0.5) next:

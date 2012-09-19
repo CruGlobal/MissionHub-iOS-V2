@@ -68,7 +68,11 @@
     self.tableView.tableHeaderView = _searchController.searchBar;    
 
     // Resize the table view
-    [self.tableView setFrame:CGRectMake(0, 40, 320, 391)];
+    if ([[UIDevice currentDevice].model hasPrefix:@"iPhone"]) {
+        [self.tableView setFrame:CGRectMake(0, 40, 320, 391)];
+    } else {
+        [self.tableView setFrame:CGRectMake(0, 60, 768, 905)];
+    }
 
     // Show action sheet on touch gesture
     UILongPressGestureRecognizer* gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];

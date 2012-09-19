@@ -42,23 +42,6 @@
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-
-    // Release any cached data, images, etc that aren't in use.
-}
-
 
 #pragma mark - View lifecycle
 
@@ -105,7 +88,7 @@
             profileImageView.layer.borderWidth = 2;
             [profileImageView setDelegate:  self];
             [[[self.view subviews] objectAtIndex:0] addSubview: profileImageView];
-
+            
             [placeHolderImageView setHidden: YES];
                 
         } else if([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
@@ -717,8 +700,7 @@
 
     [commentTextView resignFirstResponder];
     [commentTextView setText:@""];
-    [rejoicablesArray removeAllObjects];
-    self.statusSelected = @"";
+    [rejoicablesArray removeAllObjects];    
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"contactUpdated" object: nil ];
 }

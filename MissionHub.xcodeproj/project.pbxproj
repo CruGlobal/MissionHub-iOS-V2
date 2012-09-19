@@ -1980,17 +1980,18 @@
 					"$(ARCHS_STANDARD_32_BIT)",
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cru Global, Inc";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Campus Crusade for Christ Inc";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Campus Crusade for Christ Inc";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(inherited)";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"$(BUILT_PRODUCTS_DIR)/../three20",
-					"$(BUILT_PRODUCTS_DIR)/../../three20",
-					../three20/Build/Products/three20,
+					"$(BUILT_PRODUCTS_DIR)/../three20/**",
+					"$(BUILT_PRODUCTS_DIR)/../../three20/**",
+					"../three20/Build/Products/three20/**",
+					"/Users/davidang/Library/Developer/Xcode/DerivedData/MissionHub-fwohycceiydmmeaqcbwojrhwjupu/Build/Products/three20/**",
 				);
 				INFOPLIST_FILE = "MissionHub/MissionHub-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -2009,10 +2010,12 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8D2313DF-D662-46B8-8C9F-4E66415E89F3";
+				PROVISIONING_PROFILE = "7147D167-1506-4A67-9D0C-049A6B7AB07E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7147D167-1506-4A67-9D0C-049A6B7AB07E";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Ad Hoc";
@@ -2154,6 +2157,7 @@
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2196,6 +2200,7 @@
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
