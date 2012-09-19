@@ -39,6 +39,7 @@
 		10AC72DF15D968C7006D9A44 /* cb_mono_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AC72C615D968C7006D9A44 /* cb_mono_on@2x.png */; };
 		10AC72E015D968C7006D9A44 /* UIHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AC72C915D968C7006D9A44 /* UIHelpers.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		10AC72E115D968C7006D9A44 /* SSCheckBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AC72CB15D968C7006D9A44 /* SSCheckBoxView.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		10E9DD04160A41CA0099A3CC /* TipViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E9DD03160A41CA0099A3CC /* TipViewController_iPad.xib */; };
 		3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201088596B4756681693704 /* libThree20UICommon.a */; };
 		3206A0F794A6D7A3F259DBF5 /* libextThree20JSON+SBJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DD6AB9148EF0BE0087313E /* libextThree20JSON+SBJSON.a */; };
 		320A2827FEC940B25BC42C65 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; };
@@ -472,6 +473,7 @@
 		10AC72C915D968C7006D9A44 /* UIHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHelpers.m; sourceTree = "<group>"; };
 		10AC72CA15D968C7006D9A44 /* SSCheckBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCheckBoxView.h; sourceTree = "<group>"; };
 		10AC72CB15D968C7006D9A44 /* SSCheckBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCheckBoxView.m; sourceTree = "<group>"; };
+		10E9DD03160A41CA0099A3CC /* TipViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TipViewController_iPad.xib; path = Classes/TipViewController_iPad.xib; sourceTree = "<group>"; };
 		3201088596B4756681693700 /* Three20UICommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UICommon.xcodeproj; path = ../three20/src/Three20UICommon/Three20UICommon.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320A5A189C235877202780D0 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = ../three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -1016,6 +1018,7 @@
 				63B61B15148A58F400CBE54B /* MissionHubAppDelegate_iPad.h */,
 				63B61B16148A58F400CBE54B /* MissionHubAppDelegate_iPad.m */,
 				63B61B18148A58F400CBE54B /* MainWindow_iPad.xib */,
+				10E9DD03160A41CA0099A3CC /* TipViewController_iPad.xib */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -1680,6 +1683,7 @@
 				68C1BB751600E122005CD78E /* appicon-small-50.png in Resources */,
 				68C1BB761600E122005CD78E /* appicon-small.png in Resources */,
 				68C1BB771600E122005CD78E /* appicon-small@2x.png in Resources */,
+				10E9DD04160A41CA0099A3CC /* TipViewController_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
