@@ -12,10 +12,10 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<string>IBProxyObject</string>
 			<string>IBUIButton</string>
 			<string>IBUIImageView</string>
 			<string>IBUIView</string>
-			<string>IBProxyObject</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -59,7 +59,7 @@
 					<object class="IBUIImageView" id="1018655007">
 						<reference key="NSNextResponder" ref="325423361"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{100, 150}, {570, 206}}</string>
+						<string key="NSFrame">{{99, 209}, {570, 206}}</string>
 						<reference key="NSSuperview" ref="325423361"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="729606957"/>
@@ -116,7 +116,6 @@
 						<string key="NSFrame">{{1, 793}, {768, 211}}</string>
 						<reference key="NSSuperview" ref="325423361"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:222</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -319,7 +318,6 @@
 						<reference key="object" ref="325423361"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1018655007"/>
 							<reference ref="347897140"/>
 							<reference ref="491941780"/>
 							<reference ref="65881447"/>
@@ -327,6 +325,7 @@
 							<reference ref="489456091"/>
 							<reference ref="201333549"/>
 							<reference ref="729606957"/>
+							<reference ref="1018655007"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
