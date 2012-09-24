@@ -595,6 +595,9 @@
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == -1) {
+        return;
+    }
     NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
 
     [statusBtn setTitle: title forState:UIControlStateNormal];
