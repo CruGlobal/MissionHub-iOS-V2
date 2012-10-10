@@ -179,6 +179,8 @@
                }];}];
 }
 
+#pragma mark UIWebView delegates
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 
     NSURL* url = [request  URL];
@@ -255,6 +257,17 @@
     }
 
 }
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    NSLog(@"didFailLoadWithError: %d", [error code]);
+    
+    [self hideActivityLabel];
+
+    [[NiceAlertView alloc] initWithText:@"There was an error. Please check your internet connection and try again."];
+}
+
+
+#pragma mark TTURLRequest delegates
 
 - (void)requestDidStartLoad:(TTURLRequest*)request {
     NSLog(@"requestDidStartLoad: %@", request.urlPath);
