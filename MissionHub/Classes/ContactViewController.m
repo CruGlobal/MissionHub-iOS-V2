@@ -76,19 +76,36 @@
         [nameLbl setText:[personData objectForKey:@"name"]];
         
         NSString *gender = [personData objectForKey:@"gender"];
-        placeHolderImageView.layer.borderColor = [UIColor blackColor].CGColor;
-        placeHolderImageView.layer.borderWidth = 2;
+//        placeHolderImageView.layer.borderColor = [UIColor blackColor].CGColor;
+//        placeHolderImageView.layer.borderWidth = 2;
 
         // Set user's image
         NSString *picture = [self.personData objectForKey:@"picture"];
         if ([picture length] != 0) {
-            TTImageView* profileImageView = [[TTImageView alloc] initWithFrame:placeHolderImageView.frame];
-            profileImageView.urlPath = [NSString stringWithFormat:@"%@?type=large", picture];
-            profileImageView.layer.borderColor = [UIColor blackColor].CGColor;
-            profileImageView.layer.borderWidth = 2;
-            [profileImageView setDelegate:  self];
-            [[[self.view subviews] objectAtIndex:0] addSubview: profileImageView];
             
+            NSString *pictureUrl = [NSString stringWithFormat:@"%@?type=large", picture];
+            
+            TTImageView* profileImageView = [[TTImageView alloc] initWithFrame:placeHolderImageView.frame];
+            profileImageView.defaultImage = placeHolderImageView.imageView.image;
+
+            if([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
+                // replace male placeholder image when contact is a female
+               profileImageView.defaultImage = [UIImage imageNamed:@"facebook_female.gif"];
+            }
+            
+            profileImageView.contentMode = UIViewContentModeScaleAspectFit;
+            profileImageView.urlPath = pictureUrl;
+           [profileImageView setDelegate: self];
+//            profileImageView.layer.borderColor = [UIColor blackColor].CGColor;
+//            profileImageView.layer.borderWidth = 2;
+
+            [[[self.view subviews] objectAtIndex:0] addSubview: profileImageView];            
+//            if (profileImageView.image) {
+//                NSLog(@"exists: %f", profileImageView.image.size.width);
+//            } else{
+//                NSLog(@"NOT exists");
+//            }
+
             [placeHolderImageView setHidden: YES];
                 
         } else if([gender isKindOfClass:[NSString class]] && [gender isEqualToString:@"female"]) {
@@ -126,9 +143,29 @@
     [navigator.topViewController.navigationController setNavigationBarHidden:YES];
 }
 
+- (void)imageViewDidStartLoad:(TTImageView*)imageView {
+    NSLog(@"imageViewDidStartLoad frame width: %f, image: %f", imageView.frame.size.width, imageView.image.size.width);
+}
 
 - (void)imageView:(TTImageView*)imageView didLoadImage:(UIImage*)image {
-    NSLog(@"contact image loaded: %dx%d", image.size.width, image.size.height);          
+    NSLog(@"imageView didLoadImage frame width: %f, image: %f", imageView.frame.size.width, image.size.width);
+
+// Fit TTImageView frame to image
+//    CGFloat sx = imageView.frame.size.width / image.size.width;
+//    CGFloat sy = imageView.frame.size.height / image.size.height;
+//    
+//    CGFloat finalWidth = 0;
+//    CGFloat finalHeight = 0;
+//    
+//    if (image.size.width > imageView.frame.size.width) {
+//        CGFloat ratio = sx;
+//        finalHeight = image.size.height * ratio;
+//        finalWidth = image.size.width * ratio;
+//    }
+//    
+//    CGRect frame = imageView.frame;
+//    frame = CGRectMake(frame.origin.x, frame.origin.y, finalWidth, finalHeight);
+//    [imageView setFrame:frame];
 }
 
 - (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {
