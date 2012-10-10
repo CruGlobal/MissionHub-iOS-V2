@@ -25,7 +25,7 @@
     NSMutableString *nibName = [NSMutableString stringWithString:childClassName];
     if ([UIDevice instancesRespondToSelector:@selector(userInterfaceIdiom)]) {
         if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-            [nibName appendString:@"_ipad"];
+            [nibName appendString:@"_iPad"];
         }
     }
 
