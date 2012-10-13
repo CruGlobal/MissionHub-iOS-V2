@@ -290,16 +290,22 @@
     //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://nib/CreateContactViewController"]];
     //[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"mh://createContact"]];
 
-    QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
-    QSection *firstSection = [root getSectionForIndex:0];
-    QBooleanElement *genderElement = [firstSection.elements objectAtIndex:2];
-    genderElement.onImage = [UIImage imageNamed:@"gender-m.png"];
-    genderElement.offImage = [UIImage imageNamed:@"gender-f.png"];
+    BOOL atLeastIOS5 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0;
+    if (atLeastIOS5) {
+        
+        QRootElement *root =     [[QRootElement alloc] initWithJSONFile:@"createContact"];
+        QSection *firstSection = [root getSectionForIndex:0];
+        QBooleanElement *genderElement = [firstSection.elements objectAtIndex:2];
+        genderElement.onImage = [UIImage imageNamed:@"gender-m.png"];
+        genderElement.offImage = [UIImage imageNamed:@"gender-f.png"];
 
-    UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
-    navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController:)];;
+        UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
+        navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController:)];;
 
-    [self presentModalViewController:navigation animated:YES];
+        [self presentModalViewController:navigation animated:YES];
+    } else {
+        [[NiceAlertView alloc] initWithText:@"Unfortunately this feature is only supported on iOS version 5.0 and up."];
+    }
 }
 
 - (IBAction)onAssignBtn:(id)sender {
