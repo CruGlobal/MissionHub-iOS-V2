@@ -1991,6 +1991,7 @@
 				);
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8D2313DF-D662-46B8-8C9F-4E66415E89F3";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
 				VALIDATE_PRODUCT = YES;
@@ -2098,6 +2099,7 @@
 				);
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5653DF25-53C5-42E3-8290-11F908284137";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
 			};
@@ -2134,6 +2136,7 @@
 					"-ObjC",
 				);
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
 				VALIDATE_PRODUCT = YES;

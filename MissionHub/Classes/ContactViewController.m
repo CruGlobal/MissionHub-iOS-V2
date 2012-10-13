@@ -170,6 +170,7 @@
 
 - (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier {
     NSDictionary *result = aResult;
+    // If we're receiving the followup comments
     if ([aIdentifier isEqualToString:@"followup_comments"]) {
         [commentsArray removeAllObjects];
 
@@ -188,6 +189,8 @@
 
         [self hideActivityLabel];
     } else if ([aIdentifier isEqualToString:@"contacts"]) {
+        // we receive contact details
+        
         [infoArray removeAllObjects];
         [surveyArray removeAllObjects];
         
@@ -256,6 +259,7 @@
             statusSelected = [person objectForKey:@"status"];
             // capitalize first letter
             NSString *statusBtnTitle = [statusSelected stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[statusSelected  substringToIndex:1] capitalizedString]];
+            statusBtnTitle = [statusBtnTitle stringByReplacingOccurrencesOfString:@"_" withString:@" "];
             [statusBtn setTitle: statusBtnTitle forState:UIControlStateNormal];
         }
 

@@ -168,6 +168,9 @@
 //    NSLog(@"contact list datasource size: %d, search view datasource size: %d", ((ContactsListDataSource*)self.dataSource).contactList.dataArray.count,
 //          ((ContactsListDataSource*)self.searchViewController.dataSource).contactList.dataArray.count);
     isSearching = YES;
+
+    // for some reason this needs to be here else the touch won't get detected
+    _searchController.searchResultsTableView.delegate = self;
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
@@ -253,9 +256,9 @@
     }
 
     // for some reason this needs to be here else when user is coming back to this view the delegates won't be honored anymore
-    _searchController.searchResultsTableView.delegate = self;
-    _searchController.searchBar.placeholder = @"Enter a name to search";
-    _searchController.searchBar.delegate = self;
+//    _searchController.searchResultsTableView.delegate = self;
+//    _searchController.searchBar.placeholder = @"Enter a name to search";
+//    _searchController.searchBar.delegate = self;
 }
 
 - (void)viewDidUnload
