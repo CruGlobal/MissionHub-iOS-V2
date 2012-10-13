@@ -58,7 +58,7 @@
     [self.root fetchValueIntoObject:contact];
     
     if (contact.firstName == nil || [contact.firstName length] == 0) {
-        [[NiceAlertView alloc] initWithText: @"A First Name is required to create a contact."];
+        [NiceAlert showWithText: @"A First Name is required to create a contact."];
         return;
     }
     

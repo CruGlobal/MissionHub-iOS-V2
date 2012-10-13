@@ -185,7 +185,7 @@
     if ([result isKindOfClass:[NSDictionary class]]) {
         NSDictionary *error = [result objectForKey:@"error"];
         if (error) {
-            [[NiceAlertView alloc] initWithText: [error objectForKey:@"message"]];
+            [NiceAlert showWithText: [error objectForKey:@"message"]];
         } else {
             [self handleRequestResult: result identifier:request.userInfo];
         }

@@ -138,7 +138,7 @@
 
         [self makeHttpPutRequest:[NSString stringWithFormat:@"roles/%@", [person objectForKey:@"id"]] identifier:nil params:@"role=leader"];
 
-        [[NiceAlertView alloc] initWithText: [NSString stringWithFormat:@"%@ is now a leader", [person objectForKey:@"name"]]];
+        [NiceAlert showWithText:[NSString stringWithFormat:@"%@ is now a leader", [person objectForKey:@"name"]]];
 
     } else if ([title isEqualToString:@"Remove Leadership Role"]) {
 
@@ -151,7 +151,7 @@
         [self.dataSource invalidate:YES];
         [self reload];
 
-        [[NiceAlertView alloc] initWithText: [NSString stringWithFormat:@"You have removed %@ leadership's role", [person objectForKey:@"name"]]];
+        [NiceAlert showWithText:[NSString stringWithFormat:@"You have removed %@ leadership's role", [person objectForKey:@"name"]]];
     } else if ([title isEqualToString:@"Show Assigned Contacts"]) {
         NSMutableArray *leadersArray = ((LeadersListDataSource*)self.dataSource).leadersList.dataArray;
         NSDictionary *person = [leadersArray objectAtIndex:selectedIndexPath.row];
@@ -304,7 +304,7 @@
 
         [self presentModalViewController:navigation animated:YES];
     } else {
-        [[NiceAlertView alloc] initWithText:@"Unfortunately this feature is only supported on iOS version 5.0 and up."];
+        [NiceAlert showWithText:@"Unfortunately this feature is only supported on iOS version 5.0 and up."];
     }
 }
 
@@ -319,7 +319,7 @@
             }
         }
         if (selectedCount == 0) {
-            [[NiceAlertView alloc] initWithText:@"Please mark at least 1 contact to assign to a new leader."];
+            [NiceAlert showWithText:@"Please mark at least 1 contact to assign to a new leader."];
             return;
         }
 

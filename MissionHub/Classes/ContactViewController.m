@@ -443,16 +443,16 @@
             NSLog(@"Result: canceled");
             break;
         case MFMailComposeResultSaved:
-            [[NiceAlertView alloc] initWithText:@"Your email has been saved."];
+            [NiceAlert showWithText:@"Your email has been saved."];
             break;
         case MFMailComposeResultSent:
-            [[NiceAlertView alloc] initWithText:@"Your email has been sent."];
+            [NiceAlert showWithText:@"Your email has been sent."];
             break;
         case MFMailComposeResultFailed:
-            [[NiceAlertView alloc] initWithText:@"We failed to deliver you remail, can you try again?"];
+            [NiceAlert showWithText:@"We failed to deliver you remail, can you try again?"];
             break;
         default:
-            [[NiceAlertView alloc] initWithText:@"We are unable to deliver your email. Please try other means to send email to this person."];
+            [NiceAlert showWithText:@"We are unable to deliver your email. Please try other means to send email to this person."];
             break;
     }
     [self dismissModalViewControllerAnimated:YES];
@@ -470,13 +470,13 @@
             NSLog(@"Result: SMS sending canceled");
             break;
         case MessageComposeResultSent:
-            [[NiceAlertView alloc] initWithText:@"Your SMS has been sent"];
+            [NiceAlert showWithText:@"Your SMS has been sent"];
             break;
         case MessageComposeResultFailed:
-            [[NiceAlertView alloc] initWithText:@"We failed to deliver your SMS, can you try again?"];
+            [NiceAlert showWithText:@"We failed to deliver your SMS, can you try again?"];
             break;
         default:
-            [[NiceAlertView alloc] initWithText:@"We are unable to deliver your SMS. Please try other means to send SMS to this person."];
+            [NiceAlert showWithText:@"We are unable to deliver your SMS. Please try other means to send SMS to this person."];
             break;
     }
     [self dismissModalViewControllerAnimated:YES];
@@ -504,7 +504,7 @@
     if (phoneNo) {
         [[UIApplication sharedApplication] openURL:telURL];
     } else {
-        [[NiceAlertView alloc] initWithText:@"This contact does not have number to call to."];
+        [NiceAlert showWithText:@"This contact does not have number to call to."];
     }
 }
 
@@ -522,14 +522,14 @@
                 [self displaySMSComposerSheet];
             }
             else {  
-                [[NiceAlertView alloc] initWithText:@"Your device is not configured to send SMS. No SIM card?"];
+                [NiceAlert showWithText:@"Your device is not configured to send SMS. No SIM card?"];
             }
         }
         else {
-            [[NiceAlertView alloc] initWithText:@"Your device is not configured to send SMS."];
+            [NiceAlert showWithText:@"Your device is not configured to send SMS."];
         }
     } else {
-        [[NiceAlertView alloc] initWithText:@"This contact does not have number to send a text message to."];
+        [NiceAlert showWithText:@"This contact does not have number to send a text message to."];
 
     }
 }
@@ -551,14 +551,14 @@
                 [self displayMailComposerSheet];
             }
             else {
-                [[NiceAlertView alloc] initWithText:@"Please configure your device mail settings first before you can send email."];
+                [NiceAlert showWithText:@"Please configure your device mail settings first before you can send email."];
             }
         }
         else {
-            [[NiceAlertView alloc] initWithText:@"This device cannot send email."];
+            [NiceAlert showWithText:@"This device cannot send email."];
         }
     } else {
-        [[NiceAlertView alloc] initWithText:@"This contact does not have an email address to send email to."];
+        [NiceAlert showWithText:@"This contact does not have an email address to send email to."];
     }
 }
 

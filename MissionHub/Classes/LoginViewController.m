@@ -263,7 +263,7 @@
     
     [self hideActivityLabel];
 
-    [[NiceAlertView alloc] initWithText:@"There was an error. Please check your internet connection and try again."];
+    [NiceAlert showWithText:@"There was an error. Please check your internet connection and try again."];
 }
 
 
@@ -297,7 +297,7 @@
         // check for error (eg, permission denied)
         if (error) {
             NSString *msg = [error objectForKey:@"message"];
-            [[NiceAlertView alloc] initWithText:msg];
+            [NiceAlert showWithText:msg];
         } else {
             // After user logs in through FB.
             if (accessToken) {
