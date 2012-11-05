@@ -60,8 +60,6 @@
 		63486A7314F4F863005EF6CF /* ContactsListSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 63486A7214F4F862005EF6CF /* ContactsListSearchDataSource.m */; };
 		634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6314CA917400D63948 /* LeaderSelectionViewController.m */; };
 		634F6A6714CAA19600D63948 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F6A6614CAA19600D63948 /* TableViewController.m */; };
-		63505AFA14DDB0540050B73F /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63505AF914DDB0540050B73F /* libGoogleAnalytics.a */; };
-		63505AFD14DDB1EF0050B73F /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 63505AFC14DDB1EF0050B73F /* EasyTracker.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		63505AFF14DDB27C0050B73F /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63505AFE14DDB27C0050B73F /* EasyTracker.plist */; };
 		63505B0114DDB4F70050B73F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63505B0014DDB4F70050B73F /* libsqlite3.dylib */; };
 		63505B0314DDB5220050B73F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63505B0214DDB5220050B73F /* CFNetwork.framework */; };
@@ -220,6 +218,9 @@
 		63F7858814AC6E18009D6CE4 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63957E3014AAB6CB00ABA6F9 /* libQuickDialog.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		63F7858A14AC6E6C009D6CE4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		63F7858C14AC6E96009D6CE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858B14AC6E96009D6CE4 /* MapKit.framework */; };
+		6804581916483A1D00EAD2EF /* configStage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6804581816483A1D00EAD2EF /* configStage.plist */; };
+		6859C974162F89EF00554167 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6859C972162F89EF00554167 /* EasyTracker.m */; };
+		6859C975162F89EF00554167 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6859C973162F89EF00554167 /* libGoogleAnalytics.a */; };
 		68C1BB6D1600DF2E005CD78E /* appicon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB6B1600DF2E005CD78E /* appicon-72.png */; };
 		68C1BB6E1600DF2E005CD78E /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB6C1600DF2E005CD78E /* appicon@2x.png */; };
 		68C1BB751600E122005CD78E /* appicon-small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB721600E122005CD78E /* appicon-small-50.png */; };
@@ -500,9 +501,6 @@
 		634F6A6514CAA19500D63948 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		634F6A6614CAA19600D63948 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		63505AF814DDB02D0050B73F /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = Libs/GANTracker.h; sourceTree = "<group>"; };
-		63505AF914DDB0540050B73F /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = MissionHub/Libs/libGoogleAnalytics.a; sourceTree = "<group>"; };
-		63505AFB14DDB1EF0050B73F /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = Libs/EasyTracker.h; sourceTree = "<group>"; };
-		63505AFC14DDB1EF0050B73F /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = Libs/EasyTracker.m; sourceTree = "<group>"; };
 		63505AFE14DDB27C0050B73F /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
 		63505B0014DDB4F70050B73F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		63505B0214DDB5220050B73F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -698,6 +696,10 @@
 		63EAD05C148EC78500524305 /* PopupTTWebController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopupTTWebController.xib; path = Classes/PopupTTWebController.xib; sourceTree = "<group>"; };
 		63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		63F7858B14AC6E96009D6CE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6804581816483A1D00EAD2EF /* configStage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configStage.plist; sourceTree = "<group>"; };
+		6859C971162F89EF00554167 /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = Libs/EasyTracker.h; sourceTree = "<group>"; };
+		6859C972162F89EF00554167 /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = Libs/EasyTracker.m; sourceTree = "<group>"; };
+		6859C973162F89EF00554167 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libs/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		68C1BB6B1600DF2E005CD78E /* appicon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-72.png"; sourceTree = "<group>"; };
 		68C1BB6C1600DF2E005CD78E /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
 		68C1BB721600E122005CD78E /* appicon-small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-small-50.png"; sourceTree = "<group>"; };
@@ -716,7 +718,6 @@
 				63486A1014F24C59005EF6CF /* MessageUI.framework in Frameworks */,
 				63505B0314DDB5220050B73F /* CFNetwork.framework in Frameworks */,
 				63505B0114DDB4F70050B73F /* libsqlite3.dylib in Frameworks */,
-				63505AFA14DDB0540050B73F /* libGoogleAnalytics.a in Frameworks */,
 				63F7858C14AC6E96009D6CE4 /* MapKit.framework in Frameworks */,
 				63F7858A14AC6E6C009D6CE4 /* CoreLocation.framework in Frameworks */,
 				63F7858814AC6E18009D6CE4 /* libQuickDialog.a in Frameworks */,
@@ -732,6 +733,7 @@
 				63B61AFC148A58F400CBE54B /* UIKit.framework in Frameworks */,
 				63B61AFE148A58F400CBE54B /* Foundation.framework in Frameworks */,
 				63B61B00148A58F400CBE54B /* CoreGraphics.framework in Frameworks */,
+				6859C975162F89EF00554167 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,7 +942,6 @@
 				320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */,
 				320A5A189C235877202780D0 /* Three20Network.xcodeproj */,
 				320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */,
-				63505AF914DDB0540050B73F /* libGoogleAnalytics.a */,
 				63F7858B14AC6E96009D6CE4 /* MapKit.framework */,
 				63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */,
 				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
@@ -979,6 +980,7 @@
 				63B61B09148A58F400CBE54B /* MissionHub-Prefix.pch */,
 				6386778A14B2DCAF00075947 /* configDev.plist */,
 				63EAD050148EB74A00524305 /* config.plist */,
+				6804581816483A1D00EAD2EF /* configStage.plist */,
 				63DE0A5514ACE0B500F50B8D /* createContact.json */,
 				10AC726515D95C9D006D9A44 /* tips.plist */,
 			);
@@ -1247,12 +1249,13 @@
 		63E02D53149278D500BC2DEF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				6859C971162F89EF00554167 /* EasyTracker.h */,
+				6859C972162F89EF00554167 /* EasyTracker.m */,
+				6859C973162F89EF00554167 /* libGoogleAnalytics.a */,
 				10AC72B115D968C7006D9A44 /* SSCheckBoxView */,
 				10AC725815D9483A006D9A44 /* MJPopupViewController */,
 				1090EEBC15E355EE001F19A8 /* Reachability.h */,
 				1090EEBD15E355EE001F19A8 /* Reachability.m */,
-				63505AFB14DDB1EF0050B73F /* EasyTracker.h */,
-				63505AFC14DDB1EF0050B73F /* EasyTracker.m */,
 				63505AF814DDB02D0050B73F /* GANTracker.h */,
 				63E02D54149278DF00BC2DEF /* HJCacheClasses */,
 			);
@@ -1684,6 +1687,7 @@
 				68C1BB761600E122005CD78E /* appicon-small.png in Resources */,
 				68C1BB771600E122005CD78E /* appicon-small@2x.png in Resources */,
 				10E9DD04160A41CA0099A3CC /* TipViewController_iPad.xib in Resources */,
+				6804581916483A1D00EAD2EF /* configStage.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1755,7 +1759,6 @@
 				63E040DC14C743A9006859BF /* LeadersListDataSource.m in Sources */,
 				634F6A6414CA917400D63948 /* LeaderSelectionViewController.m in Sources */,
 				634F6A6714CAA19600D63948 /* TableViewController.m in Sources */,
-				63505AFD14DDB1EF0050B73F /* EasyTracker.m in Sources */,
 				63486A6D14F4F134005EF6CF /* BaseDataSource.m in Sources */,
 				63486A7014F4F3E4005EF6CF /* BaseSearchDataSource.m in Sources */,
 				63486A7314F4F863005EF6CF /* ContactsListSearchDataSource.m in Sources */,
@@ -1766,6 +1769,7 @@
 				10AC72E015D968C7006D9A44 /* UIHelpers.m in Sources */,
 				10AC72E115D968C7006D9A44 /* SSCheckBoxView.m in Sources */,
 				1090EEC515E38753001F19A8 /* NoInternetViewController.m in Sources */,
+				6859C974162F89EF00554167 /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2005,7 +2009,7 @@
 					"$(ARCHS_STANDARD_32_BIT)",
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Campus Crusade for Christ Inc";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Campus Crusade for Christ Inc";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
@@ -2035,12 +2039,13 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7147D167-1506-4A67-9D0C-049A6B7AB07E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7147D167-1506-4A67-9D0C-049A6B7AB07E";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E676A915-A947-40BB-AEB1-FA9CC3711CD8";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Ad Hoc";
@@ -2151,8 +2156,8 @@
 					armv6,
 				);
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Campus Crusade for Christ Inc";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Campus Crusade for Christ Inc";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MissionHub/MissionHub-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -2180,12 +2185,13 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "673A0A51-8A55-4CA0-B357-5BCC1D45188F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "673A0A51-8A55-4CA0-B357-5BCC1D45188F";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2230,6 +2236,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/QuickDialog/**";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

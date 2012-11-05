@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>base_url</key>
+	<string>http://stage.missionhub.com</string>
+	<key>oauth_url</key>
+	<string>https://stage.missionhub.com/oauth</string>
+	<key>oauth_client_id</key>
+	<string>5</string>
+	<key>oauth_client_secret</key>
+	<string>a47326052ee47060847acc7a8bbdc587f6ba5dac70d2be82b6a1a4761037b3c8</string>
+	<key>oauth_scope</key>
+	<string>userinfo,contacts,contact_assignment,followup_comments,roles</string>
+	<key>api_url</key>
+	<string>https://stage.missionhub.com/api/v2</string>
+	<key>cache</key>
+	<dict>
+		<key>disable</key>
+		<true/>
+		<key>cache_expiration_interval</key>
+		<integer>15</integer>
+	</dict>
+</dict>
+</plist>

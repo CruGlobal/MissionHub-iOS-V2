@@ -459,7 +459,7 @@ static EasyTracker *sSharedTracker = nil;
 
   return nil;
 }
-
+/*
 - (id)retain {
   return self;
 }
@@ -474,7 +474,7 @@ static EasyTracker *sSharedTracker = nil;
 - (id)autorelease {
   return self;
 }
-
+*/
 - (id)copyWithZone:(NSZone *)zone {
   return self;
 }
