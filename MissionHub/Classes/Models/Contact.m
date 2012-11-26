@@ -41,8 +41,8 @@
     [self makeHttpRequest:@"contacts"
                identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys:
                 [NSDictionary dictionaryWithObjectsAndKeys:
-                 self.firstName, @"firstName",
-                 self.lastName, @"lastName",
+                 self.firstName, @"first_name",
+                 self.lastName, @"last_name",
                  self.gender, @"gender",
                  [NSDictionary dictionaryWithObjectsAndKeys: self.email, @"email", @"1", @"primary", nil], @"email_address",
                  [NSDictionary dictionaryWithObjectsAndKeys: self.phone, @"number", @"1", @"primary", nil], @"phone_number",
