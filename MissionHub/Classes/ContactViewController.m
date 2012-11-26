@@ -565,7 +565,7 @@
 
 - (IBAction)onAssignBtn:(id)sender {
     UIButton *btn = (UIButton *)sender;
-    if ([btn.currentTitle isEqualToString:@"Assign"]) {
+    if ([btn.currentTitle isEqualToString:@"Assign To Me"]) {
         [self makeHttpRequest:@"contact_assignments.json" identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys:
                                                                                           CurrentUser.userId, @"assign_to_id",
                                                                                           @"leader", @"type",
@@ -574,7 +574,7 @@
     } else {
         [self makeHttpRequest:[NSString stringWithFormat:@"contact_assignments/%@.json", [self.personData objectForKey:@"id"]]
                    identifier:@"assign" postData: [NSDictionary dictionaryWithObjectsAndKeys: @"delete", @"_method", [self.personData objectForKey:@"id"], @"ids", nil]];
-        [btn setTitle:@"Assign" forState:UIControlStateNormal];
+        [btn setTitle:@"Assign To Me" forState:UIControlStateNormal];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"contactUpdated" object: nil ];
