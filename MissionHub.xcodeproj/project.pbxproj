@@ -907,9 +907,6 @@
 		63B61AEC148A58F400CBE54B = {
 			isa = PBXGroup;
 			children = (
-				1090EEBF15E36F30001F19A8 /* SystemConfiguration.framework */,
-				63486A0F14F24C59005EF6CF /* MessageUI.framework */,
-				63505B0214DDB5220050B73F /* CFNetwork.framework */,
 				63505B0014DDB4F70050B73F /* libsqlite3.dylib */,
 				63B61B01148A58F400CBE54B /* MissionHub */,
 				63B61B28148A58F400CBE54B /* MissionHubTests */,
@@ -941,6 +938,9 @@
 				320A5A189C235877202780D0 /* Three20Network.xcodeproj */,
 				320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */,
 				63505AF914DDB0540050B73F /* libGoogleAnalytics.a */,
+				1090EEBF15E36F30001F19A8 /* SystemConfiguration.framework */,
+				63486A0F14F24C59005EF6CF /* MessageUI.framework */,
+				63505B0214DDB5220050B73F /* CFNetwork.framework */,
 				63F7858B14AC6E96009D6CE4 /* MapKit.framework */,
 				63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */,
 				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
