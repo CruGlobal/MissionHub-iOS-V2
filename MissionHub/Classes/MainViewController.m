@@ -84,16 +84,13 @@
 - (IBAction)onSurveyBtn:(id)sender {
 
     NSString *baseUrl = [[AppDelegate config] objectForKey:@"base_url"];
-    NSString *orgId = @"604";
-
-    NSString *surveysUrl = [NSString stringWithFormat:@"%@/surveys?access_token=%@&org_id", baseUrl, CurrentUser.accessToken, orgId];
+    NSString *surveysUrl = [NSString stringWithFormat:@"%@/surveys?access_token=%@&org_id=%@", baseUrl, CurrentUser.accessToken, CurrentUser.orgId];
 
     NSLog(@"%@", surveysUrl);
     TTOpenURL(surveysUrl);
 
     TTNavigator *navigator = [TTNavigator navigator];
     [navigator.topViewController.navigationController setNavigationBarHidden:NO];
-
 }
 
 
