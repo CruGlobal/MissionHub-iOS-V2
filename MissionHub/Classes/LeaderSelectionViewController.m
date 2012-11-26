@@ -51,14 +51,23 @@
     // the user clicked one of the OK/Cancel buttons
     if (buttonIndex == 1)
     {
+        // Go back to the contact listing
         ContactsViewController *contactsViewController = (ContactsViewController *)[[TTNavigator navigator] viewControllerForURL:@"mh://nib/ContactsViewController"];
         ContactsListDataSource *contactsListDataSource = contactsViewController.dataSource;
         
+        // Find out which contacts has been selected to assign
         for (TTTableSubtitleItem *item in contactsListDataSource.items) {
             NSDictionary *userInfo = item.userInfo;
             if ([[userInfo objectForKey:@"checked"] intValue] == 1) {
-                NSString *params = [NSString stringWithFormat:@"id=%@&type=leader&assign_to_id=%@", [userInfo objectForKey:@"id"], leaderId];
-                [self makeHttpPostRequest:@"contact_assignments" identifier:@"contact_assignments" postString: params];
+//                NSString *params = [NSString stringWithFormat:@"id=%@&type=leader&assign_to_id=%@", [userInfo objectForKey:@"id"], leaderId];
+                //[self makeHttpRequest:@"contact_assignments" params:params identifier:@"contact_assignments"];
+                
+                NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [userInfo objectForKey:@"id"], @"id",
+                                        leaderId, @"assign_to_id",
+                                        @"leader", @"type", nil];
+                
+                [self makeHttpPostRequest:@"contact_assignments" identifier:@"contact_assignments" postData: params];
             }
         }
         
