@@ -41,7 +41,7 @@
     NSString *params = nil;
 
     if (filterSegmentedControl.selectedSegmentIndex == 1) {
-        params = @"filters[status]=completed";
+        params = [NSString stringWithFormat:@"filters[status]=completed&filters[assigned_to]=%@", CurrentUser.userId];
     } else if (filterSegmentedControl.selectedSegmentIndex == 2) {
         params = @"filters[assigned_to]=none";
     } else if (filterSegmentedControl.selectedSegmentIndex == 0) {
@@ -65,7 +65,7 @@
     BaseSearchRequestModel *model = ((ContactsListSearchDataSource*)self.searchViewController.dataSource).model;
     [model setFilter: [NSString stringWithFormat: @"assigned_to=%@", CurrentUser.userId]];
     
-    self.tableView.tableHeaderView = _searchController.searchBar;    
+    self.tableView.tableHeaderView = _searchController.searchBar;
 
     // Resize the table view
     if ([[UIDevice currentDevice].model hasPrefix:@"iPhone"]) {
@@ -371,14 +371,14 @@
     
     self.searchViewController.dataSource = [[ContactsListSearchDataSource alloc] init];
     _searchController.searchResultsTableView.delegate = self;
-    BaseSearchRequestModel *model = ((ContactsListSearchDataSource*)self.searchViewController.dataSource).model;    
+    BaseSearchRequestModel *model = ((ContactsListSearchDataSource*)self.searchViewController.dataSource).model;
     
     if (segmentedControl.selectedSegmentIndex == 1) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[status]=completed", CurrentUser.userId]];
-        [model setFilter: @"filters[status]=completed"];
+        [model setFilter: [NSString stringWithFormat:@"filters=status&values=completed"]];
     } else if (segmentedControl.selectedSegmentIndex == 2) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=none", CurrentUser.userId]];
-        [model setFilter: @"filters[status]=none"];
+        [model setFilter: @"assigned_to=none"];
     } else if (segmentedControl.selectedSegmentIndex == 0) {
         ds = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", CurrentUser.userId]];
         [model setFilter: [NSString stringWithFormat: @"assigned_to=%@", CurrentUser.userId]];
@@ -389,8 +389,10 @@
 
     if (ld == nil) {
         self.dataSource = ds;
+        self.tableView.tableHeaderView = _searchController.searchBar;
     } else {
         self.dataSource = ld;
+        self.tableView.tableHeaderView = nil;
     }
 
 }
