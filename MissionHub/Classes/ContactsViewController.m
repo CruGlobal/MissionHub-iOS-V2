@@ -116,10 +116,12 @@
                                                                     otherButtonTitles:@"Promote to Leader", @"Cancel", nil];
                     [statusSheet showInView:self.view];
                 } else {
-                    // leaders listing
-                    UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Action" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
-                                                                    otherButtonTitles:@"Show Assigned Contacts", @"Remove Leadership Role", @"Cancel", nil];
-                    [statusSheet showInView:self.view];
+                    if ([self.dataSource isKindOfClass:[LeadersListDataSource class]]) {
+                        // leaders listing
+                        UIActionSheet *statusSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Action" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
+                                                                        otherButtonTitles:@"Show Assigned Contacts", @"Remove Leadership Role", @"Cancel", nil];
+                        [statusSheet showInView:self.view];
+                    }
                 }
             }
         } else if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -153,9 +155,10 @@
 
         [NiceAlert showWithText:[NSString stringWithFormat:@"You have removed %@ leadership's role", [person objectForKey:@"name"]]];
     } else if ([title isEqualToString:@"Show Assigned Contacts"]) {
+        // Fetch selected leader
         NSMutableArray *leadersArray = ((LeadersListDataSource*)self.dataSource).leadersList.dataArray;
         NSDictionary *person = [leadersArray objectAtIndex:selectedIndexPath.row];
-        // show leader listing
+        // show contacts listing assigned to this leader
         self.dataSource = [[ContactsListDataSource alloc] initWithParams:[NSString stringWithFormat:@"filters[assigned_to]=%@", [person objectForKey: @"id"]]];
     }
 }
