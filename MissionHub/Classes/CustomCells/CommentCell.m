@@ -66,13 +66,13 @@
     // rejoicables
     for (NSDictionary *rejoicable in rejoicables) {
         if ([[rejoicable objectForKey:@"what"] isEqualToString:@"gospel_presentation"]) {
-            [(UIImageView *)[self viewWithTag:8] setHidden:NO];
+            [(UIImageView *)[self viewWithTag:6] setHidden:NO];
         }
         if ([[rejoicable objectForKey:@"what"] isEqualToString:@"prayed_to_receive"]) {
             [(UIImageView *)[self viewWithTag:7] setHidden:NO];
         }
         if ([[rejoicable objectForKey:@"what"] isEqualToString:@"spiritual_conversation"]) {
-            [(UIImageView *)[self viewWithTag:6] setHidden:NO];
+            [(UIImageView *)[self viewWithTag:8] setHidden:NO];
 
         }
     }

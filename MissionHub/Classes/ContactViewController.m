@@ -577,7 +577,7 @@
         [btn setTitle:@"Assign" forState:UIControlStateNormal];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"contactUpdated" object: nil ];    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"contactUpdated" object: nil ];
 }
 
 - (IBAction)onShowRejoicablesBtn:(id)sender {
@@ -680,9 +680,6 @@
                                                                                       CurrentUser.userId, @"commenter_id",
                                                                                       commentTextView.text, @"comment",
                                                                                       [self.personData objectForKey:@"id"], @"contact_id", nil]];
-
-
-
     // unselect all rejoicable buttons
     for(UIView *subview in [rejoicablesView subviews]) {
        if([subview isKindOfClass:[UIButton class]]) {
