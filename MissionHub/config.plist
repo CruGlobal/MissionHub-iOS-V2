@@ -13,7 +13,7 @@
 	<key>oauth_scope</key>
 	<string>userinfo,contacts,contact_assignment,followup_comments,roles</string>
 	<key>api_url</key>
-	<string>https://www.missionhub.com/api/v2</string>
+	<string>https://www.missionhub.com/apis/v3</string>
 	<key>cache</key>
 	<dict>
 		<key>disable</key>

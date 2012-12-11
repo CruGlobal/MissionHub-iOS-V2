@@ -221,6 +221,17 @@
 		6804581916483A1D00EAD2EF /* configStage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6804581816483A1D00EAD2EF /* configStage.plist */; };
 		6859C974162F89EF00554167 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6859C972162F89EF00554167 /* EasyTracker.m */; };
 		6859C975162F89EF00554167 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6859C973162F89EF00554167 /* libGoogleAnalytics.a */; };
+		68AC77141676678B0041C174 /* MHAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC77121676678B0041C174 /* MHAPI.m */; };
+		68AC7717167667E90041C174 /* MHAPIUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC7716167667E90041C174 /* MHAPIUnitTest.m */; };
+		68AC771E167674040041C174 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61B21148A58F400CBE54B /* SenTestingKit.framework */; };
+		68AC771F167674040041C174 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFB148A58F400CBE54B /* UIKit.framework */; };
+		68AC7720167674040041C174 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B61AFD148A58F400CBE54B /* Foundation.framework */; };
+		68AC7726167674040041C174 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68AC7724167674040041C174 /* InfoPlist.strings */; };
+		68AC7729167674040041C174 /* MHAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC7728167674040041C174 /* MHAPITests.m */; };
+		68AC7733167675230041C174 /* MHAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC77121676678B0041C174 /* MHAPI.m */; };
+		68AC7734167675230041C174 /* MHAPIUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC7716167667E90041C174 /* MHAPIUnitTest.m */; };
+		68AC7737167683430041C174 /* MHConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC7736167683430041C174 /* MHConfiguration.m */; };
+		68AC773816768CFD0041C174 /* MHConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC7736167683430041C174 /* MHConfiguration.m */; };
 		68C1BB6D1600DF2E005CD78E /* appicon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB6B1600DF2E005CD78E /* appicon-72.png */; };
 		68C1BB6E1600DF2E005CD78E /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB6C1600DF2E005CD78E /* appicon@2x.png */; };
 		68C1BB751600E122005CD78E /* appicon-small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB721600E122005CD78E /* appicon-small-50.png */; };
@@ -700,6 +711,18 @@
 		6859C971162F89EF00554167 /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = Libs/EasyTracker.h; sourceTree = "<group>"; };
 		6859C972162F89EF00554167 /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = Libs/EasyTracker.m; sourceTree = "<group>"; };
 		6859C973162F89EF00554167 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libs/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		68AC77111676678B0041C174 /* MHAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAPI.h; sourceTree = "<group>"; };
+		68AC77121676678B0041C174 /* MHAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAPI.m; sourceTree = "<group>"; };
+		68AC7715167667E90041C174 /* MHAPIUnitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAPIUnitTest.h; sourceTree = "<group>"; };
+		68AC7716167667E90041C174 /* MHAPIUnitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAPIUnitTest.m; sourceTree = "<group>"; };
+		68AC771D167674040041C174 /* MHAPITests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MHAPITests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68AC7723167674040041C174 /* MHAPITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MHAPITests-Info.plist"; sourceTree = "<group>"; };
+		68AC7725167674040041C174 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		68AC7727167674040041C174 /* MHAPITests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHAPITests.h; sourceTree = "<group>"; };
+		68AC7728167674040041C174 /* MHAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAPITests.m; sourceTree = "<group>"; };
+		68AC772A167674040041C174 /* MHAPITests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MHAPITests-Prefix.pch"; sourceTree = "<group>"; };
+		68AC7735167683430041C174 /* MHConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHConfiguration.h; sourceTree = "<group>"; };
+		68AC7736167683430041C174 /* MHConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHConfiguration.m; sourceTree = "<group>"; };
 		68C1BB6B1600DF2E005CD78E /* appicon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-72.png"; sourceTree = "<group>"; };
 		68C1BB6C1600DF2E005CD78E /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
 		68C1BB721600E122005CD78E /* appicon-small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-small-50.png"; sourceTree = "<group>"; };
@@ -745,6 +768,16 @@
 				63B61B23148A58F400CBE54B /* UIKit.framework in Frameworks */,
 				63B61B24148A58F400CBE54B /* Foundation.framework in Frameworks */,
 				63B61B25148A58F400CBE54B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68AC7719167674040041C174 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68AC771E167674040041C174 /* SenTestingKit.framework in Frameworks */,
+				68AC771F167674040041C174 /* UIKit.framework in Frameworks */,
+				68AC7720167674040041C174 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,6 +945,7 @@
 				63505B0014DDB4F70050B73F /* libsqlite3.dylib */,
 				63B61B01148A58F400CBE54B /* MissionHub */,
 				63B61B28148A58F400CBE54B /* MissionHubTests */,
+				68AC7721167674040041C174 /* MHAPITests */,
 				63B61AFA148A58F400CBE54B /* Frameworks */,
 				63B61AF8148A58F400CBE54B /* Products */,
 				63D681D814BF1D2F001864AB /* MissionHub copy-Info.plist */,
@@ -923,6 +957,7 @@
 			children = (
 				63B61AF7148A58F400CBE54B /* MissionHub.app */,
 				63B61B20148A58F400CBE54B /* MissionHubTests.octest */,
+				68AC771D167674040041C174 /* MHAPITests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1185,6 +1220,7 @@
 		63DF2318148D471D0039A964 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				68AC770F1676678B0041C174 /* MissionHub-API */,
 				63E02D3E1492603300BC2DEF /* Models */,
 				6386781D14B43BF700075947 /* Utilities */,
 				636793C31496A5EB00B52C74 /* CustomCells */,
@@ -1290,6 +1326,55 @@
 			path = Libs/HJCacheClasses;
 			sourceTree = "<group>";
 		};
+		68AC770F1676678B0041C174 /* MissionHub-API */ = {
+			isa = PBXGroup;
+			children = (
+				68AC77101676678B0041C174 /* Classes */,
+				68AC77131676678B0041C174 /* Tests */,
+			);
+			path = "MissionHub-API";
+			sourceTree = "<group>";
+		};
+		68AC77101676678B0041C174 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				68AC77111676678B0041C174 /* MHAPI.h */,
+				68AC77121676678B0041C174 /* MHAPI.m */,
+				68AC7735167683430041C174 /* MHConfiguration.h */,
+				68AC7736167683430041C174 /* MHConfiguration.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		68AC77131676678B0041C174 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				68AC7715167667E90041C174 /* MHAPIUnitTest.h */,
+				68AC7716167667E90041C174 /* MHAPIUnitTest.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		68AC7721167674040041C174 /* MHAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				68AC7727167674040041C174 /* MHAPITests.h */,
+				68AC7728167674040041C174 /* MHAPITests.m */,
+				68AC7722167674040041C174 /* Supporting Files */,
+			);
+			path = MHAPITests;
+			sourceTree = "<group>";
+		};
+		68AC7722167674040041C174 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68AC7723167674040041C174 /* MHAPITests-Info.plist */,
+				68AC7724167674040041C174 /* InfoPlist.strings */,
+				68AC772A167674040041C174 /* MHAPITests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1336,6 +1421,24 @@
 			name = MissionHubTests;
 			productName = MissionHubTests;
 			productReference = 63B61B20148A58F400CBE54B /* MissionHubTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		68AC771C167674040041C174 /* MHAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68AC772B167674040041C174 /* Build configuration list for PBXNativeTarget "MHAPITests" */;
+			buildPhases = (
+				68AC7718167674040041C174 /* Sources */,
+				68AC7719167674040041C174 /* Frameworks */,
+				68AC771A167674040041C174 /* Resources */,
+				68AC771B167674040041C174 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MHAPITests;
+			productName = MHAPITests;
+			productReference = 68AC771D167674040041C174 /* MHAPITests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -1398,6 +1501,7 @@
 			targets = (
 				63B61AF6148A58F400CBE54B /* MissionHub */,
 				63B61B1F148A58F400CBE54B /* MissionHubTests */,
+				68AC771C167674040041C174 /* MHAPITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1700,10 +1804,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		68AC771A167674040041C174 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68AC7726167674040041C174 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		63B61B1E148A58F400CBE54B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		68AC771B167674040041C174 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1770,6 +1895,8 @@
 				10AC72E115D968C7006D9A44 /* SSCheckBoxView.m in Sources */,
 				1090EEC515E38753001F19A8 /* NoInternetViewController.m in Sources */,
 				6859C974162F89EF00554167 /* EasyTracker.m in Sources */,
+				68AC77141676678B0041C174 /* MHAPI.m in Sources */,
+				68AC7737167683430041C174 /* MHConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1779,6 +1906,18 @@
 			files = (
 				63B61B31148A58F500CBE54B /* MissionHubTests.m in Sources */,
 				1090EEBE15E355EE001F19A8 /* Reachability.m in Sources */,
+				68AC7717167667E90041C174 /* MHAPIUnitTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68AC7718167674040041C174 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68AC773816768CFD0041C174 /* MHConfiguration.m in Sources */,
+				68AC7733167675230041C174 /* MHAPI.m in Sources */,
+				68AC7734167675230041C174 /* MHAPIUnitTest.m in Sources */,
+				68AC7729167674040041C174 /* MHAPITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1956,6 +2095,14 @@
 				63E02D3B14902BBA00BC2DEF /* en */,
 			);
 			name = ContactViewController.xib;
+			sourceTree = "<group>";
+		};
+		68AC7724167674040041C174 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68AC7725167674040041C174 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2277,6 +2424,77 @@
 			};
 			name = Release;
 		};
+		68AC772C167674040041C174 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MHAPITests/MHAPITests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "MHAPITests/MHAPITests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		68AC772D167674040041C174 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MHAPITests/MHAPITests-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "MHAPITests/MHAPITests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		68AC772E167674040041C174 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MHAPITests/MHAPITests-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "MHAPITests/MHAPITests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Ad Hoc";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2306,6 +2524,16 @@
 				63B61B38148A58F500CBE54B /* Debug */,
 				63B61B39148A58F500CBE54B /* Release */,
 				6328333F14A8ED2100C82449 /* Ad Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68AC772B167674040041C174 /* Build configuration list for PBXNativeTarget "MHAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68AC772C167674040041C174 /* Debug */,
+				68AC772D167674040041C174 /* Release */,
+				68AC772E167674040041C174 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

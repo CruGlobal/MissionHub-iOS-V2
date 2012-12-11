@@ -36,9 +36,7 @@
     [EasyTracker launchWithOptions:launchOptions withParameters:nil withError:nil];
     
     // Load config into an NSDictionary
-    NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSString *finalPath = [path stringByAppendingPathComponent:@"config.plist"];
-    config = [NSDictionary dictionaryWithContentsOfFile:finalPath];
+    config = [MHConfiguration sharedInstance];
     
     //self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     //self.window.rootViewController = self.loginViewController;
@@ -46,7 +44,7 @@
     TTNavigator *navigator = [TTNavigator navigator];
     [navigator setSupportsShakeToReload:YES];
     [navigator setPersistenceMode:TTNavigatorPersistenceModeAll];
-    [navigator setWindow: self.window];
+    [navigator setWindow: self.window]; // Hello from adam!
 
     TTURLMap *map = navigator.URLMap;
  

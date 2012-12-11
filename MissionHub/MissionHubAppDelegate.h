@@ -10,6 +10,7 @@
 
 #import <extThree20JSON/extThree20JSON.h>
 #import "User.h"
+#import "MHConfiguration.h"
 
 //@class LoginViewController;
 
@@ -25,7 +26,7 @@
 -(void)reachabilityChanged:(NSNotification*)note;
 
 @property (nonatomic, retain) HJObjManager * imageManager;
-@property (nonatomic, retain) NSDictionary *config;
+@property (nonatomic, retain) MHConfiguration *config;
 @property (nonatomic, retain) NSString *accessToken;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
