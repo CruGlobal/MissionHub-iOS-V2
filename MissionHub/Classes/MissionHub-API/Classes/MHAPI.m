@@ -7,8 +7,6 @@
 //
 
 #import "MHAPI.h"
-#import "MHConfiguration.h"
-#import "Three20/Three20+Additions.h"
 
 @implementation MHAPI
 
@@ -26,9 +24,8 @@ static MHAPI* _sharedMHAPI = nil;
 	
 }
 
--(NSString *)buildURLWith:(MHAPIEndpointType)endpoint method:(MHAPIMethodType)method secret:(NSString *)secret params:(NSDictionary *)params error:(NSError **)error {
+-(NSString *)buildURLWith:(NSString *)baseUrl endpoint:(MHAPIEndpointType)endpoint method:(MHAPIMethodType)method secret:(NSString *)secret params:(NSDictionary *)params error:(NSError **)error {
 	
-	NSString			*baseUrl	= [[MHConfiguration sharedInstance] objectForKey:@"api_url"];
 	NSString			*requestUrl	= [baseUrl stringByAppendingFormat:@"/%@", endpoint];
 	NSString			*contentType= nil;
 	NSString			*httpMethod	= @"GET";
@@ -47,7 +44,7 @@ static MHAPI* _sharedMHAPI = nil;
 	
 	//add secret to parameters for url contruction
 	[parameters setObject:secret forKey:@"secret"];
-	NSLog(@"%@", [MHConfiguration sharedInstance]);
+	
 	switch (method) {
 		
 		case MHAPIMethodType_index:

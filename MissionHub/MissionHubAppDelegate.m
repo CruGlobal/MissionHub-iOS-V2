@@ -36,7 +36,9 @@
     [EasyTracker launchWithOptions:launchOptions withParameters:nil withError:nil];
     
     // Load config into an NSDictionary
-    config = [MHConfiguration sharedInstance];
+	NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSString *finalPath = [path stringByAppendingPathComponent:@"config.plist"];
+    config = [NSDictionary dictionaryWithContentsOfFile:finalPath];
     
     //self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     //self.window.rootViewController = self.loginViewController;

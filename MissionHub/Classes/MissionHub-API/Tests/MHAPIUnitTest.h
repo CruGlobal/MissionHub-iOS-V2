@@ -10,4 +10,6 @@
 
 @interface MHAPIUnitTest : SenTestCase
 
+@property (nonatomic, retain) NSDictionary *config;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+MHAdditions.h"
 
 enum {
 	MHAPIMethodType_index,
@@ -32,6 +33,6 @@ typedef NSString * MHAPIEndpointType;
 @interface MHAPI : NSObject
 
 +(MHAPI*)sharedInstance;
--(NSString *)buildURLWith:(MHAPIEndpointType)endpoint method:(MHAPIMethodType)method secret:(NSString *)secret params:(NSDictionary *)params error:(NSError **)error;
+-(NSString *)buildURLWith:(NSString *)baseUrl endpoint:(MHAPIEndpointType)endpoint method:(MHAPIMethodType)method secret:(NSString *)secret params:(NSDictionary *)params error:(NSError **)error;
 
 @end

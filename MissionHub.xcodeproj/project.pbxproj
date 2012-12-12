@@ -219,6 +219,9 @@
 		63F7858A14AC6E6C009D6CE4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		63F7858C14AC6E96009D6CE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63F7858B14AC6E96009D6CE4 /* MapKit.framework */; };
 		6804581916483A1D00EAD2EF /* configStage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6804581816483A1D00EAD2EF /* configStage.plist */; };
+		681FFFF41678DAE9008A5E14 /* NSString+MHAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 681FFFF31678DAE8008A5E14 /* NSString+MHAdditions.m */; };
+		681FFFF51678DAE9008A5E14 /* NSString+MHAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 681FFFF31678DAE8008A5E14 /* NSString+MHAdditions.m */; };
+		681FFFF61678DAE9008A5E14 /* NSString+MHAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 681FFFF31678DAE8008A5E14 /* NSString+MHAdditions.m */; };
 		6859C974162F89EF00554167 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6859C972162F89EF00554167 /* EasyTracker.m */; };
 		6859C975162F89EF00554167 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6859C973162F89EF00554167 /* libGoogleAnalytics.a */; };
 		68AC77141676678B0041C174 /* MHAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC77121676678B0041C174 /* MHAPI.m */; };
@@ -230,8 +233,6 @@
 		68AC7729167674040041C174 /* MHAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC7728167674040041C174 /* MHAPITests.m */; };
 		68AC7733167675230041C174 /* MHAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC77121676678B0041C174 /* MHAPI.m */; };
 		68AC7734167675230041C174 /* MHAPIUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC7716167667E90041C174 /* MHAPIUnitTest.m */; };
-		68AC7737167683430041C174 /* MHConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC7736167683430041C174 /* MHConfiguration.m */; };
-		68AC773816768CFD0041C174 /* MHConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AC7736167683430041C174 /* MHConfiguration.m */; };
 		68C1BB6D1600DF2E005CD78E /* appicon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB6B1600DF2E005CD78E /* appicon-72.png */; };
 		68C1BB6E1600DF2E005CD78E /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB6C1600DF2E005CD78E /* appicon@2x.png */; };
 		68C1BB751600E122005CD78E /* appicon-small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB721600E122005CD78E /* appicon-small-50.png */; };
@@ -708,6 +709,8 @@
 		63F7858914AC6E6C009D6CE4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		63F7858B14AC6E96009D6CE4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6804581816483A1D00EAD2EF /* configStage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configStage.plist; sourceTree = "<group>"; };
+		681FFFF21678DAE8008A5E14 /* NSString+MHAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MHAdditions.h"; sourceTree = "<group>"; };
+		681FFFF31678DAE8008A5E14 /* NSString+MHAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MHAdditions.m"; sourceTree = "<group>"; };
 		6859C971162F89EF00554167 /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = Libs/EasyTracker.h; sourceTree = "<group>"; };
 		6859C972162F89EF00554167 /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = Libs/EasyTracker.m; sourceTree = "<group>"; };
 		6859C973162F89EF00554167 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libs/libGoogleAnalytics.a; sourceTree = "<group>"; };
@@ -721,8 +724,6 @@
 		68AC7727167674040041C174 /* MHAPITests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHAPITests.h; sourceTree = "<group>"; };
 		68AC7728167674040041C174 /* MHAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAPITests.m; sourceTree = "<group>"; };
 		68AC772A167674040041C174 /* MHAPITests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MHAPITests-Prefix.pch"; sourceTree = "<group>"; };
-		68AC7735167683430041C174 /* MHConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHConfiguration.h; sourceTree = "<group>"; };
-		68AC7736167683430041C174 /* MHConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHConfiguration.m; sourceTree = "<group>"; };
 		68C1BB6B1600DF2E005CD78E /* appicon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-72.png"; sourceTree = "<group>"; };
 		68C1BB6C1600DF2E005CD78E /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
 		68C1BB721600E122005CD78E /* appicon-small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-small-50.png"; sourceTree = "<group>"; };
@@ -1340,8 +1341,8 @@
 			children = (
 				68AC77111676678B0041C174 /* MHAPI.h */,
 				68AC77121676678B0041C174 /* MHAPI.m */,
-				68AC7735167683430041C174 /* MHConfiguration.h */,
-				68AC7736167683430041C174 /* MHConfiguration.m */,
+				681FFFF21678DAE8008A5E14 /* NSString+MHAdditions.h */,
+				681FFFF31678DAE8008A5E14 /* NSString+MHAdditions.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1896,7 +1897,7 @@
 				1090EEC515E38753001F19A8 /* NoInternetViewController.m in Sources */,
 				6859C974162F89EF00554167 /* EasyTracker.m in Sources */,
 				68AC77141676678B0041C174 /* MHAPI.m in Sources */,
-				68AC7737167683430041C174 /* MHConfiguration.m in Sources */,
+				681FFFF41678DAE9008A5E14 /* NSString+MHAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1907,6 +1908,7 @@
 				63B61B31148A58F500CBE54B /* MissionHubTests.m in Sources */,
 				1090EEBE15E355EE001F19A8 /* Reachability.m in Sources */,
 				68AC7717167667E90041C174 /* MHAPIUnitTest.m in Sources */,
+				681FFFF51678DAE9008A5E14 /* NSString+MHAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1914,10 +1916,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68AC773816768CFD0041C174 /* MHConfiguration.m in Sources */,
 				68AC7733167675230041C174 /* MHAPI.m in Sources */,
 				68AC7734167675230041C174 /* MHAPIUnitTest.m in Sources */,
 				68AC7729167674040041C174 /* MHAPITests.m in Sources */,
+				681FFFF61678DAE9008A5E14 /* NSString+MHAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

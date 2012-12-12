@@ -8,12 +8,15 @@
 
 #import "MHAPIUnitTest.h"
 #import "MHAPI.h"
-#import "MHConfiguration.h"
+#import "NSString+MHAdditions.h"
 
 @implementation MHAPIUnitTest
 
+@synthesize config;
+
 - (void)setUp {
     [super setUp];
+	
     
 }
 
@@ -23,20 +26,22 @@
     [super tearDown];
 }
 
-- (void)testBuildURL {
+- (void)testBuildURLShowRequest {
 	
-	NSString			*baseUrl	= [[MHConfiguration sharedInstance] objectForKey:@"api_url"];
+	NSString			*baseUrl	= @"https://www.missionhub.com/apis/v3";
 	MHAPI				*api		= [MHAPI sharedInstance];
 	NSError				*error;
-	NSMutableDictionary	*showParams		= [NSMutableDictionary dictionaryWithObjects: [NSArray arrayWithObjects:@"questions,keyword",@"2",@"5", @"created_at", nil]
+	NSMutableDictionary	*showParams	= [NSMutableDictionary dictionaryWithObjects: [NSArray arrayWithObjects:@"questions,keyword",@"2",@"5", @"created_at", nil]
 																	  forKeys: [NSArray arrayWithObjects:@"include", @"limit", @"offset", @"order", nil]
 								   ];
+	NSString			*result		= [api buildURLWith:baseUrl endpoint:MHAPIEndpointType_surveys method:MHAPIMethodType_index secret:@"my_secret" params:showParams error:&error];
 	
-	NSLog(@"%@", [api buildURLWith:MHAPIEndpointType_surveys method:MHAPIMethodType_index secret:@"my_secret" params:showParams error:&error]);
-	NSLog(@"%@", [error localizedDescription]);
-	STAssertTrue([[api buildURLWith:MHAPIEndpointType_surveys method:MHAPIMethodType_index secret:@"my_secret" params:showParams error:&error]
-				  isEqualToString:[baseUrl stringByAppendingString:@"/surveys/?secret=my_secret&include=questions,keyword&limit=2&offset=5&order=created_at"]],
-				 @"Show request not building correctly");
+	STAssertTrue([result containsSubstring: baseUrl],						@"Show request - base url not added correctly");
+	STAssertTrue([result containsSubstring: @"/surveys?"],					@"Show request - Endpoint not added correctly");
+	STAssertTrue([result containsSubstring: @"&include=questions,keyword"],	@"Show request - include param not added correctly");
+	STAssertTrue([result containsSubstring: @"&limit=2"],					@"Show request - include param not added correctly");
+	STAssertTrue([result containsSubstring: @"&offset=5"],					@"Show request - include param not added correctly");
+	STAssertTrue([result containsSubstring: @"&order=created_at"],			@"Show request - include param not added correctly");
 }
 
 @end
