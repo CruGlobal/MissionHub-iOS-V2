@@ -124,7 +124,7 @@
         // set the assign button
         NSDictionary *assignment = [self.personData objectForKey:@"assignment"];
         if ([[assignment objectForKey:@"person_assigned_to"] count] == 0) {
-            [assignBtn setTitle: @"Assign" forState:UIControlStateNormal];
+            [assignBtn setTitle: @"Assign To Me" forState:UIControlStateNormal];
         }
 
         [self showActivityLabel:NO];
