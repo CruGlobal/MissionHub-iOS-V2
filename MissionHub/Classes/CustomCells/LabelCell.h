@@ -10,4 +10,6 @@
 
 @interface LabelCell : UITableViewCell
 
+- (void)setData:(NSDictionary *)data;
+
 @end

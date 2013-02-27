@@ -7,20 +7,29 @@
 //
 
 #import "ContactViewController.h"
+#import "NoInternetViewController.h"
 #import "HJManagedImageV.h"
 #import "CommentCell.h"
 #import "SimpleCell.h"
+#import "LabelCell.h"
 
 @implementation ContactViewController
 
+@synthesize labelSelectorViewController;
+@synthesize shouldRefresh;
+@synthesize shouldRefreshLabels;
 @synthesize personData;
+@synthesize personData_v3;
 @synthesize nameLbl;
 @synthesize tableView;
 @synthesize commentsArray;
 @synthesize infoArray;
 @synthesize surveyArray;
+@synthesize labelArray;
+@synthesize rolesForOrganization;
 @synthesize simpleCell;
 @synthesize commentCell;
+@synthesize labelCell;
 @synthesize segmentedControl;
 @synthesize placeHolderImageView;
 @synthesize commentTextView;
@@ -32,12 +41,11 @@
 @synthesize imagePicker;
 @synthesize email;
 @synthesize phoneNo;
-@synthesize shouldRefresh;
 @synthesize facebookBtn;
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
     if (self = [super init]){
-        self.personData =[query objectForKey:@"personData"];
+        self.personData						= [query objectForKey:@"personData"];
     }
     return self;
 }
@@ -47,14 +55,19 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+	
+	self.labelSelectorViewController			= [[MHLabelSelectorViewController alloc] initWithNibName:@"MHLabelSelectorViewController" bundle:nil];
+	self.labelSelectorViewController.delegate	= self;
 
     commentsArray = [[NSMutableArray alloc] initWithCapacity:10];
     infoArray = [[NSMutableArray alloc] initWithCapacity:10];
     surveyArray = [[NSMutableArray alloc] initWithCapacity:10];
     rejoicablesArray = [[NSMutableArray alloc] initWithCapacity:3];
+	labelArray = [[NSMutableArray alloc] initWithCapacity:10];
+	rolesForOrganization = [[MHRolesCollection alloc] initWithArray:nil];
 
     imagePicker = [[UIImagePickerController alloc] init];
-    [imagePicker setAllowsImageEditing:YES];
+    [imagePicker setAllowsEditing:YES];
     [imagePicker setDelegate:self];
 
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES) {
@@ -65,6 +78,7 @@
     }
 
     shouldRefresh = YES;
+	shouldRefreshLabels = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -112,9 +126,11 @@
             // replace male placeholder image when contact is a female
             placeHolderImageView.imageView.image = [UIImage imageNamed:@"facebook_female.gif"];
         }
-
+		
+		[self makeAPIv3Request:@"roles" params:@"" identifier:@"roles"];
         [self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];
         [self makeHttpRequest:[NSString stringWithFormat:@"contacts/%@.json", [self.personData objectForKey:@"id"]] identifier:@"contacts"];
+		[self makeAPIv3Request:[NSString stringWithFormat:@"people/%@", [self.personData objectForKey:@"id"]] params:@"include=organizational_roles" identifier:@"organizational_roles"];
 
         // tuck away the rejoicable selection
         CGRect frame = self.rejoicablesView.frame;
@@ -282,10 +298,72 @@
             }
         }
 
-    } else if ([aIdentifier isEqualToString:@"onSaveBtn"]) {
+    } else if ([aIdentifier isEqualToString:@"roles"]) {
+		
+		[rolesForOrganization removeAll];
+		
+		NSMutableArray *roles = [result objectForKey:@"roles"];
+		[rolesForOrganization updateWithArray:roles];
+		
+		if (shouldRefreshLabels) {
+			
+			NSArray *orgRolesArray = [personData_v3 objectForKey:@"organizational_roles"];
+			NSDictionary *role;
+			for (NSDictionary *dict in orgRolesArray) {
+				
+				role = [rolesForOrganization roleWithID:[[dict objectForKey:@"role_id"] integerValue]];
+				
+				[labelArray addObject:role];
+				
+			}
+			
+		}
+		
+		[self.labelSelectorViewController updateRoles:rolesForOrganization];
+		
+	} else if ([aIdentifier isEqualToString:@"organizational_roles"]) {
+		
+		[labelArray removeAllObjects];
+		
+		MHRolesCollection *selectedRolesCollection = [[MHRolesCollection alloc] initWithArray:[NSMutableArray array]];
+		personData_v3 = [result objectForKey:@"person"];
+		
+		NSArray *orgRolesArray = [personData_v3 objectForKey:@"organizational_roles"];
+		NSDictionary *role;
+		for (NSDictionary *dict in orgRolesArray) {
+			
+			role = [rolesForOrganization roleWithID:[[dict objectForKey:@"role_id"] integerValue]];
+			
+			if (role != nil) {
+				[labelArray addObject:role];
+				[selectedRolesCollection addRole:role];
+			}
+			
+		}
+		
+		[self.labelSelectorViewController updateSelectedRoles:selectedRolesCollection];
+		shouldRefreshLabels = YES;
+		
+	} else if ([aIdentifier isEqualToString:@"onSaveBtn"]) {
+		
         //[self makeHttpRequest:[NSString stringWithFormat:@"followup_comments/%@.json", [self.personData objectForKey:@"id"]] identifier:@"followup_comments"];
+		
+    } else if ([aIdentifier isEqualToString:@"apply_roles"]) {
+		
+		[self hideActivityLabel];
+        [self makeAPIv3Request:[NSString stringWithFormat:@"people/%@", [self.personData objectForKey:@"id"]] params:@"include=organizational_roles" identifier:@"organizational_roles"];
+		
     }
     [tableView reloadData];
+}
+
+-(void)request:(TTURLRequest *)request didFailLoadWithError:(NSError *)error {
+	
+	[self hideActivityLabel];
+	
+	NoInternetViewController *noInternetViewController = [[NoInternetViewController alloc] initWithNibName:@"FailedRequest" bundle:nil];
+	[self presentPopupViewController:noInternetViewController animationType:MJPopupViewAnimationFade];
+	
 }
 
 - (void)viewDidUnload
@@ -333,21 +411,24 @@
         return [infoArray count];
     } else if (segmentedControl.selectedSegmentIndex == 2) {
         return [surveyArray count];
+    } else if (segmentedControl.selectedSegmentIndex == 3) {
+        return [labelArray count];
     }
 
     return [commentsArray count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+- (UITableViewCell *)tableView:(UITableView *)atableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString *CellIdentifier = @"CommentCell";
     static NSString *CellIdentifier2 = @"SimpleCell";
+    static NSString *CellIdentifier3 = @"LabelCell";
 
     UITableViewCell *cell = nil;
 
     // Dequeue or create a cell of the appropriate type.
     if (segmentedControl.selectedSegmentIndex == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell = [atableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             [[NSBundle mainBundle] loadNibNamed:@"CommentCell" owner:self options:nil];
             cell = commentCell;
@@ -359,7 +440,7 @@
     }
 
     if (segmentedControl.selectedSegmentIndex == 1 || segmentedControl.selectedSegmentIndex == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        cell = [atableView dequeueReusableCellWithIdentifier:CellIdentifier2];
         if (cell == nil) {
             [[NSBundle mainBundle] loadNibNamed:@"SimpleCell" owner:self options:nil];
             cell = simpleCell;
@@ -373,6 +454,19 @@
         }
         [(SimpleCell*)cell setData: tempDict];
     }
+	
+	if (segmentedControl.selectedSegmentIndex == 3) {
+        cell = [atableView dequeueReusableCellWithIdentifier:CellIdentifier3];
+        if (cell == nil) {
+            [[NSBundle mainBundle] loadNibNamed:@"LabelCell" owner:self options:nil];
+            cell = labelCell;
+            self.labelCell = nil;
+        }
+        NSDictionary *tempDict = nil;
+        tempDict = [labelArray objectAtIndex: indexPath.row];
+        [(LabelCell*)cell setData: tempDict];
+    }
+	
     // Configure the cell.
     //cell.textLabel.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
     return cell;
@@ -483,6 +577,45 @@
 }
 
 
+#pragma mark - MHLabelSelectorDelegate
+
+
+- (void)addLabels:(NSArray *)addLabels removeLabels:(NSArray *)removeLabels {
+	
+	NSString *listOfRolesToAdd = @"", *listOfRolesToRemove = @"";
+	
+	for (NSNumber *labelID in addLabels) {
+		
+		listOfRolesToAdd = [listOfRolesToAdd stringByAppendingFormat:@"%@,", [labelID stringValue]];
+		
+	}
+	
+	//remove last comma
+	if ( [listOfRolesToAdd length] > 0) {
+		listOfRolesToAdd = [listOfRolesToAdd substringToIndex:[listOfRolesToAdd length] - 1];
+	}
+	
+	for (NSNumber *labelID in removeLabels) {
+		
+		listOfRolesToRemove = [listOfRolesToRemove stringByAppendingFormat:@"%@,", [labelID stringValue]];
+		
+	}
+	
+	//remove last comma
+	if ( [listOfRolesToRemove length] > 0) {
+		listOfRolesToRemove = [listOfRolesToRemove substringToIndex:[listOfRolesToRemove length] - 1];
+	}
+	
+	NSMutableDictionary *postData	= [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+									   [self.personData objectForKey:@"id"], @"filters[ids]",
+									   listOfRolesToAdd, @"add_roles",
+									   listOfRolesToRemove, @"remove_roles",
+									   nil];
+	
+	[self makeAPIv3Request:@"organizational_roles/bulk" identifier:@"apply_roles" postData:postData];
+	[self showActivityLabel:NO];
+	
+}
 
 
 #pragma mark - button events
@@ -562,6 +695,11 @@
     }
 }
 
+- (IBAction)onLabelBtn:(id)sender {
+	
+	[self presentModalViewController:self.labelSelectorViewController animated:YES];
+	
+}
 
 - (IBAction)onAssignBtn:(id)sender {
     UIButton *btn = (UIButton *)sender;

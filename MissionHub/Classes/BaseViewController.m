@@ -134,6 +134,106 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void) makeAPIv3Request:(NSString *)path params:(NSString*)aParams identifier:(NSString*)aIdentifier {
+    NSString *baseUrl = @"https://www.missionhub.com/apis/v3";
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?%@&organization_id=%@&access_token=%@", baseUrl, path, aParams, CurrentUser.orgId, CurrentUser.accessToken];
+    NSLog(@"making API v3 http GET request: %@", requestUrl);
+	
+    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+    request.userInfo = aIdentifier;
+    request.cachePolicy = TTURLRequestCachePolicyNone;
+    request.response = [[TTURLJSONResponse alloc] init];
+    [request send];
+}
+
+- (void) makeAPIv3Request:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData {
+	/*
+    NSString *baseUrl = @"https://www.missionhub.com/apis/v3";
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?organization_id=%@&access_token=%@&", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
+    
+	NSMutableString* postStr = [NSMutableString string];
+    for (NSString *key in aPostData) {
+        NSString *value = [aPostData objectForKey: key];
+        [postStr appendString:[NSString stringWithFormat:@"%@=%@&", key, value]];
+    }
+	
+	//remove last &
+	if ( [postStr length] > 0) {
+		[postStr deleteCharactersInRange:NSMakeRange([postStr length]-1, 1)];
+	}
+	
+	requestUrl = [requestUrl stringByAppendingString:postStr];
+	
+	NSLog(@"making http POST request: %@", requestUrl);
+	
+    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+    request.userInfo = aIdentifier;
+    request.response = [[TTURLJSONResponse alloc] init];
+    request.httpMethod = @"POST";
+    request.cachePolicy = TTURLRequestCachePolicyNone;
+    request.contentType = @"application/json";
+	*/
+	
+	NSString *baseUrl = @"https://www.missionhub.com/apis/v3";
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?organization_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
+	
+	NSLog(@"making http POST request: %@", requestUrl);
+	
+	TTURLRequest* request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+	request.httpMethod = @"POST";
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
+	request.response = [[TTURLJSONResponse alloc] init];
+	
+	SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+	NSString* json = [jsonWriter stringWithObject:aPostData];
+	NSData *jsonData = [NSData dataWithBytes:[json UTF8String] length:[json length]];
+	[request setHttpBody:jsonData];
+	
+	NSLog(@"   post params: %@", json);
+	
+	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+	[request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-Length"];
+	
+	[request send];
+	
+	/*
+    NSMutableString* postStr = [NSMutableString stringWithString:@"{"];
+    for (NSString *key in aPostData) {
+        
+		NSString *value = [aPostData objectForKey: key];
+        
+		[postStr appendString:[NSString stringWithFormat:@"\"%@\":", key]];
+		
+		if ([value isKindOfClass:[NSNumber class]]) {
+		
+			[postStr appendString:[NSString stringWithFormat:@"%@,", value]];
+		
+		} else {
+			
+			[postStr appendString:[NSString stringWithFormat:@"\"%@\",", value]];
+			
+		}
+		
+        [request.parameters setObject:value forKey:key];
+    }
+	
+	//remove last ,
+	if ( [postStr length] > 0) {
+		[postStr deleteCharactersInRange:NSMakeRange([postStr length]-1, 1)];
+	}
+	
+	[postStr appendString:@"}"];
+	
+	
+    NSLog(@"   post params: %@", postStr);
+    NSData *postData = [ NSData dataWithBytes: [ postStr UTF8String ] length: [ postStr length ] ];
+    request.httpBody = postData;
+	*/
+	
+    [request send];
+}
+
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier {
     [self makeHttpRequest:path params:@"" identifier:aIdentifier];
 }
@@ -169,6 +269,7 @@
 
         [request.parameters setObject:value forKey:key];
     }
+	
     NSLog(@"   post params: %@", postStr);
     NSData *postData = [ NSData dataWithBytes: [ postStr UTF8String ] length: [ postStr length ] ];
     request.httpBody = postData;

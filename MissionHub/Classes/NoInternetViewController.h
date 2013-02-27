@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+MJPopupViewController.h"
 
 @interface NoInternetViewController : UIViewController
 

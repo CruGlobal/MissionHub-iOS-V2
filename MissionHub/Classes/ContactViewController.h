@@ -10,19 +10,28 @@
 #import <MessageUI/MFMailComposeViewController.h>
 
 #import "BaseViewController.h"
+#import "MHRolesCollection.h"
+#import "MHLabelSelectorViewController.h"
 
 @class CommentCell;
 @class SimpleCell;
+@class LabelCell;
 
 @interface ContactViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, 
 UIImagePickerControllerDelegate, UINavigationControllerDelegate, 
-MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
+MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate, TTImageViewDelegate, MHLabelSelectorDelegate>
+
+@property (nonatomic, retain) MHLabelSelectorViewController *labelSelectorViewController;
 
 @property (nonatomic, assign) BOOL shouldRefresh;
+@property (nonatomic, assign) BOOL shouldRefreshLabels;
 @property (nonatomic, retain) NSDictionary *personData;
+@property (nonatomic, retain) NSDictionary *personData_v3;
 @property (nonatomic, retain) NSMutableArray *commentsArray;
 @property (nonatomic, retain) NSMutableArray *infoArray;
 @property (nonatomic, retain) NSMutableArray *surveyArray;
+@property (nonatomic, retain) NSMutableArray *labelArray;
+@property (nonatomic, retain) MHRolesCollection *rolesForOrganization;
 @property (nonatomic, retain) NSMutableArray *rejoicablesArray;
 @property (nonatomic, retain) NSString *statusSelected;
 @property (nonatomic, retain) UIImagePickerController *imagePicker;
@@ -36,6 +45,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) IBOutlet SimpleCell *simpleCell;
 @property (nonatomic, assign) IBOutlet CommentCell *commentCell;
+@property (nonatomic, assign) IBOutlet LabelCell *labelCell;
 @property (nonatomic, assign) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, assign) IBOutlet UITextView *commentTextView;
 @property (nonatomic, assign) IBOutlet UIView *rejoicablesView;
@@ -60,6 +70,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 - (IBAction)onSmsBtn:(id)sender;
 - (IBAction)onEmailBtn:(id)sender;
 - (IBAction)onAssignBtn:(id)sender;
+- (IBAction)onLabelBtn:(id)sender;
 - (IBAction)onShowRejoicablesBtn:(id)sender;
 - (IBAction)onStatusBtn:(id)sender;
 - (IBAction)onSaveBtn:(id)sender;

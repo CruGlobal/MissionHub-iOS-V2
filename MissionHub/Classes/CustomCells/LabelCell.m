@@ -26,4 +26,12 @@
     // Configure the view for the selected state
 }
 
+- (void)setData:(NSDictionary *)data {
+    UILabel *label;
+	
+    label = (UILabel *)[self viewWithTag:1];
+    label.text = [NSString stringWithFormat:@"%@", [data objectForKey:@"name"]];
+	
+}
+
 @end

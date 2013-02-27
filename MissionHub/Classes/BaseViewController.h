@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "MissionHubAppDelegate.h"
 
-@interface BaseViewController : UIViewController<TTURLRequestDelegate>
+@interface BaseViewController : UIViewController <TTURLRequestDelegate>
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier;
 - (void) makeHttpRequest:(NSString *)path params:(NSString*)aParams identifier:(NSString*)aIdentifier;
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData;
+- (void) makeAPIv3Request:(NSString *)path params:(NSString*)aParams identifier:(NSString*)aIdentifier;
+- (void) makeAPIv3Request:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData;
 
 // Override these methods on child classes for specifics
 - (void) handleRequestResult:(NSDictionary *)aResult identifier:(NSString*)aIdentifier;
