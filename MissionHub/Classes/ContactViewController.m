@@ -606,14 +606,18 @@
 		listOfRolesToRemove = [listOfRolesToRemove substringToIndex:[listOfRolesToRemove length] - 1];
 	}
 	
-	NSMutableDictionary *postData	= [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-									   [self.personData objectForKey:@"id"], @"filters[ids]",
-									   listOfRolesToAdd, @"add_roles",
-									   listOfRolesToRemove, @"remove_roles",
-									   nil];
-	
-	[self makeAPIv3Request:@"organizational_roles/bulk" identifier:@"apply_roles" postData:postData];
-	[self showActivityLabel:NO];
+	if ([listOfRolesToAdd length] > 0 || [listOfRolesToRemove length] > 0) {
+		
+		NSMutableDictionary *postData	= [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+										   [NSMutableDictionary dictionaryWithObject:[self.personData objectForKey:@"id"] forKey:@"ids"], @"filters",
+										   listOfRolesToAdd, @"add_roles",
+										   listOfRolesToRemove, @"remove_roles",
+										   nil];
+		
+		[self makeAPIv3Request:@"organizational_roles/bulk" identifier:@"apply_roles" postData:postData];
+		[self showActivityLabel:NO];
+		
+	}
 	
 }
 
@@ -698,6 +702,8 @@
 - (IBAction)onLabelBtn:(id)sender {
 	
 	[self presentModalViewController:self.labelSelectorViewController animated:YES];
+	
+	shouldRefresh = NO;
 	
 }
 

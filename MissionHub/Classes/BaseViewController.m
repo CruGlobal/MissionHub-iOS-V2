@@ -148,6 +148,46 @@
 
 - (void) makeAPIv3Request:(NSString *)path identifier:(NSString*)aIdentifier postData:(NSDictionary*)aPostData {
 	/*
+	NSString *baseUrl = @"https://www.missionhub.com/apis/v3";
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?organization_id=%@&access_token=%@&", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
+    NSLog(@"making http POST request: %@", requestUrl);
+	
+    TTURLRequest *request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+    request.userInfo = aIdentifier;
+    request.response = [[TTURLJSONResponse alloc] init];
+    request.httpMethod = @"POST";
+    request.cachePolicy = TTURLRequestCachePolicyNone;
+    request.contentType = @"application/x-www-form-urlencoded";
+	
+    NSMutableString* postStr = [NSMutableString string];
+    for (NSString *key in aPostData) {
+        NSString *value = [aPostData objectForKey: key];
+        [postStr appendString:[NSString stringWithFormat:@"%@=%@&", key, value]];
+		
+        [request.parameters setObject:value forKey:key];
+    }
+	
+    NSLog(@"   post params: %@", postStr);
+    NSData *postData = [ NSData dataWithBytes: [ postStr UTF8String ] length: [ postStr length ] ];
+    request.httpBody = postData;
+	
+    [request send];
+	*/
+	/*
+	NSString *baseUrl = @"https://www.missionhub.com/apis/v3";
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?organization_id=%@&access_token=%@&add_roles=958&remove_roles=959&filters[ids]=853787", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
+	
+	NSLog(@"making http POST request: %@", requestUrl);
+	
+	TTURLRequest* request = [TTURLRequest requestWithURL: requestUrl delegate: self];
+	request.httpMethod = @"POST";
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
+	request.response = [[TTURLJSONResponse alloc] init];
+    request.contentType = @"application/json";
+	
+	[request send];
+	*/
+	/*
     NSString *baseUrl = @"https://www.missionhub.com/apis/v3";
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?organization_id=%@&access_token=%@&", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
     
@@ -174,6 +214,7 @@
     request.contentType = @"application/json";
 	*/
 	
+	
 	NSString *baseUrl = @"https://www.missionhub.com/apis/v3";
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%@?organization_id=%@&access_token=%@", baseUrl, path, CurrentUser.orgId, CurrentUser.accessToken];
 	
@@ -181,6 +222,7 @@
 	
 	TTURLRequest* request = [TTURLRequest requestWithURL: requestUrl delegate: self];
 	request.httpMethod = @"POST";
+	request.userInfo = aIdentifier;
 	request.cachePolicy = TTURLRequestCachePolicyNoCache;
 	request.response = [[TTURLJSONResponse alloc] init];
 	
@@ -196,6 +238,7 @@
 	[request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-Length"];
 	
 	[request send];
+	 
 	
 	/*
     NSMutableString* postStr = [NSMutableString stringWithString:@"{"];
@@ -229,9 +272,10 @@
     NSLog(@"   post params: %@", postStr);
     NSData *postData = [ NSData dataWithBytes: [ postStr UTF8String ] length: [ postStr length ] ];
     request.httpBody = postData;
-	*/
+	
 	
     [request send];
+	 */
 }
 
 - (void) makeHttpRequest:(NSString *)path identifier:(NSString*)aIdentifier {
