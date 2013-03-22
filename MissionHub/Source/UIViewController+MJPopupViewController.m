@@ -19,6 +19,11 @@
 @interface UIViewController (MJPopupViewControllerPrivate)
 - (UIView*)topView;
 - (void)presentPopupView:(UIView*)popupView;
+- (void)presentPopupView:(UIView*)popupView animationType:(MJPopupViewAnimation)animationType;
+- (void)slideViewIn:(UIView*)popupView sourceView:(UIView*)sourceView overlayView:(UIView*)overlayView withAnimationType:(MJPopupViewAnimation)animationType;
+- (void)slideViewOut:(UIView*)popupView sourceView:(UIView*)sourceView overlayView:(UIView*)overlayView withAnimationType:(MJPopupViewAnimation)animationType;
+- (void)fadeViewIn:(UIView*)popupView sourceView:(UIView*)sourceView overlayView:(UIView*)overlayView;
+- (void)fadeViewOut:(UIView*)popupView sourceView:(UIView*)sourceView overlayView:(UIView*)overlayView;
 @end
 
 

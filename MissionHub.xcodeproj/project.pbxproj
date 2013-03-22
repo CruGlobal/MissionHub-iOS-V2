@@ -249,6 +249,7 @@
 		68C1BB751600E122005CD78E /* appicon-small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB721600E122005CD78E /* appicon-small-50.png */; };
 		68C1BB761600E122005CD78E /* appicon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB731600E122005CD78E /* appicon-small.png */; };
 		68C1BB771600E122005CD78E /* appicon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68C1BB741600E122005CD78E /* appicon-small@2x.png */; };
+		68F5498C16E66C7D005116D3 /* MHLabelSelectorViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F5498A16E66C7D005116D3 /* MHLabelSelectorViewController_iPad.xib */; };
 		D7E95B9A15A7D11B00606EBE /* PLWeakCompatibilityStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E95B9815A7D11B00606EBE /* PLWeakCompatibilityStubs.m */; };
 /* End PBXBuildFile section */
 
@@ -755,6 +756,7 @@
 		68C1BB721600E122005CD78E /* appicon-small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-small-50.png"; sourceTree = "<group>"; };
 		68C1BB731600E122005CD78E /* appicon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-small.png"; sourceTree = "<group>"; };
 		68C1BB741600E122005CD78E /* appicon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon-small@2x.png"; sourceTree = "<group>"; };
+		68F5498B16E66C7D005116D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MHLabelSelectorViewController_iPad.xib; sourceTree = "<group>"; };
 		D7E95B9715A7D11B00606EBE /* PLWeakCompatibilityStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLWeakCompatibilityStubs.h; path = ../Libs/PLWeakCompatibilityStubs.h; sourceTree = "<group>"; };
 		D7E95B9815A7D11B00606EBE /* PLWeakCompatibilityStubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLWeakCompatibilityStubs.m; path = ../Libs/PLWeakCompatibilityStubs.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1078,6 +1080,7 @@
 				63B61B16148A58F400CBE54B /* MissionHubAppDelegate_iPad.m */,
 				63B61B18148A58F400CBE54B /* MainWindow_iPad.xib */,
 				10E9DD03160A41CA0099A3CC /* TipViewController_iPad.xib */,
+				68F5498A16E66C7D005116D3 /* MHLabelSelectorViewController_iPad.xib */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -1784,6 +1787,7 @@
 				681E2AB916D8024B00D25342 /* checkbox_14px.png in Resources */,
 				681E2ABB16D8025400D25342 /* uncheckbox_14px.png in Resources */,
 				68AC1A3C16DD7C5200DDB76B /* FailedRequest.xib in Resources */,
+				68F5498C16E66C7D005116D3 /* MHLabelSelectorViewController_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2056,6 +2060,14 @@
 				63E02D3B14902BBA00BC2DEF /* en */,
 			);
 			name = ContactViewController.xib;
+			sourceTree = "<group>";
+		};
+		68F5498A16E66C7D005116D3 /* MHLabelSelectorViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68F5498B16E66C7D005116D3 /* en */,
+			);
+			name = MHLabelSelectorViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

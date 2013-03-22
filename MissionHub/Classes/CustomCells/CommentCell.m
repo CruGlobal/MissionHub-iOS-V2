@@ -10,7 +10,56 @@
 #import "MissionHubAppDelegate.h"
 #import "HJManagedImageV.h"
 
+#define COMMENT_CELL_FONT_SIZE 13.0f
+#define COMMENT_CELL_WIDTH 324.0f
+#define COMMENT_CELL_DEFAULT_HEIGHT 66.0f
+#define COMMENT_CELL_DEFAULT_MAX_HEIGHT 20000.0f
+#define COMMENT_CELL_CONTENT_HEIGHT 21.0f
+#define COMMENT_CELL_CONTENT_WIDTH 238.0f
+#define COMMENT_CELL_CONTENT_MARGIN_TOP 30.0f
+#define COMMENT_CELL_CONTENT_MARGIN_LEFT 66.0f
+#define COMMENT_CELL_CONTENT_MARGIN_RIGHT 20.0f
+#define COMMENT_CELL_CONTENT_MARGIN_BOTTOM 30.0f
+
 @implementation CommentCell
+
++(CGFloat)cellHeightFromCommentText:(NSString *)comment {
+	
+	if (comment == nil) {
+		comment = @"";
+	}
+	
+	if ([comment length] == 0) {
+		return COMMENT_CELL_DEFAULT_HEIGHT;
+	}
+	
+	CGSize constraint = CGSizeMake(COMMENT_CELL_WIDTH - COMMENT_CELL_CONTENT_MARGIN_LEFT - COMMENT_CELL_CONTENT_MARGIN_RIGHT, COMMENT_CELL_DEFAULT_MAX_HEIGHT);
+	
+	CGSize size = [comment sizeWithFont:[UIFont systemFontOfSize:COMMENT_CELL_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+	
+	CGFloat height = MAX(size.height, COMMENT_CELL_DEFAULT_HEIGHT);
+	
+	return height + COMMENT_CELL_CONTENT_MARGIN_TOP + COMMENT_CELL_CONTENT_MARGIN_BOTTOM;
+	
+}
+
++(CGRect)labelFrameFromCommentText:(NSString *)comment {
+	
+	if (comment == nil) {
+		comment = @"";
+	}
+	
+	if ([comment length] == 0) {
+		return CGRectMake(COMMENT_CELL_CONTENT_MARGIN_LEFT, COMMENT_CELL_CONTENT_MARGIN_TOP, COMMENT_CELL_CONTENT_WIDTH, COMMENT_CELL_CONTENT_HEIGHT);
+	}
+	
+	CGSize constraint = CGSizeMake(COMMENT_CELL_WIDTH - COMMENT_CELL_CONTENT_MARGIN_LEFT - COMMENT_CELL_CONTENT_MARGIN_RIGHT, COMMENT_CELL_DEFAULT_MAX_HEIGHT);
+	
+	CGSize size = [comment sizeWithFont:[UIFont systemFontOfSize:COMMENT_CELL_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+	
+	return CGRectMake(COMMENT_CELL_CONTENT_MARGIN_LEFT, COMMENT_CELL_CONTENT_MARGIN_TOP, COMMENT_CELL_CONTENT_WIDTH, MAX(size.height, COMMENT_CELL_DEFAULT_HEIGHT));
+	
+}
 
 - (void)setData:(NSDictionary *)data {
     [((UILabel *)[self viewWithTag:2]) setText:@""];
@@ -31,10 +80,15 @@
 
     label = (UILabel *)[self viewWithTag:3];
     label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"comment"]];
+	
+	[label setFrame:[CommentCell labelFrameFromCommentText:label.text]];
 
     if ([comment objectForKey:@"created_at_words"]) {    
         label = (UILabel *)[self viewWithTag:4];
         label.text = [NSString stringWithFormat:@"%@", [comment objectForKey:@"created_at_words"]];
+		CGRect tempFrame = label.frame;
+		tempFrame.origin.y	= CGRectGetMaxY(((UILabel *)[self viewWithTag:3]).frame);
+		label.frame = tempFrame;
     }
 
     if ([comment objectForKey:@"status"]) {

@@ -141,7 +141,9 @@
         NSDictionary *assignment = [self.personData objectForKey:@"assignment"];
         if ([[assignment objectForKey:@"person_assigned_to"] count] == 0) {
             [assignBtn setTitle: @"Assign To Me" forState:UIControlStateNormal];
-        }
+        } else {
+			[assignBtn setTitle: @"Unassign" forState:UIControlStateNormal];
+		}
 
         [self showActivityLabel:NO];
         
@@ -472,7 +474,40 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+    if (segmentedControl.selectedSegmentIndex == 0) {
+		
+        NSDictionary *tempDict	= [commentsArray objectAtIndex: indexPath.row];
+		NSDictionary *comment	= [tempDict objectForKey:@"comment"];
+		NSString *text			= [comment objectForKey:@"comment"];
+		
+		return [CommentCell cellHeightFromCommentText:text];
+    
+	}
+	
+    if (segmentedControl.selectedSegmentIndex == 1 || segmentedControl.selectedSegmentIndex == 2) {
+        
+        NSDictionary *tempDict = nil;
+        
+		if (segmentedControl.selectedSegmentIndex == 1) {
+            tempDict = [infoArray objectAtIndex: indexPath.row];
+        } else {
+            tempDict = [surveyArray objectAtIndex: indexPath.row];
+        }
+    
+		NSString *text = [tempDict objectForKey:@"value"];
+		
+		return [SimpleCell cellHeightFromValueText:text];
+	
+    }
+	
+	if (segmentedControl.selectedSegmentIndex == 3) {
+        
+		return 60.0f;
+		
+    }
+	
 	return 60.0f;
 }
 

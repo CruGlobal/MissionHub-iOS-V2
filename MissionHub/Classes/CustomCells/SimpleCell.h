@@ -12,4 +12,7 @@
 
 - (void)setData:(NSDictionary *)data;
 
++(CGFloat)cellHeightFromValueText:(NSString *)value;
++(CGRect)labelFrameFromValueText:(NSString *)value;
+
 @end

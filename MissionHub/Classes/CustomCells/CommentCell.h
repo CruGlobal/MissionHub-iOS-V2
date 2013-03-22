@@ -12,4 +12,7 @@
 
 - (void)setData:(NSDictionary *)data;
 
++(CGFloat)cellHeightFromCommentText:(NSString *)comment;
++(CGRect)labelFrameFromCommentText:(NSString *)comment;
+
 @end

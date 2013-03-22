@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">11C74</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138.23</string>
-		<string key="IBDocument.HIToolboxVersion">567.00</string>
+		<int key="IBDocument.SystemTarget">1552</int>
+		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -84,7 +84,6 @@
 								<string key="NSFrame">{{13, 20}, {287, 21}}</string>
 								<reference key="NSSuperview" ref="643509633"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:311</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -96,10 +95,13 @@
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
+									<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
+								<int key="IBUINumberOfLines">0</int>
+								<int key="IBUILineBreakMode">0</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">Helvetica</string>
 									<string key="family">Helvetica</string>
@@ -111,6 +113,7 @@
 									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
 								</object>
+								<double key="preferredMaxLayoutWidth">287</double>
 							</object>
 						</object>
 						<string key="NSFrameSize">{320, 43}</string>
@@ -213,7 +216,7 @@
 					<string>3.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 				</object>
-				<object class="NSMutableArray" key="dict.values">
+				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>ContactViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -269,6 +272,8 @@
 							<string>onBackBtn:</string>
 							<string>onCallBtn:</string>
 							<string>onEmailBtn:</string>
+							<string>onFacebookBtn:</string>
+							<string>onLabelBtn:</string>
 							<string>onPlaceHolderImageBtn:</string>
 							<string>onRejoicableBtn:</string>
 							<string>onSaveBtn:</string>
@@ -277,8 +282,10 @@
 							<string>onSmsBtn:</string>
 							<string>onStatusBtn:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -300,6 +307,8 @@
 							<string>onBackBtn:</string>
 							<string>onCallBtn:</string>
 							<string>onEmailBtn:</string>
+							<string>onFacebookBtn:</string>
+							<string>onLabelBtn:</string>
 							<string>onPlaceHolderImageBtn:</string>
 							<string>onRejoicableBtn:</string>
 							<string>onSaveBtn:</string>
@@ -308,7 +317,7 @@
 							<string>onSmsBtn:</string>
 							<string>onStatusBtn:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">onAssignBtn:</string>
@@ -324,6 +333,14 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">onEmailBtn:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">onFacebookBtn:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">onLabelBtn:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -363,6 +380,8 @@
 							<string>assignBtn</string>
 							<string>commentCell</string>
 							<string>commentTextView</string>
+							<string>facebookBtn</string>
+							<string>labelCell</string>
 							<string>nameLbl</string>
 							<string>placeHolderImageView</string>
 							<string>rejoicablesView</string>
@@ -371,11 +390,13 @@
 							<string>statusBtn</string>
 							<string>tableView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIButton</string>
 							<string>CommentCell</string>
 							<string>UITextView</string>
+							<string>UIButton</string>
+							<string>LabelCell</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UIView</string>
@@ -392,6 +413,8 @@
 							<string>assignBtn</string>
 							<string>commentCell</string>
 							<string>commentTextView</string>
+							<string>facebookBtn</string>
+							<string>labelCell</string>
 							<string>nameLbl</string>
 							<string>placeHolderImageView</string>
 							<string>rejoicablesView</string>
@@ -400,7 +423,7 @@
 							<string>statusBtn</string>
 							<string>tableView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">assignBtn</string>
@@ -413,6 +436,14 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">commentTextView</string>
 								<string key="candidateClassName">UITextView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">facebookBtn</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">labelCell</string>
+								<string key="candidateClassName">LabelCell</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">nameLbl</string>
@@ -450,6 +481,14 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">LabelCell</string>
+					<string key="superclassName">UITableViewCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/LabelCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">SimpleCell</string>
 					<string key="superclassName">UITableViewCell</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -467,6 +506,6 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>
