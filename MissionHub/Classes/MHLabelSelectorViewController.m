@@ -14,8 +14,10 @@
 
 @implementation MHLabelSelectorViewController
 
+@synthesize delegate;
 @synthesize allRoles, selectedRoles, originallySelectedRoles;
 @synthesize applyButton;
+@synthesize tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
